@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "app": "tsc && node dist/app.js"
+    "app": "tsc && node dist/app.js",
+    "build": "tsc -p ."
   },
   "author": "Multisports Academie",
   "license": "ISC",
@@ -13,7 +14,8 @@
     "@types/mongodb": "^4.0.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^6.0.13"
+    "mongoose": "^6.0.13",
+    "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

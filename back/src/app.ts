@@ -3,7 +3,7 @@ import cors from 'cors';
 import { setMongoConnection } from './config/mongo.config';
 
 const app = express();
-const port = 8080;
+const port = process.env["PORT"];
 
 app.use(express.json());
 app.use(cors());
@@ -17,4 +17,7 @@ app.listen(port, () => {
 setMongoConnection();
 
 //Définition des routes
+app.get("/", (req, res, next) => {
+    res.send("hello world");
+})
 
