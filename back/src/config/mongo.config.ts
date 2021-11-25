@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export const setMongoConnection = () => {
-    const mongoUrl = `mongodb://${process.env["MONGO_HOST"] || "localhost"}:27017`;
+    const mongoUrl = `mongodb://${process.env["MONGO_HOST"] || "localhost"}:27017/ms-db`;
     console.log(mongoUrl)
     mongoose.connect(mongoUrl, {
         autoIndex: true
