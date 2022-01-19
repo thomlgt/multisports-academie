@@ -1,14 +1,19 @@
 import { Body, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Mongoose } from 'mongoose';
-import { Captain, CaptainDocument, CaptainSchema } from './models/captain.schema';
+import { Model } from 'mongoose';
+import { Captain, CaptainDocument } from './models/captain.schema';
+import { SafeCaptain } from './dtos/safeCaptain';
+import { classToPlain, instanceToPlain, plainToInstance } from 'class-transformer';
+import { CreateCaptain } from './dtos/createCaptain';
 
 @Injectable()
 export class CaptainService {
 
     constructor(@InjectModel(Captain.name) private captainModel: Model<CaptainDocument>){}
 
-    async create(@Body() captain : Captain) : Promise<Captain> {
+    async create(@Body() createCaptain : CreateCaptain) : Promise<Captain> {
+        //Transformation du DTO createCaptain en Captain
+        let captain : Captain = plainToInstance(Captain, createCaptain);
         captain.createdDate = new Date();
         captain.updatedDate = new Date();
         const createdCaptain = new this.captainModel(captain);

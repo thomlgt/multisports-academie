@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Exclude } from "class-transformer";
 import { IsDateString, IsEmail, IsNotEmpty, IsNumber } from "class-validator";
 import { Document } from "mongoose";
 
@@ -19,6 +20,7 @@ export class Captain {
     email: string;
     @Prop()
     @IsNotEmpty()
+    @Exclude()
     password: string;
     @Prop()
     @IsNotEmpty()
@@ -33,5 +35,9 @@ export class Captain {
     createdDate: Date;
     @Prop()
     updatedDate: Date;
+
+    constructor(partial: Partial<Captain>) {
+        Object.assign(this, partial);
+    }
 }
 export const CaptainSchema = SchemaFactory.createForClass(Captain);

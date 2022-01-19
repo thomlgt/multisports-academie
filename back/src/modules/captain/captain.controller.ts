@@ -10,7 +10,7 @@ export class CaptainController {
 
     @Post()
     async create(@Body() captain: CreateCaptain) {
-        return this.captainService.create(captain as Captain);
+        return this.captainService.create(captain);
     }
 
     @Get()
