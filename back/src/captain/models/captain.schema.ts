@@ -7,19 +7,19 @@ export type CaptainDocument = Captain & Document;
 export class Captain {
 
     _id: string
-    @Prop()
+    @Prop({required: true})
     firstname: string;
-    @Prop()
+    @Prop({required: true})
     lastname: string;
-    @Prop()
+    @Prop({required: true})
     email: string;
-    @Prop()
+    @Prop({required: true})
     password: string;
-    @Prop()
+    @Prop({required: true})
     phone: string;
-    @Prop()
+    @Prop({required: true})
     birthdate: Date;
-    @Prop()
+    @Prop({required: true})
     gender: number;
     @Prop()
     createdDate: Date;
