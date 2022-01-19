@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsDateString, IsEmail, IsNotEmpty, IsNumber } from "class-validator";
 import { Document } from "mongoose";
 
 export type CaptainDocument = Captain & Document;
@@ -7,19 +8,26 @@ export type CaptainDocument = Captain & Document;
 export class Captain {
 
     _id: string
-    @Prop({required: true})
+    @Prop()
+    @IsNotEmpty()
     firstname: string;
-    @Prop({required: true})
+    @Prop()
+    @IsNotEmpty()
     lastname: string;
-    @Prop({required: true})
+    @Prop()
+    @IsEmail()
     email: string;
-    @Prop({required: true})
+    @Prop()
+    @IsNotEmpty()
     password: string;
-    @Prop({required: true})
+    @Prop()
+    @IsNotEmpty()
     phone: string;
-    @Prop({required: true})
+    @Prop()
+    @IsDateString()
     birthdate: Date;
-    @Prop({required: true})
+    @Prop()
+    @IsNumber()
     gender: number;
     @Prop()
     createdDate: Date;
