@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
 import { CaptainService } from './captain.service';
+import { CreateCaptain } from './dtos/createCaptain';
 import { Captain } from './models/captain.schema';
 
 @Controller('captains')
@@ -8,8 +9,8 @@ export class CaptainController {
     constructor(private captainService: CaptainService) { }
 
     @Post()
-    async create(@Body() captain: Captain) {
-        return this.captainService.create(captain);
+    async create(@Body() captain: CreateCaptain) {
+        return this.captainService.create(captain as Captain);
     }
 
     @Get()
