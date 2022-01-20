@@ -13,6 +13,12 @@ export class SafeCaptain {
         this.gender = gender;
     }
 
+    /**
+     * Cette méthode permet de mapper un capitaine en capitaine
+     * safe
+     * @param captain 
+     * @returns 
+     */
     static transformCaptainToSafe(captain : Captain) {
         return new SafeCaptain(captain._id, captain.firstname, captain.lastname, captain.gender);
     }
