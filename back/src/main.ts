@@ -13,6 +13,7 @@ async function bootstrap() {
     .setDescription('Liste des requêtes de l\'API Rest Multisports Académie')
     .setVersion('1.0')
     .addTag('captains')
+    .addTag('events')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
