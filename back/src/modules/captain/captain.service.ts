@@ -11,33 +11,40 @@ export class CaptainService {
 
     constructor(@InjectModel(Captain.name) private captainModel: Model<CaptainDocument>){}
 
-    async create(@Body() createCaptain : CreateCaptain) : Promise<Captain> {
+    async create(@Body() createCaptain : CreateCaptain) {
         //Transformation du DTO createCaptain en Captain
         let captain : Captain = plainToInstance(Captain, createCaptain);
         captain.createdDate = new Date();
         captain.updatedDate = new Date();
         const createdCaptain = new this.captainModel(captain);
-        return createdCaptain.save();
+        return createdCaptain.save().then((cpt) => {
+            return SafeCaptain.transformCaptainToSafe(cpt)
+        });
     }
 
-    async findAll() : Promise<Captain[]> {
-        return this.captainModel.find();
+    async findAll() {
+        return this.captainModel.find().then((cpts) => {
+            let captains : SafeCaptain[] = [];
+            cpts.forEach(cpt => {
+                captains.push(SafeCaptain.transformCaptainToSafe(cpt))
+            }) 
+            return captains;
+        });
     }
 
-    async findById(id : string) : Promise<Captain> {
-        const captain = this.captainModel.findById(id);
-        if(!captain) {
-            //Log error, throw error
-        }
-        return captain
+    async findById(id : string) {
+        const captain = this.captainModel.findById(id).then((cpt) => {
+            return SafeCaptain.transformCaptainToSafe(cpt)
+        });
+        return captain;
     }
 
-    async delete(id: string) : Promise<Captain> {
+    async delete(id: string) {
         return this.captainModel.findByIdAndRemove(id, {}, (err, deletedCaptain) => {
             if(err) {
                 //LOG error, throw error
             }
-            return deletedCaptain
+            return SafeCaptain.transformCaptainToSafe(deletedCaptain)
         }).clone();
     }
 
