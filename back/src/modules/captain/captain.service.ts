@@ -11,36 +11,72 @@ export class CaptainService {
 
     constructor(@InjectModel(Captain.name) private captainModel: Model<CaptainDocument>){}
 
-    async create(@Body() createCaptain : CreateCaptain) : Promise<Captain> {
+    /**
+     * Cette méthode permet de créer un capitaine
+     * dans la base de données et renvoie un capitaine safe
+     * @param createCaptain 
+     * @returns 
+     */
+    async create(@Body() createCaptain : CreateCaptain) {
         //Transformation du DTO createCaptain en Captain
         let captain : Captain = plainToInstance(Captain, createCaptain);
         captain.createdDate = new Date();
         captain.updatedDate = new Date();
         const createdCaptain = new this.captainModel(captain);
-        return createdCaptain.save();
+        return createdCaptain.save().then((cpt) => {
+            return SafeCaptain.transformCaptainToSafe(cpt)
+        });
     }
 
-    async findAll() : Promise<Captain[]> {
-        return this.captainModel.find();
+    /**
+     * Cette méthode retourne tous les capitaines 
+     * enregistrés dans la base de données de manière safe
+     * @returns 
+     */
+    async findAll() {
+        return this.captainModel.find().then((cpts) => {
+            let captains : SafeCaptain[] = [];
+            cpts.forEach(cpt => {
+                captains.push(SafeCaptain.transformCaptainToSafe(cpt))
+            }) 
+            return captains;
+        });
     }
 
-    async findById(id : string) : Promise<Captain> {
-        const captain = this.captainModel.findById(id);
-        if(!captain) {
-            //Log error, throw error
-        }
-        return captain
+    /**
+     * Cette méthode retourne un capitaine enregistré
+     * dans la base de données de manière safe en fonction 
+     * de son id
+     * @param id 
+     * @returns 
+     */
+    async findById(id : string) {
+        const captain = this.captainModel.findById(id).then((cpt) => {
+            return SafeCaptain.transformCaptainToSafe(cpt)
+        });
+        return captain;
     }
 
-    async delete(id: string) : Promise<Captain> {
-        return this.captainModel.findByIdAndRemove(id, {}, (err, deletedCaptain) => {
-            if(err) {
-                //LOG error, throw error
-            }
-            return deletedCaptain
-        }).clone();
+    /**
+     * Cette méthode permet de supprimer un capitaine de
+     * la base de données en fonction de son id et retourne
+     * le capitaine supprimé de manière safe
+     * @param id 
+     * @returns 
+     */
+    async delete(id: string) {
+        return this.captainModel.findByIdAndRemove(id).then(() => {
+            return `Le capitaine (id : ${id}) a bien été supprimé.`
+        });
     }
 
+    /**
+     * Cette méthode permet de modifier un capitaine enregistré
+     * dans la base de données et le retourne
+     * @param id 
+     * @param newCaptain 
+     * @returns 
+     */
     async update(id: string, newCaptain : Captain) : Promise<Captain> {
         newCaptain.updatedDate = new Date();
         return this.captainModel.findByIdAndUpdate(id, newCaptain, {new: true}, (err, updatedCaptain) => {

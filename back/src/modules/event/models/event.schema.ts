@@ -47,7 +47,7 @@ export class Event {
     @IsDateString()
     updatedDate: Date;
     @Prop()
-    imageId: string;
+    pictureId: string;
     @Prop()
     galery: string[];
     @Prop()
