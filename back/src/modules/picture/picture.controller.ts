@@ -29,16 +29,16 @@ export class PictureController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pictureService.findOne(+id);
+    return this.pictureService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePictureDto: UpdatePictureDto) {
-    return this.pictureService.update(+id, updatePictureDto);
+    return this.pictureService.update(id, updatePictureDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.pictureService.remove(+id);
+    return this.pictureService.remove(id);
   }
 }

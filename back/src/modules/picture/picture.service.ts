@@ -25,7 +25,7 @@ export class PictureService {
     return this.pictureModel.find();
   }
 
-  async findOne(id: number): Promise<Picture> {
+  async findOne(id: string): Promise<Picture> {
     const picture = this.pictureModel.findById(id);
     if (!picture) {
       //TODO:Log error
@@ -35,7 +35,7 @@ export class PictureService {
   }
 
   async update(
-    id: number,
+    id: string,
     updatePictureDto: UpdatePictureDto,
   ): Promise<Picture> {
     updatePictureDto.updatedDate = new Date();
@@ -52,7 +52,7 @@ export class PictureService {
     );
   }
 
-  async remove(id: number): Promise<Picture> {
+  async remove(id: string): Promise<Picture> {
     return this.pictureModel
       .findByIdAndRemove(id, {}, (err, deletedPicture) => {
         if (err) {
