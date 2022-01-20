@@ -1,8 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CaptainService } from './captain.service';
 import { CreateCaptain } from './dtos/createCaptain';
 import { Captain } from './models/captain.schema';
 
+@ApiTags('captains')
 @Controller('captains')
 export class CaptainController {
 
