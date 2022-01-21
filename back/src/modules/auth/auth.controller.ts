@@ -1,6 +1,7 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CaptainService } from '../captain/captain.service';
+import { CreateCaptain } from '../captain/dtos/createCaptain';
 import { LoginCaptain } from '../captain/dtos/loginCaptain';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
@@ -15,5 +16,10 @@ export class AuthController {
     @Post('login')
     async login(@Body() loginCaptain : LoginCaptain) {
         return this.authService.login(loginCaptain);
+    }
+
+    @Post('register')
+    async register(@Body() createCaptain : CreateCaptain) {
+        return this.authService.register(createCaptain);
     }
 }
