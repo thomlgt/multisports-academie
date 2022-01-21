@@ -6,14 +6,18 @@ import { LoginCaptain } from '../captain/dtos/loginCaptain';
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { SafeCaptain } from '../captain/dtos/safeCaptain';
+import { JwtService } from '@nestjs/jwt';
+import { Captain } from '../captain/models/captain.schema';
 
 @Injectable()
 export class AuthService {
 
-    constructor(private captainService : CaptainService) {}
+    constructor(
+        private captainService : CaptainService,
+        private jwtService: JwtService
+    ) {}
 
     async validateUser(email: string, password: string) {
-        
         let captainExist = await this.captainService.findByEmail(email);
         //Si l'utilisateur est null, email n'existe pas en bdd
         if(!captainExist) {
@@ -28,5 +32,20 @@ export class AuthService {
         }
 
         return captainExist;
+    }
+
+    async login(loginCaptain: LoginCaptain) {
+        let captain = await this.captainService.findByEmail(loginCaptain.email);
+
+        const payload = {
+            _id: captain._id,
+            firstname: captain.firstname,
+            lastname: captain.lastname,
+            gender: captain.gender
+        } 
+
+        return {
+            access_token: this.jwtService.sign(payload)
+        };
     }
 }
