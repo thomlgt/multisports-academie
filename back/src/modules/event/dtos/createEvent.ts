@@ -24,9 +24,8 @@ export class CreateEvent {
     price: number;    
     @IsNumber()
     maxTeams: number;
-    @IsString()
-    pictureId: string;    
-    galery: Picture[];    
+    picture: Picture;    
+    gallery: Picture[];    
     activities: string[];    
     registrations: Registration[];
 
