@@ -65,12 +65,9 @@ export class CaptainService {
      * @returns 
      */
     async delete(id: string) {
-        return this.captainModel.findByIdAndRemove(id, {}, (err, deletedCaptain) => {
-            if(err) {
-                //LOG error, throw error
-            }
-            return SafeCaptain.transformCaptainToSafe(deletedCaptain)
-        }).clone();
+        return this.captainModel.findByIdAndRemove(id).then(() => {
+            return `Le capitaine (id : ${id}) a bien été supprimé.`
+        });
     }
 
     /**
