@@ -20,7 +20,6 @@ export class Captain {
     email: string;
     @Prop()
     @IsNotEmpty()
-    @Exclude()
     password: string;
     @Prop()
     @IsNotEmpty()

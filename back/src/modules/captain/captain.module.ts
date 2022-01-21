@@ -10,7 +10,7 @@ import { Captain, CaptainSchema } from './models/captain.schema';
         { name : Captain.name, schema : CaptainSchema }
       ])
     ],
-    
+  exports: [CaptainService],
   providers: [CaptainService],
   controllers: [CaptainController]
 })

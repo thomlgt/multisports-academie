@@ -5,6 +5,7 @@ import { Captain, CaptainDocument } from './models/captain.schema';
 import { SafeCaptain } from './dtos/safeCaptain';
 import { classToPlain, instanceToPlain, plainToInstance } from 'class-transformer';
 import { CreateCaptain } from './dtos/createCaptain';
+import { UpdateEmailCaptain } from './dtos/updateEmailCaptain';
 
 @Injectable()
 export class CaptainService {
@@ -58,6 +59,17 @@ export class CaptainService {
     }
 
     /**
+     * Cette méthode retourne un capitaine enregistré
+     * dans la base de données en fonction 
+     * de son email
+     * @param email 
+     * @returns 
+     */
+     async findByEmail(email : string) {
+        return this.captainModel.findOne({email : email});
+    }
+
+    /**
      * Cette méthode permet de supprimer un capitaine de
      * la base de données en fonction de son id et retourne
      * le capitaine supprimé de manière safe
@@ -71,20 +83,25 @@ export class CaptainService {
     }
 
     /**
-     * Cette méthode permet de modifier un capitaine enregistré
-     * dans la base de données et le retourne
+     * Cette méthode permet de modifier l'adresse email d'un 
+     * capitaine enregistré dans la base de données et 
+     * le retourne
      * @param id 
-     * @param newCaptain 
+     * @param email 
      * @returns 
      */
-    async update(id: string, newCaptain : Captain) : Promise<Captain> {
-        newCaptain.updatedDate = new Date();
-        return this.captainModel.findByIdAndUpdate(id, newCaptain, {new: true}, (err, updatedCaptain) => {
-            if(err) {
-                //LOG error, throw error
+    async updateEmail(id: string, captain : UpdateEmailCaptain) : Promise<Captain> {
+        return this.captainModel.findByIdAndUpdate(
+            id, 
+            {email : captain.email, updatedDate: new Date()}, 
+            {new: true}, 
+            (err, updatedCaptain) => {
+                if(err) {
+                    //LOG error, throw error
+                }
+                return SafeCaptain.transformCaptainToSafe(updatedCaptain)
             }
-            return updatedCaptain
-        });
+        ).clone();
     }
         
 }
