@@ -36,20 +36,23 @@ export class PictureService {
 
   async update(
     id: string,
-    updatePictureDto: UpdatePictureDto,
+    modifiedPicture: UpdatePictureDto,
   ): Promise<Picture> {
-    updatePictureDto.updatedDate = new Date();
-    return this.pictureModel.findByIdAndUpdate(
-      id,
-      updatePictureDto,
-      { new: true },
-      (err, updatePictureDto) => {
-        if (err) {
-          //TODO: LOG error, throw error
-        }
-        return updatePictureDto;
-      },
-    );
+    modifiedPicture.updatedDate = new Date();
+    return this.pictureModel
+      .findByIdAndUpdate(
+        id,
+        modifiedPicture,
+        { new: true },
+        (err, updatedPicture) => {
+          if (err) {
+            //TODO: LOG error, throw error
+            console.log(err);
+          }
+          console.log(updatedPicture);
+        },
+      )
+      .clone();
   }
 
   async remove(id: string): Promise<Picture> {
