@@ -35,13 +35,8 @@ export class CaptainService {
      * @returns 
      */
     async findAll() {
-        return this.captainModel.find().then((cpts) => {
-            let captains : SafeCaptain[] = [];
-            cpts.forEach(cpt => {
-                captains.push(SafeCaptain.transformCaptainToSafe(cpt))
-            }) 
-            return captains;
-        });
+        let captains = await this.captainModel.find();
+        return captains.map(SafeCaptain.transformCaptainToSafe)
     }
 
     /**
@@ -52,10 +47,8 @@ export class CaptainService {
      * @returns 
      */
     async findById(id : string) {
-        const captain = this.captainModel.findById(id).then((cpt) => {
-            return SafeCaptain.transformCaptainToSafe(cpt)
-        });
-        return captain;
+        const captain = await this.captainModel.findById(id)
+        return SafeCaptain.transformCaptainToSafe(captain);
     }
 
     /**
@@ -91,17 +84,11 @@ export class CaptainService {
      * @returns 
      */
     async updateEmail(id: string, captain : UpdateEmailCaptain) : Promise<Captain> {
-        return this.captainModel.findByIdAndUpdate(
+        return await this.captainModel.findByIdAndUpdate(
             id, 
             {email : captain.email, updatedDate: new Date()}, 
-            {new: true}, 
-            (err, updatedCaptain) => {
-                if(err) {
-                    //LOG error, throw error
-                }
-                return SafeCaptain.transformCaptainToSafe(updatedCaptain)
-            }
-        ).clone();
+            {new: true}
+        );
     }
         
 }
