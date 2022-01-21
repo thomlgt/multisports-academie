@@ -1,8 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Member } from './models/member';
 import { Team } from './models/team.schema';
 import { TeamService } from './team.service';
 
+@ApiTags('teams')
 @Controller('teams')
 export class TeamController {
 
