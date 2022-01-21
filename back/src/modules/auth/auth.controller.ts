@@ -1,8 +1,8 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CaptainService } from '../captain/captain.service';
-import { CreateCaptain } from '../captain/dtos/createCaptain';
-import { LoginCaptain } from '../captain/dtos/loginCaptain';
+import { CreateCaptain } from '../captain/dto/create-captain.dto';
+import { LoginCaptain } from '../captain/dto/login-captain.dto';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 

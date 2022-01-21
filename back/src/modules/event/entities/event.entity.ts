@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Exclude } from "class-transformer";
 import { IsDateString, IsNotEmpty, IsNumber } from "class-validator";
 import { Document, SchemaTypes } from "mongoose";
-import { Picture } from "src/modules/picture/models/picture.schema";
+import { Picture } from "src/modules/picture/entities/picture.entity";
 import { Registration } from "./registration";
 
 export type EventDocument = Event & Document;

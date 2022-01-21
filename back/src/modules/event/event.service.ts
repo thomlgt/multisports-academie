@@ -2,9 +2,9 @@ import { Body, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
-import { CreateEvent } from './dtos/createEvent';
-import { SafeEvent } from './dtos/safeEvent';
-import { Event, EventDocument } from './models/event.schema';
+import { CreateEvent } from './dto/create-event.dto';
+import { SafeEvent } from './dto/safe-event.dto';
+import { Event, EventDocument } from './entities/event.entity';
 
 @Injectable()
 export class EventService {

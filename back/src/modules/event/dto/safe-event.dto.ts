@@ -1,6 +1,6 @@
-import { Picture } from 'src/modules/picture/models/picture.schema';
-import { Event } from '../models/event.schema';
-import { Registration } from '../models/registration';
+import { Picture } from 'src/modules/picture/entities/picture.entity';
+import { Event } from '../entities/event.entity';
+import { Registration } from '../entities/registration';
 
 export class SafeEvent {
     _id : string;

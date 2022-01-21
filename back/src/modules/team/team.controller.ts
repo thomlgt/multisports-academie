@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { Member } from './models/member';
-import { Team } from './models/team.schema';
+import { Member } from './entities/member';
+import { Team } from './entities/team.entity';
 import { TeamService } from './team.service';
 
 @ApiTags('teams')

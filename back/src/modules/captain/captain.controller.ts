@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CaptainService } from './captain.service';
-import { CreateCaptain } from './dtos/createCaptain';
-import { UpdateEmailCaptain } from './dtos/updateEmailCaptain';
-import { Captain } from './models/captain.schema';
+import { CreateCaptain } from './dto/create-captain.dto';
+import { UpdateEmailCaptain } from './dto/update-email-captain.dto';
+import { Captain } from './entities/captain.entity';
 
 @ApiTags('captains')
 @Controller('captains')

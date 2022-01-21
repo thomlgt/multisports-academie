@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Exclude } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
 import { Document, SchemaTypes } from "mongoose";
-import { Captain } from "src/modules/captain/models/captain.schema";
+import { Captain } from "src/modules/captain/entities/captain.entity";
 import { Member } from "./member";
 
 export type TeamDocument = Team & Document;

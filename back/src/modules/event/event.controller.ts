@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateEvent } from './dtos/createEvent';
+import { CreateEvent } from './dto/create-event.dto';
 import { EventService } from './event.service';
-import { Event } from './models/event.schema';
+import { Event } from './entities/event.entity';
 
 @ApiTags('events')
 @Controller('events')

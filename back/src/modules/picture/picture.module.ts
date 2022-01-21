@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { PictureService } from './picture.service';
 import { PictureController } from './picture.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Picture, PictureSchema } from './models/picture.schema';
+import { Picture, PictureSchema } from './entities/picture.entity';
 
 @Module({
   imports: [
