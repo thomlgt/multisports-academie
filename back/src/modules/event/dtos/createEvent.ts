@@ -1,4 +1,5 @@
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { Picture } from "src/modules/picture/models/picture.schema";
 import { Registration } from "../models/registration";
 
 export class CreateEvent {
@@ -25,7 +26,7 @@ export class CreateEvent {
     maxTeams: number;
     @IsString()
     pictureId: string;    
-    galery: string[];    
+    galery: Picture[];    
     activities: string[];    
     registrations: Registration[];
 

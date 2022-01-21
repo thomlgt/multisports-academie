@@ -1,3 +1,4 @@
+import { Picture } from 'src/modules/picture/models/picture.schema';
 import { Event } from '../models/event.schema';
 import { Registration } from '../models/registration';
 
@@ -14,11 +15,11 @@ export class SafeEvent {
     price : number;
     maxTeams: number;
     pictureId: string;
-    galery: string[];
+    galery: Picture[];
     activities: string[];   
     registrations: Registration[];
 
-    constructor(_id: string, name: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, pictureId: string, galery: string[], activities: string[], registrations: Registration[]) {
+    constructor(_id: string, name: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, pictureId: string, galery: Picture[], activities: string[], registrations: Registration[]) {
         this._id = _id;
         this.name = name;
         this.startEvent = startEvent;
