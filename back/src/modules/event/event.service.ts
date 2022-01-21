@@ -17,13 +17,16 @@ export class EventService {
      * @param createEvent
      * @returns 
      */
-    async create(@Body() createEvent : CreateEvent) : Promise<Event> {
+    async create(@Body() createEvent : CreateEvent) {
         //Transformation du DTO createEvent en Event
         let event : Event = plainToInstance(Event, createEvent);
         event.createdDate = new Date();
         event.updatedDate = new Date();
         const createdEvent = new this.eventModel(event);
-        return createdEvent.save();
+        // return createdEvent.save();
+        return createdEvent.save().then((cpt) => {
+            return SafeEvent.transformEventToSafe(cpt)
+        });
     }
 
     /**
@@ -31,8 +34,13 @@ export class EventService {
      * enregistrés dans la base de données de manière safe
      * @returns 
      */
-    async findAll() : Promise<Event[]> {
-        return this.eventModel.find();
+    async findAll() {
+        return this.eventModel.find().then((cpts) => {
+            let events : SafeEvent[] = [];
+            cpts.forEach(cpt => {
+                events.push(SafeEvent.transformEventToSafe(cpt))
+            })
+        });
     }
 
     /**
@@ -42,12 +50,11 @@ export class EventService {
      * @param id 
      * @returns 
      */
-    async findById(id : string) : Promise<Event> {
-        const event = this.eventModel.findById(id);
-        if(!event) {
-            //Log error, throw error
-        }
-        return event
+    async findById(id : string) {
+        const event = this.eventModel.findById(id).then((cpt) => {
+            return SafeEvent.transformEventToSafe(cpt)
+        });
+        return event;
     }
 
     /**
@@ -57,12 +64,12 @@ export class EventService {
      * @param id 
      * @returns 
      */
-    async delete(id: string) : Promise<Event> {
-        return this.eventModel.findByIdAndRemove(id, {}, (err, deletedEevnt) => {
+    async delete(id: string) {
+        return this.eventModel.findByIdAndRemove(id, {}, (err, deletedEvent) => {
             if(err) {
                 //LOG error, throw error
             }
-            return deletedEevnt
+            return SafeEvent.transformEventToSafe(deletedEvent)
         }).clone();
     }
 

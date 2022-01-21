@@ -41,12 +41,6 @@ export class Event {
     @IsNumber()
     maxTeams: number;
     @Prop()
-    @IsDateString()
-    createdDate: Date;
-    @Prop()
-    @IsDateString()
-    updatedDate: Date;
-    @Prop()
     pictureId: string;
     @Prop()
     galery: string[];
@@ -54,6 +48,10 @@ export class Event {
     activities: string[];
     @Prop()
     registrations: Registration[];
+    @Prop()
+    createdDate: Date;
+    @Prop()
+    updatedDate: Date;
 
     constructor(partial: Partial<Event>) {
         Object.assign(this, partial);
