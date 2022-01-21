@@ -35,12 +35,8 @@ export class EventService {
      * @returns 
      */
     async findAll() {
-        return this.eventModel.find().then((cpts) => {
-            let events : SafeEvent[] = [];
-            cpts.forEach(cpt => {
-                events.push(SafeEvent.transformEventToSafe(cpt))
-            })
-        });
+        let events = await this.eventModel.find();
+        return events.map(SafeEvent.transformEventToSafe);
     }
 
     /**
@@ -51,10 +47,8 @@ export class EventService {
      * @returns 
      */
     async findById(id : string) {
-        const event = this.eventModel.findById(id).then((cpt) => {
-            return SafeEvent.transformEventToSafe(cpt)
-        });
-        return event;
+        const event = await this.eventModel.findById(id);
+        return SafeEvent.transformEventToSafe(event);
     }
 
     /**

@@ -41,11 +41,10 @@ export class Event {
     @Prop()
     @IsNumber()
     maxTeams: number;
-    @Prop()
-    pictureId: string;
     @Prop({type: SchemaTypes.ObjectId, ref: Picture.name})
-    @IsNotEmpty()
-    galery: Picture[];
+    picture: Picture;
+    @Prop()
+    gallery: Picture[];
     @Prop()
     activities: string[];
     @Prop()

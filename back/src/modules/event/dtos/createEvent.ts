@@ -1,4 +1,6 @@
+import { Prop } from "@nestjs/mongoose";
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { SchemaTypes } from "mongoose";
 import { Picture } from "src/modules/picture/models/picture.schema";
 import { Registration } from "../models/registration";
 
@@ -24,9 +26,9 @@ export class CreateEvent {
     price: number;    
     @IsNumber()
     maxTeams: number;
-    @IsString()
-    pictureId: string;    
-    galery: Picture[];    
+    @Prop({type: SchemaTypes.ObjectId, ref: Picture.name})
+    picture: Picture;    
+    gallery: Picture[];    
     activities: string[];    
     registrations: Registration[];
 
