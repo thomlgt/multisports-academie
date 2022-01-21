@@ -1,4 +1,5 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { Picture } from "src/modules/picture/models/picture.schema";
 import { Registration } from "../models/registration";
 
 export class CreateEvent {
@@ -22,18 +23,11 @@ export class CreateEvent {
     @IsNumber()
     price: number;    
     @IsNumber()
-    maxTeams: number;    
-    @IsDateString()
-    createdDate: Date;    
-    @IsDateString()
-    updatedDate: Date;
+    maxTeams: number;
     @IsString()
-    pictureId: string;
-    
-    galery: string[];
-    
-    activities: string[];
-    
+    pictureId: string;    
+    galery: Picture[];    
+    activities: string[];    
     registrations: Registration[];
 
 }

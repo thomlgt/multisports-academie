@@ -1,7 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Exclude } from "class-transformer";
 import { IsDateString, IsNotEmpty, IsNumber } from "class-validator";
-import { Document } from "mongoose";
+import { Document, SchemaTypes } from "mongoose";
+import { Picture } from "src/modules/picture/models/picture.schema";
 import { Registration } from "./registration";
 
 export type EventDocument = Event & Document;
@@ -41,19 +42,18 @@ export class Event {
     @IsNumber()
     maxTeams: number;
     @Prop()
-    @IsDateString()
-    createdDate: Date;
-    @Prop()
-    @IsDateString()
-    updatedDate: Date;
-    @Prop()
     pictureId: string;
-    @Prop()
-    galery: string[];
+    @Prop({type: SchemaTypes.ObjectId, ref: Picture.name})
+    @IsNotEmpty()
+    galery: Picture[];
     @Prop()
     activities: string[];
     @Prop()
     registrations: Registration[];
+    @Prop()
+    createdDate: Date;
+    @Prop()
+    updatedDate: Date;
 
     constructor(partial: Partial<Event>) {
         Object.assign(this, partial);
