@@ -7,6 +7,7 @@ import { TeamModule } from './modules/team/team.module';
 import { EventModule } from './modules/event/event.module';
 import LogsMiddleware from './middlewares/logsMiddleware';
 import { PictureModule } from './modules/picture/picture.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { PictureModule } from './modules/picture/picture.module';
     TeamModule,
     EventModule,
     PictureModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

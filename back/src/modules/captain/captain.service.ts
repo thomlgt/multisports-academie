@@ -59,6 +59,17 @@ export class CaptainService {
     }
 
     /**
+     * Cette méthode retourne un capitaine enregistré
+     * dans la base de données en fonction 
+     * de son email
+     * @param email 
+     * @returns 
+     */
+     async findByEmail(email : string) {
+        return this.captainModel.findOne({email : email});
+    }
+
+    /**
      * Cette méthode permet de supprimer un capitaine de
      * la base de données en fonction de son id et retourne
      * le capitaine supprimé de manière safe
