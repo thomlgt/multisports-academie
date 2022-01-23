@@ -26,7 +26,7 @@ export class EventController {
 
     /**
      * retourne tous les événements en base
-     * @returns Retourne tous les événements en base
+     * @returns
      */
     @Get()
     async findAll() {
