@@ -1,11 +1,11 @@
 import { Body, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Captain, CaptainDocument } from './models/captain.schema';
-import { SafeCaptain } from './dtos/safeCaptain';
+import { Captain, CaptainDocument } from './entities/captain.entity';
+import { SafeCaptain } from './dto/safe-captain.dto';
 import { classToPlain, instanceToPlain, plainToInstance } from 'class-transformer';
-import { CreateCaptain } from './dtos/createCaptain';
-import { UpdateEmailCaptain } from './dtos/updateEmailCaptain';
+import { CreateCaptain } from './dto/create-captain.dto';
+import { UpdateEmailCaptain } from './dto/update-email-captain.dto';
 
 @Injectable()
 export class CaptainService {

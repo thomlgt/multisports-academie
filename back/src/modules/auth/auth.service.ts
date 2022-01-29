@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { CaptainService } from '../captain/captain.service';
-import { CreateCaptain } from '../captain/dtos/createCaptain';
-import { LoginCaptain } from '../captain/dtos/loginCaptain';
+import { CreateCaptain } from '../captain/dto/create-captain.dto';
+import { LoginCaptain } from '../captain/dto/login-captain.dto';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()

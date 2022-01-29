@@ -2,9 +2,9 @@ import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
-import { CreatePictureDto } from './dtos/create-picture.dto';
-import { UpdatePictureDto } from './dtos/update-picture.dto';
-import { Picture, PictureDocument } from './models/picture.schema';
+import { CreatePictureDto } from './dto/create-picture.dto';
+import { UpdatePictureDto } from './dto/update-picture.dto';
+import { Picture, PictureDocument } from './entities/picture.entity';
 
 @Injectable()
 export class PictureService {

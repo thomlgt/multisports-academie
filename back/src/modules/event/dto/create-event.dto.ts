@@ -1,8 +1,8 @@
 import { Prop } from "@nestjs/mongoose";
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
 import { SchemaTypes } from "mongoose";
-import { Picture } from "src/modules/picture/models/picture.schema";
-import { Registration } from "../models/registration";
+import { Picture } from "src/modules/picture/entities/picture.entity";
+import { Registration } from "../entities/registration";
 
 export class CreateEvent {
 

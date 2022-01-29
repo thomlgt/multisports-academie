@@ -1,4 +1,4 @@
-import { Captain } from "../models/captain.schema";
+import { Captain } from "../entities/captain.entity";
 
 export class SafeCaptain {
     _id : string;
@@ -14,8 +14,8 @@ export class SafeCaptain {
     }
 
     /**
-     * Cette méthode permet de mapper un capitaine en capitaine
-     * safe
+     * Cette méthode permet de mapper 
+     * un capitaine en safe-capitaine
      * @param captain 
      * @returns 
      */
