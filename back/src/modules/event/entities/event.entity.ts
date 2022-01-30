@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Exclude } from "class-transformer";
 import { IsDateString, IsNotEmpty, IsNumber } from "class-validator";
 import { Document, SchemaTypes } from "mongoose";
+import { Activity } from "src/modules/activity/entities/activity.entity";
 import { Picture } from "src/modules/picture/entities/picture.entity";
 import { Registration } from "./registration";
 
@@ -43,10 +44,10 @@ export class Event {
     maxTeams: number;
     @Prop({type: SchemaTypes.ObjectId, ref: Picture.name})
     picture: Picture;
-    @Prop()
+    @Prop([{type: SchemaTypes.ObjectId, ref: Picture.name}])
     gallery: Picture[];
-    @Prop()
-    activities: string[];
+    @Prop({type: SchemaTypes.ObjectId, ref: Activity.name})
+    activities: Activity[];
     @Prop()
     registrations: Registration[];
     @Prop()

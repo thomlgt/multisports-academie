@@ -21,7 +21,6 @@ export class ActivityService {
     const createdActivity = new this.activityModel(activity);
     return createdActivity.save();
   }
-  
 
   async findAll(): Promise<Activity[]> {
     return this.activityModel.find();
@@ -31,7 +30,7 @@ export class ActivityService {
       const activity = this.activityModel.findById(id);
     if (!activity) {
       //TODO:Log error
-      throw new NotFoundException(`Aucune image avec l'id ${id} trouvée`);
+      throw new NotFoundException(`Aucune activité avec l'id ${id} trouvée`);
     }
     return activity;
   }
