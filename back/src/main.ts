@@ -18,6 +18,7 @@ async function bootstrap() {
     .addTag('teams')
     .addTag('events')
     .addTag('pictures')
+    .addTag('activities')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

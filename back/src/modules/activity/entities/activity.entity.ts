@@ -19,7 +19,7 @@ export class Activity {
   rules: string;
   @Prop()
   @IsNotEmpty()
-  duration: string;
+  duration: number;
   @Prop()
   @IsNotEmpty()
   points: number;
