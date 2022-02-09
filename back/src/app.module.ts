@@ -8,6 +8,7 @@ import { EventModule } from './modules/event/event.module';
 import LogsMiddleware from './middlewares/logsMiddleware';
 import { PictureModule } from './modules/picture/picture.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { MailModule } from './modules/mail/mail.module';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
 const MONGO_PORT = process.env.MONGO_PORT || "27017"
@@ -20,6 +21,7 @@ const MONGO_PORT = process.env.MONGO_PORT || "27017"
     EventModule,
     PictureModule,
     AuthModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
