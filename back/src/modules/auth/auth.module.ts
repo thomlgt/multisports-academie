@@ -7,7 +7,6 @@ import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
-import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
@@ -16,8 +15,7 @@ import { MailModule } from '../mail/mail.module';
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {expiresIn: '60s'}
-    }),
-    MailModule
+    })
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController]
