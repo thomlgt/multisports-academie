@@ -24,6 +24,8 @@ services:
   back:
     build: ./back/.
     container_name: back
+    depends_on:
+      - mongo
     environment:
       - PORT=3000
       - MONGO_HOST=mongo
