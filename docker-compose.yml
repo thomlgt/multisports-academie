@@ -1,14 +1,14 @@
 version: '3'
 
 volumes: 
-  mongo:
+  ms-db:
 
 services:
   mongo: 
     image: mongo
-    container_name: db 
+    container_name: mongo
     volumes: 
-      - mongo:/data/db
+      - ms-db:/data/db
   mongo-express:
     image: mongo-express
     container_name: mongo-express
