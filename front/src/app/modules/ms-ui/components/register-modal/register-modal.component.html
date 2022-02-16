@@ -1,0 +1,59 @@
+<ng-container *ngIf="isRegistrationComplete">
+    <p>Compte créé avec succès !</p>
+    <ms-button value="Accéder au site" color="lightblue"></ms-button>
+</ng-container>
+
+<form [formGroup]="registerForm" *ngIf="!isRegistrationComplete">
+    <section class="form-content">
+        <label for="lastname">nom:</label>
+        <input type="text" name="lastname" formControlName="lastname">
+    </section>
+    <section class="form-content">
+        <label for="firstname">prénom:</label>
+        <input type="text" name="firstname" formControlName="firstname">
+    </section>   
+    <section class="form-content">
+        <label for="email">email:</label>
+        <input type="email" name="email" formControlName="email">
+    </section>
+    <section class="form-content">
+        <label for="password">mot de passe:</label>
+        <input type="password" name="password" formControlName="password">
+    </section>
+    <section class="form-content">
+        <label for="password">confirmer mot de passe:</label>
+        <input type="password" name="password" formControlName="passwordValidation">
+    </section>
+    <section class="form-content">
+        <label for="phone">téléphone:</label>
+        <input type="tel" name="phone" formControlName="phone">
+    </section>
+    <section class="form-content">
+        <label for="birthdate">date de naissance:</label>
+        <input type="date" name="birthdate" formControlName="birthdate">
+    </section>
+    <section class="form-content">
+        <label for="gender">genre:</label>
+        <select name="gender" formControlName="gender">
+            <option value="1">Homme</option>
+            <option value="2">Femme</option>
+        </select>
+    </section>
+
+    <hr class="solid">
+
+    <section class="form-contract">
+        <input type="checkbox" name="contract" class="contract" formControlName="acceptContract">
+        <p>En cochant cette case, vous acceptez les conditions d'utilisation</p>
+    </section>
+
+    <section class="form-content" *ngIf="registerForm.valid">
+        <ms-button value="Valider et créer un compte" color="lightblue" (click)="register()"></ms-button>
+    </section>
+    <section class="form-content" *ngIf="!registerForm.valid">
+        <ms-button value="Valider et créer un compte" color="lightblue"></ms-button>
+    </section>
+    <section class="form-content">
+        <ms-button value="Annuler" color="orange"></ms-button>
+    </section>
+</form>
