@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { SafeCaptain } from 'src/app/models/captain/safeCaptain';
@@ -12,10 +13,12 @@ import { LoginModalComponent } from '../../login-modal/login-modal.component';
 export class CaptainControlComponent implements OnInit {
 
   isConnect : boolean;
+  currentCaptain : SafeCaptain;
 
   constructor(
     private authService : AuthenticationService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -31,11 +34,19 @@ export class CaptainControlComponent implements OnInit {
 
   checkConnection() {
     this.isConnect = this.authService.isConnect;
+    if(this.isConnect) {
+      this.currentCaptain = JSON.parse(localStorage.getItem("currentCaptain")).captain
+    }
   }
 
   logout() {
     this.authService.logout();
+    this.currentCaptain = null;
     this.checkConnection();
+  }
+
+  goToProfile() {
+    this.router.navigateByUrl(`/captain/${this.currentCaptain._id}`)
   }
 
 }
