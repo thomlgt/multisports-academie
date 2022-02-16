@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { SafeCaptain } from 'src/app/models/captain/safeCaptain';
 import { LoginModalComponent } from '../../login-modal/login-modal.component';
 
 @Component({

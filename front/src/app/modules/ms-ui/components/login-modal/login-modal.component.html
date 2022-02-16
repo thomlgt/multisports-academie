@@ -2,7 +2,7 @@
     <section class="elem side-img">
         <img src="../../../../../assets/images/connexion.jpg" alt="connexion image">
     </section>
-    <section class="elem side-form">
+    <section class="elem side-form" (ngSubmit)="login()">
         <form [formGroup]="loginForm">
             <section class="form-content">
                 <label for="email">email:</label>
