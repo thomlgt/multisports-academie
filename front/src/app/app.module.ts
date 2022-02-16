@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MsApiModule } from './modules/ms-api/ms-api.module';
 import { MsUiModule } from './modules/ms-ui/ms-ui.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MsUiModule } from './modules/ms-ui/ms-ui.module';
     BrowserModule,
     AppRoutingModule,
     MsUiModule,
-    MsApiModule
+    MsApiModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
