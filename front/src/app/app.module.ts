@@ -8,7 +8,7 @@ import { MsUiModule } from './modules/ms-ui/ms-ui.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
