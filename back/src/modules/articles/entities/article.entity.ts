@@ -20,8 +20,8 @@ export class Article {
   })
   mainPicture: Picture;
   @Prop({
-  type: SchemaTypes.ObjectId, 
-  ref: Picture.name
+    type:[SchemaTypes.ObjectId], 
+    ref: Picture.name
   })
   gallery: Picture[];
   @Prop()

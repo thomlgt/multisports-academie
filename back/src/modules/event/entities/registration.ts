@@ -7,7 +7,10 @@ import { Score } from "./score";
 
 export class Registration {
 
-    @Prop({type: SchemaTypes.ObjectId, ref: Team.name})
+    @Prop({
+        type: SchemaTypes.ObjectId, 
+        ref: Team.name
+    })
     @IsNotEmpty()
     team: Team;
     @Prop()

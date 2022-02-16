@@ -29,7 +29,7 @@ export class Activity {
   })
   mainPicture: Picture;
   @Prop({
-  type: SchemaTypes.ObjectId, 
+  type: [SchemaTypes.ObjectId], 
   ref: Picture.name
   })
   gallery: Picture[];

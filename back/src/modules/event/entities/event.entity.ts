@@ -42,11 +42,19 @@ export class Event {
     @Prop()
     @IsNumber()
     maxTeams: number;
-    @Prop({type: SchemaTypes.ObjectId, ref: Picture.name})
-    picture: Picture;
-    @Prop([{type: SchemaTypes.ObjectId, ref: Picture.name}])
+    @Prop({
+        type: SchemaTypes.ObjectId, 
+        ref: Picture.name
+    })
+    mainPicture: Picture;
+    @Prop({
+        type: [SchemaTypes.ObjectId], 
+        ref: Picture.name
+    })
     gallery: Picture[];
-    @Prop({type: SchemaTypes.ObjectId, ref: Activity.name})
+    @Prop({
+        type: [SchemaTypes.ObjectId], 
+        ref: Activity.name})
     activities: Activity[];
     @Prop()
     registrations: Registration[];

@@ -45,7 +45,7 @@ export class SafeEvent {
      * @returns 
      */
     static transformEventToSafe(event : Event) {
-        return new SafeEvent(event._id, event.name, event.startEvent, event.endEvent, event.startRegistration, event.endRegistration, event.minMembers, event.maxMembers, event.minAge, event.price, event.maxTeams, event.picture, event.gallery, event.activities, event.registrations);
+        return new SafeEvent(event._id, event.name, event.startEvent, event.endEvent, event.startRegistration, event.endRegistration, event.minMembers, event.maxMembers, event.minAge, event.price, event.maxTeams, event.mainPicture, event.gallery, event.activities, event.registrations);
     }
     
 }

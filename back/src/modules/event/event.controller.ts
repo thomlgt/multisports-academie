@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { CreateEvent } from './dto/create-event.dto';
+import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
 import { Event } from './entities/event.entity';
+import { Registration } from './entities/registration';
 
 @ApiTags('events')
 @Controller('events')
@@ -16,11 +17,11 @@ export class EventController {
      * @returns 
      */
     @ApiBody({
-        type: CreateEvent,
+        type: CreateEventDto,
         description: "l'objet Event à creer",
     })
     @Post()
-    async create(@Body() event: CreateEvent) {
+    async create(@Body() event: CreateEventDto) {
         return this.eventService.create(event);
     }
 
@@ -64,5 +65,31 @@ export class EventController {
         return this.eventService.update(id, event);
     }
 
+    /**
+     * Ajoute une nouvelle inscription à un événement existant
+     * @param registration 
+     * @param id 
+     * @returns 
+     */
+    @ApiBody({
+        type: Registration,
+        description: "l'objet membre à ajouter",
+    })
+    @Post(':id/registrations')
+    async addRegistration(@Body() registration: Registration, @Param('id') id: string) {
+    return this.eventService.addRegistration(id, registration);
+    
+    }
+
+    /**
+     * supprime une inscription d'un événement
+     * @param registration 
+     * @param id 
+     * @returns 
+     */
+    @Delete(':id/registrations')
+    async deleteRegistration(@Body() registration: Registration, @Param('id') id: string) {
+        return this.eventService.deleteRegistration(id, registration);
+    }
 
 }

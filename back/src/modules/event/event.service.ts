@@ -2,9 +2,11 @@ import { Body, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
-import { CreateEvent } from './dto/create-event.dto';
+import { Activity } from '../activity/entities/activity.entity';
+import { CreateEventDto } from './dto/create-event.dto';
 import { SafeEvent } from './dto/safe-event.dto';
 import { Event, EventDocument } from './entities/event.entity';
+import { Registration } from './entities/registration';
 
 @Injectable()
 export class EventService {
@@ -14,12 +16,12 @@ export class EventService {
     /**
      * Cette méthode permet de créer un événement
      * dans la base de données et renvoie un événement safe
-     * @param createEvent
+     * @param createEventDto
      * @returns 
      */
-    async create(@Body() createEvent : CreateEvent) {
-        //Transformation du DTO createEvent en Event
-        let event : Event = plainToInstance(Event, createEvent);
+    async create(@Body() createEventDto : CreateEventDto) {
+        //Transformation du DTO CreateEventDto en Event
+        const event : Event = plainToInstance(Event, createEventDto);
         event.createdDate = new Date();
         event.updatedDate = new Date();
         const createdEvent = new this.eventModel(event);
@@ -82,6 +84,34 @@ export class EventService {
             }
             return updatedEvent
         });
+    }
+
+    /**
+     * Cette méthode permet d'ajouter une inscritpion à un événement et 
+     * d'enregistrer les changements dans la base de données
+     * @param id 
+     * @param registration
+     * @returns 
+     */
+     async addRegistration(id: string, registration: Registration) {
+        return this.eventModel.findByIdAndUpdate(
+            id, 
+            {$push : {registrations: registration}, updatedDate: new Date()},
+            {new: true});
+    }
+
+    /**
+     * Cette méthode permet de supprimer une inscritpion à un événement et 
+     * d'enregistrer les changements dans la base de données
+     * @param id 
+     * @param registration
+     * @returns 
+     */
+     async deleteRegistration(id: string, registration: Registration) {
+        return this.eventModel.findByIdAndUpdate(
+            id, 
+            {$pull: {registrations: registration}, updatedDate: new Date()},
+            {new: true});
     }
 
 }
