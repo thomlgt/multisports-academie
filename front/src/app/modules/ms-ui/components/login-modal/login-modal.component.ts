@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
-  styleUrls: ['./login-modal.component.css']
+  styleUrls: ['./login-modal.component.scss']
 })
 export class LoginModalComponent implements OnInit {
 

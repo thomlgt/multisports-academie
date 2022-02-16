@@ -1,7 +1,7 @@
 ::ng-deep .modal-content  {
     background-color: #2D3E4E;
     border: 0px;
-  }
+}
 
 .container {
     display: flex;
@@ -10,6 +10,15 @@
 
 .elem {
     width: 50%;
+}
+
+@media only screen and (max-width: 992px) {
+    .side-img {
+        display: none;
+    }
+    .side-form {
+        width: 100%;
+    }
 }
 
 form {
