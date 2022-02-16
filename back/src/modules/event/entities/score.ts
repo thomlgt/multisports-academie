@@ -13,9 +13,6 @@ export class Score {
     @IsNotEmpty()
     activity: Activity;
     @Prop()
-    @IsNotEmpty()
-    activityId: string;
-    @Prop()
     @IsNumber()
     points: number;
 
