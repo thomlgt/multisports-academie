@@ -19,6 +19,8 @@ export class SafeEvent {
     gallery: Picture[];
     activities: Activity[];   
     registrations: Registration[];
+    createdDate: Date;
+    updatedDate: Date;
 
     constructor(_id: string, name: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, picture: Picture, gallery: Picture[], activities: Activity[], registrations: Registration[]) {
         this._id = _id;
