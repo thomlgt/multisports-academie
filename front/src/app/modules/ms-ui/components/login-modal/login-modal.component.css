@@ -1,0 +1,42 @@
+::ng-deep .modal-content  {
+    background-color: #2D3E4E;
+    border: 0px;
+  }
+
+.container {
+    display: flex;
+    padding: 0px;
+}
+
+.elem {
+    width: 50%;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+hr.solid {
+    border-top: 2px solid #bbb;
+    width: 80%;
+}
+
+p {
+    font-size: small;
+    color: white;
+}
+
+img {
+    width: 100%;
+}

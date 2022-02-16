@@ -17,7 +17,6 @@ export class AuthController {
      * @param loginCaptain 
      * @returns 
      */
-    @UseGuards(LocalAuthGuard)
     @ApiBody({
         type: LoginCaptain,
         description: "email et mot de passe",

@@ -42,4 +42,11 @@
 	li.profile {
         background: linear-gradient(to bottom, #8cbdb8, #76a09c);
 	}
+	li.disconnect {
+        background: linear-gradient(to bottom, #a73131, #ca1212);
+	}
+}
+
+.dropdown-toggle::after {
+    display:none;
 }

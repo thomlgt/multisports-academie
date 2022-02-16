@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { LoginModalComponent } from '../../login-modal/login-modal.component';
 
 @Component({
   selector: 'ms-captain-control',
@@ -10,10 +12,29 @@ export class CaptainControlComponent implements OnInit {
 
   isConnect : boolean;
 
-  constructor(private authService : AuthenticationService) { }
+  constructor(
+    private authService : AuthenticationService,
+    private modalService: NgbModal
+    ) { }
 
   ngOnInit(): void {
-    this.isConnect = true;
+    this.checkConnection();
+  }
+
+  open() {
+    const modalRef = this.modalService.open(LoginModalComponent, { centered: true, size: 'xl'});
+    modalRef.componentInstance.loginEvent.subscribe(() => {
+      this.checkConnection()
+    });
+  }
+
+  checkConnection() {
+    this.isConnect = this.authService.isConnect;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.checkConnection();
   }
 
 }

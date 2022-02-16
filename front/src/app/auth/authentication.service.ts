@@ -68,6 +68,5 @@ export class AuthenticationService {
     localStorage.removeItem('currentCaptain');
     this.currentCaptainSubject.next(null);
     this.isConnect = false;
-    this.router.navigate(['/login']);
   }
 }
