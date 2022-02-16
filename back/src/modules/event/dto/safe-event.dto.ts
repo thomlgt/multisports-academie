@@ -1,3 +1,4 @@
+import { Activity } from 'src/modules/activity/entities/activity.entity';
 import { Picture } from 'src/modules/picture/entities/picture.entity';
 import { Event } from '../entities/event.entity';
 import { Registration } from '../entities/registration';
@@ -16,10 +17,10 @@ export class SafeEvent {
     maxTeams: number;
     picture: Picture;
     gallery: Picture[];
-    activities: string[];   
+    activities: Activity[];   
     registrations: Registration[];
 
-    constructor(_id: string, name: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, picture: Picture, gallery: Picture[], activities: string[], registrations: Registration[]) {
+    constructor(_id: string, name: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, picture: Picture, gallery: Picture[], activities: Activity[], registrations: Registration[]) {
         this._id = _id;
         this.name = name;
         this.startEvent = startEvent;

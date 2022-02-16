@@ -8,12 +8,13 @@ import { Picture, PictureDocument } from './entities/picture.entity';
 
 @Injectable()
 export class PictureService {
+
   constructor(
     @InjectModel(Picture.name) private pictureModel: Model<PictureDocument>,
   ) {}
 
   async create(@Body() createPictureDto: CreatePictureDto): Promise<Picture> {
-    //Transformation du DTO createCaptain en Captain
+    //Transformation du DTO createPictureDto en Picture
     const picture: Picture = plainToInstance(Picture, createPictureDto);
     picture.createdDate = new Date();
     picture.updatedDate = new Date();
@@ -34,10 +35,7 @@ export class PictureService {
     return picture;
   }
 
-  async update(
-    id: string,
-    modifiedPicture: UpdatePictureDto,
-  ): Promise<Picture> {
+  async update(id: string, modifiedPicture: UpdatePictureDto): Promise<Picture> {
     modifiedPicture.updatedDate = new Date();
     return this.pictureModel
       .findByIdAndUpdate(
