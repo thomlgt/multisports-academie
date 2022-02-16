@@ -1,4 +1,4 @@
-.menu-connexion {
+.menu {
     width: 100%;
 	height: fit-content;
 	display: inline-flex;
@@ -30,7 +30,16 @@
 			transition: .3s;
 		}
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
+	}
+}
+
+.connected {
+	li.teams {
+        background: linear-gradient(to bottom, #E09E50, #aa793c);
+	}
+	li.profile {
+        background: linear-gradient(to bottom, #8cbdb8, #76a09c);
 	}
 }

@@ -17,7 +17,7 @@ img {
 }
 
 img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 @media only screen and (min-width: 992px) {
@@ -60,7 +60,7 @@ img:hover {
 					&::before {
 						background: linear-gradient(to bottom, #8cbdb8, #76a09c);
 						box-shadow: 0px 3px 20px 0px black;
-						transform: scale(1.2);
+						transform: scale(1.05);
 					}
 			}
 		}
@@ -106,7 +106,7 @@ img:hover {
 					&::before {
 						background: linear-gradient(to bottom, #8cbdb8, #76a09c);
 						box-shadow: 0px 3px 20px 0px black;
-						transform: scale(1.2);
+						transform: scale(1.05);
 					}
 			}
 		}

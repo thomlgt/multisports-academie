@@ -1,3 +1,14 @@
-<ul class="menu-connexion">
-    <li>Connexion</li>
-</ul>
+<ng-container *ngIf="!isConnect">
+    <ul class="menu">
+        <li>Connexion</li>
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="isConnect">
+    <ul class="menu connected">
+        <li class="teams">Mes équipes</li>
+        <li class="profile">Mon profil</li>
+    </ul>
+</ng-container>
+
+
