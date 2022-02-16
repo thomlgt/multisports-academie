@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SocialComponent } from './components/social/social.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CaptainControlComponent } from './components/navbar/captain-control/captain-control.component';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CaptainControlComponent } from './components/navbar/captain-control/cap
     NavbarComponent,
     SocialComponent,
     FooterComponent,
-    CaptainControlComponent
+    CaptainControlComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { CaptainControlComponent } from './components/navbar/captain-control/cap
   exports: [
     NavbarComponent,
     SocialComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonComponent
   ]
 })
 export class MsUiModule { }
