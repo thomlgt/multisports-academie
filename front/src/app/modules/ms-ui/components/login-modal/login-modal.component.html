@@ -1,0 +1,26 @@
+<section class="container">
+    <section class="elem side-img">
+        <img src="../../../../../assets/images/connexion.jpg" alt="connexion image">
+    </section>
+    <section class="elem side-form" (ngSubmit)="login()">
+        <form [formGroup]="loginForm">
+            <section class="form-content">
+                <label for="email">email:</label>
+                <input type="email" name="email" formControlName="email">
+            </section>
+            <section class="form-content">
+                <label for="password">mot de passe:</label>
+                <input type="password" name="password" formControlName="password">
+            </section>
+            <section class="form-content">
+                <ms-button value="Connexion" color="lightblue" (click)="login()"></ms-button>
+            </section>
+            <hr class="solid">
+            <p>Vous ne possédez pas encore de compte ?</p>
+            <section class="form-content">
+                <ms-button value="Créer un compte" color="orange"></ms-button>
+            </section>
+        </form>
+        
+    </section>
+</section>
