@@ -6,9 +6,12 @@ import { Article, ArticleSchema } from './entities/article.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Article.name, schema: ArticleSchema }]),
-  ],
+    MongooseModule.forFeature([
+        { name : Article.name, schema : ArticleSchema }
+      ])
+    ],
   controllers: [ArticleController],
+  exports: [ArticleService],
   providers: [ArticleService]
 })
 export class ArticleModule {}

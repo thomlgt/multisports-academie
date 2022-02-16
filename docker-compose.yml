@@ -1,14 +1,14 @@
 version: '3'
 
 volumes: 
-  mongo:
+  ms-db:
 
 services:
   mongo: 
     image: mongo
-    container_name: db 
+    container_name: mongo
     volumes: 
-      - mongo:/data/db
+      - ms-db:/data/db
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -24,6 +24,8 @@ services:
   back:
     build: ./back/.
     container_name: back
+    depends_on:
+      - mongo
     environment:
       - PORT=3000
       - MONGO_HOST=mongo

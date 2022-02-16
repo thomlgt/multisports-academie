@@ -3,6 +3,7 @@ import { CaptainService } from '../captain/captain.service';
 import { CreateCaptain } from '../captain/dto/create-captain.dto';
 import { LoginCaptain } from '../captain/dto/login-captain.dto';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -13,32 +14,18 @@ export class AuthService {
     ) {}
 
     /**
-     * Cette méthode vérifie les informations de connexion
-     * d'un utilisateur
-     * @param email 
-     * @param password 
-     * @returns 
-     */
-    async validateUser(email: string, password: string) {
-        let captainExist = await this.checkEmailLogin(email);
-        //Vérifier que le mot de passe entré correspond au mot de passe en base de données
-        //const isMatching = await bcrypt.compare(password, captainExist.password);
-        const isMatching = (password === captainExist.password);
-        // Si les mots de passes ne correspondent pas, throw erreur
-        if(!isMatching) {
-            throw new UnauthorizedException("Le mot de passe est incorrect.");
-        }
-
-        return captainExist;
-    }
-
-    /**
      * Permet de connecter un utilisateur
      * @param loginCaptain 
      * @returns 
      */
     async login(loginCaptain: LoginCaptain) {
-        let captain = await this.captainService.findByEmail(loginCaptain.email);
+        let captain = await this.checkEmailLogin(loginCaptain.email);
+
+        const isMatch = await bcrypt.compare(loginCaptain.password, captain.password);
+        if(!isMatch) {
+            throw new BadRequestException('Le mot de passe est incorrect.')
+        }
+
         return this.generateToken(captain._id, captain.firstname, captain.lastname, captain.gender);
     }
 
@@ -49,6 +36,10 @@ export class AuthService {
      */
     async register(createCaptain: CreateCaptain) {
         await this.checkEmailRegister(createCaptain.email);
+        //Cryptage du mot de passe
+        const salt = await bcrypt.genSalt(10);
+        createCaptain.password = await bcrypt.hash(createCaptain.password, salt);
+        
         let captain = await this.captainService.create(createCaptain);
         return this.generateToken(captain._id, captain.firstname, captain.lastname, captain.gender);
     }
