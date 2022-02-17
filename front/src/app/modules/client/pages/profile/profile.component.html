@@ -1,1 +1,34 @@
-<p>profile works!</p>
+<ng-container *ngIf="captain">
+    <h2>Bonjour {{captain.firstname}},</h2>
+
+    <p>Modifier mes informations personnelles :</p>
+
+    <form [formGroup]="personalForm">
+        <section class="form-content-names">
+            <section class="form-content">
+                <label for="lastname">nom</label>
+                <input type="text" name="lastname" formControlName="lastname">
+            </section>
+            <section class="form-content">
+                <label for="firstname">prénom</label>
+                <input type="text" name="firstname" formControlName="firstname">
+            </section>
+            <section class="form-content">
+                <label for="phone">téléphone</label>
+                <input type="tel" name="phone" formControlName="phone">
+            </section>
+        </section>
+
+        <section class="form-content">
+            <label for="email">email:</label>
+            <input type="email" name="email" class="email" formControlName="email">
+        </section>
+        <section class="form-content">
+            <ms-button value="Valider les modifications" color="orange"></ms-button>
+        </section>
+    </form>
+
+    <p>Changer mon mot de passe :</p>
+
+    <p>Mes équipes :</p>
+</ng-container>

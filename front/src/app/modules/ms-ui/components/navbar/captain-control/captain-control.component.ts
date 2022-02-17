@@ -30,7 +30,8 @@ export class CaptainControlComponent implements OnInit {
 
   checkConnection() {
     this.authService.currentCaptain.subscribe((data) => {
-      this.currentCaptain = data;
+      if(data)
+      this.currentCaptain = data.captain;
     })
   }
 

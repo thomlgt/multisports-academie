@@ -1,0 +1,44 @@
+h2 {
+    color: white;
+}
+
+p {
+    color: #E09E50;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content-names {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.form-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.email {
+    width: 576px;
+}
+
+input {
+    color: white;
+    background-color: #576471;
+    border: 0px;
+    border-bottom: 2px solid transparent;
+    margin-right: 10px;
+}
+
+input:focus {
+    outline: none;
+    border: 0px;
+    border-bottom: 2px solid #E09E50;
+}

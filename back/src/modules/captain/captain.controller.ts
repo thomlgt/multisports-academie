@@ -2,8 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } fr
 import { ApiBody, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CaptainService } from './captain.service';
 import { CreateCaptain } from './dto/create-captain.dto';
-import { UpdateEmailCaptain } from './dto/update-email-captain.dto';
-import { Captain } from './entities/captain.entity';
+import { UpdatePersonalCaptain } from './dto/update-personal-captain.dto';
 
 @ApiTags('captains')
 @Controller('captains')
@@ -60,8 +59,8 @@ export class CaptainController {
      * @param captain 
      * @returns 
      */
-    @Patch(':id/email')
-    async updateEmail(@Param('id') id : string, @Body() captain : UpdateEmailCaptain) {
-        return this.captainService.updateEmail(id, captain);
+    @Patch(':id/personal')
+    async updateEmail(@Param('id') id : string, @Body() captain : UpdatePersonalCaptain) {
+        return this.captainService.updatePersonalInfos(id, captain);
     }
 }

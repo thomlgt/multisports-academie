@@ -1,11 +1,12 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Captain, CaptainDocument } from './entities/captain.entity';
 import { SafeCaptain } from './dto/safe-captain.dto';
 import { classToPlain, instanceToPlain, plainToInstance } from 'class-transformer';
 import { CreateCaptain } from './dto/create-captain.dto';
-import { UpdateEmailCaptain } from './dto/update-email-captain.dto';
+import { CaptainNoPass } from './dto/captain-nopass.dto';
+import { UpdatePersonalCaptain } from './dto/update-personal-captain.dto';
 
 @Injectable()
 export class CaptainService {
@@ -47,8 +48,11 @@ export class CaptainService {
      * @returns 
      */
     async findById(id : string) {
-        const captain = await this.captainModel.findById(id)
-        return SafeCaptain.transformCaptainToSafe(captain);
+        const captain = await this.captainModel.findById(id);
+        if(!captain) {
+            throw new NotFoundException("Le capitaine est introuvable")
+        }
+        return CaptainNoPass.transformCaptainToNoPass(captain);
     }
 
     /**
@@ -76,19 +80,32 @@ export class CaptainService {
     }
 
     /**
-     * Cette méthode permet de modifier l'adresse email d'un 
+     * Cette méthode permet de modifier les informations personnelles d'un 
      * capitaine enregistré dans la base de données et 
      * le retourne
      * @param id 
-     * @param email 
+     * @param captain 
      * @returns 
      */
-    async updateEmail(id: string, captain : UpdateEmailCaptain) : Promise<Captain> {
-        return await this.captainModel.findByIdAndUpdate(
+    async updatePersonalInfos(id: string, captain : UpdatePersonalCaptain) {
+        const updatedCaptain = await this.captainModel.findByIdAndUpdate(
             id, 
-            {email : captain.email, updatedDate: new Date()}, 
-            {new: true}
-        );
+            {
+                firstname : captain.firstname,
+                lastname : captain.lastname,
+                phone : captain.phone,
+                email : captain.email, 
+                updatedDate: new Date()
+            }, 
+            {new: true},
+            err => {
+                return err
+            }
+        ).clone();
+        if(!updatedCaptain) {
+            throw new NotFoundException("Le capitaine est introuvable")
+        }
+        return CaptainNoPass.transformCaptainToNoPass(updatedCaptain);
     }
         
 }
