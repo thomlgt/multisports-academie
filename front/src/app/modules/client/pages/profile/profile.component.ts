@@ -12,30 +12,31 @@ import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 })
 export class ProfileComponent implements OnInit {
 
-  captain : Captain;
+  captain: Captain;
   id: string;
   confirmPersonalUpdate = false;
+  confirmPasswordUpdate = false;
 
   personalForm = this.fb.group({
-    firstname : "",
-    lastname : "",
-    phone : "",
-    email : ""
+    firstname: "",
+    lastname: "",
+    phone: "",
+    email: ""
   })
 
   passForm = this.fb.group({
-    password : "",
-    newPassword : "",
-    newPasswordValidation : ""
+    password: "",
+    newPassword: "",
+    newPasswordValidation: ""
   })
 
   constructor(
-    private captainService : CaptainService,
-    private authService : AuthenticationService,
+    private captainService: CaptainService,
+    private authService: AuthenticationService,
     private router: Router,
-    private route : ActivatedRoute,
-    private fb : FormBuilder
-    ) { }
+    private route: ActivatedRoute,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
   }
 
   initCaptain() {
-    this.captainService.findById(this.id).subscribe(data => {     
+    this.captainService.findById(this.id).subscribe(data => {
       this.captain = data;
       this.personalForm.patchValue(this.captain)
     })
@@ -56,6 +57,21 @@ export class ProfileComponent implements OnInit {
         this.confirmPersonalUpdate = false;
       }, 9000);
     })
+  }
+
+  updatePassword() {
+    if (this.passForm.value.newPassword === this.passForm.value.newPasswordValidation) {
+      this.captainService.updatePassword(this.id, this.passForm.value).subscribe(() => {
+        this.confirmPasswordUpdate = true;
+        this.passForm.reset();
+        setTimeout(() => {
+          this.confirmPasswordUpdate = false;
+        }, 9000);
+      })
+    } else {
+      // TODO : passwords différents
+    }
+
   }
 
   logout() {

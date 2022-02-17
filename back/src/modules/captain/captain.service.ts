@@ -1,4 +1,4 @@
-import { Body, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Body, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Captain, CaptainDocument } from './entities/captain.entity';
@@ -7,6 +7,8 @@ import { classToPlain, instanceToPlain, plainToInstance } from 'class-transforme
 import { CreateCaptain } from './dto/create-captain.dto';
 import { CaptainNoPass } from './dto/captain-nopass.dto';
 import { UpdatePersonalCaptain } from './dto/update-personal-captain.dto';
+import { UpdatePasswordCaptain } from './dto/update-password-captain.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class CaptainService {
@@ -105,6 +107,44 @@ export class CaptainService {
         if(!updatedCaptain) {
             throw new NotFoundException("Le capitaine est introuvable")
         }
+        return CaptainNoPass.transformCaptainToNoPass(updatedCaptain);
+    }
+
+    /**
+     * Cette méthode permet de modifier les informations personnelles d'un 
+     * capitaine enregistré dans la base de données et 
+     * le retourne
+     * @param id 
+     * @param captain 
+     * @returns 
+     */
+    async updatePassword(id: string, captain: UpdatePasswordCaptain) {
+        let oldCaptain = await this.captainModel.findById(id);
+
+        if(!captain) {
+            throw new NotFoundException("Le capitaine est introuvable")
+        }
+
+        const isMatch = await bcrypt.compare(captain.password, oldCaptain.password);
+        if(!isMatch) {
+            throw new BadRequestException('Le mot de passe est incorrect.')
+        }
+
+        //Cryptage du mot de passe
+        const salt = await bcrypt.genSalt(10);
+        captain.newPassword = await bcrypt.hash(captain.newPassword, salt);
+
+        const updatedCaptain = await this.captainModel.findByIdAndUpdate(
+            id, 
+            {
+                password : captain.newPassword,
+                updatedDate: new Date()
+            }, 
+            {new: true},
+            err => {
+                return err
+            }
+        ).clone();
         return CaptainNoPass.transformCaptainToNoPass(updatedCaptain);
     }
         

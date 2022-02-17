@@ -51,7 +51,14 @@
                 <input type="password" name="newPasswordValidation" class="pass" formControlName="newPasswordValidation">
             </section>
             <section class="form-content">
-                <ms-button value="Confirmer nouveau mot de passe" color="orange"></ms-button>
+                <ngb-alert type="success" *ngIf="confirmPasswordUpdate" [dismissible]="false" class="alert">
+                    Mot de passe modifié avec succès !
+                </ngb-alert>
+                <ms-button 
+                    value="Confirmer nouveau mot de passe" 
+                    color="orange" (click)="updatePassword()"
+                    *ngIf="!confirmPasswordUpdate">
+                </ms-button>
             </section>
         </section>
         

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Captain } from 'src/app/models/captain/captain';
 import { SafeCaptain } from 'src/app/models/captain/safeCaptain';
+import { UpdatePasswordCaptain } from 'src/app/models/captain/updatePasswordCaptain';
 import { UpdatePersonalCaptain } from 'src/app/models/captain/updatePersonalCaptain';
 
 @Injectable({
@@ -21,5 +22,9 @@ export class CaptainService {
 
   updatePersonal(id : string, captain : UpdatePersonalCaptain) {
     return this.http.patch<Captain>(`http://localhost:3000/captains/${id}/personal`, captain);
+  }
+
+  updatePassword(id : string, captain : UpdatePasswordCaptain) {
+    return this.http.patch<Captain>(`http://localhost:3000/captains/${id}/password`, captain);
   }
 }
