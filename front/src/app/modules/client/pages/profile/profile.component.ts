@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Captain } from 'src/app/models/captain/captain';
 import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 
@@ -21,6 +22,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private captainService : CaptainService,
+    private authService : AuthenticationService,
+    private router: Router,
     private route : ActivatedRoute,
     private fb : FormBuilder
     ) { }
@@ -35,6 +38,11 @@ export class ProfileComponent implements OnInit {
       this.captain = data;
       this.personalForm.patchValue(this.captain)
     })
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl("");
   }
 
 }

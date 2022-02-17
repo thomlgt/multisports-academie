@@ -12,7 +12,7 @@ import { LoginModalComponent } from '../../login-modal/login-modal.component';
 })
 export class CaptainControlComponent implements OnInit {
 
-  currentCaptain : SafeCaptain;
+  currentCaptain;
 
   constructor(
     private authService : AuthenticationService,
@@ -30,19 +30,12 @@ export class CaptainControlComponent implements OnInit {
 
   checkConnection() {
     this.authService.currentCaptain.subscribe((data) => {
-      if(data)
-      this.currentCaptain = data.captain;
+      this.currentCaptain = data;
     })
   }
 
-  logout() {
-    this.authService.logout();
-    this.currentCaptain = null;
-    this.checkConnection();
-  }
-
   goToProfile() {
-    this.router.navigateByUrl(`/captain/${this.currentCaptain._id}`)
+    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}`)
   }
 
 }
