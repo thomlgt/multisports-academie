@@ -12,7 +12,10 @@ import { LoginModalComponent } from '../../login-modal/login-modal.component';
 })
 export class CaptainControlComponent implements OnInit {
 
+<<<<<<< HEAD
   isConnect : boolean;
+=======
+>>>>>>> feature/models
   currentCaptain : SafeCaptain;
 
   constructor(
@@ -27,16 +30,12 @@ export class CaptainControlComponent implements OnInit {
 
   open() {
     const modalRef = this.modalService.open(LoginModalComponent, { centered: true, size: 'xl'});
-    modalRef.componentInstance.loginEvent.subscribe(() => {
-      this.checkConnection()
-    });
   }
 
   checkConnection() {
-    this.isConnect = this.authService.isConnect;
-    if(this.isConnect) {
-      this.currentCaptain = JSON.parse(localStorage.getItem("currentCaptain")).captain
-    }
+    this.authService.currentCaptain.subscribe((data) => {
+      this.currentCaptain = data;
+    })
   }
 
   logout() {

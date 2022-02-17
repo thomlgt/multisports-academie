@@ -7,6 +7,7 @@ import { CaptainControlComponent } from './components/navbar/captain-control/cap
 import { ButtonComponent } from './components/button/button.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     CaptainControlComponent,
     ButtonComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    RegisterModalComponent
   ],
   imports: [
     CommonModule,
