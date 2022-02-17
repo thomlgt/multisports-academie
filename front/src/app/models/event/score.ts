@@ -1,6 +1,8 @@
+import { Activity } from "../activity/activity.model";
+
 export class Score {
 
-    activity: string; // TODO Activity
+    activity: Activity;
     points: number;
 
 }
