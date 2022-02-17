@@ -1,0 +1,19 @@
+<ng-container *ngIf="captain">
+    <h2>Bonjour {{captain.firstname}},</h2>
+
+    <p>Modifier mes informations personnelles :</p>
+    <app-update-personal-form [captain]="captain"></app-update-personal-form>
+    
+    <hr class="solid">
+
+    <p>Changer mon mot de passe :</p>
+    <app-update-password-form></app-update-password-form>
+
+    <hr class="solid">
+
+    <p>Mes équipes :</p>
+
+    <hr class="solid">
+
+    <ms-button value="Déconnexion" color="#c0001a" (click)="logout()"></ms-button>
+</ng-container>

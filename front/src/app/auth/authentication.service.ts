@@ -19,11 +19,7 @@ export class AuthenticationService {
     this.currentCaptain = this.currentCaptainSubject.asObservable();
 
     // Fait référence au getter
-    if (this.currentCaptainValue) {
-      this.isConnect = true;
-    } else {
-      this.isConnect = false;
-    }
+    this.isConnect = !!this.currentCaptainValue;
   }
 
   public get currentCaptainValue(): any {

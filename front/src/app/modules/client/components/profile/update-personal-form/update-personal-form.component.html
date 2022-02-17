@@ -1,0 +1,31 @@
+<form [formGroup]="personalForm">
+    <section class="form-content-names">
+        <section class="form-content">
+            <label for="lastname">nom</label>
+            <input type="text" name="lastname" formControlName="lastname">
+        </section>
+        <section class="form-content">
+            <label for="firstname">prénom</label>
+            <input type="text" name="firstname" formControlName="firstname">
+        </section>
+        <section class="form-content">
+            <label for="phone">téléphone</label>
+            <input type="tel" name="phone" formControlName="phone">
+        </section>
+    </section>
+
+    <section class="form-content">
+        <label for="email">email:</label>
+        <input type="email" name="email" class="email" formControlName="email">
+    </section>
+    <section class="form-content">
+        <ngb-alert type="success" *ngIf="confirmPersonalUpdate" [dismissible]="false" class="alert">
+            Informations personnelles mises à jour avec succès !
+        </ngb-alert>
+        <ms-button 
+            value="Valider les modifications" 
+            color="orange" (click)="updatePersonal()" 
+            *ngIf="!confirmPersonalUpdate">
+        </ms-button>
+    </section>
+</form>
