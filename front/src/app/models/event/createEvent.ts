@@ -1,3 +1,5 @@
+import { Activity } from "../activity/activity.model";
+import { Picture } from "../picture/picture.model";
 import { Registration } from "./registration";
 
 export class CreateEvent {
@@ -12,9 +14,9 @@ export class CreateEvent {
     minAge: number;
     price: number;
     maxTeams: number;
-    mainPicture: string; // TODO Picture
-    gallery: string[]; // TODO Picture
-    activities: string[]; // TODO Activity
+    mainPicture: Picture;
+    gallery: Picture[];
+    activities: Activity[];
     registrations: Registration[];
 
 }

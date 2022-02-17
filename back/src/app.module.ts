@@ -9,7 +9,7 @@ import LogsMiddleware from './middlewares/logsMiddleware';
 import { PictureModule } from './modules/picture/picture.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ActivityModule } from './modules/activity/activity.module';
-import { ArticleModule } from './modules/articles/article.module';
+import { ArticleModule } from './modules/article/article.module';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
 const MONGO_PORT = process.env.MONGO_PORT || "27017"
