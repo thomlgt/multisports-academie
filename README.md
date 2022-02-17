@@ -109,7 +109,7 @@ Ce projet fait usage des ports suivants :
 | back | 3000
 | Mongo | 27017
 | Mongo Express |8081 |
-| front | 80 |
+| front | 4200 |
 
 Vous pouvez trouver la documentation Swagger à l'adresse : [http://localhost:3000/api](http://localhost:3000/api)*  
 (**sous reserve que le server back soit en cours d'execution*)
