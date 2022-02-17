@@ -11,7 +11,7 @@ import { CreateCaptain } from '../models/captain/createCaptain';
 export class AuthenticationService {
 
   private currentCaptainSubject: BehaviorSubject<any>;
-  private currentCaptain: Observable<any>;
+  public currentCaptain: Observable<any>;
   isConnect: boolean;
 
   constructor(private router: Router, private http: HttpClient) {
@@ -19,11 +19,7 @@ export class AuthenticationService {
     this.currentCaptain = this.currentCaptainSubject.asObservable();
 
     // Fait référence au getter
-    if (this.currentCaptainValue) {
-      this.isConnect = true;
-    } else {
-      this.isConnect = false;
-    }
+    this.isConnect = !!this.currentCaptainValue;
   }
 
   public get currentCaptainValue(): any {

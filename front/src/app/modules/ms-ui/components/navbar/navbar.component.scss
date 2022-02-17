@@ -29,18 +29,17 @@ img:hover {
 	
 	.menu-bar {
 		width: 50%;
-		height: fit-content;
 		display: inline-flex;
 		justify-content: space-around;
 		align-items: center;
 		padding: 0 10px;
-		margin: 0px 0 0 0;
+		margin: 0 0 0 0;
 		li {
 			list-style: none;
 			color: white;
 			font-family: sans-serif;
 			font-weight: bold;
-			padding: 12px 16px;
+			padding: 6px 10px;
 			margin: 0 8px;
 			position: relative;
 			cursor: pointer;
@@ -54,7 +53,6 @@ img:hover {
 				width: 100%;
 				z-index:-1;
 				transition: .2s;
-				border-radius: 25px;
 			}
 				&:hover {
 					&::before {
@@ -86,7 +84,7 @@ img:hover {
 			color: white;
 			font-family: sans-serif;
 			font-weight: bold;
-			padding: 12px 16px;
+			padding: 6px 10px;
 			margin: 0 8px;
 			position: relative;
 			cursor: pointer;
@@ -100,7 +98,6 @@ img:hover {
 				width: 100%;
 				z-index:-1;
 				transition: .2s;
-				border-radius: 25px;
 			}
 				&:hover {
 					&::before {
