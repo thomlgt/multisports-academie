@@ -29,6 +29,10 @@ form {
     width: 576px;
 }
 
+.pass {
+    width: 256px;
+}
+
 input {
     color: white;
     background-color: #576471;
@@ -41,4 +45,10 @@ input:focus {
     outline: none;
     border: 0px;
     border-bottom: 2px solid #E09E50;
+}
+
+.alert {
+    padding : 6px 10px;
+    margin : 0px;
+    width: 576px;
 }

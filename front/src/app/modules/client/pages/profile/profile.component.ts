@@ -13,11 +13,20 @@ import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 export class ProfileComponent implements OnInit {
 
   captain : Captain;
+  id: string;
+  confirmPersonalUpdate = false;
+
   personalForm = this.fb.group({
     firstname : "",
     lastname : "",
     phone : "",
     email : ""
+  })
+
+  passForm = this.fb.group({
+    password : "",
+    newPassword : "",
+    newPasswordValidation : ""
   })
 
   constructor(
@@ -29,14 +38,23 @@ export class ProfileComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
     this.initCaptain();
   }
 
   initCaptain() {
-    let id = this.route.snapshot.params['id'];
-    this.captainService.findById(id).subscribe(data => {     
+    this.captainService.findById(this.id).subscribe(data => {     
       this.captain = data;
       this.personalForm.patchValue(this.captain)
+    })
+  }
+
+  updatePersonal() {
+    this.captainService.updatePersonal(this.id, this.personalForm.value).subscribe(() => {
+      this.confirmPersonalUpdate = true;
+      setTimeout(() => {
+        this.confirmPersonalUpdate = false;
+      }, 9000);
     })
   }
 

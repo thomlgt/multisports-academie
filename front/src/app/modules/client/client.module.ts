@@ -7,6 +7,7 @@ import { MsApiModule } from '../ms-api/ms-api.module';
 import { MsUiModule } from '../ms-ui/ms-ui.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClientRoutingModule,
     MsApiModule,
     MsUiModule,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule
   ]
