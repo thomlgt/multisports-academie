@@ -9,15 +9,18 @@ export class ButtonComponent implements OnInit {
 
   @Input() value : string;
   @Input() color : string;
+  @Input() width : string;
 
   buttonStyle = {
-    backgroundColor : "#8CBDB8"
+    backgroundColor : "#8CBDB8",
+    width: "auto"
   }
 
   constructor() { }
 
   ngOnInit(): void {
     this.checkButtonColor();
+    this.setWidth();
   }
 
   checkButtonColor() {
@@ -31,6 +34,11 @@ export class ButtonComponent implements OnInit {
       else
       this.buttonStyle.backgroundColor = this.color
     }
+  }
+
+  setWidth() {
+    if(this.width)
+    this.buttonStyle.width = this.width;
   }
 
 }
