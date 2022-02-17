@@ -49,3 +49,17 @@ p {
 img {
     width: 100%;
 }
+
+//Inputs
+input {
+    color: white;
+    background-color: #576471;
+    border: 0px;
+    border-bottom: 2px solid transparent;
+}
+
+input:focus {
+    outline: none;
+    border: 0px;
+    border-bottom: 2px solid #E09E50;
+}

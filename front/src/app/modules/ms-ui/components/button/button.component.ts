@@ -28,6 +28,8 @@ export class ButtonComponent implements OnInit {
       this.buttonStyle.backgroundColor = "#8CBDB8"
       else if(this.color === "blue")
       this.buttonStyle.backgroundColor = "#2D3E4E"
+      else
+      this.buttonStyle.backgroundColor = this.color
     }
   }
 
