@@ -8,12 +8,16 @@ import { MsUiModule } from '../ms-ui/ms-ui.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdatePersonalFormComponent } from './components/profile/update-personal-form/update-personal-form.component';
+import { UpdatePasswordFormComponent } from './components/profile/update-password-form/update-password-form.component';
 
 
 @NgModule({
   declarations: [
     ClientComponent,
-    ProfileComponent
+    ProfileComponent,
+    UpdatePersonalFormComponent,
+    UpdatePasswordFormComponent
   ],
   imports: [
     CommonModule,

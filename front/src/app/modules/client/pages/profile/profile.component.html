@@ -2,69 +2,18 @@
     <h2>Bonjour {{captain.firstname}},</h2>
 
     <p>Modifier mes informations personnelles :</p>
-
-    <form [formGroup]="personalForm">
-        <section class="form-content-names">
-            <section class="form-content">
-                <label for="lastname">nom</label>
-                <input type="text" name="lastname" formControlName="lastname">
-            </section>
-            <section class="form-content">
-                <label for="firstname">prénom</label>
-                <input type="text" name="firstname" formControlName="firstname">
-            </section>
-            <section class="form-content">
-                <label for="phone">téléphone</label>
-                <input type="tel" name="phone" formControlName="phone">
-            </section>
-        </section>
-
-        <section class="form-content">
-            <label for="email">email:</label>
-            <input type="email" name="email" class="email" formControlName="email">
-        </section>
-        <section class="form-content">
-            <ngb-alert type="success" *ngIf="confirmPersonalUpdate" [dismissible]="false" class="alert">
-                Informations personnelles mises à jour avec succès !
-            </ngb-alert>
-            <ms-button 
-                value="Valider les modifications" 
-                color="orange" (click)="updatePersonal()" 
-                *ngIf="!confirmPersonalUpdate">
-            </ms-button>
-        </section>
-    </form>
+    <app-update-personal-form [captain]="captain"></app-update-personal-form>
+    
+    <hr class="solid">
 
     <p>Changer mon mot de passe :</p>
-    <form [formGroup]="passForm">
-        <section class="form-content-pass">
-            <section class="form-content">
-                <label for="password">mot de passe</label>
-                <input type="password" name="password" class="pass" formControlName="password">
-            </section>
-            <section class="form-content">
-                <label for="newPassword">nouveau mot de passe</label>
-                <input type="password" name="newPassword" class="pass" formControlName="newPassword">
-            </section>
-            <section class="form-content">
-                <label for="newPasswordValidation">confirmer nouveau mot de passe</label>
-                <input type="password" name="newPasswordValidation" class="pass" formControlName="newPasswordValidation">
-            </section>
-            <section class="form-content">
-                <ngb-alert type="success" *ngIf="confirmPasswordUpdate" [dismissible]="false" class="alert">
-                    Mot de passe modifié avec succès !
-                </ngb-alert>
-                <ms-button 
-                    value="Confirmer nouveau mot de passe" 
-                    color="orange" (click)="updatePassword()"
-                    *ngIf="!confirmPasswordUpdate">
-                </ms-button>
-            </section>
-        </section>
-        
-    </form>
+    <app-update-password-form></app-update-password-form>
+
+    <hr class="solid">
 
     <p>Mes équipes :</p>
+
+    <hr class="solid">
 
     <ms-button value="Déconnexion" color="#c0001a" (click)="logout()"></ms-button>
 </ng-container>
