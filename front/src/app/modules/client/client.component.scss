@@ -1,5 +1,6 @@
 @media only screen and (min-width: 992px) {
     .container {
+        min-height: calc(100vh - 200px - 120px);
         margin-top: 120px;
         display: flex;
     }
