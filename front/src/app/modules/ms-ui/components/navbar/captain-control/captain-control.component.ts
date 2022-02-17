@@ -12,10 +12,6 @@ import { LoginModalComponent } from '../../login-modal/login-modal.component';
 })
 export class CaptainControlComponent implements OnInit {
 
-<<<<<<< HEAD
-  isConnect : boolean;
-=======
->>>>>>> feature/models
   currentCaptain : SafeCaptain;
 
   constructor(
