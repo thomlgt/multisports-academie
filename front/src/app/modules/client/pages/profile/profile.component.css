@@ -1,0 +1,16 @@
+h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+p {
+    color: #E09E50;
+}
+
+hr.solid {
+    border-top: 2px solid #ddd;
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
