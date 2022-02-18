@@ -23,6 +23,7 @@ hr.solid {
     align-items: center;
     justify-content: space-around;
     margin-top: 30px;
+    width: 80%;
 }
 
 .elem {

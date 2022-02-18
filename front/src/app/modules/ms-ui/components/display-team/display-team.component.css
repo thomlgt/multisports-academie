@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: space-around;
     margin-bottom: 5px;
+    width: 80%;
 }
 
 .elem {
