@@ -1,6 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { CaptainNoPass } from '../captain/dto/captain-nopass.dto';
+import { Captain } from '../captain/entities/captain.entity';
+import { SafeTeam } from './dto/safe-team.dto';
 import { Member } from './entities/member';
 import { Team, TeamDocument } from './entities/team.entity';
 
@@ -26,7 +29,8 @@ export class TeamService {
      * @returns 
      */
     async findAll() {
-        return this.teamModel.find().populate('captain');
+        let teams = await this.teamModel.find().populate('captain');
+        return teams.map(SafeTeam.transformTeamToSafeTeam);
     }
 
     /**
@@ -36,7 +40,19 @@ export class TeamService {
      * @returns 
      */
     async findById(id: string) {
-        return this.teamModel.findById(id).populate('captain');
+        let team = await this.teamModel.findById(id).populate('captain')
+        return SafeTeam.transformTeamToSafeTeam(team);
+    }
+
+    /**
+     * Cette méthode retourne une équipe enregistrée en 
+     * base de données en fonction de son capitaine 
+     * @param id 
+     * @returns 
+     */
+     async findByCaptainId(id: string) {
+        let teams = await this.teamModel.find({"captain" : id}).populate('captain');
+        return teams.map(SafeTeam.transformTeamToSafeTeam);
     }
 
     /**

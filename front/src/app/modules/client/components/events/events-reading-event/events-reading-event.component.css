@@ -1,0 +1,36 @@
+/** Général */
+
+h2 {
+    color: #E09E50;
+}
+
+p {
+    color: #FFFFFF;
+}
+
+/** Image */
+
+.block-image {
+    background-size: cover;
+}
+
+/** Infos */
+
+.color-orange {
+    color: #E09E50;
+}
+
+.color-lightblue {
+    color: #8CBDB8;
+}
+
+.paragraph-title {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/** Buttons */
+
+.block-btn {
+    width: 250px !important;
+}
