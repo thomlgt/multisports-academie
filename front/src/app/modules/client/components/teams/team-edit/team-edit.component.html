@@ -7,15 +7,9 @@
     <p class="title">Événements de l'équipe :</p>
 
     <header>
-        <section class="elem">
-            <p class="header-p">Événement</p>
-        </section>
-        <section class="elem">
-            <p class="header-p">Statut inscription</p>
-        </section>
-        <section class="elem">
-            <p class="header-p">Score</p>
-        </section>
+        <p class="header-p">Événement</p>
+        <p class="header-p">Statut inscription</p>
+        <p class="header-p">Score</p>
     </header>
     
     <ng-container>
@@ -42,7 +36,7 @@
         <ms-display-member [member]="member"></ms-display-member>
     </ng-container>
 
-    <ms-button value="Ajouter un membre" color="orange"></ms-button>
+    <ms-button value="Ajouter un membre" color="orange" (click)="open()"></ms-button>
     
 
 </section>

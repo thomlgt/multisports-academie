@@ -11,6 +11,7 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
 import { DisplayTeamComponent } from './components/display-team/display-team.component';
 import { DisplayMemberComponent } from './components/display-member/display-member.component';
 import { DisplayCaptainComponent } from './components/display-captain/display-captain.component';
+import { AddMemberComponent } from './components/add-member/add-member.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DisplayCaptainComponent } from './components/display-captain/display-ca
     RegisterModalComponent,
     DisplayTeamComponent,
     DisplayMemberComponent,
-    DisplayCaptainComponent
+    DisplayCaptainComponent,
+    AddMemberComponent
   ],
   imports: [
     CommonModule,
