@@ -37,7 +37,7 @@ export class EventService {
      * @returns 
      */
     async findAll() {
-        let events = await this.eventModel.find().populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
+        let events = await this.eventModel.find().populate('place').populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
         return events.map(SafeEvent.transformEventToSafe);
     }
 
@@ -49,7 +49,7 @@ export class EventService {
      * @returns 
      */
     async findById(id : string) {
-        const event = await this.eventModel.findById(id).populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
+        const event = await this.eventModel.findById(id).populate('place').populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
         return SafeEvent.transformEventToSafe(event);
     }
 
