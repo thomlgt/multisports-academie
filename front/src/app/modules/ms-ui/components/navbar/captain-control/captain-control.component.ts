@@ -39,7 +39,7 @@ export class CaptainControlComponent implements OnInit {
   }
 
   goToTeamsEdit() {
-    this.router.navigateByUrl(`/captain/${this.currentCaptain._id}/teams`)
+    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}/teams`)
   }
 
 }

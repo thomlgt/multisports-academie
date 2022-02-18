@@ -5,4 +5,40 @@ h2 {
 .content {
     background-color: #576471;
     min-height: 100%;
+    display: flex;
+}
+
+.side {
+    width: 25%;
+    text-align: center;
+}
+
+.edition {
+    width: 75%;
+}
+
+.select-team {
+    margin-top: 10px;
+    background-color: #2D3E4E;
+    color: #8CBDB8;
+    border-radius: 45px;
+    border: 2px solid transparent;
+    padding: 10px;
+    width: 80%;
+}
+
+.select-team:hover {
+    border: 2px solid #E09E50;
+}
+
+.select-team p {
+    margin: 0;
+}
+
+.name {
+    font-size: xx-large;
+}
+
+.add-team {
+    margin-top: 20px;
 }

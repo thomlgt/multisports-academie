@@ -15,7 +15,7 @@ const routes: Routes = [
         { 
           path: 'captain/:id/teams', component: TeamsComponent, canActivate: [AuthGuardService],
             children : [
-              { path: ":id", component: TeamEditComponent, canActivate: [AuthGuardService] }
+              { path: ":idTeam", component: TeamEditComponent, canActivate: [AuthGuardService] }
             ] 
         },
         { path: 'events', component: EventsReadingComponent },

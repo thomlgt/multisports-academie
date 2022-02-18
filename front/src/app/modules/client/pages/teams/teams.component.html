@@ -1,5 +1,18 @@
 <h2>Gestion des équipes</h2>
 
 <div class="content">
-    
+    <section class="side">
+        <ng-container *ngFor="let team of teams">
+            <button class="select-team" [routerLink]="team._id">
+                <p class="name">{{team.name}}</p>
+                <p class="membres">Membres : {{team.members.length + 1}}</p>
+            </button>
+        </ng-container>
+        <section class="add-team">
+            <ms-button value="Ajouter une équipe" color="orange"></ms-button>
+        </section>
+    </section>
+    <section class="edition">
+        <router-outlet></router-outlet>
+    </section>
 </div>

@@ -1,1 +1,48 @@
-<p>team-edit works!</p>
+<section class="content" *ngIf="team">
+    <section class="infos">
+        <h2>{{team.name}}</h2>
+        <ms-button value="Supprimer l'équipe" color="orange"></ms-button>
+    </section>
+
+    <p class="title">Événements de l'équipe :</p>
+
+    <header>
+        <section class="elem">
+            <p class="header-p">Événement</p>
+        </section>
+        <section class="elem">
+            <p class="header-p">Statut inscription</p>
+        </section>
+        <section class="elem">
+            <p class="header-p">Score</p>
+        </section>
+    </header>
+    
+    <ng-container>
+        <section class="no-event">
+            <p class="info-p">L'équipe n'est inscrite à aucun événement</p>
+
+            <ms-button value="Inscrire l'équipe à un événement" color="lightblue"></ms-button>
+        </section>
+    </ng-container>
+
+    <!-- TODO : si l'équipe est inscrite à des événements -->
+
+    <p class="title">Membres de l'équipe :</p>
+
+    <header class="member-header">
+        <p class="header-p">Nom</p>
+        <p class="header-p">Prénom</p>
+        <p class="header-p">Date de naissance</p>
+        <p class="header-p">Sexe</p>
+    </header>
+
+    <ms-display-captain [captain]="team.captain"></ms-display-captain>
+    <ng-container *ngFor="let member of team.members">
+        <ms-display-member [member]="member"></ms-display-member>
+    </ng-container>
+
+    <ms-button value="Ajouter un membre" color="orange"></ms-button>
+    
+
+</section>

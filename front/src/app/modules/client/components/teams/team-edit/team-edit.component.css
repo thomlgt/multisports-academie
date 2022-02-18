@@ -1,0 +1,53 @@
+h2 {
+    color: white;
+}
+
+p {
+    margin: 0;
+}
+
+.title {
+    color: #8CBDB8;
+}
+
+.header-p {
+    color: #E09E50;
+    font-weight: bold;
+    width: 25%;
+    text-align: center;
+}
+
+.content {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infos {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+}
+
+header {
+    background-color: #2D3E4E;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.member-header {
+    padding-right: 15%;
+}
+
+.no-event {
+    text-align: center;
+}
+
+.info-p {
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+}

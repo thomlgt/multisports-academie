@@ -13,6 +13,10 @@ export class TeamService {
     return this.http.get<Team[]>("http://localhost:3000/teams");
   }
 
+  findById(id: string) {
+    return this.http.get<Team>(`http://localhost:3000/teams/${id}`);
+  }
+
   findByCaptainId(id: string) {
     return this.http.get<Team[]>(`http://localhost:3000/teams/captain/${id}`);
   }
