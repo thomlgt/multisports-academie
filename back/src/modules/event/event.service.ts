@@ -49,7 +49,7 @@ export class EventService {
      * @returns 
      */
     async findById(id : string) {
-        const event = await this.eventModel.findById(id);
+        const event = await this.eventModel.findById(id).populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
         return SafeEvent.transformEventToSafe(event);
     }
 
