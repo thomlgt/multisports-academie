@@ -46,5 +46,3 @@ Thumbs.db
 
 # Cache files
 .angular/*
-
-package-lock.json
