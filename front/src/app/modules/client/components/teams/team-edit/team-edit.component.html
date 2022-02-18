@@ -32,8 +32,8 @@
     </header>
 
     <ms-display-captain [captain]="team.captain"></ms-display-captain>
-    <ng-container *ngFor="let member of team.members">
-        <ms-display-member [member]="member"></ms-display-member>
+    <ng-container *ngFor="let member of team.members; let index = index">
+        <ms-display-member [member]="member" (deleteMemberEvent)="deleteMember(index)"></ms-display-member>
     </ng-container>
 
     <ms-button value="Ajouter un membre" color="orange" (click)="open()"></ms-button>

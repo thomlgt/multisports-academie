@@ -25,4 +25,8 @@ export class TeamService {
   addMember(id: string, member: Member) {
     return this.http.post<Team>(`http://localhost:3000/teams/${id}/members`, member);
   }
+
+  deleteMember(id: string, member: Member) {
+    return this.http.delete<Team>(`http://localhost:3000/teams/${id}/members`, {body: member});
+  }
 }

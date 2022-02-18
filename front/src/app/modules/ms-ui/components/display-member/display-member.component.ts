@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Member } from 'src/app/models/members/member';
 
 @Component({
@@ -9,10 +9,15 @@ import { Member } from 'src/app/models/members/member';
 export class DisplayMemberComponent implements OnInit {
 
   @Input() member : Member
+  @Output() deleteMemberEvent = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deleteMember() {
+    this.deleteMemberEvent.emit();
   }
 
 }

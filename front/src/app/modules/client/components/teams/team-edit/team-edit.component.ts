@@ -43,4 +43,10 @@ export class TeamEditComponent implements OnInit {
     })
   }
 
+  deleteMember(index : number) {
+    this.teamService.deleteMember(this.idTeam, this.team.members[index]).subscribe(() => {
+      this.initTeam()
+    })
+  }
+
 }
