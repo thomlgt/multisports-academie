@@ -25,6 +25,8 @@ export class TeamsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    if(this.route.snapshot.url.length === 3)
+    this.displayEdition = true;
     this.initTeams();
   }
 

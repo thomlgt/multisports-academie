@@ -46,6 +46,9 @@ header {
 
 .no-event {
     text-align: center;
+    border : 1px solid #2D3E4E;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .info-p {
