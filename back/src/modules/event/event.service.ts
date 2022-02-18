@@ -37,7 +37,7 @@ export class EventService {
      * @returns 
      */
     async findAll() {
-        let events = await this.eventModel.find();
+        let events = await this.eventModel.find().populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
         return events.map(SafeEvent.transformEventToSafe);
     }
 

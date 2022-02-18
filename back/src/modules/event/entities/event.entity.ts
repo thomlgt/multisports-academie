@@ -16,6 +16,8 @@ export class Event {
     @IsNotEmpty()
     name: string;
     @Prop()
+    description: string;
+    @Prop()
     @IsDateString()
     startEvent: Date;
     @Prop()
