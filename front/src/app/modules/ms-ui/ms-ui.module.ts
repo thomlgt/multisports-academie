@@ -8,6 +8,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
+import { DisplayTeamComponent } from './components/display-team/display-team.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     CaptainControlComponent,
     ButtonComponent,
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    DisplayTeamComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     NavbarComponent,
     SocialComponent,
     FooterComponent,
-    ButtonComponent
+    ButtonComponent,
+    DisplayTeamComponent
   ]
 })
 export class MsUiModule { }

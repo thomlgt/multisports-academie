@@ -29,6 +29,16 @@ export class TeamController {
   }
 
   /**
+   * retourne une équipe à partir de son id
+   * @param id 
+   * @returns 
+   */
+   @Get('captain/:id')
+   async findByCaptainId(@Param('id') id: string) {
+     return await this.teamService.findByCaptainId(id);
+   }
+
+  /**
    * crée une nouvelle équipe
    * @param team 
    * @returns 

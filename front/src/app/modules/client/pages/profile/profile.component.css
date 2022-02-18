@@ -14,3 +14,21 @@ hr.solid {
     margin-top: 25px;
     margin-bottom: 25px;
 }
+
+.team-header {
+    background-color: #576471;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.elem {
+    width: 25%;
+    text-align: center;
+}
+
+p {
+    margin: 0px;
+}

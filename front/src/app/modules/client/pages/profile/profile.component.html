@@ -3,7 +3,7 @@
 
     <p>Modifier mes informations personnelles :</p>
     <app-update-personal-form [captain]="captain"></app-update-personal-form>
-    
+
     <hr class="solid">
 
     <p>Changer mon mot de passe :</p>
@@ -12,6 +12,26 @@
     <hr class="solid">
 
     <p>Mes équipes :</p>
+
+    <ng-container *ngIf="teams">
+        <header class="team-header">
+            <section class="elem">
+                <p>Nom</p>
+            </section>
+            <section class="elem">
+                <p>Membres</p>
+            </section>
+            <section class="elem">
+                <p>Nombre de participations</p>
+            </section>
+            <section class="elem">
+            </section>
+        </header>
+        <ng-container *ngFor="let team of teams">
+            <ms-display-team [team]="team"></ms-display-team>
+        </ng-container>
+    </ng-container>
+
 
     <hr class="solid">
 

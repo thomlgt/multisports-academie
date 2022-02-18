@@ -4,6 +4,7 @@ import { IsDateString, IsNotEmpty, IsNumber } from "class-validator";
 import { Document, SchemaTypes } from "mongoose";
 import { Activity } from "src/modules/activity/entities/activity.entity";
 import { Picture } from "src/modules/picture/entities/picture.entity";
+import { Place } from "./place";
 import { Registration } from "./registration";
 
 export type EventDocument = Event & Document;
@@ -15,6 +16,8 @@ export class Event {
     @Prop()
     @IsNotEmpty()
     name: string;
+    @Prop()
+    description: string;
     @Prop()
     @IsDateString()
     startEvent: Date;
@@ -42,6 +45,8 @@ export class Event {
     @Prop()
     @IsNumber()
     maxTeams: number;
+    @Prop()
+    place: Place;
     @Prop({
         type: SchemaTypes.ObjectId, 
         ref: Picture.name
