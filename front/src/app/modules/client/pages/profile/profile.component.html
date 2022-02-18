@@ -11,29 +11,35 @@
 
     <hr class="solid">
 
-    <p>Mes équipes :</p>
-
-    <ng-container *ngIf="teams">
-        <header class="team-header">
-            <section class="elem">
-                <p>Nom</p>
-            </section>
-            <section class="elem">
-                <p>Membres</p>
-            </section>
-            <section class="elem">
-                <p>Nombre de participations</p>
-            </section>
-            <section class="elem">
-            </section>
-        </header>
-        <ng-container *ngFor="let team of teams">
-            <ms-display-team [team]="team"></ms-display-team>
+    <ng-container *ngIf="showTeams">
+        <p>Mes équipes :</p>
+        <ng-container *ngIf="teams">
+            <header class="team-header">
+                <section class="elem">
+                    <p>Nom</p>
+                </section>
+                <section class="elem">
+                    <p>Membres</p>
+                </section>
+                <section class="elem">
+                    <p>Nombre de participations</p>
+                </section>
+                <section class="elem">
+                </section>
+            </header>
+            <ng-container *ngFor="let team of teams">
+                <ms-display-team [team]="team"></ms-display-team>
+            </ng-container>
         </ng-container>
+    
+    
+        <hr class="solid">
     </ng-container>
 
+    <p>Autres actions :</p>
 
-    <hr class="solid">
+    <section class="actions">
+        <ms-button value="Déconnexion" color="#c0001a" (click)="logout()"></ms-button>
+    </section>
 
-    <ms-button value="Déconnexion" color="#c0001a" (click)="logout()"></ms-button>
 </ng-container>

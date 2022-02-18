@@ -1,0 +1,27 @@
+<h2>Ajouter un membre :</h2>
+
+<form [formGroup]="addMemberForm">
+    <section class="form-content">
+        <label for="lastname">nom:</label>
+        <input type="text" name="lastname" formControlName="lastname">
+    </section>
+    <section class="form-content">
+        <label for="firstname">prénom:</label>
+        <input type="text" name="firstname" formControlName="firstname">
+    </section>
+    <section class="form-content">
+        <label for="birthdate">date de naissance:</label>
+        <input type="date" name="birthdate" formControlName="birthdate">
+    </section>
+    <section class="form-content">
+        <label for="gender">genre:</label>
+        <select name="gender" formControlName="gender">
+            <option value="1">Homme</option>
+            <option value="2">Femme</option>
+        </select>
+    </section>
+
+    <ms-button value="Ajouter" color="orange" *ngIf="!addMemberForm.valid"></ms-button>
+    <ms-button value="Ajouter" color="lightblue" (click)="addMember()" *ngIf="addMemberForm.valid"></ms-button>
+
+</form>
