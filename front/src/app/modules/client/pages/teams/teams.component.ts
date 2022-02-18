@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Team } from 'src/app/models/teams/team';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
+import { AddTeamComponent } from 'src/app/modules/ms-ui/components/add-team/add-team.component';
 
 @Component({
   selector: 'app-teams',
@@ -11,12 +13,14 @@ import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 export class TeamsComponent implements OnInit {
 
   teams : Team[];
-  id: string
+  id: string;
+  displayEdition = false;
 
   constructor(
     private teamService: TeamService,
     private route : ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService : NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +31,24 @@ export class TeamsComponent implements OnInit {
   initTeams() {
     this.teamService.findByCaptainId(this.id).subscribe(data => {
       this.teams = data;
-      //Si aucune équipe n'est selectionnée, selectionner la première par défaut
-      if(this.route.snapshot.url.length === 3)
-      this.router.navigateByUrl(`captain/${this.id}/teams/${this.teams[0]._id}`)
+    })
+  }
+
+  deleteTeam(teamId : string) {
+    this.teamService.deleteTeam(teamId).subscribe(() => {
+      this.initTeams();
+    })
+  }
+
+  openEditor() {
+    this.displayEdition = true;
+  }
+
+  open() {
+    const modalRef = this.modalService.open(AddTeamComponent, {centered : true});
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.teamAddedEvent.subscribe(() => {
+      this.initTeams()
     })
   }
 

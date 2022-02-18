@@ -22,11 +22,19 @@ export class TeamService {
     return this.http.get<Team[]>(`http://localhost:3000/teams/captain/${id}`);
   }
 
+  addTeam(team: Team) {
+    return this.http.post<Team>("http://localhost:3000/teams", team);
+  }
+
   addMember(id: string, member: Member) {
     return this.http.post<Team>(`http://localhost:3000/teams/${id}/members`, member);
   }
 
   deleteMember(id: string, member: Member) {
     return this.http.delete<Team>(`http://localhost:3000/teams/${id}/members`, {body: member});
+  }
+
+  deleteTeam(id: string) {
+    return this.http.delete<Team>(`http://localhost:3000/teams/${id}`)
   }
 }

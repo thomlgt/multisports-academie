@@ -3,16 +3,24 @@
 <div class="content">
     <section class="side">
         <ng-container *ngFor="let team of teams">
-            <button class="select-team" [routerLink]="team._id">
+            <button class="select-team">
                 <p class="name">{{team.name}}</p>
-                <p class="membres">Membres : {{team.members.length + 1}}</p>
+                <p class="membres">Membres : {{ team.members.length + 1 }}</p>
             </button>
+            <section class="action">
+                <ms-button value="Éditer" color="lightblue" width="47.5%" [routerLink]="team._id" (click)="openEditor()"></ms-button>
+                <ms-button value="Supprimer" color="orange" width="47.5%" (click)="deleteTeam(team._id)"></ms-button>
+            </section>
         </ng-container>
+
         <section class="add-team">
-            <ms-button value="Ajouter une équipe" color="orange"></ms-button>
+            <ms-button value="Créer une nouvelle équipe" color="#2E8B57" (click)="open()"></ms-button>
         </section>
     </section>
-    <section class="edition">
+
+    <div class="separator"></div>
+
+    <section class="edition" *ngIf="displayEdition">
         <router-outlet></router-outlet>
     </section>
 </div>

@@ -12,6 +12,7 @@ import { DisplayTeamComponent } from './components/display-team/display-team.com
 import { DisplayMemberComponent } from './components/display-member/display-member.component';
 import { DisplayCaptainComponent } from './components/display-captain/display-captain.component';
 import { AddMemberComponent } from './components/add-member/add-member.component';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AddMemberComponent } from './components/add-member/add-member.component
     DisplayTeamComponent,
     DisplayMemberComponent,
     DisplayCaptainComponent,
-    AddMemberComponent
+    AddMemberComponent,
+    AddTeamComponent
   ],
   imports: [
     CommonModule,
