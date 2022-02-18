@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
     if (currentCaptain) {
       return true;
     } else {
-      this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
+      this.router.navigate(['']);
       return false;
     }
   }
