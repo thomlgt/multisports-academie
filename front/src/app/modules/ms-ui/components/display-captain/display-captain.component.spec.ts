@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TeamsEditComponent } from './teams-edit.component';
+import { DisplayCaptainComponent } from './display-captain.component';
 
-describe('TeamsEditComponent', () => {
-  let component: TeamsEditComponent;
-  let fixture: ComponentFixture<TeamsEditComponent>;
+describe('DisplayCaptainComponent', () => {
+  let component: DisplayCaptainComponent;
+  let fixture: ComponentFixture<DisplayCaptainComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamsEditComponent ]
+      declarations: [ DisplayCaptainComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TeamsEditComponent);
+    fixture = TestBed.createComponent(DisplayCaptainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

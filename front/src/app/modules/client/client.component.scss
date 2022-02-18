@@ -1,7 +1,7 @@
 @import 'sizes';
 
 @media only screen and (min-width: 992px) {
-    .container {
+    .site-view {
         min-height: calc(100vh - $footer-size - $navbar-size);
         margin-top: $navbar-size;
         display: flex;
@@ -9,7 +9,7 @@
 }
 
 @media only screen and (max-width: 992px) {
-    .container {
+    .site-view {
         display: flex;
     }
 }
