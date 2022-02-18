@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="block-image col-4" style="background-image: url('https://images.pexels.com/photos/163407/cyclists-trail-bike-clouds-163407.jpeg?cs=srgb&dl=pexels-pixabay-163407.jpg&fm=jpg')">
+    <div class="block-image col-4" style="background-image: url('{{ event.mainPicture.url }}')">
     </div>
     <div class="block-infos col-8">
-        <h2>Challenge Multisport</h2>
+        <h2>{{ event.name }}</h2>
         <div class="block-text-dates">
             <p class="color-lightblue paragraph-title">Dates de l'événement :</p>
-            <p>du <span class="color-orange">10/03/2022</span> au <span class="color-orange">10/03/2022</span></p>
+            <p>du <span class="color-orange">{{ event.startEvent | date:'dd/MM/y' }}</span> au <span class="color-orange">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
             <p class="color-lightblue paragraph-title">Ouverture des inscriptions :</p>
-            <p>du <span class="color-orange">10/03/2022</span> au <span class="color-orange">10/03/2022</span></p>
+            <p>du <span class="color-orange">{{ event.startRegistration | date:'dd/MM/y' }}</span> au <span class="color-orange">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
         </div>
         <div class="block-text-description">
             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
