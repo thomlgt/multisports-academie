@@ -4,7 +4,7 @@ import { Team } from 'src/app/models/teams/team';
 @Component({
   selector: 'ms-display-team',
   templateUrl: './display-team.component.html',
-  styleUrls: ['./display-team.component.css']
+  styleUrls: ['./display-team.component.scss']
 })
 export class DisplayTeamComponent implements OnInit {
 
