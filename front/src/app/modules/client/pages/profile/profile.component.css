@@ -30,3 +30,8 @@ hr.solid {
     width: 25%;
     text-align: center;
 }
+
+.actions {
+    padding-top: 30px;
+    margin-bottom: 30px;
+}

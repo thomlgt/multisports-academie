@@ -17,7 +17,8 @@ export class ProfileComponent implements OnInit {
 
   captain : Captain
   teams : Team[];
-  id : string
+  id : string;
+  showTeams = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -36,6 +37,8 @@ export class ProfileComponent implements OnInit {
   initTeams() {
     this.teamService.findByCaptainId(this.id).subscribe(data => {
       this.teams = data;
+      if(this.teams.length)
+      this.showTeams = true
     })
   }
 
