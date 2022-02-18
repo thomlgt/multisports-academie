@@ -1,1 +1,5 @@
-<app-events-reading-event></app-events-reading-event>
+<h1>Liste des événements</h1>
+
+<div class="block-event" *ngFor="let event of events">
+    <app-events-reading-event [event]="event"></app-events-reading-event>
+</div>
