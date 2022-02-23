@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 import { ClientComponent } from './client.component';
 import { TeamEditComponent } from './components/teams/team-edit/team-edit.component';
+import { EventComponent } from './pages/event/event.component';
 import { EventsReadingComponent } from './pages/events-reading/events-reading.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TeamsComponent } from './pages/teams/teams.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
             ] 
         },
         { path: 'events', component: EventsReadingComponent },
+        { path: 'event', component: EventComponent },
       ]
   },
   
