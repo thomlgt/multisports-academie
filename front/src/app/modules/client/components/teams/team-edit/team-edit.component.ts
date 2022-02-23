@@ -8,7 +8,7 @@ import { AddMemberComponent } from 'src/app/modules/ms-ui/components/add-member/
 @Component({
   selector: 'app-team-edit',
   templateUrl: './team-edit.component.html',
-  styleUrls: ['./team-edit.component.css']
+  styleUrls: ['./team-edit.component.scss']
 })
 export class TeamEditComponent implements OnInit {
 

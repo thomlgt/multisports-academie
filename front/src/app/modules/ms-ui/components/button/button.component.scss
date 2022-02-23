@@ -1,6 +1,8 @@
+@import 'colors';
+
 button {
     padding: 6px 10px;
-    color: white;
+    color: $text-light;
     border: 1px solid transparent;
 }
 
@@ -8,4 +10,3 @@ button:hover {
     cursor: pointer;
     transform: scale(1.03);
 }
-

@@ -5,7 +5,7 @@ import { EventService } from 'src/app/modules/ms-api/event/event.service';
 @Component({
   selector: 'app-events-reading',
   templateUrl: './events-reading.component.html',
-  styleUrls: ['./events-reading.component.css']
+  styleUrls: ['./events-reading.component.scss']
 })
 export class EventsReadingComponent implements OnInit {
 
