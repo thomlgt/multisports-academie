@@ -4,13 +4,15 @@ import { CreateCaptain } from '../captain/dto/create-captain.dto';
 import { LoginCaptain } from '../captain/dto/login-captain.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AuthService {
 
     constructor(
         private captainService : CaptainService,
-        private jwtService: JwtService
+        private jwtService: JwtService,
+        private mailService: MailService
     ) {}
 
     /**
@@ -41,6 +43,7 @@ export class AuthService {
         createCaptain.password = await bcrypt.hash(createCaptain.password, salt);
         
         let captain = await this.captainService.create(createCaptain);
+        await this.mailService.sendCaptainRegistrationConfirmation(createCaptain);
         return this.generateToken(captain._id, captain.firstname, captain.lastname, captain.gender);
     }
 

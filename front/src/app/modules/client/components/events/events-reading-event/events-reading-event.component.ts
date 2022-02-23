@@ -4,7 +4,7 @@ import { SafeEvent } from 'src/app/models/event/safeEvent';
 @Component({
   selector: 'app-events-reading-event',
   templateUrl: './events-reading-event.component.html',
-  styleUrls: ['./events-reading-event.component.css']
+  styleUrls: ['./events-reading-event.component.scss']
 })
 export class EventsReadingEventComponent implements OnInit {
 

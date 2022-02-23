@@ -1,0 +1,18 @@
+@import 'colors';
+
+
+html, body {
+    min-height: 100vh;
+    background-color: $mid-blue;
+    margin: 0;
+}
+
+// TODO: retirer les helpers avant de mettre en prod
+/* helper classes */
+.wip {
+    border: 1px solid red;
+}
+
+.wipy {
+    border: 1px solid yellow;
+}
