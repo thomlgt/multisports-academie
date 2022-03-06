@@ -1,11 +1,16 @@
-<section id="main_infos">
+<section id="main_infos" class="total-price"
+    [ngClass]="{
+        'before': eventRegistrationStatus === 1,
+        'undergoing': eventRegistrationStatus === 2,
+        'after': eventRegistrationStatus === 3}">
     <div id="block_title" class="row">
         <div id="main_title" class="col-8"><h1>{{ event.name }}</h1></div>        
-        <div id="nb_teams" class="col-4"><p>{{ event.activities?.length }}/{{ event.maxTeams }} équipes inscrites</p></div>
+        <div id="nb_teams" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 2"><p>{{ event.registrations?.length }}/{{ event.maxTeams }} équipes inscrites</p></div>
+        <div id="registration_over" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 3"><p>Inscriptions terminées</p></div>
     </div>
-    <div id="block_infos" class="block">
+    <div id="block_registration_infos" class="block">
         <h2>Informations importantes</h2>
-        <div id="sub_block_infos">
+        <div id="sub_block_registration_infos">
             <div class="row">
                 <div class="col-4">
                     <h3>Inscriptions</h3>

@@ -29,10 +29,9 @@ h1 {
     font-size: 1.8rem;
 }
 
-/* Teams number infos */
+/* Registration status infos */
 
-#nb_teams {
-    background-color: #E09E50;
+.registration_status_info {
     text-align: center;
     display: inline-flex;
     justify-content: center;
@@ -40,36 +39,53 @@ h1 {
     border-radius: 25px;
 }
 
-#nb_teams p {
+.registration_status_info p {
+    color: #576471;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0;
 }
 
+#nb_teams {
+    background-color: #E09E50;
+}
+
+#registration_over {
+    background-color: #8CBDB8;
+}
+
 /* Block infos */
 
-
-#sub_block_infos {
+#sub_block_registration_infos {
     background-color: #E8ECEB;    
 }
 
-#sub_block_infos {
+#sub_block_registration_infos {
     text-align: center;
     padding: 20px 0;
 }
 
-#sub_block_infos h3 {
+#sub_block_registration_infos h3 {
     color: #576471;
     font-size: 1.2rem;
 }
 
-#sub_block_infos .gp_infos p {
+#sub_block_registration_infos .gp_infos p {
     font-size: 0.8rem;
     color: #576471;
     margin: 0;
 }
 
-#sub_block_infos .gp_infos .highlight_infos {
+#sub_block_registration_infos .gp_infos .highlight_infos {
     color: #E09E50;
+}
+
+.before_registration {
+    color: #E09E50;
+}
+
+.undergoing_registration {
+    color: #8CBDB8;
 }
 
 /*
