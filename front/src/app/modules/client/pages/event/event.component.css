@@ -104,6 +104,11 @@ h1 {
     height: 12vw;
 }
 
+.activities_details {
+    color: #E8ECEB;
+    font-size: 0.8rem;
+}
+
 /*
  * Registration
  */

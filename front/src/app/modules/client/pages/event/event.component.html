@@ -35,7 +35,7 @@
 </section>
 
 <section id="content">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description" aria-selected="true">Présentation</button>
         </li>
@@ -45,17 +45,24 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-modalite-tab" data-bs-toggle="pill" data-bs-target="#pills-modalite" type="button" role="tab" aria-controls="pills-modalite" aria-selected="false">Modalités d'inscription</button>
         </li>
-      </ul>
+      </ul> -->
     <div id="block_activities" class="block tab-content">
-        <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-            <p>DESCRIPTION</p>
+        <!-- <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+            <p>DESCIPTION</p> 
         </div>
         <div class="tab-pane fade" id="pills-epreuves" role="tabpanel" aria-labelledby="pills-epreuves-tab">
             <p>ÉPREUVE</p>
         </div>
-        <div class="tab-pane fade" id="pills-modalites" role="tabpanel" aria-labelledby="pills-modalites-tab">
-            
-        </div>
+        <div class="tab-pane fade" id="pills-modalites" role="tabpanel" aria-labelledby="pills-modalites-tab">   
+            <p>MODALITÉS</p>      
+        </div> -->
+
+        <div id="block_description">
+            <h2>Présentation</h2>
+            <div class="description">
+                <p>{{ event.description }}</p>
+            </div> 
+        </div> 
 
         <div id="block_activities_list">
             <h2>Liste des épreuves</h2>
@@ -91,19 +98,20 @@
                 </div>                
             </div>
         </div>
-        <div id="block_explanations">
+        <div id="block_activities_details" *ngIf="event.activitiesDetails">
             <h2>Déroulé des épreuves</h2>
-            <div class="explanations">
-                <p>La durée des épreuves est de 30 minutes à l'exception des épreuves communes à toutes les équipes engagées à savoir le cross, le relais, la course d'orientation et la gouttière infernale.</p>
-                <p>Un barème de points est instauré :</p>
-                <ul>
-                    <li>5 points en cas de victoire</li>
-                    <li>3 points en cas de nul</li>
-                    <li>1 point en cas de défaite</li>
-                </ul>
-                <p>Le barème de points concernant les épreuves communes est spécifique à ces épreuves.</p>
-            </div>  
+            <div class="activities_details" [innerHTML]="event.activitiesDetails"></div>  
         </div>
+        <div id="block_registration_rules">
+            <h2>Modalités d'inscription</h2>
+            <div class="registration_rules">
+                <p>Coût de l'inscription: {{ event.price }}€</p>
+                <p>Nombre maximal d'équipes: {{ event.maxTeams }}</p>
+                <p>Âge minimum requis: {{ event.minAge }}</p>
+                <p>Nombre minimal d'équipiers: {{ event.minMembers }}</p>
+                <p>Nombre maximal d'équipiers: {{ event.maxMembers }}</p>
+            </div> 
+        </div> 
     </div>
 </section>
 
