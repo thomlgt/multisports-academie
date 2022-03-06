@@ -5,7 +5,7 @@ import { Registration } from "./registration";
 
 export class Event {
 
-    _id: string
+    _id: string;
     name: string;
     description: string;
     startEvent: Date;

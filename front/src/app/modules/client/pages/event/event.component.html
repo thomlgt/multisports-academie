@@ -1,7 +1,7 @@
 <section id="main_infos">
     <div id="block_title" class="row">
-        <div id="main_title" class="col-8"><h1>Challenge multisport - Bergues</h1></div>        
-        <div id="nb_teams" class="col-4"><p>14/32 équipes inscrites</p></div>
+        <div id="main_title" class="col-8"><h1>{{ event.name }}</h1></div>        
+        <div id="nb_teams" class="col-4"><p>{{ event.activities?.length }}/{{ event.maxTeams }} équipes inscrites</p></div>
     </div>
     <div id="block_infos" class="block">
         <h2>Informations importantes</h2>
@@ -10,22 +10,23 @@
                 <div class="col-4">
                     <h3>Inscriptions</h3>
                     <div class="gp_infos">
-                        <p>Du: <span class="highlight_infos">03/03/2022</span></p>
-                        <p>Au: <span class="highlight_infos">04/06/2022</span></p>
+                        <p>Du: <span class="highlight_infos">{{ event.startRegistration | date:'dd/MM/y' }}</span></p>
+                        <p>Au: <span class="highlight_infos">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
                     </div>
                 </div>
                 <div class="col-4">
                     <h3>Événement</h3>
                     <div class="gp_infos">
-                        <p>Du: <span class="highlight_infos">03/03/2022</span></p>
-                        <p>Au: <span class="highlight_infos">04/06/2022</span></p>
+                        <p>Du: <span class="highlight_infos">{{ event.startEvent | date:'dd/MM/y' }}</span></p>
+                        <p>Au: <span class="highlight_infos">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
                     </div>
                 </div>
                 <div class="col-4">
                     <h3>Lieu</h3>
                     <div class="gp_infos">
-                        <p><span class="highlight_infos">Stade Jacques Andriès</span></p>
-                        <p><span class="highlight_infos">RD 916, 59380 BERGUES</span></p>
+                        <p><span class="highlight_infos">{{ event.place.name }}</span></p>
+                        <p><span class="highlight_infos">{{ event.place.address }}</span></p>
+                        <p><span class="highlight_infos">{{ event.place.zipcode }} {{ event.place.city | uppercase }}</span></p>
                     </div>
                 </div>
             </div>
@@ -34,7 +35,28 @@
 </section>
 
 <section id="content">
-    <div id="block_activities" class="block">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description" aria-selected="true">Présentation</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-epreuves-tab" data-bs-toggle="pill" data-bs-target="#pills-epreuves" type="button" role="tab" aria-controls="pills-epreuves" aria-selected="false">Épreuves</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-modalite-tab" data-bs-toggle="pill" data-bs-target="#pills-modalite" type="button" role="tab" aria-controls="pills-modalite" aria-selected="false">Modalités d'inscription</button>
+        </li>
+      </ul>
+    <div id="block_activities" class="block tab-content">
+        <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+            <p>DESCRIPTION</p>
+        </div>
+        <div class="tab-pane fade" id="pills-epreuves" role="tabpanel" aria-labelledby="pills-epreuves-tab">
+            <p>ÉPREUVE</p>
+        </div>
+        <div class="tab-pane fade" id="pills-modalites" role="tabpanel" aria-labelledby="pills-modalites-tab">
+            
+        </div>
+
         <div id="block_activities_list">
             <h2>Liste des épreuves</h2>
             <div class="sub_block_activities_list">
