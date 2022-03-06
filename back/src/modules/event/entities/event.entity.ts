@@ -19,6 +19,8 @@ export class Event {
     @Prop()
     description: string;
     @Prop()
+    activitiesDetails: string;
+    @Prop()
     @IsDateString()
     startEvent: Date;
     @Prop()
