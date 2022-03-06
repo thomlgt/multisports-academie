@@ -7,6 +7,7 @@ export class CreateEvent {
 
     name: string;
     description: string;
+    activitiesDetails: string;
     startEvent: Date;
     endEvent: Date;
     startRegistration: Date;
