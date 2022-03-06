@@ -8,6 +8,7 @@ export class SafeEvent {
     _id: string;
     name: string;
     description: string;
+    activitiesDetails: string;
     startEvent: Date;
     endEvent: Date;
     startRegistration: Date;
