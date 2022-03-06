@@ -11,13 +11,14 @@ import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
 
   captain : Captain
   teams : Team[];
-  id : string
+  id : string;
+  showTeams = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -36,6 +37,8 @@ export class ProfileComponent implements OnInit {
   initTeams() {
     this.teamService.findByCaptainId(this.id).subscribe(data => {
       this.teams = data;
+      if(this.teams.length)
+      this.showTeams = true
     })
   }
 

@@ -7,7 +7,7 @@ import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 @Component({
   selector: 'app-update-personal-form',
   templateUrl: './update-personal-form.component.html',
-  styleUrls: ['./update-personal-form.component.css']
+  styleUrls: ['./update-personal-form.component.scss']
 })
 export class UpdatePersonalFormComponent implements OnInit {
 

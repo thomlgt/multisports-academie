@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Member } from 'src/app/models/members/member';
 import { Team } from 'src/app/models/teams/team';
 
 @Injectable({
@@ -13,7 +14,27 @@ export class TeamService {
     return this.http.get<Team[]>("http://localhost:3000/teams");
   }
 
+  findById(id: string) {
+    return this.http.get<Team>(`http://localhost:3000/teams/${id}`);
+  }
+
   findByCaptainId(id: string) {
     return this.http.get<Team[]>(`http://localhost:3000/teams/captain/${id}`);
+  }
+
+  addTeam(team: Team) {
+    return this.http.post<Team>("http://localhost:3000/teams", team);
+  }
+
+  addMember(id: string, member: Member) {
+    return this.http.post<Team>(`http://localhost:3000/teams/${id}/members`, member);
+  }
+
+  deleteMember(id: string, member: Member) {
+    return this.http.delete<Team>(`http://localhost:3000/teams/${id}/members`, {body: member});
+  }
+
+  deleteTeam(id: string) {
+    return this.http.delete<Team>(`http://localhost:3000/teams/${id}`)
   }
 }

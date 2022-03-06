@@ -6,7 +6,7 @@
 
 <ng-container *ngIf="currentCaptain">
     <ul class="menu connected">
-        <li class="teams">Mes équipes</li>
+        <li class="teams" (click)="goToTeamsEdit()">Mes équipes</li>
         <li class="profile" (click)="goToProfile()">Mon Profil</li>
     </ul>
 </ng-container>

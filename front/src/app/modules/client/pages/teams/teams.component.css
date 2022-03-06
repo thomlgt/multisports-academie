@@ -1,0 +1,51 @@
+h2 {
+    color: white;
+}
+
+.content {
+    min-height: 100%;
+    display: flex;
+    padding-bottom: 150px;
+}
+
+.side {
+    width: 25%;
+    text-align: center;
+    background-color: #576471;
+}
+
+.separator {
+    height: 80%;
+    margin: 0 30px 0 30px;
+    border: 1px solid #2D3E4E;
+}
+
+.edition {
+    width: 75%;
+    background-color: #576471;
+}
+
+.select-team {
+    background-color: #2D3E4E;
+    color: #8CBDB8;
+    border: 2px solid transparent;
+    padding: 10px;
+    width: 95%;
+    margin-top: 10px;
+}
+
+.select-team:hover {
+    border: 2px solid #E09E50;
+}
+
+.select-team p {
+    margin: 0;
+}
+
+.name {
+    font-size: xx-large;
+}
+
+.add-team {
+    margin-top: 20px;
+}
