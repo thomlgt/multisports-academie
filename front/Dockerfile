@@ -1,5 +1,5 @@
 ### STAGE 1:BUILD ###
-FROM node:16.4-alpine3.14 AS builder
+FROM node:16.14-alpine3.14 AS builder
 WORKDIR /app
 COPY . .
 RUN npm install

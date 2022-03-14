@@ -14,10 +14,12 @@ import { MailModule } from './modules/mail/mail.module';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
 const MONGO_PORT = process.env.MONGO_PORT || "27017"
+const MONGO_USERNAME = process.env.MONGO_USERNAME || "admin"
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD || "root"
 
 @Module({
   imports: [
-    MongooseModule.forRoot(`mongodb://${MONGO_HOST}:${MONGO_PORT}/ms-db`),
+    MongooseModule.forRoot(`mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/ms-db`),
     CaptainModule,
     TeamModule,
     EventModule,
