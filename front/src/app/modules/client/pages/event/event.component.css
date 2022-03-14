@@ -1,0 +1,154 @@
+p, li {
+    color: #E8ECEB;
+    font-size: 0.8rem;
+}
+
+.block {
+    background-color: #576471;
+    padding : 20px;
+    margin-bottom: 30px;
+}
+
+.block h2 {
+    color: #8CBDB8;
+    font-size: 1.5rem;
+}
+
+/*
+ * Main infos
+ */
+
+#block_title {
+    margin-bottom: 10px;
+}
+
+/* Title */
+
+h1 {
+    color: #E8ECEB;
+    font-size: 1.8rem;
+}
+
+/* Registration status infos */
+
+.registration_status_info {
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.registration_status_info p {
+    color: #576471;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+#nb_teams {
+    background-color: #E09E50;
+}
+
+#registration_over {
+    background-color: #8CBDB8;
+}
+
+/* Block infos */
+
+#sub_block_registration_infos {
+    background-color: #E8ECEB;    
+}
+
+#sub_block_registration_infos {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#sub_block_registration_infos h3 {
+    color: #576471;
+    font-size: 1.2rem;
+}
+
+#sub_block_registration_infos .gp_infos p {
+    font-size: 0.8rem;
+    color: #576471;
+    margin: 0;
+}
+
+#sub_block_registration_infos .gp_infos .highlight_infos {
+    color: #E09E50;
+}
+
+.before_registration {
+    color: #E09E50;
+}
+
+.undergoing_registration {
+    color: #8CBDB8;
+}
+
+/*
+ * Content
+ */
+
+.sub_block_activities_list h3 {
+    color: #E09E50;
+    font-size: 1.2rem;
+    margin: 10px 0 10px 10px;
+}
+
+.activity_frame {
+    position: relative;
+}
+
+.activity_name {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.activity_name p {
+    color: #E8ECEB;
+    text-transform: uppercase; 
+    font-weight: bold;
+}
+
+.activity_image {
+    width: 12vw;
+    height: 12vw;
+}
+
+.activities_details {
+    color: #E8ECEB;
+    font-size: 0.8rem;
+}
+
+/*
+ * Registration
+ */
+
+#block_registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#block_registration h2 {
+    color: #E09E50;
+}
+
+#block_registration ms-button {
+    margin: 10px;
+}
+
+#registration_pannel {
+    background-color: #E8ECEB; 
+    padding : 20px;   
+}
+
+#registration_pannel p {
+    color :#576471;
+    font-size: 1.2rem;
+}
