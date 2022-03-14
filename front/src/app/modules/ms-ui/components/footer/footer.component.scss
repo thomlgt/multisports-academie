@@ -3,38 +3,38 @@
 @media only screen and (min-width: 992px) {
     footer {
         background-color: #576471;
-        width: 100%;
-        height: 200px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
+        width           : 100%;
+        height          : 200px;
+        color           : white;
+        display         : flex;
+        justify-content : space-between;
     }
-    
+
     div {
         width: 30%;
     }
-    
+
     .left {
-        padding-left: 20px;
-        display: flex;
-        flex-direction: column;
+        padding-left   : 20px;
+        display        : flex;
+        flex-direction : column;
         justify-content: center;
     }
-    
+
     .center {
-        width: 35%;
-        display:flex;
-        flex-direction: column;
+        width          : 35%;
+        display        : flex;
+        flex-direction : column;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items    : flex-start;
     }
-    
+
     .right {
-        display: flex;
-        align-items: center;
+        display        : flex;
+        align-items    : center;
         justify-content: center;
     }
-    
+
     img {
         width: 50%;
     }
@@ -42,33 +42,31 @@
 
 @media only screen and (max-width: 992px) {
     footer {
-        position: absolute;
-        bottom: 0px;
-        margin-bottom: -300px;
+        margin-bottom   : -300px;
         background-color: #576471;
-        width: 100%;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        width           : 100%;
+        color           : white;
+        display         : flex;
+        flex-direction  : column;
+        align-items     : center;
     }
-    
+
     .left {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
+        text-align     : center;
+        display        : flex;
+        flex-direction : column;
         justify-content: center;
     }
 
     .right {
         text-align: center;
     }
-    
+
     .center {
         text-align: center;
-        margin: 10px 0 10px 0;
+        margin    : 10px 0 10px 0;
     }
-    
+
     img {
         width: 80%;
     }
@@ -79,8 +77,11 @@ p {
 }
 
 a {
-    color: white;
+    color : white;
     margin: 0 0 10px 0;
 }
 
-
+footer {
+    position: absolute;
+    bottom  : 0;
+}
