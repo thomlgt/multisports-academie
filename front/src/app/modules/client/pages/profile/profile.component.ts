@@ -49,6 +49,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  goToTeamEdit() {
+    this.router.navigateByUrl(`captain/${this.id}/teams`)
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigateByUrl("");

@@ -31,10 +31,17 @@
                 <ms-display-team [team]="team"></ms-display-team>
             </ng-container>
         </ng-container>
-    
-    
-        <hr class="solid">
     </ng-container>
+
+    <ng-container *ngIf="!showTeams">
+        <p>Mes équipes :</p>
+        <section class="no-team">
+            <p class="no-team">Vous ne possédez pas encore d'équipe...</p>
+            <ms-button color="lightblue" value="Créer une équipe" (click)="goToTeamEdit()"></ms-button>
+        </section>
+    </ng-container>
+
+    <hr class="solid">
 
     <p>Autres actions :</p>
 
