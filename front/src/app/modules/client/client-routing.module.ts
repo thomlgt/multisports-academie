@@ -23,8 +23,9 @@ const routes: Routes = [
         },
         { path: 'events', component: EventsReadingComponent },
         { path: 'event/:id', component: EventComponent },
+        { path: '**', redirectTo: "home"}
       ]
-  },
+  }
   
 ];
 
