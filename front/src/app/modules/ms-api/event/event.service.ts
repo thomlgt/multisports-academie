@@ -20,6 +20,10 @@ export class EventService {
     return this.http.get<Event>(`http://localhost:3000/events/${id}`);
   }
 
+  findByTeamRegistration(idTeam : string) {
+    return this.http.get<Event[]>(`http://localhost:3000/events/team/${idTeam}`)
+  }
+
   addRegistration(id : string, registration: Registration) {
     return this.http.post<Registration>(`http://localhost:3000/events/${id}/registrations`, registration);
   }
