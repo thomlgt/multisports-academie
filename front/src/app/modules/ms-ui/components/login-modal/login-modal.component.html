@@ -12,6 +12,7 @@
                 <label for="password">mot de passe:</label>
                 <input type="password" name="password" formControlName="password">
             </section>
+            <p class="error" *ngIf="isLoginError">Email ou mot de passe incorrect.</p>
             <section class="form-content">
                 <ms-button value="Connexion" color="lightblue" (click)="login()"></ms-button>
             </section>
