@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Team } from 'src/app/models/teams/team';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
@@ -17,6 +17,7 @@ export class TeamEditComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
+    private router: Router,
     private teamService : TeamService,
     private modalService: NgbModal
   ) { }
@@ -47,6 +48,10 @@ export class TeamEditComponent implements OnInit {
     this.teamService.deleteMember(this.idTeam, this.team.members[index]).subscribe(() => {
       this.initTeam()
     })
+  }
+
+  goToEvents() {
+    this.router.navigateByUrl("/events")
   }
 
 }
