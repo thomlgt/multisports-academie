@@ -18,6 +18,7 @@ import { EventComponent } from './pages/event/event.component';
 import { ActivityThumbnailComponent } from './components/activities/activity-thumbnail/activity-thumbnail.component';
 import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ActivityComponent } from './pages/activity/activity.component';
     EventComponent,
     ActivityThumbnailComponent,
     EventActivitiesComponent,
-    ActivityComponent
+    ActivityComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

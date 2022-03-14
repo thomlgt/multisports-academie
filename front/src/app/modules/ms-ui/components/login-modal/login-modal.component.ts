@@ -16,6 +16,8 @@ export class LoginModalComponent implements OnInit {
     password : ""
   })
 
+  isLoginError = false;
+
   constructor(
     public activeModal: NgbActiveModal,
     private fb : FormBuilder,
@@ -35,11 +37,12 @@ export class LoginModalComponent implements OnInit {
     this.authService.login(
       this.loginForm.value.email,
       this.loginForm.value.password)
-      .subscribe(() => {
-        this.activeModal.close()
-      }, err => {
-        //TODO : afficher message erreur
-      })
+      .subscribe(
+        next => {
+          this.activeModal.close()
+        }, err => {
+          this.isLoginError = true;
+        })
   }
 
 }

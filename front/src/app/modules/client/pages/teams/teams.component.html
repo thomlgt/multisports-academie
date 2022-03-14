@@ -3,7 +3,7 @@
 <div class="content">
     <section class="side">
         <ng-container *ngFor="let team of teams">
-            <button class="select-team">
+            <button class="select-team" (click)="openEditor()" [routerLink]="team._id">
                 <p class="name">{{team.name}}</p>
                 <p class="membres">Membres : {{ team.members.length + 1 }}</p>
             </button>

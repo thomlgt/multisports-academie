@@ -1,0 +1,11 @@
+@import 'colors';
+
+.content {
+    display: flex;
+    flex-direction: column;
+    color: $text_light;
+}
+
+h2 {
+    margin-bottom: 30px;
+}

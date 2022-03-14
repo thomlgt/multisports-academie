@@ -14,11 +14,11 @@ export class NavbarComponent implements OnInit {
   }
 
   goToHome() {
-    this.router.navigateByUrl("")
+    this.router.navigateByUrl("home")
   }
 
   goToContact() {
-    this.router.navigateByUrl("")
+    this.router.navigateByUrl("home")
   }
 
   goToEvents() {

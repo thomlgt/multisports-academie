@@ -26,6 +26,14 @@ hr.solid {
     width: 80%;
 }
 
+.no-team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
 .elem {
     width: 25%;
     text-align: center;
