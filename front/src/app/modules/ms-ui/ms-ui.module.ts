@@ -14,6 +14,7 @@ import { DisplayCaptainComponent } from './components/display-captain/display-ca
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
+import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DisplayRegistrationComponent } from './components/display-registration/
     DisplayCaptainComponent,
     AddMemberComponent,
     AddTeamComponent,
-    DisplayRegistrationComponent
+    DisplayRegistrationComponent,
+    SportPicturesDirectionComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { DisplayRegistrationComponent } from './components/display-registration/
     DisplayTeamComponent,
     DisplayMemberComponent,
     DisplayCaptainComponent,
-    DisplayRegistrationComponent
+    DisplayRegistrationComponent,
+    SportPicturesDirectionComponent
   ]
 })
 export class MsUiModule { }
