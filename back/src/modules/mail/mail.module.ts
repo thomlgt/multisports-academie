@@ -4,6 +4,9 @@ import { join } from 'path';
 import { MailService } from './mail.service';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 
+const MAIL_PASSWORD = process.env.MAIL_PASSWORD || "root";
+const MAIL_HOST = process.env.MAIL_HOST || "ssl0.localhost.net";
+
 @Global()
 @Module({
   imports: [
@@ -13,7 +16,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
         secure: false,
         auth: {
           user: 'contact@multisports-academie.fr',
-          pass: 'Contact.fr59',
+          pass: MAIL_PASSWORD,
         },
       },
       defaults: {
