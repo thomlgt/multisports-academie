@@ -20,7 +20,7 @@ const routes: Routes = [
             ] 
         },
         { path: 'events', component: EventsReadingComponent },
-        { path: 'event', component: EventComponent },
+        { path: 'event/:id', component: EventComponent },
       ]
   },
   

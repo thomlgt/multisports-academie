@@ -123,6 +123,14 @@
 <section id="registration">
     <div id="block_registration" class="block">
         <h2>Inscriptions ouvertes</h2>
-        <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue"></ms-button>
+        <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue" *ngIf="currentCaptain" (click)="openRegistrationPanel()"></ms-button>
+        <ms-button class="btn-custom" value="Identifiez-vous !" color="lightblue" *ngIf="currentCaptain===null"></ms-button>
+        <div id="registration_pannel" *ngIf="displayRegistrationPannel">
+            <h3>{{ event.name }}</h3>
+            <div *ngFor="let team of teams; let index = index">
+                <p>{{ team.name }}</p>
+                <ms-button value="Inscrire l'équipe à l'événement" color="orange" (click)="registerTeam(index)"></ms-button>
+            </div>
+        </div>
     </div>
 </section>
