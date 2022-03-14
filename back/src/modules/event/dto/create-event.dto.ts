@@ -11,6 +11,7 @@ export class CreateEventDto {
     @IsNotEmpty()
     name: string;
     description: string;
+    activitiesDetails: string;
     @IsDateString()
     startEvent: Date;
     @IsDateString()

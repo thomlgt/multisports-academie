@@ -8,6 +8,7 @@ export class SafeEvent {
     _id : string;
     name : string;
     description: string;
+    activitiesDetails: string;
     startEvent : Date;
     endEvent : Date;
     startRegistration : Date;
@@ -25,10 +26,11 @@ export class SafeEvent {
     createdDate: Date;
     updatedDate: Date;
 
-    constructor(_id: string, name: string, description: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, place: Place,mainPicture: Picture, gallery: Picture[], activities: Activity[], registrations: Registration[]) {
+    constructor(_id: string, name: string, description: string, activitiesDetails: string, startEvent: Date, endEvent: Date, startRegistration: Date, endRegistration: Date, minMembers: number, maxMembers: number, minAge: number, price: number, maxTeams: number, place: Place,mainPicture: Picture, gallery: Picture[], activities: Activity[], registrations: Registration[]) {
         this._id = _id;
         this.name = name;
         this.description = description;
+        this.activitiesDetails = activitiesDetails;
         this.startEvent = startEvent;
         this.endEvent = endEvent;
         this.startRegistration = startRegistration;
@@ -52,7 +54,7 @@ export class SafeEvent {
      * @returns 
      */
     static transformEventToSafe(event : Event) {
-        return new SafeEvent(event._id, event.name, event.description, event.startEvent, event.endEvent, event.startRegistration, event.endRegistration, event.minMembers, event.maxMembers, event.minAge, event.price, event.maxTeams, event.place, event.mainPicture, event.gallery, event.activities, event.registrations);
+        return new SafeEvent(event._id, event.name, event.description, event.activitiesDetails, event.startEvent, event.endEvent, event.startRegistration, event.endRegistration, event.minMembers, event.maxMembers, event.minAge, event.price, event.maxTeams, event.place, event.mainPicture, event.gallery, event.activities, event.registrations);
     }
     
 }
