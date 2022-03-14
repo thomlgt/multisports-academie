@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SportPicturesDirectionComponent implements OnInit {
 
-  membre = [
+  members = [
     "thierry",
     "thomas",
     "violaine",
     "antoine",
     "martin",
     "simon",
-    "justine"
+    "justine",
+    "fanny"
   ]
 
   constructor() { }
