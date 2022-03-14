@@ -28,4 +28,8 @@ export class EventService {
     return this.http.post<Registration>(`http://localhost:3000/events/${id}/registrations`, registration);
   }
 
+  cancelRegistration(id : string, registration: Registration) {
+    return this.http.delete<Registration>(`http://localhost:3000/events/${id}/registrations`, {body: registration});
+  }
+
 }

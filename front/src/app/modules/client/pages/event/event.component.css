@@ -98,7 +98,7 @@ h1 {
     margin: 10px 0 10px 10px;
 }
 
-.activity_frame {
+/* .activity_frame {
     position: relative;
 }
 
@@ -118,7 +118,7 @@ h1 {
 .activity_image {
     width: 12vw;
     height: 12vw;
-}
+} */
 
 .activities_details {
     color: #E8ECEB;
@@ -145,10 +145,19 @@ h1 {
 
 #registration_pannel {
     background-color: #E8ECEB; 
-    padding : 20px;   
+    padding : 20px; 
+    width: 100%;  
 }
 
 #registration_pannel p {
     color :#576471;
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+#registration_pannel .information p {
+    font-size: 0.8rem;
+}
+
+.cancel_registration_btn {
+    cursor: pointer;
 }
