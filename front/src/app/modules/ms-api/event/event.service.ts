@@ -21,7 +21,7 @@ export class EventService {
   }
 
   addRegistration(id : string, registration: Registration) {
-    return this.http.post<Registration>("http://localhost:3000/events/${id}/registrations", registration);
+    return this.http.post<Registration>(`http://localhost:3000/events/${id}/registrations`, registration);
   }
 
 }

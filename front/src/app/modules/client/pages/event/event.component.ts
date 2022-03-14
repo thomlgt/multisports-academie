@@ -97,7 +97,10 @@ export class EventComponent implements OnInit {
     newRegistration.team = this.teams[teamIndex];
     newRegistration.validationStatus = "pending";
     console.log(newRegistration);
-    this.eventService.addRegistration(this.id, newRegistration);
+    this.eventService.addRegistration(this.id, newRegistration).subscribe(
+      next => {},
+      error => {}
+    );
   }
 
 }
