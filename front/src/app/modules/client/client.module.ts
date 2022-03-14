@@ -15,7 +15,9 @@ import { EventsReadingEventComponent } from './components/events/events-reading-
 import { TeamsComponent } from './pages/teams/teams.component';
 import { TeamEditComponent } from './components/teams/team-edit/team-edit.component';
 import { EventComponent } from './pages/event/event.component';
-import { EventActivityComponent } from './components/event/event-activity/event-activity.component';
+import { ActivityThumbnailComponent } from './components/activities/activity-thumbnail/activity-thumbnail.component';
+import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { EventActivityComponent } from './components/event/event-activity/event-
     TeamsComponent,
     TeamEditComponent,
     EventComponent,
-    EventActivityComponent
+    ActivityThumbnailComponent,
+    EventActivitiesComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,

@@ -12,4 +12,8 @@ export class ActivityService {
   findAll() {
     return this.http.get<Activity[]>("http://localhost:3000/activities");
   }
+
+  findAllActivitiesByEventId() {
+    // TODO: implémenter cette méthode et la route correspondante dans le back
+  }
 }

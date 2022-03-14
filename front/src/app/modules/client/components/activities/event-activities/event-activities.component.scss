@@ -1,0 +1,37 @@
+@import 'colors';
+
+section {
+  background-color: $light-blue;
+  padding         : 50px 30px;
+  margin-bottom: 20px;
+
+  .section-title {
+    color        : $teal;
+  }
+
+  .block {
+    margin-top: 50px;
+
+    .subtitle {
+      color        : $orange;
+      font-weight  : normal;
+      margin-left  : 20px;
+      margin-bottom: 20px;
+
+      &.teal {
+        color: $teal;
+      }
+    }
+
+    p, ul {
+      margin-left: 30px;
+      color: $text-light;
+    }
+
+    .activities {
+      display  : flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import 'colors';
+
+.banner {
+  background-image: url('/assets/images/activities/main.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+}
+
+.title {
+  color: $orange;
+  margin-bottom: 50px;
+}
+
+ul.tab-links {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 50px 0;
+
+  & li {
+    color: $teal;
+    // font-weight: bold;
+    font-size: 150%;
+
+    &:hover, &.active {
+      font-weight: bold;
+    }
+
+    &.active {
+      color: $orange;
+      text-decoration: underline;
+    }
+  }
+}
+
+section {
+  padding         : 50px 30px;
+  margin-bottom   : 20px;
+  background-color: $light-blue;
+
+  .subtitle {
+    color: $teal;
+    margin-bottom: 50px;
+  }
+
+  h5 {
+    color      : $orange;
+    font-weight: normal;
+  }
+
+  p {
+    margin-left: 20px;
+    color      : $text-light;
+  }
+
+  &.galerie {
+    display: flex;
+    flex-wrap: wrap;
+
+    .photo-thumbnail {
+      margin: 10px;
+      height: 200px;
+      width: 200px;
+      border-radius: 20px;
+    }
+  }
+}

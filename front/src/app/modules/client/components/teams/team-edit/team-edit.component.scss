@@ -1,3 +1,10 @@
+.content {
+  background-color: #576471;
+  padding : 20px;
+  display : flex;
+  flex-direction: column;
+}
+
 h2 {
   color     : white;
   text-align: center;
@@ -17,12 +24,6 @@ p {
   width      : 33%;
   text-align : center;
   margin     : 10px 0 10px 0;
-}
-
-.content {
-  margin        : 20px;
-  display       : flex;
-  flex-direction: column;
 }
 
 .infos {
