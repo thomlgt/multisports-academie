@@ -54,6 +54,18 @@ export class EventService {
     }
 
     /**
+     * Cette méthode retourne les événements enregistrés
+     * dans la base de données de manière safe en fonction 
+     * de l'id d'une équipe inscrite
+     * @param id 
+     * @returns 
+     */
+     async findByTeamRegistration(id : string) {
+        const event = await this.eventModel.find({"registrations.team._id" : id}).populate('registrations');
+        return event.map(SafeEvent.transformEventToSafe);
+    }
+
+    /**
      * Cette méthode permet de supprimer un événement de
      * la base de données en fonction de son id et retourne
      * le événement supprimé de manière safe
