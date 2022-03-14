@@ -14,6 +14,9 @@ import { UpdatePasswordFormComponent } from './components/profile/update-passwor
 import { EventsReadingEventComponent } from './components/events/events-reading-event/events-reading-event.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { TeamEditComponent } from './components/teams/team-edit/team-edit.component';
+import { ActivityThumbnailComponent } from './components/activities/activity-thumbnail/activity-thumbnail.component';
+import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { TeamEditComponent } from './components/teams/team-edit/team-edit.compon
     UpdatePersonalFormComponent,
     UpdatePasswordFormComponent,
     TeamsComponent,
-    TeamEditComponent
+    TeamEditComponent,
+    ActivityThumbnailComponent,
+    EventActivitiesComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,
