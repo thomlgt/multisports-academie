@@ -9,6 +9,7 @@ import { Captain } from 'src/app/models/captain/captain';
 import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 import { Registration } from 'src/app/models/event/registration';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
   selector: 'app-event',
@@ -24,11 +25,12 @@ export class EventComponent implements OnInit {
   captainTeams: Team[];  
   availableTeams: any[];
   hasRecordedTeam: boolean;
-
   
   id: string;
   currentCaptain: Captain|null;
   displayRegistrationPannel: boolean;
+
+  remainingDays: number;
 
 
   constructor(
@@ -37,6 +39,7 @@ export class EventComponent implements OnInit {
     private teamService: TeamService,
     private route : ActivatedRoute,
     private router: Router,
+    private authenticationService: AuthenticationService
   ) { 
     this.eventTeams = [];
     this.availableTeams = [];
@@ -68,11 +71,8 @@ export class EventComponent implements OnInit {
   }
 
   initCaptain() {
-    let tempCaptainId = '620e64330b5fe13d249b7af7';
-    this.captainService.findById(tempCaptainId).subscribe(data => {
-      this.currentCaptain = data;
-      this.initCaptainTeams();
-    })
+    this.currentCaptain = this.authenticationService.currentCaptainValue.captain;
+    this.initCaptainTeams();
   }
 
   initCaptainTeams() {
@@ -149,13 +149,18 @@ export class EventComponent implements OnInit {
     let startRegistration = new Date(this.event.startRegistration);
     let endRegistration = new Date(this.event.endRegistration);
 
+    // before registration
     if (currentDate < startRegistration) {
       this.eventRegistrationStatus = 1;
+      this.remainingDays = this.datediff(currentDate, startRegistration);
+    // during registration
     } else if (currentDate >= startRegistration && currentDate <= endRegistration) {
       this.eventRegistrationStatus = 2;
+    // after registration
     } else {
       this.eventRegistrationStatus = 3;
     }
+
   }
 
   openRegistrationPanel() {
@@ -191,5 +196,18 @@ export class EventComponent implements OnInit {
       }
     );
   }
+
+  parseDate(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[0]-1, mdy[1]);
+  }
+
+  datediff(first, second) {
+    //Take the difference between the dates and divide by milliseconds per day.
+    //Round to nearest whole number to deal with DST.
+    return Math.round((second-first)/(1000*60*60*24));
+  }
+
+
 
 }
