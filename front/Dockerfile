@@ -9,4 +9,5 @@ RUN npm run build --prod
 FROM nginx:1.21.6-alpine
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/dist/front .
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+# COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+COPY /nginx.conf /etc/nginx/nginx.conf
