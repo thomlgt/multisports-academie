@@ -9,7 +9,7 @@ RUN npm run build --prod
 FROM nginx:1.21.6-alpine
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/dist/front .
-# COPY /nginx.conf  /etc/nginx/conf.d/default.conf
-COPY /nginx.conf /etc/nginx/nginx.conf
+COPY /nginx/default.conf  /etc/nginx/conf.d/default.conf
+COPY /nginx/nginx.conf /etc/nginx/nginx.conf
+COPY /nginx/security-headers.conf /etc/nginx/security-headers.conf
 RUN apk add certbot certbot-nginx
-RUN certbot --nginx -d multisports-academie.fr -d www.multisports-academie.fr
