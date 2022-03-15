@@ -2,6 +2,7 @@ version: '3'
 
 volumes: 
   ms-db:
+  lets-encrypt:
 
 services:
   mongo: 
@@ -29,8 +30,11 @@ services:
     container_name: front
     ports:
       - 80:80
+      - 443:443
     environment:
       - NG_APP_API_URL=${API_URL}:${API_PORT}
+    volumes:
+      - lets-encrypt:/etc/letsencrypt
   back:
     build: ./back/.
     container_name: back
