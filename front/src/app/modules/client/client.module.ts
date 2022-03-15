@@ -19,6 +19,8 @@ import { ActivityThumbnailComponent } from './components/activities/activity-thu
 import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ArticleThumbnailComponent } from './components/articles/article-thumbnail/article-thumbnail.component';
+import { HomeArticlesComponent } from './components/articles/home-articles/home-articles.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { HomeComponent } from './pages/home/home.component';
     ActivityThumbnailComponent,
     EventActivitiesComponent,
     ActivityComponent,
-    HomeComponent
+    HomeComponent,
+    ArticleThumbnailComponent,
+    HomeArticlesComponent
   ],
   imports: [
     CommonModule,
