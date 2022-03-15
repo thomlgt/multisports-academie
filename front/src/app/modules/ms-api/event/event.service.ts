@@ -30,7 +30,7 @@ export class EventService {
   }
 
   cancelRegistration(id : string, registration: Registration) {
-    return this.http.delete<Registration>(`http://localhost:3000/events/${id}/registrations`, {body: registration});
+    return this.http.delete<Registration>(`${environment.apiUrl}/events/${id}/registrations`, {body: registration});
   }
 
 }
