@@ -11,3 +11,5 @@ WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/dist/front .
 # COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 COPY /nginx.conf /etc/nginx/nginx.conf
+RUN apk add certbot certbot-nginx
+RUN certbot --nginx -d multisports-academie.fr -d www.multisports-academie.fr
