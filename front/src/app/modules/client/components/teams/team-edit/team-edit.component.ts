@@ -16,7 +16,7 @@ export class TeamEditComponent implements OnInit {
 
   idTeam : string;
   team : Team
-  events : Event[];
+  events : Event[] = [];
 
   constructor(
     private route : ActivatedRoute,

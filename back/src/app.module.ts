@@ -16,10 +16,16 @@ import * as winston from 'winston';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
 const MONGO_PORT = process.env.MONGO_PORT || "27017"
+const MONGO_USERNAME = process.env.MONGO_USERNAME || "admin"
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD || "root"
+const MONGO_CONNEXION_STRING = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}`
+console.log(MONGO_CONNEXION_STRING)
 
 @Module({
   imports: [
-    MongooseModule.forRoot(`mongodb://${MONGO_HOST}:${MONGO_PORT}/ms-db`),
+    MongooseModule.forRoot(MONGO_CONNEXION_STRING, {
+      dbName: "ms-db"
+    }),
     WinstonModule.forRoot({
       levels: {
         error: 0,
