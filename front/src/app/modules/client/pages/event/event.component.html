@@ -48,27 +48,8 @@
     </section>
 
     <section id="content">
-        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description" aria-selected="true">Présentation</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-epreuves-tab" data-bs-toggle="pill" data-bs-target="#pills-epreuves" type="button" role="tab" aria-controls="pills-epreuves" aria-selected="false">Épreuves</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-modalite-tab" data-bs-toggle="pill" data-bs-target="#pills-modalite" type="button" role="tab" aria-controls="pills-modalite" aria-selected="false">Modalités d'inscription</button>
-        </li>
-      </ul> -->
+
         <div id="block_activities" class="block tab-content">
-            <!-- <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-            <p>DESCIPTION</p> 
-        </div>
-        <div class="tab-pane fade" id="pills-epreuves" role="tabpanel" aria-labelledby="pills-epreuves-tab">
-            <p>ÉPREUVE</p>
-        </div>
-        <div class="tab-pane fade" id="pills-modalites" role="tabpanel" aria-labelledby="pills-modalites-tab">   
-            <p>MODALITÉS</p>      
-        </div> -->
 
             <div id="block_description">
                 <h2>Présentation</h2>
@@ -76,53 +57,6 @@
                     <p>{{ event.description }}</p>
                 </div>
             </div>
-
-            <!-- <div id="block_activities_list">
-                <h2>Liste des épreuves</h2>
-                <div class="sub_block_activities_list">
-                    <h3>Les épreuves communes</h3>
-                    <div class="gp_activities row">
-                        <div class="activity_frame col-3">
-                            <div class="activity_name">
-                                <p>Cross</p>
-                            </div>
-                            <div class="activity_image"
-                                style="background-image: url('https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-                            </div>
-                        </div>
-                        <div class="activity_frame col-3">
-                            <div class="activity_name">
-                                <p>Cross</p>
-                            </div>
-                            <div class="activity_image"
-                                style="background-image: url('https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-                            </div>
-                        </div>
-                        <div class="activity_frame col-3">
-                            <div class="activity_name">
-                                <p>Cross</p>
-                            </div>
-                            <div class="activity_image"
-                                style="background-image: url('https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-                            </div>
-                        </div>
-                        <div class="activity_frame col-3">
-                            <div class="activity_name">
-                                <p>Cross</p>
-                            </div>
-                            <div class="activity_image"
-                                style="background-image: url('https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-                            </div>
-                        </div>
-                    </div>
-                    <h3>Une épreuve surprise</h3>
-                    <div class="activity_surprise">
-                        <p>L'épreuve surprise s'inscrit dans l'esprit du challenge multisports</p>
-                        <p>Elle aura lieu le dimanche.</p>
-                        <p>Les capitaines devront désigner les participants de leur équipe à l'épreuve le samedi.</p>
-                    </div>
-                </div>
-            </div> -->
 
             <app-event-activities></app-event-activities>
 
