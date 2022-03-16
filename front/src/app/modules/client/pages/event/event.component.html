@@ -1,0 +1,100 @@
+<section id="event" *ngIf="event">
+    <section id="main_infos" class="total-price" [ngClass]="{
+        'before': eventRegistrationStatus === 1,
+        'undergoing': eventRegistrationStatus === 2,
+        'after': eventRegistrationStatus === 3}">
+        <div id="block_title" class="row">
+            <div id="main_title" class="col-8">
+                <h1>{{ event.name }}</h1>
+            </div>
+            <div id="nb_teams" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 2">
+                <p>{{ event.registrations?.length }}/{{ event.maxTeams }} équipes inscrites</p>
+            </div>
+            <div id="registration_over" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 3">
+                <p>Inscriptions terminées</p>
+            </div>
+        </div>
+        <div id="block_registration_infos" class="block">
+            <h2>Informations importantes</h2>
+            <div id="sub_block_registration_infos">
+                <div class="row">
+                    <div class="col-4">
+                        <h3>Inscriptions</h3>
+                        <div class="gp_infos">
+                            <p>Du: <span class="highlight_infos">{{ event.startRegistration | date:'dd/MM/y' }}</span>
+                            </p>
+                            <p>Au: <span class="highlight_infos">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h3>Événement</h3>
+                        <div class="gp_infos">
+                            <p>Du: <span class="highlight_infos">{{ event.startEvent | date:'dd/MM/y' }}</span></p>
+                            <p>Au: <span class="highlight_infos">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h3>Lieu</h3>
+                        <div class="gp_infos">
+                            <p><span class="highlight_infos">{{ event.place.name }}</span></p>
+                            <p><span class="highlight_infos">{{ event.place.address }}</span></p>
+                            <p><span class="highlight_infos">{{ event.place.zipcode }} {{ event.place.city | uppercase
+                                    }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+
+        <div id="block_activities" class="block tab-content">
+
+            <div id="block_description" class="sub_block">
+                <h3>Présentation</h3>
+                <div class="description">
+                    <p>{{ event.description }}</p>
+                </div>
+            </div>
+
+            <div id="block_activities" class="sub_block">
+                <app-event-activities [event]="event"></app-event-activities>
+            </div>
+
+            <div id="block_activities_details" *ngIf="event.activitiesDetails" class="sub_block">
+                <h3>Déroulé des épreuves</h3>
+                <div class="activities_details" [innerHTML]="event.activitiesDetails"></div>
+            </div>
+
+            <div id="block_registration_rules" class="sub_block">
+                <h3>Modalités d'inscription</h3>
+                <div class="registration_rules">
+                    <p>Coût de l'inscription: {{ event.price }}€</p>
+                    <p>Nombre maximal d'équipes: {{ event.maxTeams }}</p>
+                    <p>Âge minimum requis: {{ event.minAge }}</p>
+                    <p>Nombre minimal d'équipiers: {{ event.minMembers }}</p>
+                    <p>Nombre maximal d'équipiers: {{ event.maxMembers }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registration">
+        <div id="block_registration" class="block">
+
+            <h2 *ngIf="eventRegistrationStatus === 1">Inscriptions</h2>  
+            <h2 *ngIf="eventRegistrationStatus === 2">Inscriptions ouvertes</h2>
+            <h2 *ngIf="eventRegistrationStatus === 3">Inscriptions terminées</h2> 
+
+            <p *ngIf="eventRegistrationStatus === 1">L'inscription sera ouverte dans {{ remainingDays }} jour(s).</p>
+            <p *ngIf="eventRegistrationStatus !== 1 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
+            <p *ngIf="eventRegistrationStatus !== 1 && ! hasRecordedTeam">Aucune de vos équipes n'est inscrite pour cet événement.</p>
+           
+            <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Changer d'équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Identifiez-vous !" color="lightblue" *ngIf="currentCaptain===null"></ms-button>
+            
+        </div>
+    </section>
+</section>

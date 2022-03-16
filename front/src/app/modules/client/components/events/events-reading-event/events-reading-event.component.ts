@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SafeEvent } from 'src/app/models/event/safeEvent';
 
 @Component({
@@ -10,9 +11,15 @@ export class EventsReadingEventComponent implements OnInit {
 
   @Input() event : SafeEvent;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  goToEvent() {
+    this.router.navigateByUrl(`/event/${this.event._id}`);
   }
 
 }

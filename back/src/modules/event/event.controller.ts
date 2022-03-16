@@ -45,6 +45,16 @@ export class EventController {
     }
 
     /**
+     * Retourne les evenements en fonction de l'id d'une équipe inscrite
+     * @param id 
+     * @returns 
+     */
+     @Get('team/:id')
+     async findByTeamRegistration(@Param('id') id : string) {
+         return this.eventService.findByTeamRegistration(id);
+     }
+
+    /**
      * supprime un événement à partir de son id
      * @param id 
      * @returns 

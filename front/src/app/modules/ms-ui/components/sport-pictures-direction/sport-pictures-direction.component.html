@@ -1,0 +1,8 @@
+<section class="content">
+    <ng-container *ngFor="let membre of members; let index = index">
+        <section class="elem">
+            <img src="../../../../../assets/images/equipe/{{members[index]}}.png" alt="{{membre}}">
+            <p>{{membre | titlecase}}</p>
+        </section>
+    </ng-container>
+</section>

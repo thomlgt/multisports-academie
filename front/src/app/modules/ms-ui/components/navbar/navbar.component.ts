@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,17 +9,19 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   goToHome() {
-    this.router.navigateByUrl("")
+    this.router.navigateByUrl("home")
   }
 
   goToContact() {
-    this.router.navigateByUrl("")
+    this.router.navigate(["home"] , { fragment: "contact" })
   }
 
   goToEvents() {

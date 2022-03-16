@@ -9,15 +9,19 @@
         <p class="header-p">Score</p>
     </header>
     
-    <ng-container>
+    <ng-container *ngIf="!events.length">
         <section class="no-event">
             <p class="info-p">L'équipe n'est inscrite à aucun événement</p>
 
-            <ms-button value="Inscrire l'équipe à un événement" color="lightblue"></ms-button>
+            <ms-button value="Inscrire l'équipe à un événement" color="lightblue" (click)="goToEvents()"></ms-button>
         </section>
     </ng-container>
 
-    <!-- TODO : si l'équipe est inscrite à des événements -->
+    <ng-container *ngIf="events">
+        <ng-container *ngFor="let event of events">
+            <ms-display-registration [event]="event"></ms-display-registration>
+        </ng-container>
+    </ng-container>
 
     <p class="title">Membres de l'équipe :</p>
 

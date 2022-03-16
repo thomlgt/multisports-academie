@@ -4,7 +4,6 @@ import { CaptainService } from '../captain/captain.service';
 import { CreateCaptain } from '../captain/dto/create-captain.dto';
 import { LoginCaptain } from '../captain/dto/login-captain.dto';
 import { AuthService } from './auth.service';
-import { LocalAuthGuard } from './local-auth.guard';
 
 @ApiTags('authentication')
 @Controller('auth')

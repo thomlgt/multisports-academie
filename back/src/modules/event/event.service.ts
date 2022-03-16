@@ -49,8 +49,31 @@ export class EventService {
      * @returns 
      */
     async findById(id : string) {
-        const event = await this.eventModel.findById(id).populate('place').populate('mainPicture').populate('gallery').populate('activities').populate('registrations');
+        const event = await this.eventModel.findById(id)
+            .populate('place')
+            .populate('mainPicture')
+            .populate('gallery')
+            .populate({ 
+                path: 'activities',
+                populate: {
+                  path: 'mainPicture',
+                  model: 'Picture'
+                } 
+             })
+            .populate('registrations');
         return SafeEvent.transformEventToSafe(event);
+    }
+
+    /**
+     * Cette méthode retourne les événements enregistrés
+     * dans la base de données de manière safe en fonction 
+     * de l'id d'une équipe inscrite
+     * @param id 
+     * @returns 
+     */
+     async findByTeamRegistration(id : string) {
+        const event = await this.eventModel.find({"registrations.team._id" : id}).populate('registrations');
+        return event.map(SafeEvent.transformEventToSafe);
     }
 
     /**

@@ -44,9 +44,15 @@ export class ProfileComponent implements OnInit {
 
   
   initCaptain() {
+    console.log("ok");
+    
     this.captainService.findById(this.id).subscribe(data => {
       this.captain = data;
     })
+  }
+
+  goToTeamEdit() {
+    this.router.navigateByUrl(`captain/${this.id}/teams`)
   }
 
   logout() {

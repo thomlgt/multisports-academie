@@ -13,6 +13,12 @@ import { DisplayMemberComponent } from './components/display-member/display-memb
 import { DisplayCaptainComponent } from './components/display-captain/display-captain.component';
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
+import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
+import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
+import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component';
+import { ValuesComponent } from './components/values/values.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -28,12 +34,18 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
     DisplayMemberComponent,
     DisplayCaptainComponent,
     AddMemberComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    DisplayRegistrationComponent,
+    SportPicturesDirectionComponent,
+    EnrolTeamComponent,
+    ValuesComponent,
+    ContactFormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     NavbarComponent,
@@ -42,7 +54,11 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
     ButtonComponent,
     DisplayTeamComponent,
     DisplayMemberComponent,
-    DisplayCaptainComponent
+    DisplayCaptainComponent,
+    DisplayRegistrationComponent,
+    SportPicturesDirectionComponent,
+    ValuesComponent,
+    ContactFormComponent
   ]
 })
 export class MsUiModule { }

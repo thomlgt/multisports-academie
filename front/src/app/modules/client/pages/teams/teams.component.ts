@@ -39,6 +39,7 @@ export class TeamsComponent implements OnInit {
   deleteTeam(teamId : string) {
     this.teamService.deleteTeam(teamId).subscribe(() => {
       this.initTeams();
+      this.router.navigateByUrl(`/captain/${this.id}/teams`)
     })
   }
 

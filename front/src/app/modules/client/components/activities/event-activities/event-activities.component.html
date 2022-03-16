@@ -4,49 +4,11 @@
   <h3 class="section-title">Liste des épreuves</h3>
 
   <div class="block">
-    <h4 class="subtitle">Les épreuves commune</h4>
+    <!-- <h4 class="subtitle">Les épreuves commune</h4> -->
     <div class="activities">
-      <app-activity-thumbnail *ngFor="let number of [].constructor(5);"
-                              num={{number}}>
+      <app-activity-thumbnail *ngFor="let activity of event.activities;"
+      [activity]="activity">
       </app-activity-thumbnail>
     </div>
   </div>
-  <div class="block">
-    <h4 class="subtitle">Les épreuves en confrontation</h4>
-    <div class="activities">
-      <app-activity-thumbnail *ngFor="let number of [].constructor(8);"
-                              num={{number}}>
-      </app-activity-thumbnail>
-    </div>
-  </div>
-  <div class="block">
-    <h4 class="subtitle">Une épreuve surprise</h4>
-    <p>
-      L'épreuve surprise s'inscrit dans l'esprit du challenge multisports<br />
-      Elle aura lieu le dimanche.<br />
-      Les capitaines devront désigner les participants de leur équipe à l'épreuve le samedi.
-    </p>
-  </div>
-  <div class="block">
-    <h4 class="subtitle">Une épreuve fil rouge</h4>
-  </div>
-  <div class="block">
-    <h4 class="subtitle teal">Déroulé des épreuves</h4>
-    <p>
-      La durée des épreuves est de 30 minutes à l'exception des épreuves communes à toutes les équipes engagées
-      à savoir le cross, le relais, la course d'orientation et la gouttière infernale.
-    </p>
-    <p>
-      Un barème de points est instauré :
-    </p>
-    <ul>
-      <li>5 points en cas de victoire</li>
-      <li>3 points en cas de nul</li>
-      <li>1 point en cas de défaite</li>
-    </ul>
-    <p>
-      Le barème de points concernant les épreuves communes est spécifique à ces épreuves
-    </p>
-  </div>
-
 </section>

@@ -1,24 +1,43 @@
 <ng-container *ngIf="isRegistrationComplete">
-    <p>Compte créé avec succès !</p>
-    <ms-button value="Accéder au site" color="lightblue"></ms-button>
+    <section class="complete">
+        <h2>Compte créé avec succès !</h2>
+        <ms-button value="Accéder au site" color="orange" (click)="close()"></ms-button>
+    </section>    
 </ng-container>
 
 <form [formGroup]="registerForm" *ngIf="!isRegistrationComplete">
+    <h2>Créer un compte :</h2>
     <section class="form-content">
         <label for="lastname">nom:</label>
-        <input type="text" name="lastname" formControlName="lastname">
+        <input type="text" name="lastname" formControlName="lastname" 
+        [ngClass]="{ 'input-error': form.lastname.invalid && (form.lastname.dirty || form.lastname.touched) }">
+        <p class="error" *ngIf="form.lastname.invalid && (form.lastname.dirty || form.lastname.touched)">
+            Le nom ne peut pas être vide
+        </p>
     </section>
     <section class="form-content">
         <label for="firstname">prénom:</label>
-        <input type="text" name="firstname" formControlName="firstname">
+        <input type="text" name="firstname" formControlName="firstname"
+        [ngClass]="{ 'input-error': form.firstname.invalid && (form.firstname.dirty || form.firstname.touched) }">
+        <p class="error" *ngIf="form.firstname.invalid && (form.firstname.dirty || form.firstname.touched)">
+            Le prénom ne peut pas être vide
+        </p>
     </section>   
     <section class="form-content">
         <label for="email">email:</label>
-        <input type="email" name="email" formControlName="email">
+        <input type="email" name="email" formControlName="email"
+        [ngClass]="{ 'input-error': form.email.invalid && (form.email.dirty || form.email.touched) }">
+        <p class="error" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
+            Le format de l'email est incorrect
+        </p>
     </section>
     <section class="form-content">
         <label for="password">mot de passe:</label>
-        <input type="password" name="password" formControlName="password">
+        <input type="password" name="password" formControlName="password"
+        [ngClass]="{ 'input-error': form.password.invalid && (form.password.dirty || form.password.touched) }">
+        <p class="error" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)">
+            Saisissez au moins 8 caractères
+        </p>
     </section>
     <section class="form-content">
         <label for="password">confirmer mot de passe:</label>
@@ -26,11 +45,19 @@
     </section>
     <section class="form-content">
         <label for="phone">téléphone:</label>
-        <input type="tel" name="phone" formControlName="phone">
+        <input type="tel" name="phone" formControlName="phone"
+        [ngClass]="{ 'input-error': form.phone.invalid && (form.phone.dirty || form.phone.touched) }">
+        <p class="error" *ngIf="form.phone.invalid && (form.phone.dirty || form.phone.touched)">
+            Numéro de téléphone incorrect
+        </p>
     </section>
     <section class="form-content">
         <label for="birthdate">date de naissance:</label>
-        <input type="date" name="birthdate" formControlName="birthdate">
+        <input type="date" name="birthdate" formControlName="birthdate"
+        [ngClass]="{ 'input-error': form.birthdate.invalid && (form.birthdate.dirty || form.birthdate.touched) }">
+        <p class="error" *ngIf="form.birthdate.invalid && (form.birthdate.dirty || form.birthdate.touched)">
+            Date de naissance incorrect
+        </p>
     </section>
     <section class="form-content">
         <label for="gender">genre:</label>
@@ -42,18 +69,25 @@
 
     <hr class="solid">
 
+    <p class="error" *ngIf="form.acceptContract.invalid && (form.acceptContract.dirty || form.acceptContract.touched)">
+        Pour continuer, vous devez accepter les conditions d'utilisation.
+    </p>
     <section class="form-contract">
         <input type="checkbox" name="contract" class="contract" formControlName="acceptContract">
         <p>En cochant cette case, vous acceptez les conditions d'utilisation</p>
     </section>
+    
 
-    <section class="form-content" *ngIf="registerForm.valid">
-        <ms-button value="Valider et créer un compte" color="lightblue" (click)="register()"></ms-button>
+    <section class="form-content" *ngIf="registrationError.isError">
+        <p class="error">Une erreur s'est produite pendant la création du compte</p>
     </section>
-    <section class="form-content" *ngIf="!registerForm.valid">
-        <ms-button value="Valider et créer un compte" color="lightblue"></ms-button>
+    <section class="form-content" *ngIf="formErrors">
+        <p class="error">Des champs ne sont pas correctement remplis</p>
     </section>
     <section class="form-content">
-        <ms-button value="Annuler" color="orange"></ms-button>
+        <ms-button value="Valider et créer un compte" color="lightblue" (click)="register()"></ms-button>
+    </section>
+    <section class="form-content">
+        <ms-button value="Annuler" color="orange" (click)="cancel()"></ms-button>
     </section>
 </form>

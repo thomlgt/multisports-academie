@@ -14,10 +14,11 @@ import { UpdatePasswordFormComponent } from './components/profile/update-passwor
 import { EventsReadingEventComponent } from './components/events/events-reading-event/events-reading-event.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { TeamEditComponent } from './components/teams/team-edit/team-edit.component';
+import { EventComponent } from './pages/event/event.component';
 import { ActivityThumbnailComponent } from './components/activities/activity-thumbnail/activity-thumbnail.component';
 import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
 import { ActivityComponent } from './pages/activity/activity.component';
-
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,11 @@ import { ActivityComponent } from './pages/activity/activity.component';
     UpdatePasswordFormComponent,
     TeamsComponent,
     TeamEditComponent,
+    EventComponent,
     ActivityThumbnailComponent,
     EventActivitiesComponent,
-    ActivityComponent
+    ActivityComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 
@@ -12,11 +12,12 @@ export class UpdatePasswordFormComponent implements OnInit {
 
   id: string;
   confirmPasswordUpdate = false;
+  passwordUpdateError = false;
 
   passForm = this.fb.group({
-    password: "",
-    newPassword: "",
-    newPasswordValidation: ""
+    password: ["", Validators.required],
+    newPassword: ["", Validators.minLength(8)],
+    newPasswordValidation: ["", Validators.minLength(8)]
   })
 
   constructor(
@@ -29,19 +30,28 @@ export class UpdatePasswordFormComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
   }
 
-  updatePassword() {
-    if (this.passForm.value.newPassword === this.passForm.value.newPasswordValidation) {
-      this.captainService.updatePassword(this.id, this.passForm.value).subscribe(() => {
-        this.confirmPasswordUpdate = true;
-        this.passForm.reset();
-        setTimeout(() => {
-          this.confirmPasswordUpdate = false;
-        }, 9000);
-      })
-    } else {
-      // TODO : passwords différents
-    }
 
+  get form() { 
+    return this.passForm.controls; 
+  }
+
+  updatePassword() {
+    if(this.passForm.valid) {
+      if (this.passForm.value.newPassword === this.passForm.value.newPasswordValidation) {
+        this.captainService.updatePassword(this.id, this.passForm.value).subscribe(() => {
+          this.confirmPasswordUpdate = true;
+          this.passForm.reset();
+          setTimeout(() => {
+            this.confirmPasswordUpdate = false;
+          }, 9000);
+        })
+      }
+    } else {
+      this.passwordUpdateError = true;
+      setTimeout(() => {
+        this.passwordUpdateError = false;
+      }, 9000);
+    }
   }
 
 }
