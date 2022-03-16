@@ -15,6 +15,7 @@ import { AddMemberComponent } from './components/add-member/add-member.component
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
 import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
+import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SportPicturesDirectionComponent } from './components/sport-pictures-dir
     AddMemberComponent,
     AddTeamComponent,
     DisplayRegistrationComponent,
-    SportPicturesDirectionComponent
+    SportPicturesDirectionComponent,
+    EnrolTeamComponent
   ],
   imports: [
     CommonModule,

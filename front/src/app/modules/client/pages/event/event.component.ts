@@ -10,36 +10,35 @@ import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 import { Registration } from 'src/app/models/event/registration';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
 
+  id: string;
   event: Event;
   eventRegistrationStatus: number;
+
+  currentCaptain: Captain|null;
   
   eventTeams: Team[];
   captainTeams: Team[];  
   availableTeams: any[];
   hasRecordedTeam: boolean;
-  
-  id: string;
-  currentCaptain: Captain|null;
-  displayRegistrationPannel: boolean;
 
   remainingDays: number;
 
-
   constructor(
     private eventService: EventService,
-    private captainService: CaptainService,
     private teamService: TeamService,
     private route : ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private modalService : NgbModal
   ) { 
     this.eventTeams = [];
     this.availableTeams = [];
@@ -47,11 +46,8 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.initEvent(); 
-    this.initCaptain(); 
     this.hasRecordedTeam = false;
-    // this.displayRegistrationPannel = false;
-    this.displayRegistrationPannel = true;
+    this.initEvent();
   }
 
   initEvent() {
@@ -62,12 +58,50 @@ export class EventComponent implements OnInit {
     })    
   }
 
+  datediff(first, second) {
+    //Take the difference between the dates and divide by milliseconds per day.
+    //Round to nearest whole number to deal with DST.
+    return Math.round((second-first)/(1000*60*60*24));
+  }
+
+  defineEventRegistrationStatus() {
+
+    let currentDate = new Date();
+    let startRegistration = new Date(this.event.startRegistration);
+    let endRegistration = new Date(this.event.endRegistration);
+
+    // before registration
+    if (currentDate < startRegistration) {
+      this.eventRegistrationStatus = 1;
+      this.remainingDays = this.datediff(currentDate, startRegistration);
+    // during registration
+    } else if (currentDate >= startRegistration && currentDate <= endRegistration) {
+      this.eventRegistrationStatus = 2;
+    // after registration
+    } else {
+      this.eventRegistrationStatus = 3;
+    }
+
+  }
+
+  openRegistrationModal() {
+    const modalRef = this.modalService.open(EnrolTeamComponent, {centered : true});
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.event = this.event;
+    modalRef.componentInstance.captainTeams = this.captainTeams;
+    modalRef.componentInstance.availableTeams = this.availableTeams;
+    modalRef.componentInstance.hasRecordedTeam = this.hasRecordedTeam;
+    modalRef.componentInstance.enrolTeamEvent.subscribe(() => {
+      window.location.reload();
+    })
+  }
+  
   initEventTeams() {
     let registrations = this.event.registrations;
     for (let registration of registrations) {
-      console.log(registration.team);
       this.eventTeams.push(registration.team);
     }
+    this.initCaptain(); 
   }
 
   initCaptain() {
@@ -141,73 +175,8 @@ export class EventComponent implements OnInit {
       )
 
     }
+
+    console.log(this.availableTeams);
   }
-
-  defineEventRegistrationStatus() {
-
-    let currentDate = new Date();
-    let startRegistration = new Date(this.event.startRegistration);
-    let endRegistration = new Date(this.event.endRegistration);
-
-    // before registration
-    if (currentDate < startRegistration) {
-      this.eventRegistrationStatus = 1;
-      this.remainingDays = this.datediff(currentDate, startRegistration);
-    // during registration
-    } else if (currentDate >= startRegistration && currentDate <= endRegistration) {
-      this.eventRegistrationStatus = 2;
-    // after registration
-    } else {
-      this.eventRegistrationStatus = 3;
-    }
-
-  }
-
-  openRegistrationPanel() {
-    this.displayRegistrationPannel = true;
-  }
-
-  registerTeam(teamIndex: number) {
-    let newRegistration = new Registration();
-    newRegistration.team = this.captainTeams[teamIndex];
-    newRegistration.validationStatus = "pending";
-    this.eventService.addRegistration(this.id, newRegistration).subscribe(
-      next => {
-        console.log('registration OK !');
-        this.initEvent();
-      },
-      error => {
-        console.log('registration has failed !');
-      }
-    );
-  }
-
-  unregisterTeam(teamIndex: number) {
-    let newRegistration = new Registration();
-    newRegistration.team = this.captainTeams[teamIndex];
-    newRegistration.validationStatus = "pending";
-    this.eventService.cancelRegistration(this.id, newRegistration).subscribe(
-      next => {
-        console.log('Deletion OK !');
-        this.initEvent();
-      },
-      error => {
-        console.log('Deletion has failed !');
-      }
-    );
-  }
-
-  parseDate(str) {
-    var mdy = str.split('/');
-    return new Date(mdy[2], mdy[0]-1, mdy[1]);
-  }
-
-  datediff(first, second) {
-    //Take the difference between the dates and divide by milliseconds per day.
-    //Round to nearest whole number to deal with DST.
-    return Math.round((second-first)/(1000*60*60*24));
-  }
-
-
 
 }

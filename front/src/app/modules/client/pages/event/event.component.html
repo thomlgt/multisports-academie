@@ -80,36 +80,18 @@
     <section id="registration">
         <div id="block_registration" class="block">
 
-
-            <!-- before registration -->
-            <h2 *ngIf="eventRegistrationStatus === 1">Inscriptions</h2>   
-            <p *ngIf="eventRegistrationStatus === 1">L'inscription sera ouverte dans {{ remainingDays }} jour(s).</p>
-
-            <!-- during registration -->
+            <h2 *ngIf="eventRegistrationStatus === 1">Inscriptions</h2>  
             <h2 *ngIf="eventRegistrationStatus === 2">Inscriptions ouvertes</h2>
-
-            <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2"
-                (click)="openRegistrationPanel()"></ms-button>
-
-            <!-- before registration -->
             <h2 *ngIf="eventRegistrationStatus === 3">Inscriptions terminées</h2> 
-            <p *ngIf="eventRegistrationStatus === 3 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
-            <p *ngIf="eventRegistrationStatus === 3 && ! hasRecordedTeam">Aucune de vos équipes n'est inscrite pour cet événement.</p>
 
-            <!-- not login -->
+            <p *ngIf="eventRegistrationStatus === 1">L'inscription sera ouverte dans {{ remainingDays }} jour(s).</p>
+            <p *ngIf="eventRegistrationStatus !== 1 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
+            <p *ngIf="eventRegistrationStatus !== 1 && ! hasRecordedTeam">Aucune de vos équipes n'est inscrite pour cet événement.</p>
+           
+            <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Changer d'équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
             <ms-button class="btn-custom" value="Identifiez-vous !" color="lightblue" *ngIf="currentCaptain===null"></ms-button>
             
-            <div id="registration_pannel" *ngIf="displayRegistrationPannel">
-                <h3>{{ event.name }}</h3>
-                <div *ngFor="let teamInformations of availableTeams; let index = index" class="row">
-                    <div class="col-4"><p>{{ teamInformations.team.name }}</p></div>
-                    <div class="col-6 information"><p>{{ teamInformations.information }}</p></div>  
-                    <div class="col-2 center">
-                        <ms-button value="Inscrire" color="orange" (click)="registerTeam(index)" *ngIf="! teamInformations.registered && teamInformations.suitable && ! hasRecordedTeam"></ms-button>
-                        <ms-button value="Désinscrire" color="orange" (click)="unregisterTeam(index)"  *ngIf="teamInformations.registered"></ms-button>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </section>
