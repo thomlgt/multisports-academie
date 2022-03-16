@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { CreateCaptain } from '../models/captain/createCaptain';
 
 @Injectable({
@@ -34,7 +35,7 @@ export class AuthenticationService {
    */
   login(email: string, password: string) {
     // Envoie une méthode HTTP post au BACK
-    return this.http.post<any>(`http://localhost:3000/auth/login`, { email, password }).pipe(map(captain => {
+    return this.http.post<any>(`${environment.apiUrl}/auth/login`, { email, password }).pipe(map(captain => {
       localStorage.setItem('currentCaptain', JSON.stringify(captain));
       this.currentCaptainSubject.next(captain);
       this.isConnect = true;
@@ -49,7 +50,7 @@ export class AuthenticationService {
    */
    register(captain : CreateCaptain) {
     // Envoie une méthode HTTP post au BACK
-    return this.http.post<any>(`http://localhost:3000/auth/register`, captain).pipe(map(captain => {
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, captain).pipe(map(captain => {
       localStorage.setItem('currentCaptain', JSON.stringify(captain));
       this.currentCaptainSubject.next(captain);
       this.isConnect = true;

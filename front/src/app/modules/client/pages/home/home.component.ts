@@ -1,4 +1,6 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private scroller: ViewportScroller,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.fragment.subscribe(frag => {
+      this.scroller.scrollToAnchor(frag);
+    })
+    
   }
 
 }

@@ -12,7 +12,7 @@ const MAIL_HOST = process.env.MAIL_HOST || "ssl0.localhost.net";
   imports: [
     MailerModule.forRoot({
       transport: {
-        host: 'ssl0.ovh.net',
+        host: MAIL_HOST,
         secure: false,
         auth: {
           user: 'contact@multisports-academie.fr',

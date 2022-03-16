@@ -12,6 +12,7 @@ import { ActivityModule } from './modules/activity/activity.module';
 import { ArticleModule } from './modules/article/article.module';
 import { MailModule } from './modules/mail/mail.module';
 import { WinstonModule } from 'nest-winston';
+import { ContactModule } from './modules/contact/contact.module';
 import * as winston from 'winston';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
@@ -19,7 +20,6 @@ const MONGO_PORT = process.env.MONGO_PORT || "27017"
 const MONGO_USERNAME = process.env.MONGO_USERNAME || "admin"
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD || "root"
 const MONGO_CONNEXION_STRING = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}`
-console.log(MONGO_CONNEXION_STRING)
 
 @Module({
   imports: [
@@ -69,6 +69,7 @@ console.log(MONGO_CONNEXION_STRING)
     ActivityModule,
     ArticleModule,
     MailModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],

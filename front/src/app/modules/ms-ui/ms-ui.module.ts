@@ -16,6 +16,9 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
 import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
 import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
 import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component';
+import { ValuesComponent } from './components/values/values.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,12 +37,15 @@ import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component
     AddTeamComponent,
     DisplayRegistrationComponent,
     SportPicturesDirectionComponent,
-    EnrolTeamComponent
+    EnrolTeamComponent,
+    ValuesComponent,
+    ContactFormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     NavbarComponent,
@@ -50,7 +56,9 @@ import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component
     DisplayMemberComponent,
     DisplayCaptainComponent,
     DisplayRegistrationComponent,
-    SportPicturesDirectionComponent
+    SportPicturesDirectionComponent,
+    ValuesComponent,
+    ContactFormComponent
   ]
 })
 export class MsUiModule { }
