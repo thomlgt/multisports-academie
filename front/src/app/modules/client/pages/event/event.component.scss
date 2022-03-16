@@ -1,5 +1,19 @@
 @import 'colors';
 
+h1 {
+    color: $light;
+}
+
+h2 {
+    color: $teal;
+    margin: 20px 0;
+}
+
+h3 {
+    color: $teal;
+    margin: 20px 0;
+}
+
 p, li {
     color: $light;
     text-align: justify;
@@ -13,20 +27,6 @@ p, li {
 
 .sub_block {
     margin: 30px 0;
-}
-
-h1 {
-    color: $light;
-}
-
-h2 {
-    color: $teal;
-    margin: 20px 0;
-}
-
-h3 {
-    color: $teal;
-    margin: 20px 0;
 }
 
 /*

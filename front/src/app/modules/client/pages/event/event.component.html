@@ -59,14 +59,14 @@
             </div>
 
             <div id="block_activities" class="sub_block">
-                <app-event-activities></app-event-activities>
+                <app-event-activities [event]="event"></app-event-activities>
             </div>
 
             <div id="block_activities_details" *ngIf="event.activitiesDetails" class="sub_block">
                 <h3>Déroulé des épreuves</h3>
                 <div class="activities_details" [innerHTML]="event.activitiesDetails"></div>
             </div>
-            
+
             <div id="block_registration_rules" class="sub_block">
                 <h3>Modalités d'inscription</h3>
                 <div class="registration_rules">
