@@ -2,18 +2,31 @@
 
 p, li {
     color: $light;
-    font-size: 0.8rem;
+    text-align: justify;
 }
 
 .block {
     background-color: $light-blue;
-    padding : 20px;
-    margin-bottom: 30px;
+    padding : 50px 30px;
+    margin-bottom: 20px;
 }
 
-.block h2 {
+.sub_block {
+    margin: 30px 0;
+}
+
+h1 {
+    color: $light;
+}
+
+h2 {
     color: $teal;
-    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+h3 {
+    color: $teal;
+    margin: 20px 0;
 }
 
 /*
@@ -24,12 +37,6 @@ p, li {
     margin-bottom: 10px;
 }
 
-/* Title */
-
-h1 {
-    color: $light;
-    font-size: 1.8rem;
-}
 
 /* Registration status infos */
 
@@ -39,47 +46,47 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 25px;
-}
 
-.registration_status_info p {
-    color: $light-blue;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0;
-}
+    p {
+        color: $light-blue;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
 
-#nb_teams {
-    background-color: $orange;
-}
+    &#nb_teams {
+        background-color: $orange;
+    }
+    
+    &#registration_over {
+        background-color: $teal;
+    }
 
-#registration_over {
-    background-color: $teal;
 }
 
 /* Block infos */
 
 #sub_block_registration_infos {
-    background-color: $light;    
-}
-
-#sub_block_registration_infos {
+    background-color: $light; 
     text-align: center;
-    padding: 20px 0;
-}
+    padding: 20px 0;  
+    
+    h3 {
+        color: $light-blue;
+        font-size: 1.2rem;
+    }
 
-#sub_block_registration_infos h3 {
-    color: $light-blue;
-    font-size: 1.2rem;
-}
+    .gp_infos p {
+        font-size: 0.8rem;
+        color: $light-blue;
+        margin: 0;
+        text-align: center;
 
-#sub_block_registration_infos .gp_infos p {
-    font-size: 0.8rem;
-    color: $light-blue;
-    margin: 0;
-}
+        .highlight_infos {
+            color: $orange;
+        }
+    }
 
-#sub_block_registration_infos .gp_infos .highlight_infos {
-    color: $orange;
 }
 
 .before_registration {
@@ -94,15 +101,8 @@ h1 {
  * Content
  */
 
-.sub_block_activities_list h3 {
-    color: $orange;
-    font-size: 1.2rem;
-    margin: 10px 0 10px 10px;
-}
-
 .activities_details {
     color: $light;
-    font-size: 0.8rem;
 }
 
 /*
@@ -110,15 +110,17 @@ h1 {
  */
 
 #block_registration {
+
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-#block_registration h2 {
-    color: $orange;
-}
+    h2 {
+        color: $orange;
+    }
 
-#block_registration ms-button {
-    margin: 10px;
+    ms-button {
+        margin: 10px;
+    }
+
 }

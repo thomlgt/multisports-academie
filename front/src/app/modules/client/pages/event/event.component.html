@@ -51,21 +51,24 @@
 
         <div id="block_activities" class="block tab-content">
 
-            <div id="block_description">
-                <h2>Présentation</h2>
+            <div id="block_description" class="sub_block">
+                <h3>Présentation</h3>
                 <div class="description">
                     <p>{{ event.description }}</p>
                 </div>
             </div>
 
-            <app-event-activities></app-event-activities>
+            <div id="block_activities" class="sub_block">
+                <app-event-activities></app-event-activities>
+            </div>
 
-            <div id="block_activities_details" *ngIf="event.activitiesDetails">
-                <h2>Déroulé des épreuves</h2>
+            <div id="block_activities_details" *ngIf="event.activitiesDetails" class="sub_block">
+                <h3>Déroulé des épreuves</h3>
                 <div class="activities_details" [innerHTML]="event.activitiesDetails"></div>
             </div>
-            <div id="block_registration_rules">
-                <h2>Modalités d'inscription</h2>
+            
+            <div id="block_registration_rules" class="sub_block">
+                <h3>Modalités d'inscription</h3>
                 <div class="registration_rules">
                     <p>Coût de l'inscription: {{ event.price }}€</p>
                     <p>Nombre maximal d'équipes: {{ event.maxTeams }}</p>
