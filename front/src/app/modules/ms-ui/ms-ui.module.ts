@@ -15,6 +15,7 @@ import { AddMemberComponent } from './components/add-member/add-member.component
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
 import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
+import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component';
 import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -36,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddTeamComponent,
     DisplayRegistrationComponent,
     SportPicturesDirectionComponent,
+    EnrolTeamComponent,
     ValuesComponent,
     ContactFormComponent
   ],

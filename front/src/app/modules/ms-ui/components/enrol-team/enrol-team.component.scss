@@ -1,0 +1,38 @@
+@import 'colors';
+
+#registration_modal {
+
+    background-color: $mid-blue; 
+    padding : 20px; 
+    width: 100%;  
+
+    h3 {
+        color :$light;
+        margin-bottom: 20px;
+    }
+
+    .block-team {
+        background-color: $light-blue; 
+        margin: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height : 60px;
+    }
+
+    p {
+        color :$light;
+        margin: 0;
+    }
+
+    .team_name p {
+        font-size: 1.2rem;
+    }
+
+    .information p {
+        font-size: 0.8rem;
+    }
+
+}

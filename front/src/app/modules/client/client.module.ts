@@ -20,7 +20,6 @@ import { EventActivitiesComponent } from './components/activities/event-activiti
 import { ActivityComponent } from './pages/activity/activity.component';
 import { HomeComponent } from './pages/home/home.component';
 
-
 @NgModule({
   declarations: [
     ClientComponent,
