@@ -1,0 +1,69 @@
+@media only screen and (min-width: 992px) {
+    form {
+        width: 600px;
+        margin-bottom: 20%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    form {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    color: white;
+    font-size: small;
+}
+
+.error {
+    color: darkred;
+    margin: 0px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.contract {
+    width: 30px;
+    margin-top: 3px;
+}
+
+input {
+    width: 100%;
+    color: white;
+    background-color: #576471;
+    border: 0px;
+    border-bottom: 2px solid transparent;
+}
+
+textarea {
+    width: 100%;
+    color: white;
+    background-color: #576471;
+    border: 0px;
+    border-bottom: 2px solid transparent;
+}
+
+input:focus {
+    outline: none;
+    border: 0px;
+    border-bottom: 2px solid #E09E50;
+}
+
+textarea:focus {
+    outline: none;
+    border: 0px;
+    border-bottom: 2px solid #E09E50;
+}
+
+.end {
+    margin-bottom: 5%;
+}
