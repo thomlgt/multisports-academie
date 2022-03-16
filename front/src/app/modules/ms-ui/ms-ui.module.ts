@@ -15,6 +15,8 @@ import { AddMemberComponent } from './components/add-member/add-member.component
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { DisplayRegistrationComponent } from './components/display-registration/display-registration.component';
 import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
+import { ValuesComponent } from './components/values/values.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { SportPicturesDirectionComponent } from './components/sport-pictures-dir
     AddMemberComponent,
     AddTeamComponent,
     DisplayRegistrationComponent,
-    SportPicturesDirectionComponent
+    SportPicturesDirectionComponent,
+    ValuesComponent,
+    ContactFormComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +52,9 @@ import { SportPicturesDirectionComponent } from './components/sport-pictures-dir
     DisplayMemberComponent,
     DisplayCaptainComponent,
     DisplayRegistrationComponent,
-    SportPicturesDirectionComponent
+    SportPicturesDirectionComponent,
+    ValuesComponent,
+    ContactFormComponent
   ]
 })
 export class MsUiModule { }
