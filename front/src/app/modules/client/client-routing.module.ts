@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 import { ClientComponent } from './client.component';
 import { TeamEditComponent } from './components/teams/team-edit/team-edit.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 import { EventComponent } from './pages/event/event.component';
 import { EventsReadingComponent } from './pages/events-reading/events-reading.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
         },
         { path: 'events', component: EventsReadingComponent },
         { path: 'event/:id', component: EventComponent },
+        { path: 'activity/:id', component: ActivityComponent },
         { path: '**', redirectTo: "home"}
       ]
   }

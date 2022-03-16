@@ -33,7 +33,9 @@ export class ActivityService {
   }
 
   async findOne(id: string): Promise<Activity> {
-    const activity = await this.activityModel.findById(id);
+    const activity = await this.activityModel.findById(id)
+      .populate('mainPicture')
+      .populate('gallery');
     if (!activity) {
       this.logger.warn(`findOne: l'id ${id} n'a renvoyé aucun résultat`);
       throw new NotFoundException(`Aucune activité avec l'id ${id} trouvée`);
