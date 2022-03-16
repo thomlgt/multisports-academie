@@ -1,0 +1,11 @@
+<div id="registration_modal" *ngIf="event">
+    <h3>{{ event.name }}</h3>
+    <div *ngFor="let teamInformations of availableTeams; let index = index" class="row block-team">
+        <div class="col-4 team_name"><p>{{ teamInformations.team.name }}</p></div>
+        <div class="col-8 information" *ngIf="! teamInformations.suitable"><p>{{ teamInformations.information }}</p></div>  
+        <div class="offset-4 col-4 center" *ngIf="teamInformations.suitable">
+            <ms-button value="Inscrire" color="orange" (click)="registerTeam(index)" width="100%"  *ngIf="! teamInformations.registered && teamInformations.suitable && ! hasRecordedTeam"></ms-button >
+            <ms-button value="Désinscrire" color="orange" (click)="unregisterTeam(index)"  *ngIf="teamInformations.registered" width="100%"></ms-button>
+        </div>
+    </div>
+</div>
