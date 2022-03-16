@@ -43,7 +43,7 @@ export class MailService {
   async sendClientContactForm(contact: Contact) {
     await this.mailerService.sendMail({
       to: `${contact.email}`,
-      // from: '"Support Team" <support@example.com>', // override default from
+      from: '"Multisports Académie" <ne-pas-repondre@multisports-academie.fr>', // override default from
       subject: `Votre demande a bien été prise en compte`,
       template: '../templates/contact-confirmation', // `.hbs` extension is appended automatically
       context: { // ✏️ filling curly brackets with content
