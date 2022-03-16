@@ -12,6 +12,7 @@ import { ActivityModule } from './modules/activity/activity.module';
 import { ArticleModule } from './modules/article/article.module';
 import { MailModule } from './modules/mail/mail.module';
 import { WinstonModule } from 'nest-winston';
+import { ContactModule } from './modules/contact/contact.module';
 import * as winston from 'winston';
 
 const MONGO_HOST = process.env.MONGO_HOST || "localhost"
@@ -68,6 +69,7 @@ const MONGO_CONNEXION_STRING = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${
     ActivityModule,
     ArticleModule,
     MailModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
