@@ -52,7 +52,21 @@
         </p>
     </section> 
     
+    <section class="form-content" *ngIf="sendErrors">
+        <p class="error">Une erreur s'est produite pendant l'envoie du formulaire'</p>
+    </section>
+    <section class="form-content" *ngIf="formErrors">
+        <p class="error">Des champs ne sont pas correctement remplis</p>
+    </section>
+    <section class="form-content" *ngIf="waiting">
+        <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </section>
+    <ngb-alert type="success" *ngIf="sendConfirmation" [dismissible]="false" class="alert">
+        Message envoyé avec succès, vérifiez votre boite mail.
+    </ngb-alert>
     <section class="form-content">
-        <ms-button value="Envoyer" color="orange" (click)="sendContactForm()" width="100%"></ms-button>
+        <ms-button value="Envoyer" color="orange" (click)="sendContactForm()" width="100%" *ngIf="!sendConfirmation && !waiting"></ms-button>
     </section>
 </form>

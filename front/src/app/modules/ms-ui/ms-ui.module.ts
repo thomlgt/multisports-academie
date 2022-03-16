@@ -17,6 +17,7 @@ import { DisplayRegistrationComponent } from './components/display-registration/
 import { SportPicturesDirectionComponent } from './components/sport-pictures-direction/sport-pictures-direction.component';
 import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     NavbarComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ContactService } from 'src/app/modules/ms-api/contact/contact.service';
 
 @Component({
   selector: 'ms-contact-form',
@@ -17,8 +18,14 @@ export class ContactFormComponent implements OnInit {
     message : ["", Validators.required],
   })
 
+  formErrors = false;
+  sendErrors = false;
+  sendConfirmation = false;
+  waiting = false;
+
   constructor(
-    private fb : FormBuilder
+    private fb : FormBuilder,
+    private contactService: ContactService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +36,25 @@ export class ContactFormComponent implements OnInit {
   }
 
   sendContactForm() {
-
+    this.waiting = true;
+    if(this.contactForm.valid) {
+      this.contactService.sendContact(this.contactForm.value).subscribe(
+        next => {
+          this.contactForm.reset();
+          this.waiting = false;
+          this.sendConfirmation = true;
+          setTimeout(() => {
+            this.sendConfirmation = false;
+          }, 30000)
+        },
+        error => {
+          this.sendErrors = true
+        }
+      );
+    } else {
+      this.formErrors = true;
+      this.waiting = false;
+    }
   }
 
 }
