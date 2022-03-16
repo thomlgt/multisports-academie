@@ -13,7 +13,7 @@ export class ContactFormComponent implements OnInit {
     firstname : ["", Validators.required],
     lastname : ["", Validators.required],
     email : ["", Validators.email],
-    phone : ["", Validators.required],
+    phone : ["", [Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
     subject : ["", Validators.required],
     message : ["", Validators.required],
   })
