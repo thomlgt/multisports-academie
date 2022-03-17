@@ -1,37 +1,80 @@
-/** Général */
+@import 'colors';
 
-h2 {
-    color: #E09E50;
+.block-event {
+
+    background-color : $light-blue;
+    padding: 20px;
+    text-align: center;
+    @media (min-width: 768px) {
+        text-align: justify;
+    }
+
+
+    /** Général */
+
+    h2 {
+        color: $orange;
+    }
+
+    p {
+        color: $light;        
+    }
+
+    /** Image */
+
+    .block-image {
+        background-size: cover;
+    }
+
+    /** Infos */
+
+    .block-infos {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 768px) {
+            display: block;
+            padding-left: 30px;
+        }       
+
+        .color-orange {
+            color: $orange;
+        }
+    
+        .color-lightblue {
+            color: $teal;
+        }
+    
+        .paragraph-title {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        /** Buttons */
+
+        .block-buttons {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @media (min-width: 768px) {
+                flex-direction: row;
+                justify-content: left;
+            } 
+
+            .block-button {
+                max-width: 250px !important;
+                width: 100%;
+                margin-top: 10px;             
+            }
+
+        }
+
+    }
+
 }
 
-p {
-    color: #E8ECEB;
-    text-align: justify;
-}
-
-/** Image */
-
-.block-image {
-    background-size: cover;
-}
-
-/** Infos */
-
-.color-orange {
-    color: #E09E50;
-}
-
-.color-lightblue {
-    color: #8CBDB8;
-}
-
-.paragraph-title {
-    font-weight: bold;
-    margin-bottom: 0;
-}
-
-/** Buttons */
-
-.block-btn {
-    width: 250px !important;
-}
