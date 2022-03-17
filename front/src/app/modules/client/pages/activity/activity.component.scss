@@ -1,5 +1,14 @@
 @import 'colors';
 
+p#return_event {
+  color: $orange;
+  cursor: pointer;
+
+  &:hover {
+    color: $teal;
+  }
+}
+
 .banner {
   background-image: url('/assets/images/activities/main.jpg');
   background-size: cover;

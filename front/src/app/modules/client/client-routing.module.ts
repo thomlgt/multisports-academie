@@ -29,7 +29,7 @@ const routes: Routes = [
 
       { path: 'events', component: EventsReadingComponent },
       { path: 'event/:id', component: EventComponent },
-      { path: 'event/:id/activities/:id', component: ActivityComponent },
+      { path: 'event/:eventid/activities/:id', component: ActivityComponent },
 
       { path: 'articles', component: ArticlesComponent, pathMatch: 'full' },
       { path: "articles/:id", component: ArticleComponent },
