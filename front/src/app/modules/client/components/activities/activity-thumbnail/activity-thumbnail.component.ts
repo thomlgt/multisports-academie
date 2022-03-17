@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Activity } from 'src/app/models/activity/activity.model';
 
 @Component({
   selector: 'app-activity-thumbnail',
@@ -7,17 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ActivityThumbnailComponent implements OnInit {
 
-  // TODO: récupérer l'objet 'Activity' depuis le parent dans le ngFor
-  @Input() num;
+  @Input() activity: Activity;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    console.log(this.activity);
   }
 
   goToActivityDetailsPage() {
-    // TODO: implémenter cette redirection
-    console.log(`redirection vers la page détail de l'activité ${this.num}`);
+    this.router.navigateByUrl(`/activity/${this.activity._id}`);
   }
 
 }

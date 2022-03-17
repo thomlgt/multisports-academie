@@ -1,0 +1,72 @@
+<form [formGroup]="contactForm">
+    <section class="form-content">
+        <label for="lastname">nom:</label>
+        <input type="text" name="lastname" formControlName="lastname" 
+        [ngClass]="{ 'input-error': form.lastname.invalid && (form.lastname.dirty || form.lastname.touched) }">
+        <p class="error" *ngIf="form.lastname.invalid && (form.lastname.dirty || form.lastname.touched)">
+            Le nom ne peut pas être vide
+        </p>
+    </section>
+    <section class="form-content">
+        <label for="firstname">prénom:</label>
+        <input type="text" name="firstname" formControlName="firstname"
+        [ngClass]="{ 'input-error': form.firstname.invalid && (form.firstname.dirty || form.firstname.touched) }">
+        <p class="error" *ngIf="form.firstname.invalid && (form.firstname.dirty || form.firstname.touched)">
+            Le prénom ne peut pas être vide
+        </p>
+    </section>   
+    <section class="form-content">
+        <label for="email">email:</label>
+        <input type="email" name="email" formControlName="email"
+        [ngClass]="{ 'input-error': form.email.invalid && (form.email.dirty || form.email.touched) }">
+        <p class="error" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
+            Le format de l'email est incorrect
+        </p>
+    </section>
+
+    <section class="form-content">
+        <label for="phone">téléphone:</label>
+        <input type="tel" name="phone" formControlName="phone"
+        [ngClass]="{ 'input-error': form.phone.invalid && (form.phone.dirty || form.phone.touched) }">
+        <p class="error" *ngIf="form.phone.invalid && (form.phone.dirty || form.phone.touched)">
+            Numéro de téléphone incorrect
+        </p>
+    </section>
+
+    <section class="form-content">
+        <label for="subject">sujet:</label>
+        <input type="text" name="subject" formControlName="subject"
+        [ngClass]="{ 'input-error': form.subject.invalid && (form.subject.dirty || form.subject.touched) }">
+        <p class="error" *ngIf="form.subject.invalid && (form.subject.dirty || form.subject.touched)">
+            Le sujet ne peut pas être vide
+        </p>
+    </section>
+
+    <section class="form-content end">
+        <label for="message">message:</label>
+        <textarea type="text" name="message" formControlName="message" rows="10"
+        [ngClass]="{ 'input-error': form.subject.invalid && (form.message.dirty || form.message.touched) }">
+        </textarea>
+        <p class="error" *ngIf="form.message.invalid && (form.message.dirty || form.message.touched)">
+            Le corps du message ne peut pas être vide
+        </p>
+    </section> 
+    
+    <section class="form-content" *ngIf="sendErrors">
+        <p class="error">Une erreur s'est produite pendant l'envoie du formulaire'</p>
+    </section>
+    <section class="form-content" *ngIf="formErrors">
+        <p class="error">Des champs ne sont pas correctement remplis</p>
+    </section>
+    <section class="form-content" *ngIf="waiting">
+        <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </section>
+    <ngb-alert type="success" *ngIf="sendConfirmation" [dismissible]="false" class="alert">
+        Message envoyé avec succès, vérifiez votre boite mail.
+    </ngb-alert>
+    <section class="form-content">
+        <ms-button value="Envoyer" color="orange" (click)="sendContactForm()" width="100%" *ngIf="!sendConfirmation && !waiting"></ms-button>
+    </section>
+</form>

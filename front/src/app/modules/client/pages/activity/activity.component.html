@@ -1,76 +1,50 @@
-<section class="banner">
-</section>
-<h1 class="title">Titre de l'activité</h1>
+<div id="activity" *ngIf="activity">
 
-<section>
-  <h3 class="subtitle">Résumé des informations :</h3>
-  <div class="row text-center">
-    <div class="col-lg-4">
-      <h5>Durée de l'épreuve :</h5>
-      <p>30 minutes</p>
+  <section class="banner" style="background-image: url({{activity.mainPicture.url}});">
+  </section>
+  <h1 class="title">{{ activity.name }}</h1>
+  
+  <section>
+    <h3 class="subtitle">Résumé des informations :</h3>
+    <div class="row text-center">
+      <div class="col-lg-6">
+        <h5>Durée de l'épreuve :</h5>
+        <p>{{ activity.duration }} minutes</p>
+      </div>
+      <div class="col-lg-6">
+        <h5>Points :</h5>
+        <p>{{ activity.points }}</p>
+      </div>
     </div>
-    <div class="col-lg-4">
-      <h5>Catégorie :</h5>
-      <p>30 minutes</p>
+  </section>
+  
+  <ul class="tab-links">
+    <li [ngClass]="{'active': show === 'description'}"
+        (click)="show = 'description'">Description</li>
+    <li [ngClass]="{'active': show === 'rules'}"
+        (click)="show = 'rules'">Règles</li>
+    <li [ngClass]="{'active': show === 'gallery'}"
+        (click)="show = 'gallery'">Galerie photo</li>
+  </ul>
+  
+  <section *ngIf="show === 'description'">
+    <h3 class="subtitle">Description</h3>
+    <p>{{ activity.description }}</p>
+  </section>
+  
+  <section *ngIf="show === 'rules'">
+    <h3 class="subtitle">Règles</h3>
+    <p>{{ activity.rules }}</p>
+  </section>
+  
+  <section *ngIf="show === 'gallery'">
+    <h3 class="subtitle">Galerie photo</h3>
+    <div class="galerie">
+      <img *ngFor="let picture of activity.gallery"
+           src="{{ picture.url }}"
+           alt="{{ picture.altText }}"
+           class="img-thumbnail">
     </div>
-    <div class="col-lg-4">
-      <h5>Durée de l'épreuve :</h5>
-      <p>30 minutes</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<ul class="tab-links">
-  <li [ngClass]="{'active': show === 'description'}"
-      (click)="show = 'description'">Description</li>
-  <li [ngClass]="{'active': show === 'rules'}"
-      (click)="show = 'rules'">Règles</li>
-  <li [ngClass]="{'active': show === 'gallery'}"
-      (click)="show = 'gallery'">Galerie photo</li>
-</ul>
-
-<section *ngIf="show === 'description'">
-  <h3 class="subtitle">Description</h3>
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex provident in molestias ab reprehenderit earum
-    laboriosam explicabo optio nam labore quisquam, nesciunt debitis facilis doloribus laudantium dignissimos atque
-    alias unde, iusto ipsam quam dolores repellendus. Cum in placeat recusandae doloribus quidem, totam voluptatem sed
-    doloremque culpa ullam exercitationem omnis magni nemo consequatur delectus amet non, velit possimus rem laborum
-    dolor. Minus, voluptate at ullam ex ad, quidem vero, tempore velit quasi culpa dolore officiis ducimus dolorum
-    officia? Esse eos, est error, unde cum possimus obcaecati doloribus eum commodi velit praesentium, iure labore!
-    Error cumque odio repellat labore, vero incidunt delectus dignissimos recusandae impedit deserunt vitae? Commodi
-    eaque facilis illo perferendis magnam dolorem nemo illum labore perspiciatis in obcaecati quibusdam explicabo
-    consectetur, quae officia aliquam sint molestiae! Sed cupiditate rerum quae possimus mollitia eos alias esse
-    excepturi vitae at perspiciatis beatae, cum minima corporis quasi tenetur itaque reiciendis nostrum tempore,
-    assumenda, placeat eum similique? Minima earum nostrum saepe voluptas facilis rem soluta culpa quam tenetur
-    voluptatum aliquid rerum optio animi in neque laboriosam, unde, impedit corrupti consequuntur! Assumenda voluptatum
-    dolorum deleniti velit qui, molestiae ex omnis consequatur unde quidem hic eveniet ipsa alias ab beatae, architecto
-    recusandae nesciunt excepturi natus. Ut?</p>
-</section>
-
-<section *ngIf="show === 'rules'">
-  <h3 class="subtitle">Règles</h3>
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex provident in molestias ab reprehenderit earum
-    laboriosam explicabo optio nam labore quisquam, nesciunt debitis facilis doloribus laudantium dignissimos atque
-    alias unde, iusto ipsam quam dolores repellendus. Cum in placeat recusandae doloribus quidem, totam voluptatem sed
-    doloremque culpa ullam exercitationem omnis magni nemo consequatur delectus amet non, velit possimus rem laborum
-    dolor. Minus, voluptate at ullam ex ad, quidem vero, tempore velit quasi culpa dolore officiis ducimus dolorum
-    officia? Esse eos, est error, unde cum possimus obcaecati doloribus eum commodi velit praesentium, iure labore!
-    Error cumque odio repellat labore, vero incidunt delectus dignissimos recusandae impedit deserunt vitae? Commodi
-    eaque facilis illo perferendis magnam dolorem nemo illum labore perspiciatis in obcaecati quibusdam explicabo
-    consectetur, quae officia aliquam sint molestiae! Sed cupiditate rerum quae possimus mollitia eos alias esse
-    excepturi vitae at perspiciatis beatae, cum minima corporis quasi tenetur itaque reiciendis nostrum tempore,
-    assumenda, placeat eum similique? Minima earum nostrum saepe voluptas facilis rem soluta culpa quam tenetur
-    voluptatum aliquid rerum optio animi in neque laboriosam, unde, impedit corrupti consequuntur! Assumenda voluptatum
-    dolorum deleniti velit qui, molestiae ex omnis consequatur unde quidem hic eveniet ipsa alias ab beatae, architecto
-    recusandae nesciunt excepturi natus. Ut?</p>
-</section>
-
-<section *ngIf="show === 'gallery'">
-  <h3 class="subtitle">Galerie photo</h3>
-  <div class="galerie">
-    <img *ngFor="let image of [1,2,3,4,5,6,7,8,9]"
-         src="https://picsum.photos/150/150"
-         alt=""
-         class="img-thumbnail">
-  </div>
-</section>
+</div>

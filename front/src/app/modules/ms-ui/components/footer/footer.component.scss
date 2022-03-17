@@ -16,6 +16,11 @@ footer {
         color : $text-light;
         margin: 0 0 10px 0;
     }
+
+    a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 // large screens
@@ -30,10 +35,10 @@ footer {
     }
 
     .left {
-        padding-left   : 20px;
         display        : flex;
         flex-direction : column;
         justify-content: center;
+        align-items: center;
     }
 
     .center {
@@ -41,7 +46,8 @@ footer {
         display        : flex;
         flex-direction : column;
         justify-content: space-around;
-        align-items    : flex-start;
+        align-items    : center;
+        text-align: center;
     }
 
     .right {
@@ -82,4 +88,13 @@ footer {
     img {
         width: 80%;
     }
+}
+
+p {
+    width: 100%;
+}
+
+span {
+    width: 100%;
+    text-align: center;
 }

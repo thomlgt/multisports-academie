@@ -2,7 +2,7 @@
     <h2>Bonjour {{captain.firstname}},</h2>
 
     <p>Modifier mes informations personnelles :</p>
-    <app-update-personal-form [captain]="captain"></app-update-personal-form>
+    <app-update-personal-form [captain]="captain" (updateEvent)="initCaptain()"></app-update-personal-form>
 
     <hr class="solid">
 

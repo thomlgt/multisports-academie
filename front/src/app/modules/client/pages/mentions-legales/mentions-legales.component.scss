@@ -1,0 +1,41 @@
+@import 'colors';
+
+h2 {
+    text-align: center;
+    color: $orange;
+}
+
+hr.solid {
+    border-top: 2px solid #ddd;
+    width: 60%;
+    margin: 6% 0 6% 20%;
+}
+
+.elem {
+    width: 70%;
+    margin: auto;
+}
+
+h3 {
+    text-align: center;
+    color: $teal;
+    margin-bottom: 8%;
+}
+
+p {
+    color: $text-light
+}
+
+ul {
+    width: 80%;
+    margin: auto;
+    text-align: start;
+}
+
+li {
+    color: $text-light;
+}
+
+.end {
+    margin-bottom: 10%;
+}

@@ -80,6 +80,16 @@ img:hover {
 }
 
 @media only screen and (max-width: 992px) {
+	.menu {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.logo {
+		width: 100%;
+	}
+
 	.menu-bar {
 		width: 100%;
 		height: fit-content;
@@ -118,4 +128,8 @@ img:hover {
 		}
 	}
 	
+}
+
+.social {
+	width: 25%;
 }

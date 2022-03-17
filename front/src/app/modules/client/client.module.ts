@@ -25,6 +25,7 @@ import { ArticlesComponent } from './pages/articles/articles/articles.component'
 import { ArticleComponent } from './pages/articles/article/article.component';
 import { ArticleThumbnailListComponent } from './components/articles/article-thumbnail-list/article-thumbnail-list.component';
 
+import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ArticleThumbnailListComponent } from './components/articles/article-thu
     ArticleThumbnailListComponent,
     EllipsisPipe,
     ArticlesComponent,
-    ArticleComponent
+    ArticleComponent,
+    MentionsLegalesComponent
   ],
   imports: [
     CommonModule,

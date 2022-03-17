@@ -14,6 +14,10 @@ export class ActivityService {
     return this.http.get<Activity[]>(`${environment.apiUrl}/activities`);
   }
 
+  findById(id : string) {
+    return this.http.get<Activity>(`${environment.apiUrl}/activities/${id}`);
+  }
+
   findAllActivitiesByEventId() {
     // TODO: implémenter cette méthode et la route correspondante dans le back
   }

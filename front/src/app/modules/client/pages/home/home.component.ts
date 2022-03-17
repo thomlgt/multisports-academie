@@ -1,7 +1,9 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/models/article/article.model';
 import { ArticleService } from 'src/app/modules/ms-api/article/article.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +16,16 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private router: Router
+    private router: Router,
+    private scroller: ViewportScroller,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.fragment.subscribe(frag => {
+      this.scroller.scrollToAnchor(frag);
+    });
+
     this.retrieveLastArticles();
   }
 
@@ -38,5 +46,5 @@ export class HomeComponent implements OnInit {
   goToArticles() {
     this.router.navigateByUrl("/articles");
   }
-
+  
 }

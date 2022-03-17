@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Captain } from 'src/app/models/captain/captain';
@@ -13,6 +13,7 @@ export class UpdatePersonalFormComponent implements OnInit {
 
   @Input() captain: Captain;
   confirmPersonalUpdate = false;
+  @Output() updateEvent = new EventEmitter<any>();
 
   personalForm = this.fb.group({
     firstname: "",
@@ -33,6 +34,7 @@ export class UpdatePersonalFormComponent implements OnInit {
   updatePersonal() {
     this.captainService.updatePersonal(this.captain._id, this.personalForm.value).subscribe(() => {
       this.confirmPersonalUpdate = true;
+      this.updateEvent.emit();
       setTimeout(() => {
         this.confirmPersonalUpdate = false;
       }, 9000);
