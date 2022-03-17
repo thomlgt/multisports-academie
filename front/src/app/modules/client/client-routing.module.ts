@@ -7,6 +7,7 @@ import { ActivityComponent } from './pages/activity/activity.component';
 import { EventComponent } from './pages/event/event.component';
 import { EventsReadingComponent } from './pages/events-reading/events-reading.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
         { path: 'events', component: EventsReadingComponent },
         { path: 'event/:id', component: EventComponent },
         { path: 'activity/:id', component: ActivityComponent },
+        { path: 'legal', component: MentionsLegalesComponent },
         { path: '**', redirectTo: "home"}
       ]
   }

@@ -33,6 +33,21 @@ p {
     font-size: small;
 }
 
+span {
+    display: flex;
+}
+
+span a {
+    margin-left: 3px;
+    font-size: 13px;
+    color: #bbb;
+    text-decoration: underline;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
 .error {
     color: darkred;
     margin: 0px;
