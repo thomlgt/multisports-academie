@@ -1,19 +1,7 @@
 @import 'sizes';
+@import 'colors';
 
-@media only screen and (min-width: 992px) {
-    .site-view {
-        min-height: calc(100vh - $footer-size - $navbar-size);
-        margin-top: $navbar-size;
-        display: flex;
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .site-view {
-        display: flex;
-    }
-}
-
+//* Global
 .side {
     width: 20%;
 }
@@ -21,4 +9,20 @@
 .content {
     // overflow: hidden;
     width: 60%;
+}
+
+//* Large screens
+@media only screen and (min-width: 992px) {
+    .site-view {
+        min-height: calc(100vh - 40px - $footer-size - $navbar-size);
+        margin-top: $navbar-size;
+        display   : flex;
+    }
+}
+
+//* small screens
+@media only screen and (max-width: 992px) {
+    .site-view {
+        display: flex;
+    }
 }

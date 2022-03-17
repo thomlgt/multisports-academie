@@ -28,4 +28,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl("/events")
   }
 
+  goToArticles() {
+    this.router.navigateByUrl("/articles");
+  }
 }

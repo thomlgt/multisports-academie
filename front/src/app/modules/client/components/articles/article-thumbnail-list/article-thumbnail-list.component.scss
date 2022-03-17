@@ -1,0 +1,33 @@
+@import 'colors';
+
+.section-title {
+  margin-bottom: 60px;
+  color        : $text-light;
+}
+
+.articles-section {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+}
+
+ms-button {
+  margin-top: 20px;
+}
+
+//* small screens
+@media only screen and (max-width: 992px) {
+  .articles-section {
+    display        : flex;
+    flex-wrap      : wrap;
+    flex-direction : row;
+    justify-content: space-around;
+  }
+
+  ms-button {
+    width          : 100%;
+    display        : flex;
+    justify-content: center;
+  }
+}
