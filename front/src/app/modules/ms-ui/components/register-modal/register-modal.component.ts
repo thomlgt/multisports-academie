@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
@@ -36,7 +36,8 @@ export class RegisterModalComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthenticationService,
     private router: Router
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
   }
@@ -67,7 +68,7 @@ export class RegisterModalComponent implements OnInit {
 
   cancel() {
     this.activeModal.close();
-    this.modalService.open(LoginModalComponent, { centered: true, size: 'xl' });
+    this.modalService.open(LoginModalComponent, { centered: true, size: 'xl', backdrop: true });
   }
 
   goToLegal() {

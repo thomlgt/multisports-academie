@@ -30,7 +30,7 @@ export class LoginModalComponent implements OnInit {
 
   openRegister() {
     this.activeModal.close();
-    const modalRef = this.modalService.open(RegisterModalComponent, { centered: true });
+    const modalRef = this.modalService.open(RegisterModalComponent, { centered: true, backdrop: 'static' });
   }
 
   login() {
