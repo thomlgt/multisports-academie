@@ -19,6 +19,7 @@ import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component
 import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SportPicturesDirectionComponent,
     EnrolTeamComponent,
     ValuesComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    GalleryComponent
   ],
   imports: [
     CommonModule,
