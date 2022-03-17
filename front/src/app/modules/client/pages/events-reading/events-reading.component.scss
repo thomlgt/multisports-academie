@@ -1,5 +1,9 @@
 h1 {
     color: #E8ECEB;
+    text-align: center;
+    @media (min-width: 768px) {
+        text-align: justify;
+    }
 }
 
 .block-event {

@@ -1,7 +1,7 @@
-<div class="row">
-    <div class="block-image col-4" style="background-image: url('{{ event.mainPicture.url }}')">
+<div class="row block-event" *ngIf="eventRegistrationStatus">
+    <div class="block-image col-12 col-md-4" style="background-image: url('{{ event.mainPicture.url }}')">
     </div>
-    <div class="block-infos col-8">
+    <div class="block-infos col-12 col-md-8">
         <h2>{{ event.name }}</h2>
         <div class="block-text-dates">
             <p class="color-lightblue paragraph-title">Dates de l'événement :</p>
@@ -12,9 +12,15 @@
         <div class="block-text-description">
             <p>{{ event.description }}</p>
         </div>
-        <div class="block-text-buttons row">
-            <div class="block-btn col-6"><ms-button class="btn-custom" value="En savoir plus" color="lightblue" width="100%" (click)="goToEvent()"></ms-button></div>
-            <div class="block-btn col-6"><ms-button class="btn-custom" value="S'inscrire" color="orange" width="100%"></ms-button></div>
+        <div class="block-buttons row">
+            <div class="block-button col-6">
+                <ms-button class="btn-custom" value="En savoir plus" color="lightblue" width="100%" (click)="goToEvent()"></ms-button>
+            </div>
+            <div class="block-button col-6">
+                <ms-button class="btn-custom" value="Inscrire une équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"width="100%"></ms-button>
+                <ms-button class="btn-custom" value="Changer d'équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"width="100%"></ms-button>
+                <ms-button class="btn-custom" value="S'inscrire" color="orange" *ngIf="currentCaptain===null"width="100%"></ms-button>  
+            </div>
         </div>
     </div>
 </div>
