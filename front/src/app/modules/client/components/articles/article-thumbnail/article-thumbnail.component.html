@@ -1,0 +1,16 @@
+<article class="card"
+         (click)="goToArticle()">
+
+  <section class="card-body">
+    <h5 class="title">{{ article.title }}</h5>
+    <h6 class="date">publié le {{ article.updatedDate | date }}</h6>
+    <p class="card-text">{{ article.content | ellipsis }}</p>
+    <!-- <a class="btn btn-primary">Go somewhere</a> -->
+  </section>
+
+  <section class="thumbnail">
+    <img [src]="article.mainPicture.url"
+         [alt]="article.mainPicture.altText">
+  </section>
+
+</article>

@@ -19,6 +19,12 @@ import { ActivityThumbnailComponent } from './components/activities/activity-thu
 import { EventActivitiesComponent } from './components/activities/event-activities/event-activities.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ArticleThumbnailComponent } from './components/articles/article-thumbnail/article-thumbnail.component';
+import { EllipsisPipe } from 'src/app/helpers/pipes/ellipsis.pipe';
+import { ArticlesComponent } from './pages/articles/articles/articles.component';
+import { ArticleComponent } from './pages/articles/article/article.component';
+import { ArticleThumbnailListComponent } from './components/articles/article-thumbnail-list/article-thumbnail-list.component';
+
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 
 @NgModule({
@@ -36,6 +42,11 @@ import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-lega
     EventActivitiesComponent,
     ActivityComponent,
     HomeComponent,
+    ArticleThumbnailComponent,
+    ArticleThumbnailListComponent,
+    EllipsisPipe,
+    ArticlesComponent,
+    ArticleComponent,
     MentionsLegalesComponent
   ],
   imports: [

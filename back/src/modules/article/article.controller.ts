@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
@@ -7,8 +7,9 @@ import { UpdateArticleDto } from './dto/update-article.dto';
 @ApiTags('articles')
 @Controller('articles')
 export class ArticleController {
-  constructor(private readonly articleService: ArticleService) {}
+  constructor(private readonly articleService: ArticleService) { }
 
+  //* POST
   /**
    * crée un nouvel article
    * @param createArticleDto 
@@ -18,12 +19,24 @@ export class ArticleController {
     return this.articleService.create(createArticleDto);
   }
 
+
+  //* GET
   /**
    * retourne tous les articles en base
    */
   @Get()
   findAll() {
     return this.articleService.findAll();
+  }
+
+  /**
+   * Renvoie le nombre choisi d'articles en base classés par ordre chronologique
+   * @param number le nombre d'articles que l'on souhaite récupérer (défaut = 3)
+   * @param sort l'ordre chronologique des articles, n'accepte que 'asc' ou 'desc' (défaut = descendant)
+   */
+  @Get('/last')
+  findLastArticlesByDate(@Query() params) {
+    return this.articleService.findLastArticlesByDate(params);
   }
 
   /**
@@ -35,6 +48,8 @@ export class ArticleController {
     return this.articleService.findOne(id);
   }
 
+
+  //* UPDATE
   /**
    * modifie un article à partir de son id
    * @param id 
@@ -45,6 +60,8 @@ export class ArticleController {
     return this.articleService.update(id, updateArticleDto);
   }
 
+
+  //* DELETE
   /**
    * supprime un article à partir de son id
    * @param id 
@@ -53,4 +70,5 @@ export class ArticleController {
   remove(@Param('id') id: string) {
     return this.articleService.remove(id);
   }
+
 }
