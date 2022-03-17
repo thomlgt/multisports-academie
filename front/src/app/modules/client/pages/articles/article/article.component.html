@@ -1,0 +1,18 @@
+<ms-button value="Retourner à la liste des articles"
+           color="orange"
+           (click)="goToArticles()">
+</ms-button>
+
+<article *ngIf="article">
+
+  <section class="banner">
+    <img [src]="article.mainPicture.url"
+         [alt]="article.mainPicture.altText">
+  </section>
+
+  <section class="content">
+    <h1 class="title">{{article.title}}</h1>
+    <small class="date">article mis en ligne le {{article.updatedDate | date}}</small>
+    <p>{{article.content}}</p>
+  </section>
+</article>

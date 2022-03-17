@@ -1,0 +1,33 @@
+@import 'colors';
+
+article {
+  display       : flex;
+  flex-direction: row-reverse;
+  overflow      : hidden;
+  color: $text-light;
+
+  .banner {
+    //width      : 50px;
+    overflow   : hidden;
+    // flex-grow: 1;
+
+    img {
+      // width  : 100%;
+      height    : 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    // flex-grow: 1;
+    .title{
+      color: $teal;
+    }
+
+    .date {
+      color: $orange;
+      float: right;
+    }
+  }
+
+}
