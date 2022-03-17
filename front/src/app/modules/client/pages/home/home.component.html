@@ -1,23 +1,36 @@
 <section class="content">
-    <img src="../../../../../assets/images/bergues.jpeg" alt="bergues">
+    <img src="../../../../../assets/images/bergues.jpeg"
+         alt="bergues">
     <section class="elem">
         <h2>Qui sommes nous ?</h2>
         <p>
-            Notre association MULTISPORTS ACADEMIE créée en Novembre 2021 a pour objet l’organisation d’évènements sportifs.
+            Notre association MULTISPORTS ACADEMIE créée en Novembre 2021 a pour objet l’organisation d’évènements
+            sportifs.
         </p>
         <p>
-            Notre équipe multigénérationnelle est composée de bénévoles dynamiques pratiquant différentes activités sportives 
+            Notre équipe multigénérationnelle est composée de bénévoles dynamiques pratiquant différentes activités
+            sportives
             qu’elles soient individuelles ou collectives en compétition ou en loisirs.
         </p>
         <p>
-            Si nous venons d’horizons sportifs distincts, un élément nous rassemble régulièrement : 
+            Si nous venons d’horizons sportifs distincts, un élément nous rassemble régulièrement :
             la pratique des challenges multisports.
         </p>
         <p>
-            Notre volonté est de transmettre à un maximum de personnes notre passion pour le sport et les valeurs qu’il véhicule : 
+            Notre volonté est de transmettre à un maximum de personnes notre passion pour le sport et les valeurs qu’il
+            véhicule :
             le plaisir, l’entraide, la convivialité, le partage.
         </p>
         <ms-sport-pictures-direction></ms-sport-pictures-direction>
     </section>
+    <hr>
+    <section class="news">
+        <app-article-thumbnail-list [articles]="articles">
+        </app-article-thumbnail-list>
+        <ms-button *ngIf="articles"
+                   value="Accéder aux actualités"
+                   (click)="goToArticles()">
+        </ms-button>
+    </section>
+    <hr>
 </section>
-

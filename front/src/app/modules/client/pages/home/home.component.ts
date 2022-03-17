@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Article } from 'src/app/models/article/article.model';
+import { ArticleService } from 'src/app/modules/ms-api/article/article.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  articles: Article[];
+
+  constructor(
+    private articleService: ArticleService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.retrieveLastArticles();
+  }
+
+  //* News section
+  retrieveLastArticles() {
+    this.articleService
+      .findLastArticlesByDate()
+      .subscribe(
+        articles => {
+          console.log(articles);
+          this.articles = articles;
+        },
+        error => {
+          console.warn(error);
+        });
+  }
+
+  goToArticles() {
+    this.router.navigateByUrl("/articles");
   }
 
 }

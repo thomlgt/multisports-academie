@@ -9,3 +9,19 @@
 h2 {
     margin-bottom: 30px;
 }
+
+hr {
+    margin: 60px auto;
+    width: 500px;
+    border: 1px solid $teal;
+    opacity: 1;
+}
+
+//* news section
+.news {
+    display: flex;
+    flex-flow: row wrap;
+    ms-button {
+        margin: 20px auto 0;
+    }
+}
