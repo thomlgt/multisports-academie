@@ -4,7 +4,17 @@
 
     background-color: $mid-blue; 
     padding : 20px; 
-    width: 100%;  
+    width: 100%; 
+    
+    p {
+        color :$light;
+        margin: 5px;
+        text-align: center;
+        @media (min-width: 768px) {
+            text-align: left;
+            margin: 0;
+        }
+    }
 
     h3 {
         color :$light;
@@ -19,20 +29,22 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        height : 60px;
-    }
+        @media (min-width: 768px) {
+            height : 60px;
+        }        
 
-    p {
-        color :$light;
-        margin: 0;
-    }
+        &.registered {
+            background-color: $orange; 
+        }
 
-    .team_name p {
-        font-size: 1.2rem;
-    }
+        .team_name p {
+            font-size: 1.2rem;
+        }
+    
+        .information p {
+            font-size: 0.8rem;
+        }
 
-    .information p {
-        font-size: 0.8rem;
     }
 
 }

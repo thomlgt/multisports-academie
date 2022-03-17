@@ -16,13 +16,16 @@ h3 {
 
 p, li {
     color: $light;
-    text-align: justify;
 }
 
 .block {
     background-color: $light-blue;
     padding : 50px 30px;
     margin-bottom: 20px;
+    text-align: center;
+    @media (min-width: 768px) {
+        text-align: justify;
+    }
 }
 
 .sub_block {
@@ -33,33 +36,36 @@ p, li {
  * Main infos
  */
 
+ /* Block title */
+
 #block_title {
     margin-bottom: 10px;
-}
 
-
-/* Registration status infos */
-
-.registration_status_info {
-    text-align: center;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-
-    p {
-        color: $light-blue;
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 0;
-    }
-
-    &#nb_teams {
-        background-color: $orange;
-    }
+    .registration_status_info {
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
     
-    &#registration_over {
-        background-color: $teal;
+        p {
+            text-align: center;
+            color: $light-blue;
+            @media (min-width: 540px) { // sm
+                font-size: 1.2rem;
+            }
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+    
+        &#nb_teams {
+            background-color: $orange;
+        }
+        
+        &#registration_over {
+            background-color: $teal;
+        }
+    
     }
 
 }
@@ -73,11 +79,11 @@ p, li {
     
     h3 {
         color: $light-blue;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .gp_infos p {
-        font-size: 0.8rem;
+        // font-size: 0.8rem;
         color: $light-blue;
         margin: 0;
         text-align: center;
