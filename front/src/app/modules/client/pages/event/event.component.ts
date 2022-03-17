@@ -39,14 +39,15 @@ export class EventComponent implements OnInit {
     private route : ActivatedRoute,
     private authenticationService: AuthenticationService,
     private modalService : NgbModal
-  ) { 
-    this.eventTeams = [];
-    this.availableTeams = [];
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.eventTeams = [];
+    this.captainTeams = [];
+    this.availableTeams = [];
     this.hasRecordedTeam = false;
+    this.currentCaptain = null;
+    this.id = this.route.snapshot.params['id'];
     this.initEvent();
   }
 
@@ -98,15 +99,28 @@ export class EventComponent implements OnInit {
   
   initEventTeams() {
     let registrations = this.event.registrations;
-    for (let registration of registrations) {
-      this.eventTeams.push(registration.team);
+    let nbTeams = registrations.length;
+    let i = 0;
+    if (nbTeams > 0) {
+      for (let registration of registrations) { 
+        this.eventTeams.push(registration.team);
+        i++;
+        if (i === nbTeams) {        
+          this.initCaptain();
+        }
+      }
+    } else {
+      this.initCaptain();
     }
-    this.initCaptain(); 
   }
 
   initCaptain() {
-    this.currentCaptain = this.authenticationService.currentCaptainValue.captain;
-    this.initCaptainTeams();
+    // check if authenticated
+    let authenticatedCaptain = this.authenticationService.currentCaptainValue;
+    if (authenticatedCaptain) {
+      this.currentCaptain = authenticatedCaptain.captain;
+      this.initCaptainTeams();
+    }
   }
 
   initCaptainTeams() {
