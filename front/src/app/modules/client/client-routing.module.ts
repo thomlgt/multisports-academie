@@ -25,16 +25,11 @@ const routes: Routes = [
       },
       { path: 'events', component: EventsReadingComponent },
       { path: 'event/:id', component: EventComponent },
+      { path: 'articles', component: ArticlesComponent, pathMatch: 'full' },
       { path: "articles/:id", component: ArticleComponent },
-      // {
-      //   path: 'articles', component: ArticlesComponent,
-      //   children: [
-      //     { path: ":id", component: ArticleComponent },
-      //   ]
-      // },
 
 
-      //{ path: '**', redirectTo: "home" }
+      { path: '**', redirectTo: "home" }
     ]
   }
 
