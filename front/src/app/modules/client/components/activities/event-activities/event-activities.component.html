@@ -1,12 +1,11 @@
 <!-- TODO: remplacer le tableau par event.activities -->
 
-<section>
+<section *ngIf="event">
   <h3 class="section-title">Liste des épreuves</h3>
 
   <div class="block">
-    <!-- <h4 class="subtitle">Les épreuves commune</h4> -->
     <div class="activities">
-      <app-activity-thumbnail *ngFor="let activity of event.activities;"
+      <app-activity-thumbnail [event]="event" *ngFor="let activity of event.activities;"
       [activity]="activity">
       </app-activity-thumbnail>
     </div>

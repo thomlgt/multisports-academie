@@ -1,5 +1,9 @@
 <div id="activity" *ngIf="activity">
 
+  <div *ngIf="eventId">
+    <p (click)="goToEvent()" id="return_event">retourner à l'événement</p>
+  </div>
+
   <section class="banner" style="background-image: url({{activity.mainPicture.url}});">
   </section>
   <h1 class="title">{{ activity.name }}</h1>
