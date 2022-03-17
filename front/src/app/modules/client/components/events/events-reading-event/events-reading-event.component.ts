@@ -96,8 +96,12 @@ export class EventsReadingEventComponent implements OnInit {
   }
 
   initCaptain() {
-    this.currentCaptain = this.authenticationService.currentCaptainValue.captain;
-    this.initCaptainTeams();
+    // check if authenticated
+    let authenticatedCaptain = this.authenticationService.currentCaptainValue;
+    if (authenticatedCaptain) {
+      this.currentCaptain = authenticatedCaptain.captain;
+      this.initCaptainTeams();
+    }
   }
 
   initCaptainTeams() {
