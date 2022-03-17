@@ -83,6 +83,7 @@ export class ArticleService {
       .limit(params.take)
       .sort({ "updatedDate": params.sort = 'asc' ? 1 : -1 })
       .populate('mainPicture', {_id: 0, url: 1,  altText: 1});
+    this.logger.debug({ "message": `findLastArticlesByDate: ${articles.length} article(s) trouvé(s)`, "params": params, "articles": articles });
     return articles;
   }
 }

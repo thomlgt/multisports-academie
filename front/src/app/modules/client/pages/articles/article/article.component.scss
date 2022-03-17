@@ -22,11 +22,18 @@ article {
     // flex-grow: 1;
     .title{
       color: $teal;
+      margin-top: 40px;
+      margin-left: 20px;
     }
 
     .date {
       color: $orange;
-      float: right;
+      margin-left: 20px;
+    }
+
+    p{
+      margin-top: 40px;
+      padding-right: 20px;
     }
   }
 
