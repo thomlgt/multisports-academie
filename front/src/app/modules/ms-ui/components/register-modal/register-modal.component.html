@@ -74,7 +74,10 @@
     </p>
     <section class="form-contract">
         <input type="checkbox" name="contract" class="contract" formControlName="acceptContract">
-        <p>En cochant cette case, vous acceptez les conditions d'utilisation</p>
+        <span>
+            <p>En cochant cette case, vous acceptez les</p>
+            <a (click)="goToLegal()"> conditions d'utilisation</a>
+        </span>
     </section>
     
 

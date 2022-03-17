@@ -15,6 +15,11 @@ footer {
         color : $text-light;
         margin: 0 0 10px 0;
     }
+
+    a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 // large screens
