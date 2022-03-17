@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Article } from 'src/app/models/article/article.model';
 
 @Component({
   selector: 'app-article-thumbnail',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleThumbnailComponent implements OnInit {
 
-  constructor() { }
+  @Input() article: Article;
+
+  constructor(private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
+  goToArticle() {
+    console.log("go to article "+ this.article._id);
+    this.router.navigateByUrl(`/articles/${this.article._id}`);
+  }
 }

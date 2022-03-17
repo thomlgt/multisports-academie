@@ -20,7 +20,10 @@ import { EventActivitiesComponent } from './components/activities/event-activiti
 import { ActivityComponent } from './pages/activity/activity.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ArticleThumbnailComponent } from './components/articles/article-thumbnail/article-thumbnail.component';
-import { HomeArticlesComponent } from './components/articles/home-articles/home-articles.component';
+import { EllipsisPipe } from 'src/app/helpers/pipes/ellipsis.pipe';
+import { ArticlesComponent } from './pages/articles/articles/articles.component';
+import { ArticleComponent } from './pages/articles/article/article.component';
+import { ArticleThumbnailListComponent } from './components/articles/article-thumbnail-list/article-thumbnail-list.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { HomeArticlesComponent } from './components/articles/home-articles/home-
     ActivityComponent,
     HomeComponent,
     ArticleThumbnailComponent,
-    HomeArticlesComponent
+    ArticleThumbnailListComponent,
+    EllipsisPipe,
+    ArticlesComponent,
+    ArticleComponent
   ],
   imports: [
     CommonModule,
