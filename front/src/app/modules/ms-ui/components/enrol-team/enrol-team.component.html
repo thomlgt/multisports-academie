@@ -5,7 +5,7 @@
         <div class="col-12 col-md-8 information" *ngIf="! teamInformations.suitable"><p>{{ teamInformations.information }}</p></div>  
         <div class="offset-md-4 col-md-4 center" *ngIf="teamInformations.suitable">
             <ms-button value="Inscrire" color="orange" (click)="registerTeam(index)" width="100%"  *ngIf="! teamInformations.registered && teamInformations.suitable && ! hasRecordedTeam"></ms-button >
-            <ms-button value="Désinscrire" color="blue" (click)="unregisterTeam(index)"  *ngIf="teamInformations.registered" width="100%"></ms-button>
+            <ms-button value="Désinscrire" color="orange" (click)="unregisterTeam(index)"  *ngIf="teamInformations.registered" width="100%"></ms-button>
         </div>
     </div>
 </div>
