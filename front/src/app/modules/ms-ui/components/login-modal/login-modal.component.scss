@@ -2,12 +2,12 @@
 
 .container {
     display: flex;
-    padding: 0px;
+    padding: 0;
 }
 
 .error {
     color: red;
-    margin: 0px;
+    margin: 0;
 }
 
 .elem {
@@ -62,12 +62,12 @@ img {
 input {
     color: white;
     background-color: #576471;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid transparent;
 }
 
 input:focus {
     outline: none;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid #E09E50;
 }
