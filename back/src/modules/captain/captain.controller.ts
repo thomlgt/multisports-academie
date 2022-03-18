@@ -12,27 +12,13 @@ export class CaptainController {
     constructor(private captainService: CaptainService) { }
 
     /**
-     * Crée un nouveau capitaine
-     * @param captain 
-     * @returns 
-     */
-    @ApiBody({
-        type: CreateCaptain,
-        description: "l'objet Capitaine à creer",
-    })
-    @Post()
-    async create(@Body() captain: CreateCaptain) {
-        return this.captainService.create(captain);
-    }
-
-    /**
      * Retourne tous les capitaines en base
      * @returns 
      */
-    @Get()
-    async findAll() {
-        return this.captainService.findAll();
-    }
+    // @Get()
+    // async findAll() {
+    //     return this.captainService.findAll();
+    // }
 
     /**
      * retourne un capitaine à partir de son id
