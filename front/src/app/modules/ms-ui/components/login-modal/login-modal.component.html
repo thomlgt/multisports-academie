@@ -14,9 +14,9 @@
             </section>
             <p class="error" *ngIf="isLoginError">Email ou mot de passe incorrect.</p>
             <section class="form-content">
-                <ms-button value="Connexion" color="lightblue" (click)="login()"></ms-button>
+                <ms-button value="Connexion" (click)="login()"></ms-button>
             </section>
-            <hr class="solid">
+            <hr class="no-margin">
             <p>Vous ne possédez pas encore de compte ?</p>
             <section class="form-content">
                 <ms-button value="Créer un compte" color="orange" (click)="openRegister()"></ms-button>
