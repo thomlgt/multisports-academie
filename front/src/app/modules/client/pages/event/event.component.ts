@@ -59,9 +59,7 @@ export class EventComponent implements OnInit {
     })    
   }
 
-  datediff(first, second) {
-    //Take the difference between the dates and divide by milliseconds per day.
-    //Round to nearest whole number to deal with DST.
+  dateDiff(first, second) {
     return Math.round((second-first)/(1000*60*60*24));
   }
 
@@ -74,7 +72,7 @@ export class EventComponent implements OnInit {
     // before registration
     if (currentDate < startRegistration) {
       this.eventRegistrationStatus = 1;
-      this.remainingDays = this.datediff(currentDate, startRegistration);
+      this.remainingDays = this.dateDiff(currentDate, startRegistration);
     // during registration
     } else if (currentDate >= startRegistration && currentDate <= endRegistration) {
       this.eventRegistrationStatus = 2;
@@ -175,7 +173,19 @@ export class EventComponent implements OnInit {
           information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membres dans une équipe.`;
           suitable = false;
         } else {
-          suitable = true;
+          let nbFemales = 0;
+          for (let member of acceptedMembers) {
+            if (member.gender == 2) {
+              nbFemales++;
+            }
+          }
+          if (nbFemales >= this.event.minFemale) {
+            suitable = true;
+          } else {
+            information = `Il doit y avoir au moins ${this.event.minFemale} femme(s) dans une équipe.`;
+            suitable = false;
+          }
+
         }
       }
 

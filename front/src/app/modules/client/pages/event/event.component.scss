@@ -76,6 +76,9 @@ p, li {
     background-color: $light; 
     text-align: center;
     padding: 20px 0;  
+    @media (min-width: 768px) {
+        padding: 20px 40px;  
+    }
     
     h3 {
         color: $light-blue;
@@ -127,6 +130,13 @@ p, li {
 
     ms-button {
         margin: 10px;
+    }
+
+    
+    .important_info {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $teal;
     }
 
 }

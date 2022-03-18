@@ -158,7 +158,19 @@ export class EventsEventComponent implements OnInit {
           information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membres dans une équipe.`;
           suitable = false;
         } else {
-          suitable = true;
+          let nbFemales = 0;
+          for (let member of acceptedMembers) {
+            if (member.gender == 2) {
+              nbFemales++;
+            }
+          }
+          if (nbFemales >= this.event.minFemale) {
+            suitable = true;
+          } else {
+            information = `Il doit y avoir au moins ${this.event.minFemale} femmes dans une équipe.`;
+            suitable = false;
+          }
+
         }
       }
 
