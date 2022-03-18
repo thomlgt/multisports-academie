@@ -34,7 +34,8 @@ hr {
 .modal-content {
     width           : max-content;
     height          : max-content;
-    background-color: $light-blue;
+    background-color: $mid-blue;
+    border          : unset;
     color           : $text-light;
 
     //* Gallery photo modale (needs to be global to work properly)
@@ -79,6 +80,7 @@ hr {
                 &:first-child {
                     margin-right: -15px;
                 }
+
                 &:last-child {
                     margin-left: -15px;
                 }
