@@ -91,9 +91,11 @@
             <p *ngIf="eventRegistrationStatus !== 1 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
             <p *ngIf="eventRegistrationStatus !== 1 && ! hasRecordedTeam && currentCaptain">Aucune de vos équipes n'est inscrite pour cet événement.</p>
            
-            <ms-button class="btn-custom" value="Inscrire une équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Inscrire une équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam  && event.registrations.length < event.maxTeams" (click)="openRegistrationModal()"></ms-button>
             <ms-button class="btn-custom" value="Changer d'équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
             <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null"></ms-button>
+
+            <p class="important_info" *ngIf="eventRegistrationStatus === 2 && event.registrations.length >= event.maxTeams">Le nombre d'équipes maximum est atteint !</p>
             
         </div>
     </section>
