@@ -31,6 +31,7 @@ ul.tab-links {
     color: $teal;
     // font-weight: bold;
     font-size: 150%;
+    cursor: pointer;
 
     &:hover, &.active {
       font-weight: bold;
@@ -38,7 +39,6 @@ ul.tab-links {
 
     &.active {
       color: $orange;
-      text-decoration: underline;
     }
   }
 }
@@ -53,14 +53,19 @@ section {
     margin-bottom: 50px;
   }
 
-  h5 {
-    color      : $orange;
-    font-weight: normal;
-  }
-
   p {
     margin-left: 20px;
     color      : $text-light;
+
+    span.color-orange {
+      color      : $orange;
+      font-weight : bold;
+    }
+
+    &.rules_text {
+      margin-top: 20px;;
+    }
+
   }
 
   &.galerie {
