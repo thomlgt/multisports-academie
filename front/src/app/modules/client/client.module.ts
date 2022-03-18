@@ -26,6 +26,7 @@ import { ArticleComponent } from './pages/articles/article/article.component';
 import { ArticleThumbnailListComponent } from './components/articles/article-thumbnail-list/article-thumbnail-list.component';
 
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
+import { GalleryPageComponent } from './pages/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-lega
     EllipsisPipe,
     ArticlesComponent,
     ArticleComponent,
-    MentionsLegalesComponent
+    MentionsLegalesComponent,
+    GalleryPageComponent
   ],
   imports: [
     CommonModule,

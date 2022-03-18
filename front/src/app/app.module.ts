@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -20,7 +21,7 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     MsUiModule,
     MsApiModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]

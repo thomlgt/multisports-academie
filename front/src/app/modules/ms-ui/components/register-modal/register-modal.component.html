@@ -67,7 +67,7 @@
         </select>
     </section>
 
-    <hr class="solid">
+    <hr class="no-margin">
 
     <p class="error" *ngIf="form.acceptContract.invalid && (form.acceptContract.dirty || form.acceptContract.touched)">
         Pour continuer, vous devez accepter les conditions d'utilisation.
@@ -88,7 +88,7 @@
         <p class="error">Des champs ne sont pas correctement remplis</p>
     </section>
     <section class="form-content">
-        <ms-button value="Valider et créer un compte" color="lightblue" (click)="register()"></ms-button>
+        <ms-button value="Valider et créer un compte" (click)="register()"></ms-button>
     </section>
     <section class="form-content">
         <ms-button value="Annuler" color="orange" (click)="cancel()"></ms-button>

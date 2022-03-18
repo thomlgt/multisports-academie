@@ -1,22 +1,19 @@
-::ng-deep .modal-content  {
-    background-color: #2D3E4E;
-    border: 0px;
-}
+// TODO: clean le fichier, ajouter les variables, réorganiser par elements + commentaires
 
 .container {
     display: flex;
-    padding: 0px;
+    padding: 0;
 }
 
 .error {
     color: red;
-    margin: 0px;
+    margin: 0;
 }
 
 .elem {
     width: 50%;
 }
-
+ //* small screens
 @media only screen and (max-width: 992px) {
     .side-img {
         display: none;
@@ -41,8 +38,8 @@ form {
     margin-bottom: 10px;
 }
 
-hr.solid {
-    border-top: 2px solid #bbb;
+hr {
+    margin: 20px auto;
     width: 80%;
 }
 
@@ -51,20 +48,26 @@ p {
     color: white;
 }
 
+.side-img {
+    margin: -20px 0 -20px -20px;
+}
+
 img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 //Inputs
 input {
     color: white;
     background-color: #576471;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid transparent;
 }
 
 input:focus {
     outline: none;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid #E09E50;
 }

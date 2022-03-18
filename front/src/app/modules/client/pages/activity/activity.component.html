@@ -8,20 +8,6 @@
   </section>
   <h1 class="title">{{ activity.name }}</h1>
   
-  <section>
-    <h3 class="subtitle">Résumé des informations :</h3>
-    <div class="row text-center">
-      <div class="col-lg-6">
-        <h5>Durée de l'épreuve :</h5>
-        <p>{{ activity.duration }} minutes</p>
-      </div>
-      <div class="col-lg-6">
-        <h5>Points :</h5>
-        <p>{{ activity.points }}</p>
-      </div>
-    </div>
-  </section>
-  
   <ul class="tab-links">
     <li [ngClass]="{'active': show === 'description'}"
         (click)="show = 'description'">Description</li>
@@ -38,7 +24,15 @@
   
   <section *ngIf="show === 'rules'">
     <h3 class="subtitle">Règles</h3>
-    <p>{{ activity.rules }}</p>
+    <div class="row text-center">
+      <div class="col-lg-6">
+        <p>Durée de l'épreuve : <span class="color-orange">{{ activity.duration }} minutes</span></p>        
+      </div>
+      <div class="col-lg-6">
+        <p>Points : <span class="color-orange">{{ activity.points }}</span></p>        
+      </div>
+    </div>
+    <p class="rules_text">{{ activity.rules }}</p>
   </section>
   
   <section *ngIf="show === 'gallery'">

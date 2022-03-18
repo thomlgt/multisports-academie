@@ -7,6 +7,84 @@ body {
     margin          : 0;
 }
 
+hr {
+    margin   : 60px auto;
+    max-width: 500px;
+    min-width: 80%;
+    border   : 1px solid $teal;
+    opacity  : 1;
+
+    &.no-margin {
+        margin: 0 auto;
+    }
+}
+
+
+
+/* GENERIC MODAL STYLE */
+
+.modal-content {
+    width           : max-content;
+    height          : max-content;
+    background-color: $mid-blue;
+    border          : unset;
+    color           : $text-light;
+    padding: 20px;
+    position: relative;
+
+    //* Gallery photo modale (needs to be global to work properly)
+    // see https: //stackoverflow.com/a/64595023/11803476
+    .gallery-modale {
+        padding: 30px;
+        position: unset;
+
+        .control {
+            background-color: $orange;
+            width           : 30px;
+            height          : 30px;
+            border-radius   : 50%;
+            font-weight     : 900;
+            display         : flex;
+            justify-content : center;
+            align-content   : center;
+            z-index         : 1;
+            cursor          : pointer;
+        }
+
+        .close {
+            background-color: $mid-blue;
+            border-radius   : 2px;
+            position        : absolute;
+            top             : 0;
+            right           : 0;
+            margin          : 5px;
+        }
+
+        & .photo {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex-wrap      : nowrap;
+
+            img {
+                max-width : 1000px;
+                max-height: 900px;
+            }
+
+            & .navigation {
+                &:first-child {
+                    margin-right: -15px;
+                }
+
+                &:last-child {
+                    margin-left: -15px;
+                }
+            }
+        }
+    }
+}
+
+
 // TODO: retirer les helpers avant de mettre en prod
 /* helper classes */
 .wip {
