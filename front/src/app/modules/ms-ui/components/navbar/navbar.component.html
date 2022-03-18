@@ -1,14 +1,15 @@
 <!-- TODO: colorer le lien actif -->
 <header>
     <div class="menu">
-        <div class="logo">
+        <div class="logo"
+        (click)="goToHome()">
             <img src="/assets/images/logos/logo-sans-fond-sans-bords-bleuciel.svg" alt="logo" (click)="goToHome()">
         </div>
         <ul class="menu-bar">
             <li (click)="goToHome()">Accueil</li>
             <li (click)="goToArticles()">Actualités</li>
             <li (click)="goToEvents()">Evenements</li>
-            <li>Galerie</li>
+            <li (click)="goToGallery()">Galerie</li>
             <li (click)="goToContact()">Contact</li>
         </ul>
         <div class="menu-connexion">

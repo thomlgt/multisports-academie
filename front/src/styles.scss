@@ -19,15 +19,7 @@ hr {
     }
 }
 
-// TODO: retirer les helpers avant de mettre en prod
-/* helper classes */
-.wip {
-    border: 1px solid red;
-}
 
-.wipy {
-    border: 1px solid yellow;
-}
 
 /* GENERIC MODAL STYLE */
 
@@ -90,4 +82,15 @@ hr {
             }
         }
     }
+}
+
+
+// TODO: retirer les helpers avant de mettre en prod
+/* helper classes */
+.wip {
+    border: 1px solid red;
+}
+
+.wipy {
+    border: 1px solid yellow;
 }

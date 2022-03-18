@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   }
 
   goToHome() {
-    this.router.navigateByUrl("home")
+    this.router.navigate(["home"], { fragment: "top" })
   }
 
   goToContact() {
@@ -30,5 +30,9 @@ export class NavbarComponent implements OnInit {
 
   goToArticles() {
     this.router.navigateByUrl("/articles");
+  }
+
+  goToGallery() {
+    this.router.navigateByUrl("/gallery");
   }
 }
