@@ -9,11 +9,11 @@ import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
 
 @Component({
-  selector: 'app-events-reading-event',
-  templateUrl: './events-reading-event.component.html',
-  styleUrls: ['./events-reading-event.component.scss']
+  selector: 'app-events-event',
+  templateUrl: './events-event.component.html',
+  styleUrls: ['./events-event.component.scss']
 })
-export class EventsReadingEventComponent implements OnInit {
+export class EventsEventComponent implements OnInit {
 
   @Input() event : SafeEvent;
   eventRegistrationStatus: number;

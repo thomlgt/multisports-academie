@@ -91,9 +91,9 @@
             <p *ngIf="eventRegistrationStatus !== 1 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
             <p *ngIf="eventRegistrationStatus !== 1 && ! hasRecordedTeam && currentCaptain">Aucune de vos équipes n'est inscrite pour cet événement.</p>
            
-            <ms-button class="btn-custom" value="Inscrire une équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
-            <ms-button class="btn-custom" value="Changer d'équipe !" color="lightblue" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
-            <ms-button class="btn-custom" value="Identifiez-vous !" color="lightblue" *ngIf="currentCaptain===null"></ms-button>
+            <ms-button class="btn-custom" value="Inscrire une équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Changer d'équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
+            <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null"></ms-button>
             
         </div>
     </section>
