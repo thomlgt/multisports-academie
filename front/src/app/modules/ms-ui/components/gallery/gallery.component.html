@@ -1,1 +1,13 @@
-<p>gallery works!</p>
+<section *ngIf="pictures">
+  <hr>
+  <h2 class="title">Les dernières photos :</h2>
+  <div class="gallery">
+    <img *ngFor="let img of pictures; let index = index"
+         [src]="img.url"
+         [alt]="img.altText"
+         class="rounded thumbnail"
+         (click)="openModal(index)">
+  </div>
+</section>
+
+

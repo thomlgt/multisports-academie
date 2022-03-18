@@ -1,0 +1,18 @@
+@import 'colors';
+
+img {
+  max-height: 800px;
+  max-width: 1000px;
+}
+
+.modal-content {
+  width: fit-content;
+  height: fit-content;
+  background-color: $light-blue;
+}
+
+.modal-body {
+  display: block;
+  background-color: $light-blue;
+  color: $text-light;
+}
