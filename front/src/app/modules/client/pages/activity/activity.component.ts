@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Activity } from 'src/app/models/activity/activity.model';
 import { ActivityService } from 'src/app/modules/ms-api/activity/activity.service';
 
@@ -11,16 +11,19 @@ import { ActivityService } from 'src/app/modules/ms-api/activity/activity.servic
 export class ActivityComponent implements OnInit {
 
   id: string;
+  eventId: string|null;
   activity: Activity;
   show: string;
 
   constructor(
     private activityService: ActivityService,
     private route : ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.eventId = this.route.snapshot.params['eventid'];
     this.initActivity();
     this.show = "description";
   }
@@ -30,6 +33,10 @@ export class ActivityComponent implements OnInit {
       this.activity = data;
       console.log(data);
     })    
+  }
+
+  goToEvent() {
+    this.router.navigateByUrl(`/event/${this.eventId}`);
   }
 
 }

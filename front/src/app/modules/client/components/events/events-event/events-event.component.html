@@ -14,10 +14,10 @@
         </div>
         <div class="block-buttons row">
             <div class="block-button col-6">
-                <ms-button class="btn-custom" value="En savoir plus" color="lightblue" width="100%" (click)="goToEvent()"></ms-button>
+                <ms-button class="btn-custom" value="En savoir plus" width="100%" (click)="goToEvent()"></ms-button>
             </div>
             <div class="block-button col-6">
-                <ms-button class="btn-custom" value="Inscrire une équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam" (click)="openRegistrationModal()"width="100%"></ms-button>
+                <ms-button class="btn-custom" value="Inscrire une équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam && event.registrations.length < event.maxTeams" (click)="openRegistrationModal()"width="100%"></ms-button>
                 <ms-button class="btn-custom" value="Changer d'équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"width="100%"></ms-button>
                 <ms-button class="btn-custom" value="S'inscrire" color="orange" *ngIf="currentCaptain===null"width="100%"></ms-button>  
             </div>

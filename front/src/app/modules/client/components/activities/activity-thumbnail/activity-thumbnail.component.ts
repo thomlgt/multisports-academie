@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Activity } from 'src/app/models/activity/activity.model';
+import { Event } from 'src/app/models/event/event';
 
 @Component({
   selector: 'app-activity-thumbnail',
@@ -10,17 +11,17 @@ import { Activity } from 'src/app/models/activity/activity.model';
 export class ActivityThumbnailComponent implements OnInit {
 
   @Input() activity: Activity;
+  @Input() event: Event;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    console.log(this.activity);
   }
 
   goToActivityDetailsPage() {
-    this.router.navigateByUrl(`/activity/${this.activity._id}`);
+    this.router.navigateByUrl(`event/${this.event._id}/activities/${this.activity._id}`);
   }
 
 }
