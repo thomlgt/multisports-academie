@@ -19,7 +19,7 @@ import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component
 import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GalleryComponent } from './components/gallery/gallery.component';
+import { GalleryComponent, PictureModale } from './components/gallery/gallery.component';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     EnrolTeamComponent,
     ValuesComponent,
     ContactFormComponent,
-    GalleryComponent
+    GalleryComponent,
+    PictureModale
   ],
   imports: [
     CommonModule,
@@ -60,7 +61,9 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     DisplayRegistrationComponent,
     SportPicturesDirectionComponent,
     ValuesComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    GalleryComponent,
+    PictureModale
   ]
 })
 export class MsUiModule { }

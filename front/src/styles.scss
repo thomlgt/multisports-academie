@@ -7,6 +7,13 @@ body {
     margin          : 0;
 }
 
+hr {
+    margin : 60px auto;
+    width  : 500px;
+    border : 1px solid $teal;
+    opacity: 1;
+}
+
 // TODO: retirer les helpers avant de mettre en prod
 /* helper classes */
 .wip {
