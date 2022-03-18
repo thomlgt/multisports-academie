@@ -31,6 +31,7 @@ export class EventComponent implements OnInit {
   availableTeams: any[];
   hasRecordedTeam: boolean;
 
+  eventTeamsMembers: number;
   remainingDays: number;
 
   constructor(
@@ -47,6 +48,7 @@ export class EventComponent implements OnInit {
     this.availableTeams = [];
     this.hasRecordedTeam = false;
     this.currentCaptain = null;
+    this.eventTeamsMembers = 0;
     this.id = this.route.snapshot.params['id'];
     this.initEvent();
   }
@@ -102,6 +104,7 @@ export class EventComponent implements OnInit {
     if (nbTeams > 0) {
       for (let registration of registrations) { 
         this.eventTeams.push(registration.team);
+        this.eventTeamsMembers += registration.team.members.length + 1;
         i++;
         if (i === nbTeams) {        
           this.initCaptain();
