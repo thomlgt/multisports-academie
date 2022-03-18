@@ -21,16 +21,16 @@
                     <div class="col-12 col-md-4">
                         <h3>Inscriptions</h3>
                         <div class="gp_infos">
-                            <p>Du: <span class="highlight_infos">{{ event.startRegistration | date:'dd/MM/y' }}</span>
+                            <p>Du : <span class="highlight_infos">{{ event.startRegistration | date:'dd/MM/y' }}</span>
                             </p>
-                            <p>Au: <span class="highlight_infos">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
+                            <p>Au : <span class="highlight_infos">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <h3>Événement</h3>
                         <div class="gp_infos">
-                            <p>Du: <span class="highlight_infos">{{ event.startEvent | date:'dd/MM/y' }}</span></p>
-                            <p>Au: <span class="highlight_infos">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
+                            <p>Du : <span class="highlight_infos">{{ event.startEvent | date:'dd/MM/y' }}</span></p>
+                            <p>Au : <span class="highlight_infos">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -44,7 +44,12 @@
                     </div>
                 </div>
             </div>
+            <div id="recap">
+                <h2>Récapitulatif</h2>
+                <p class="important_info" *ngIf="eventRegistrationStatus === 3">Inscriptions : <span class="highlight_infos">{{ event.registrations?.length }}</span> équipes pour un total de <span class="highlight_infos">{{ eventTeamsMembers }}</span> participants.</p>
+            </div>
         </div>
+
     </section>
 
     <section id="content">
@@ -83,11 +88,11 @@
     <section id="registration">
         <div id="block_registration" class="block">
 
-            <h2 *ngIf="eventRegistrationStatus === 1">Inscriptions</h2>  
+            <h2 *ngIf="eventRegistrationStatus === 1">Ouverture des inscriptions le {{ event.startRegistration | date:'dd/MM/y' }}</h2>  
             <h2 *ngIf="eventRegistrationStatus === 2">Inscriptions ouvertes</h2>
             <h2 *ngIf="eventRegistrationStatus === 3">Inscriptions terminées</h2> 
 
-            <p *ngIf="eventRegistrationStatus === 1">L'inscription sera ouverte dans {{ remainingDays }} jour(s).</p>
+            <p *ngIf="eventRegistrationStatus === 1">soit dans {{ remainingDays }} jour(s)</p>
             <p *ngIf="eventRegistrationStatus !== 1 && hasRecordedTeam">Vous avez inscrit une équipe pour cet événement.</p>
             <p *ngIf="eventRegistrationStatus !== 1 && ! hasRecordedTeam && currentCaptain">Aucune de vos équipes n'est inscrite pour cet événement.</p>
            
