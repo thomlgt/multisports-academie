@@ -1,16 +1,15 @@
-<!-- TODO: colorer le lien actif -->
 <header>
     <div class="menu">
         <div class="logo"
-        (click)="goToHome()">
-            <img src="/assets/images/logos/logo-sans-fond-sans-bords-bleuciel.svg" alt="logo" (click)="goToHome()">
+        (click)="goTo('home', 'top')">
+            <img src="/assets/images/logos/logo-sans-fond-sans-bords-bleuciel.svg" alt="logo">
         </div>
         <ul class="menu-bar">
-            <li (click)="goToHome()">Accueil</li>
-            <li (click)="goToArticles()">Actualités</li>
-            <li (click)="goToEvents()">Evenements</li>
-            <li (click)="goToGallery()">Galerie</li>
-            <li (click)="goToContact()">Contact</li>
+            <li (click)="goTo('home', 'top')">Accueil</li>
+            <li (click)="goTo('articles')">Actualités</li>
+            <li (click)="goTo('events')">Evenements</li>
+            <li (click)="goTo('gallery')">Galerie</li>
+            <li (click)="goTo('home', 'contact')">Contact</li>
         </ul>
         <div class="menu-connexion">
             <ng-container>
