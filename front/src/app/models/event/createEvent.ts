@@ -15,6 +15,7 @@ export class CreateEvent {
     minMembers: number;
     maxMembers: number;
     minAge: number;
+    minFemale: number;
     price: number;
     maxTeams: number;
     place: Place;

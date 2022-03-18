@@ -43,6 +43,9 @@ export class Event {
     minAge: number;
     @Prop()
     @IsNumber()
+    minFemale: number;
+    @Prop()
+    @IsNumber()
     price: number;
     @Prop()
     @IsNumber()
