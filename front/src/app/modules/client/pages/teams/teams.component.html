@@ -8,7 +8,7 @@
                 <p class="membres">Membres : {{ team.members.length + 1 }}</p>
             </button>
             <section class="action">
-                <ms-button value="Éditer" color="lightblue" width="47.5%" [routerLink]="team._id" (click)="openEditor()"></ms-button>
+                <ms-button value="Éditer" width="47.5%" [routerLink]="team._id" (click)="openEditor()"></ms-button>
                 <ms-button value="Supprimer" color="orange" width="47.5%" (click)="deleteTeam(team._id)"></ms-button>
             </section>
         </ng-container>

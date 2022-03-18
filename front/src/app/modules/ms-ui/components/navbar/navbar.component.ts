@@ -10,25 +10,18 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private router : Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  goToHome() {
-    this.router.navigateByUrl("home")
-  }
-
-  goToContact() {
-    this.router.navigate(["home"] , { fragment: "contact" })
-  }
-
-  goToEvents() {
-    this.router.navigateByUrl("/events")
-  }
-
-  goToArticles() {
-    this.router.navigateByUrl("/articles");
+  goTo(route: string, frag?: string) {
+    if (frag) {
+      this.router.navigate([route], {fragment: frag});
+    } else {
+      this.router.navigate([route]);
+    }
+    
   }
 }

@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" id="top">
 
     <img src="../../../../../assets/images/bergues.jpeg"
          alt="bergues">
@@ -49,6 +49,12 @@
                    value="Accéder aux actualités"
                    (click)="goToArticles()">
         </ms-button>
+    </section>
+
+    
+    <section class="gallery">
+        <hr>
+        <app-gallery [pictures]="pictures"></app-gallery>
     </section>
 
     <hr>

@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TeamsComponent } from './pages/teams/teams.component';
+import { GalleryPageComponent } from './pages/gallery/gallery.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,8 @@ const routes: Routes = [
 
       { path: 'articles', component: ArticlesComponent, pathMatch: 'full' },
       { path: "articles/:id", component: ArticleComponent },
+
+      { path: 'gallery', component: GalleryPageComponent, pathMatch: 'full' },
 
       { path: 'legal', component: MentionsLegalesComponent },
       

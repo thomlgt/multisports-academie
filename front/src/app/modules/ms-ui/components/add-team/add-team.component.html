@@ -7,6 +7,6 @@
     </section>
 
     <ms-button value="Ajouter" color="orange" *ngIf="!addTeamForm.valid"></ms-button>
-    <ms-button value="Ajouter" color="lightblue" (click)="addTeam()" *ngIf="addTeamForm.valid"></ms-button>
+    <ms-button value="Ajouter" (click)="addTeam()" *ngIf="addTeamForm.valid"></ms-button>
 
 </form>

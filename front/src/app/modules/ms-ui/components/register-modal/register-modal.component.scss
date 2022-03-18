@@ -50,7 +50,7 @@ a:hover {
 
 .error {
     color: darkred;
-    margin: 0px;
+    margin: 0;
 }
 
 .input-error {
@@ -61,9 +61,9 @@ h2 {
     color: white;
 }
 
-hr.solid {
-    border-top: 2px solid #bbb;
-    width: 80%;
+hr {
+    margin: 20px auto;
+    width : 80%;
 }
 
 input {
@@ -82,13 +82,13 @@ select {
 input {
     color: white;
     background-color: #576471;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid transparent;
 }
 
 input:focus {
     outline: none;
-    border: 0px;
+    border: 0;
     border-bottom: 2px solid #E09E50;
 }
 
