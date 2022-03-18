@@ -7,7 +7,7 @@ import { ArticleComponent } from './pages/articles/article/article.component';
 import { ArticlesComponent } from './pages/articles/articles/articles.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { EventComponent } from './pages/event/event.component';
-import { EventsReadingComponent } from './pages/events-reading/events-reading.component';
+import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
         ]
       },
 
-      { path: 'events', component: EventsReadingComponent },
+      { path: 'events', component: EventsComponent },
       { path: 'event/:id', component: EventComponent },
       { path: 'event/:eventid/activities/:id', component: ActivityComponent },
 

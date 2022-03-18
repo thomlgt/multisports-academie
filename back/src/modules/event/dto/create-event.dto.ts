@@ -25,7 +25,9 @@ export class CreateEventDto {
     @IsNumber()
     maxMembers: number;    
     @IsNumber()
-    minAge: number;    
+    minAge: number; 
+    @IsNumber()
+    minFemale: number;   
     @IsNumber()
     price: number;    
     @IsNumber()

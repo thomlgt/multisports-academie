@@ -13,10 +13,10 @@ export class TeamController {
    * retourne toutes les équipes en base
    * @returns 
    */
-  @Get()
-  async findAll() {
-    return this.teamService.findAll();
-  }
+  // @Get()
+  // async findAll() {
+  //   return this.teamService.findAll();
+  // }
 
   /**
    * retourne une équipe à partir de son id
