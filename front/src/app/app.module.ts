@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -22,7 +22,6 @@ registerLocaleData(localeFr, 'fr');
     MsUiModule,
     MsApiModule,
     NgbModule,
-    FontAwesomeModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]

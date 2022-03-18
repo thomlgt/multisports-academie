@@ -20,6 +20,11 @@ import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent, PictureModale } from './components/gallery/gallery.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 
 @NgModule({
@@ -48,7 +53,8 @@ import { GalleryComponent, PictureModale } from './components/gallery/gallery.co
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   exports: [
     NavbarComponent,
@@ -66,4 +72,8 @@ import { GalleryComponent, PictureModale } from './components/gallery/gallery.co
     PictureModale
   ]
 })
-export class MsUiModule { }
+export class MsUiModule {
+  constructor() {
+    library.add(fas, far, fab);
+  }
+ }
