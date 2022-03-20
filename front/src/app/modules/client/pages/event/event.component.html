@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div id="recap">
+            <div id="recap" *ngIf="eventRegistrationStatus === 3">
                 <h2>Récapitulatif</h2>
                 <p class="important_info" *ngIf="eventRegistrationStatus === 3">Inscriptions : <span class="highlight_infos">{{ event.registrations?.length }}</span> équipes pour un total de <span class="highlight_infos">{{ eventTeamsMembers }}</span> participants.</p>
             </div>
@@ -75,11 +75,12 @@
             <div id="block_registration_rules" class="sub_block">
                 <h3>Modalités d'inscription</h3>
                 <div class="registration_rules">
-                    <p>Coût de l'inscription: {{ event.price }}€</p>
-                    <p>Nombre maximal d'équipes: {{ event.maxTeams }}</p>
-                    <p>Âge minimum requis: {{ event.minAge }}</p>
-                    <p>Nombre minimal d'équipiers: {{ event.minMembers }}</p>
-                    <p>Nombre maximal d'équipiers: {{ event.maxMembers }}</p>
+                    <p>Coût de l'inscription : {{ event.price }}€</p>
+                    <p>Nombre maximal d'équipes : {{ event.maxTeams }}</p>
+                    <p>Âge minimum requis : {{ event.minAge }}</p>
+                    <p>Nombre minimal d'équipiers : {{ event.minMembers }}</p>
+                    <p>Nombre maximal d'équipiers : {{ event.maxMembers }}</p>
+                    <p *ngIf="event.minFemale">Nombre minimal de femmes : {{ event.minFemale }}</p>
                 </div>
             </div>
         </div>
