@@ -14,12 +14,17 @@ export class MailService {
 
     await this.mailerService.sendMail({
       to: captain.email,
-      // from: '"Support Team" <support@example.com>', // override default from
+      from: '"Multisports Académie" <ne-pas-repondre@multisports-academie.fr>',
       subject: 'Confirmation d\'inscription',
       template: '../templates/registration', // `.hbs` extension is appended automatically
       context: { // ✏️ filling curly brackets with content
         firstname: captain.firstname,
       },
+      attachments: [{
+        filename: 'logo-sans-fond-bords-bleu.png',
+        path: __dirname +'/images/logo-sans-fond-bords-bleu.png',
+        cid: 'logo'
+      }]
     });
   }
 
@@ -54,6 +59,11 @@ export class MailService {
         subject: contact.subject,
         message: contact.message,
       },
+      attachments: [{
+        filename: 'logo-sans-fond-bords-bleu.png',
+        path: __dirname +'/images/logo-sans-fond-bords-bleu.png',
+        cid: 'logo'
+      }]
     });
   }
 }
