@@ -1,5 +1,4 @@
 <section>
-  <h2 class="title">Les dernières photos :</h2>
   <div class="gallery" *ngIf="pictures && pictures.length > 0; else noPictures">
     <img *ngFor="let img of pictures; let index = index"
          [src]="img.url"
