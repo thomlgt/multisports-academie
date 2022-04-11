@@ -16,6 +16,10 @@ ms-button {
   margin-top: 20px;
 }
 
+.alternative-text {
+  color: $text-light;
+}
+
 //* small screens
 @media only screen and (max-width: 992px) {
   .articles-section {
