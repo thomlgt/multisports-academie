@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ms-social',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./social.component.scss']
 })
 export class SocialComponent implements OnInit {
+
+@Input() vertical: boolean;
 
   constructor() { }
 
