@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Captain } from 'src/app/models/captain/captain';
 import { Registration } from 'src/app/models/event/registration';
@@ -26,6 +26,7 @@ export class EnrolTeamComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private eventService: EventService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +66,11 @@ export class EnrolTeamComponent implements OnInit {
 
   clorseModal() {
     this.enrolTeamEvent.emit();    
+    this.activeModal.close();
+  }
+
+  goToTeamEdit() {
+    this.router.navigateByUrl(`captain/${this.id}/teams`);
     this.activeModal.close();
   }
 
