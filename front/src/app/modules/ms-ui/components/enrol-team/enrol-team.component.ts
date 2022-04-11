@@ -39,11 +39,11 @@ export class EnrolTeamComponent implements OnInit {
     this.eventService.addRegistration(this.id, newRegistration).subscribe(
       next => {
         console.log('registration OK !');
-        this.clorseModal();
+        this.closeModal();
       },
       error => {
         console.log('registration has failed !');
-        this.clorseModal();
+        this.closeModal();
       }
     );
   }
@@ -55,16 +55,16 @@ export class EnrolTeamComponent implements OnInit {
     this.eventService.cancelRegistration(this.id, newRegistration).subscribe(
       next => {
         console.log('Deletion OK !');
-        this.clorseModal();
+        this.closeModal();
       },
       error => {
         console.log('Deletion has failed !');
-        this.clorseModal();
+        this.closeModal();
       }
     );
   }
 
-  clorseModal() {
+  closeModal() {
     this.enrolTeamEvent.emit();    
     this.activeModal.close();
   }

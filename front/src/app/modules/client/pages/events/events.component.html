@@ -1,8 +1,12 @@
-<h1>Liste des événements</h1>
+<section id="events" *ngIf="events">
 
-<div class="block-event" *ngFor="let event of events">
-    <app-events-event [event]="event"></app-events-event>
-</div>
-<div class="block-event" *ngIf="! events.length">
-    <p>Aucun événement n'a été enregistré !</p>
-</div>
+    <h1>Liste des événements</h1>
+
+    <div class="block-event" *ngFor="let event of events">
+        <app-events-event [event]="event"></app-events-event>
+    </div>
+    <div class="block-event" *ngIf="!events.length">
+        <p>Aucun événement n'a été enregistré !</p>
+    </div>
+
+</section>

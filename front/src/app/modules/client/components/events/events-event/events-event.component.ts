@@ -142,7 +142,7 @@ export class EventsEventComponent implements OnInit {
             age--;
         }
         if (age < this.event.minAge) {
-          information = `Les participans doivent avoir au moins ${this.event.minAge} ans.`;
+          information = `Les participants doivent avoir au moins ${this.event.minAge} ans.`;
           suitable = false;
           acceptedMembers = [];
           break;
@@ -150,27 +150,25 @@ export class EventsEventComponent implements OnInit {
           acceptedMembers.push(member);
         }
       }
-      if (acceptedMembers.length > 0) {
-        if (acceptedMembers.length + 1 < this.event.minMembers) {
-          information = `Il doit y avoir au moins ${this.event.minMembers} membres dans une équipe.`;
-          suitable = false;
-        } else if (acceptedMembers.length + 1 > this.event.maxMembers){
-          information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membres dans une équipe.`;
-          suitable = false;
-        } else {
-          let nbFemales = 0;
-          for (let member of acceptedMembers) {
-            if (member.gender == 2) {
-              nbFemales++;
-            }
-          }
-          if (nbFemales >= this.event.minFemale) {
-            suitable = true;
-          } else {
-            information = `Il doit y avoir au moins ${this.event.minFemale} femmes dans une équipe.`;
-            suitable = false;
-          }
 
+      if (acceptedMembers.length + 1 < this.event.minMembers) {
+        information = `Il doit y avoir au moins ${this.event.minMembers} membre(s) dans une équipe.`;
+        suitable = false;
+      } else if (acceptedMembers.length + 1 > this.event.maxMembers){
+        information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membre(s) dans une équipe.`;
+        suitable = false;
+      } else {
+        let nbFemales = 0;
+        for (let member of acceptedMembers) {
+          if (member.gender == 2) {
+            nbFemales++;
+          }
+        }
+        if (nbFemales >= this.event.minFemale) {
+          suitable = true;
+        } else {
+          information = `Il doit y avoir au moins ${this.event.minFemale} femmes dans une équipe.`;
+          suitable = false;
         }
       }
 
