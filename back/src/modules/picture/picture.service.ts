@@ -1,7 +1,8 @@
-import { Body, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Body, Inject, Injectable, LoggerService, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
+import { WinstonLogger, WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
 import { Picture, PictureDocument } from './entities/picture.entity';
@@ -11,7 +12,10 @@ export class PictureService {
 
   constructor(
     @InjectModel(Picture.name) private pictureModel: Model<PictureDocument>,
-  ) {}
+    @Inject(WINSTON_MODULE_NEST_PROVIDER) private readonly logger: LoggerService
+  ) {
+    (logger as WinstonLogger).setContext(this.constructor.name);
+ }
 
   async create(@Body() createPictureDto: CreatePictureDto): Promise<Picture> {
     //Transformation du DTO createPictureDto en Picture
@@ -23,13 +27,15 @@ export class PictureService {
   }
 
   async findAll(): Promise<Picture[]> {
-    return this.pictureModel.find();
+    const pictures = await this.pictureModel.find();
+    this.logger.debug(`findAll : ${pictures.length} elements trouvés`);
+    return pictures;
   }
 
   async findOne(id: string): Promise<Picture> {
     const picture = this.pictureModel.findById(id);
     if (!picture) {
-      //TODO:Log error
+      this.logger.warn(`findOne: l'id ${id} n'a renvoyé aucun résultat`);
       throw new NotFoundException(`Aucune image avec l'id ${id} trouvée`);
     }
     return picture;
@@ -44,10 +50,17 @@ export class PictureService {
         { new: true },
         (err, updatedPicture) => {
           if (err) {
-            //TODO: LOG error, throw error
-            console.log(err);
+            this.logger.error(
+              `update: erreur lors de l'update`,
+              [
+                { "erreur": err },
+                { "méthode": "update" },
+                { "id": id },
+                { "entry": modifiedPicture }
+              ]);
+            throw new BadRequestException(`update: l'update de l'element ${id} a échoué`);
           }
-          console.log(updatedPicture);
+          this.logger.debug(`update: l'element ${id} a été modifié avec succès`, updatedPicture);
         },
       )
       .clone();
@@ -57,8 +70,10 @@ export class PictureService {
     return this.pictureModel
       .findByIdAndRemove(id, {}, (err, deletedPicture) => {
         if (err) {
-          //TODO: LOG error, throw error
+          this.logger.error(`remove: erreur lors de la suppression de l'element ${id}`, err);
+          throw new BadRequestException(`erreur lors de la suppression de la photo ${id}`);
         }
+        this.logger.debug(`remove: l'element ${id} a été supprimé avec succès`, deletedPicture);
         return deletedPicture;
       })
       .clone();

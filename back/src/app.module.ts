@@ -38,7 +38,6 @@ const MONGO_CONNEXION_STRING = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${
         winston.format.label({
           label: 'API'
         }),
-        winston.format.align(),
         winston.format.json(),
         winston.format.prettyPrint()
       ),
