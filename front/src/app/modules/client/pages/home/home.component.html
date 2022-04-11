@@ -48,7 +48,7 @@
         <div class="news">
             <app-article-thumbnail-list [articles]="articles">
             </app-article-thumbnail-list>
-            <ms-button *ngIf="articles"
+            <ms-button *ngIf="articles && articles.length > 0"
                        value="Accéder aux actualités"
                        (click)="goToArticles()">
             </ms-button>
