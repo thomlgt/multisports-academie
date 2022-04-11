@@ -40,7 +40,7 @@ export class ActivityService {
       this.logger.warn(`findOne: l'id ${id} n'a renvoyé aucun résultat`);
       throw new NotFoundException(`Aucune activité avec l'id ${id} trouvée`);
     }
-    this.logger.debug(`findOne: l'id ${id} a retourné 1 element`, activity);
+    this.logger.debug(`findOne: l'id ${id} a retourné 1 element`);
     return activity;
   }
 
@@ -63,7 +63,7 @@ export class ActivityService {
               ]);
             throw new BadRequestException(`update: l'update de l'activité ${id} a échoué`);
           }
-          this.logger.debug(`update: l'element ${id} a été modifié avec succès`, updatedActivity);
+          this.logger.debug(`update: l'element ${id} a été modifié avec succès`);
         },
       )
       .clone();
@@ -76,7 +76,7 @@ export class ActivityService {
           this.logger.error(`remove: erreur lors de la suppression de l'element ${id}`, err);
           throw new BadRequestException(`erreur lors de la suppression de l'activité ${id}`);
         }
-        this.logger.debug(`remove: l'element ${id} a été supprimé avec succès`, deletedActivity);
+        this.logger.debug(`remove: l'element ${id} a été supprimé avec succès`);
         return deletedActivity;
       })
       .clone();

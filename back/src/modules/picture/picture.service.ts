@@ -60,7 +60,7 @@ export class PictureService {
               ]);
             throw new BadRequestException(`update: l'update de l'element ${id} a échoué`);
           }
-          this.logger.debug(`update: l'element ${id} a été modifié avec succès`, updatedPicture);
+          this.logger.debug(`update: l'element ${id} a été modifié avec succès`);
         },
       )
       .clone();
@@ -73,7 +73,7 @@ export class PictureService {
           this.logger.error(`remove: erreur lors de la suppression de l'element ${id}`, err);
           throw new BadRequestException(`erreur lors de la suppression de la photo ${id}`);
         }
-        this.logger.debug(`remove: l'element ${id} a été supprimé avec succès`, deletedPicture);
+        this.logger.debug(`remove: l'element ${id} a été supprimé avec succès`);
         return deletedPicture;
       })
       .clone();

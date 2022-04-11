@@ -167,7 +167,7 @@ export class EventComponent implements OnInit {
           acceptedMembers.push(member);
         }
       }
-      console.log(acceptedMembers.length);
+      
       if (acceptedMembers.length > 0) {
         if (acceptedMembers.length + 1 < this.event.minMembers) {
           information = `Il doit y avoir au moins ${this.event.minMembers} membres dans une équipe.`;
@@ -202,8 +202,6 @@ export class EventComponent implements OnInit {
       )
 
     }
-
-    console.log(this.availableTeams);
   }
 
 }

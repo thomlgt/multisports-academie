@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
       .findLastArticlesByDate()
       .subscribe(
         articles => {
-          console.log(articles);
           this.articles = articles;
         },
         error => {
