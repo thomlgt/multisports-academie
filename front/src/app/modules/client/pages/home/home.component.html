@@ -1,12 +1,11 @@
-<section class="content" id="top">
+<section class="content"
+         id="top">
 
     <img src="../../../../../assets/images/bergues.jpeg"
          alt="bergues">
 
-    <hr>
-
     <section class="elem">
-        <h2>Qui sommes nous ?</h2>
+        <h2 class="section-title">Qui sommes nous ?</h2>
         <span class="presentation">
             <p>
                 Multisports Académie est une association loi 1901 spécialisée dans l'organisation d'événements sportifs.
@@ -27,42 +26,50 @@
         </span>
     </section>
 
-    <hr>
+
 
     <section class="elem">
-        <h2>Nos valeurs</h2>
+        <hr>
+        <h2 class="section-title">Nos valeurs</h2>
         <ms-values></ms-values>
     </section>
 
-    <hr>
+
 
     <section class="elem">
-        <h2>Les membres de l'association</h2>
+        <hr>
+        <h2 class="section-title">Les membres de l'association</h2>
         <ms-sport-pictures-direction></ms-sport-pictures-direction>
     </section>
 
-    <hr>
 
-    <section class="news">
-        <app-article-thumbnail-list [articles]="articles">
-        </app-article-thumbnail-list>
-        <ms-button *ngIf="articles"
-                   value="Accéder aux actualités"
-                   (click)="goToArticles()">
-        </ms-button>
+
+    <section>
+        <hr>
+        <h2 class="section-title">Les dernières actualités :</h2>
+        <div class="news">
+            <app-article-thumbnail-list [articles]="articles">
+            </app-article-thumbnail-list>
+            <ms-button *ngIf="articles && articles.length > 0"
+                       value="Accéder aux actualités"
+                       (click)="goToArticles()">
+            </ms-button>
+        </div>
     </section>
 
-    
+
     <section class="gallery">
         <hr>
+        <h2 class="section-title">Les dernières photos :</h2>
         <app-gallery [pictures]="pictures"></app-gallery>
     </section>
 
-    <hr>
+
 
     <section class="elem"
              id="contact">
-        <h2>Nous contacter</h2>
+        <hr>
+        <h2 class="section-title">Nous contacter</h2>
         <ms-contact-form></ms-contact-form>
     </section>
 

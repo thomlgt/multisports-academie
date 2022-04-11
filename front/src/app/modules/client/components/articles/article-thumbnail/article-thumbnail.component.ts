@@ -18,7 +18,6 @@ export class ArticleThumbnailComponent implements OnInit {
   }
 
   goToArticle() {
-    console.log("go to article "+ this.article._id);
     this.router.navigateByUrl(`/articles/${this.article._id}`);
   }
 }

@@ -12,13 +12,16 @@ export class GalleryPageComponent implements OnInit {
   constructor(private pictureService: PictureService) { }
 
   pictures: Picture[];
+  loading = true;
 
   ngOnInit(): void {
     this.pictureService.findAll().subscribe(
       result => {
+        this.loading = false;
         this.pictures = result;
       },
       err => {
+        this.loading = false;
         console.warn(err);
       }
     )

@@ -17,7 +17,6 @@ export class ArticlesComponent implements OnInit {
       .subscribe(
         articles => {
           this.articles = articles;
-          console.log(articles)
         },
         error => {
           console.warn(error);

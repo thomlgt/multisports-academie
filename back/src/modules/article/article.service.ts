@@ -29,13 +29,14 @@ export class ArticleService {
   async findAll(): Promise<Article[]> {
     const articles = await this.articleModel
     .find()
-    .populate('mainPicture');
+    .populate('mainPicture')
+    .sort({ "updatedDate": -1 })
     this.logger.debug(`findAll : ${articles.length} elements trouvées`);
     return articles;
   }
 
   async findOne(id: string): Promise<Article> {
-    const article = this.articleModel
+    const article =  await this.articleModel
       .findById(id)
       .populate(['mainPicture', 'gallery']);
 
@@ -43,7 +44,7 @@ export class ArticleService {
       this.logger.warn(`findOne: l'id ${id} n'a renvoyé aucun résultat`);
       throw new NotFoundException(`Aucun article avec l'id ${id} trouvée`);
     }
-    this.logger.debug(`findOne: l'id ${id} a retourné 1 element`, article);
+    this.logger.debug(`findOne: l'id ${id} a retourné 1 element`);
     return article;
   }
 
@@ -82,7 +83,7 @@ export class ArticleService {
     const articles = await this.articleModel
       .find({})
       .limit(params.take)
-      .sort({ "updatedDate": params.sort = 'asc' ? 1 : -1 })
+      .sort({ "updatedDate": params.sort = 'asc' ? -1 : 1 })
       .populate('mainPicture', {_id: 0, url: 1,  altText: 1});
     this.logger.debug({ "message": `findLastArticlesByDate: ${articles.length} article(s) trouvé(s)`, "params": params, "articles": articles });
     return articles;

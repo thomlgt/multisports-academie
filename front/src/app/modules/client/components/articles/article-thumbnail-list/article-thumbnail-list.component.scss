@@ -1,10 +1,5 @@
 @import 'colors';
 
-.section-title {
-  margin-bottom: 60px;
-  color        : $text-light;
-}
-
 .articles-section {
   display        : flex;
   flex-direction : column;
@@ -14,6 +9,10 @@
 
 ms-button {
   margin-top: 20px;
+}
+
+.alternative-text {
+  color: $text-light;
 }
 
 //* small screens

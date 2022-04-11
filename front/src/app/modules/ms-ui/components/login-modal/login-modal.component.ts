@@ -29,8 +29,11 @@ export class LoginModalComponent implements OnInit {
   }
 
   openRegister() {
-    this.activeModal.close();
-    const modalRef = this.modalService.open(RegisterModalComponent, { centered: true, backdrop: 'static' });
+    this.activeModal.dismiss();
+    // TimeOut nécessaire pour pouvoir enchainer 2 modales (erreur body overflow Hidden)
+    setTimeout(() => {
+      this.modalService.open(RegisterModalComponent, { centered: true });
+    }, 100)
   }
 
   login() {

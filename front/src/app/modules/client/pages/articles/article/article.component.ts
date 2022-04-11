@@ -38,7 +38,6 @@ export class ArticleComponent implements OnInit {
     this.articleService.findById(id).subscribe(
       result => {
         this.article = result;
-        console.log(result);
       }, error => {
         console.warn(error);
       }
