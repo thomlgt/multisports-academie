@@ -38,7 +38,6 @@ console.log(MONGO_CONNEXION_STRING)
         winston.format.label({
           label: 'API'
         }),
-        winston.format.align(),
         winston.format.json(),
         winston.format.prettyPrint()
       ),
