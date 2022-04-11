@@ -14,7 +14,11 @@
     <h1 class="title">{{article.title}}</h1>
     <small class="date">article mis en ligne le {{article.updatedDate | date}}</small>
     <p>{{article.content}}</p>
-  </section>
-</article>
 
-<!-- TODO: ajouter le composant gallerie; -->
+    <section *ngIf="article.gallery && article.gallery.length > 0">
+      <h4 class="section-title">Les photos associées :</h4>
+      <app-gallery [pictures]="article.gallery"></app-gallery>
+    </section>
+  </section>
+
+</article>
