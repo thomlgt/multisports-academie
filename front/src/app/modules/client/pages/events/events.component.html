@@ -3,3 +3,6 @@
 <div class="block-event" *ngFor="let event of events">
     <app-events-event [event]="event"></app-events-event>
 </div>
+<div class="block-event" *ngIf="! events.length">
+    <p>Aucun événement n'a été enregistré !</p>
+</div>

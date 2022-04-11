@@ -75,7 +75,7 @@
             <div id="block_registration_rules" class="sub_block">
                 <h3>Modalités d'inscription</h3>
                 <div class="registration_rules">
-                    <p>Coût de l'inscription : {{ event.price }}€</p>
+                    <p>Coût de l'inscription (par équipe) : {{ event.price }}€</p>
                     <p>Nombre maximal d'équipes : {{ event.maxTeams }}</p>
                     <p>Âge minimum requis : {{ event.minAge }}</p>
                     <p>Nombre minimal d'équipiers : {{ event.minMembers }}</p>
@@ -99,7 +99,7 @@
            
             <ms-button class="btn-custom" value="Inscrire une équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam  && event.registrations.length < event.maxTeams" (click)="openRegistrationModal()"></ms-button>
             <ms-button class="btn-custom" value="Changer d'équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
-            <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null"></ms-button>
+            <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null" (click)="openLoginModal()"></ms-button>
 
             <p class="important_info" *ngIf="eventRegistrationStatus === 2 && event.registrations.length >= event.maxTeams">Le nombre d'équipes maximum est atteint !</p>
             

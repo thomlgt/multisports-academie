@@ -22,6 +22,6 @@
     </section>
 
     <ms-button value="Ajouter" color="orange" *ngIf="!addMemberForm.valid"></ms-button>
-    <ms-button value="Ajouter" color="lightblue" (click)="addMember()" *ngIf="addMemberForm.valid"></ms-button>
+    <ms-button value="Ajouter" (click)="addMember()" *ngIf="addMemberForm.valid"></ms-button>
 
 </form>

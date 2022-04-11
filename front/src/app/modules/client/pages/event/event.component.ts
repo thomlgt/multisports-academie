@@ -12,6 +12,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
+import { LoginModalComponent } from 'src/app/modules/ms-ui/components/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-event',
@@ -157,7 +158,6 @@ export class EventComponent implements OnInit {
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
-        console.log(age);
         if (age < this.event.minAge) {
           information = `Les participans doivent avoir au moins ${this.event.minAge} ans.`;
           suitable = false;
@@ -167,7 +167,6 @@ export class EventComponent implements OnInit {
           acceptedMembers.push(member);
         }
       }
-      
       if (acceptedMembers.length > 0) {
         if (acceptedMembers.length + 1 < this.event.minMembers) {
           information = `Il doit y avoir au moins ${this.event.minMembers} membres dans une équipe.`;
@@ -202,6 +201,15 @@ export class EventComponent implements OnInit {
       )
 
     }
+
+  }
+
+  openLoginModal() {
+    const modalRef = this.modalService.open(LoginModalComponent, { centered: true, size: 'xl'});
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.teamAddedEvent.subscribe(() => {
+      this.initEvent();
+    })
   }
 
 }

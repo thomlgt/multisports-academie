@@ -1,13 +1,16 @@
-<div id="activity" *ngIf="activity">
+<div id="activity"
+     *ngIf="activity">
 
   <div *ngIf="eventId">
-    <p (click)="goToEvent()" id="return_event">Retourner à l'événement</p>
+    <p (click)="goToEvent()"
+       id="return_event">Retourner à l'événement</p>
   </div>
 
-  <section class="banner" style="background-image: url({{activity.mainPicture.url}});">
+  <section class="banner"
+           style="background-image: url({{activity.mainPicture.url}});">
   </section>
   <h1 class="title">{{ activity.name }}</h1>
-  
+
   <ul class="tab-links">
     <li [ngClass]="{'active': show === 'description'}"
         (click)="show = 'description'">Description</li>
@@ -16,32 +19,28 @@
     <li [ngClass]="{'active': show === 'gallery'}"
         (click)="show = 'gallery'">Galerie photo</li>
   </ul>
-  
+
   <section *ngIf="show === 'description'">
     <h3 class="subtitle">Description</h3>
     <p>{{ activity.description }}</p>
   </section>
-  
+
   <section *ngIf="show === 'rules'">
     <h3 class="subtitle">Règles</h3>
     <div class="row text-center">
       <div class="col-lg-6">
-        <p>Durée de l'épreuve : <span class="color-orange">{{ activity.duration }} minutes</span></p>        
+        <p>Durée de l'épreuve : <span class="color-orange">{{ activity.duration }} minutes</span></p>
       </div>
       <div class="col-lg-6">
-        <p>Points : <span class="color-orange">{{ activity.points }}</span></p>        
+        <p>Points : <span class="color-orange">{{ activity.points }}</span></p>
       </div>
     </div>
     <p class="rules_text">{{ activity.rules }}</p>
   </section>
-  
+
   <section *ngIf="show === 'gallery'">
-    <h3 class="subtitle">Galerie photo</h3>
-    <div class="galerie">
-      <img *ngFor="let picture of activity.gallery"
-           src="{{ picture.url }}"
-           alt="{{ picture.altText }}"
-           class="img-thumbnail">
+    <div *ngIf="activity.gallery && activity.gallery.length > 0">
+      <app-gallery [pictures]="activity.gallery"></app-gallery>
     </div>
   </section>
 
