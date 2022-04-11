@@ -65,6 +65,7 @@ export class PictureModale {
 export class GalleryComponent implements OnInit {
 
   @Input() pictures: Picture[];
+  @Input() loading: boolean;
 
   constructor(private modalService: NgbModal) { }
 

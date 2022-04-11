@@ -1,6 +1,6 @@
-<section *ngIf="pictures; else noPictures">
+<section>
   <h2 class="title">Les dernières photos :</h2>
-  <div class="gallery">
+  <div class="gallery" *ngIf="pictures && pictures.length > 0; else noPictures">
     <img *ngFor="let img of pictures; let index = index"
          [src]="img.url"
          [alt]="img.altText"
@@ -10,7 +10,7 @@
 </section>
 
 <ng-template #noPictures>
-  <p>
+  <p *ngIf="!loading">
     Hum...Il semblerait qu'il n'y ait pas encore de photos ! restez à l'affut, ça ne saurait tarder ! 📸
   </p>
 </ng-template>
