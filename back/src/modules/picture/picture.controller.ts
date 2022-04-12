@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { PictureService } from './picture.service';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('pictures')
 @Controller('pictures')
@@ -22,6 +23,17 @@ export class PictureController {
   create(@Body() createPictureDto: CreatePictureDto) {
     return this.pictureService.create(createPictureDto);
   }
+
+
+  @Post('/add')
+  @UseInterceptors(
+    FileInterceptor('image'),
+  )
+  async uploadImage(@UploadedFile() image) {
+    return this.pictureService.uploadImage(image);
+  }
+
+
 
   /**
    * retourne toutes les images en base

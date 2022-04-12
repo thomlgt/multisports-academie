@@ -9,6 +9,14 @@ import { Picture, PictureDocument } from './entities/picture.entity';
 
 @Injectable()
 export class PictureService {
+  
+  uploadImage(image: any) {
+    const response = {
+      originalname: image.originalname,
+      filename: image.filename,
+    };
+    return response;
+  }
 
   constructor(
     @InjectModel(Picture.name) private pictureModel: Model<PictureDocument>,
@@ -78,4 +86,5 @@ export class PictureService {
       })
       .clone();
   }
+  
 }
