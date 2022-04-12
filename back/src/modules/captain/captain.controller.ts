@@ -1,5 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiBody, ApiParam, ApiTags } from '@nestjs/swagger';
+import { JwtAdminAuthGuard } from '../admin/jwt-admin-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CaptainService } from './captain.service';
 import { CreateCaptain } from './dto/create-captain.dto';
 import { UpdatePasswordCaptain } from './dto/update-password-captain.dto';
@@ -16,6 +18,7 @@ export class CaptainController {
      * @returns 
      */
     @Get()
+    @UseGuards(JwtAdminAuthGuard)
     async findAll() {
         return this.captainService.findAll();
     }
@@ -36,6 +39,7 @@ export class CaptainController {
      * @returns 
      */
     @Delete(':id')
+    @UseGuards(JwtAdminAuthGuard)
     async delete(@Param('id') id : string) {
         return this.captainService.delete(id);
     }
@@ -47,6 +51,7 @@ export class CaptainController {
      * @returns 
      */
     @Patch(':id/personal')
+    @UseGuards(JwtAuthGuard)
     async updateEmail(@Param('id') id : string, @Body() captain : UpdatePersonalCaptain) {
         return this.captainService.updatePersonalInfos(id, captain);
     }
@@ -58,6 +63,7 @@ export class CaptainController {
      * @returns 
      */
      @Patch(':id/password')
+     @UseGuards(JwtAuthGuard)
      async updatePassword(@Param('id') id : string, @Body() captain : UpdatePasswordCaptain) {
          return this.captainService.updatePassword(id, captain);
      }
