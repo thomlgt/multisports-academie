@@ -1,0 +1,57 @@
+@import 'colors';
+
+.block-section {
+    
+    padding: 20px;
+
+}
+
+#block-filters {
+
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+
+    #filters-title {
+        color: $teal;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .form-content {
+
+        color: $dark-blue;
+        margin-bottom: 10px;
+
+        .filter-field  {
+            padding: 0 10px;
+
+            select {
+                width: 100%;
+                color: $dark-blue;
+            }
+        }
+
+    }
+
+}
+
+#block-table {    
+
+    table {
+
+        width: 100%;
+        text-align: center;
+    
+        th, td {
+            border: 2px solid $grey;
+            background-color: #fff;
+        }
+    
+        svg {
+            width: 15px;
+        }
+    
+    }
+
+}
