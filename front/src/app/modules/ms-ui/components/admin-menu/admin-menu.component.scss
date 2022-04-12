@@ -16,3 +16,8 @@ li:hover {
     font-weight: bold;
     transition: 0.1s;
 }
+
+.active {
+    font-weight: bold;
+    color: $orange;
+}

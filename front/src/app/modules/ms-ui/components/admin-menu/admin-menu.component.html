@@ -1,20 +1,5 @@
 <ul>
-    <li>
-        <a routerLink="board">Tableau de bord</a>
-    </li>
-    <li>
-        <a routerLink="captains">Capitaines</a>
-    </li>
-    <li>
-        <a routerLink="images">Images</a>
-    </li>
-    <li>
-        <a routerLink="activities">Activités</a>
-    </li>
-    <li>
-        <a routerLink="events">Évènements</a>
-    </li>
-    <li>
-        <a routerLink="articles">Actualités</a>
+    <li *ngFor="let element of elements"
+        (click)="goTo(element)" [ngClass]="element.isActive?'active':'not-active'">{{element.name}}
     </li>
 </ul>
