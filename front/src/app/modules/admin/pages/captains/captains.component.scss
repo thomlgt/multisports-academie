@@ -1,0 +1,18 @@
+@import 'colors';
+
+header {
+    background-color: $mid-blue;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0px;
+}
+
+li {
+    list-style: none;
+    color: $text-light;
+    width: 16.6%;
+}

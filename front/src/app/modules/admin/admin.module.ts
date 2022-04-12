@@ -11,7 +11,7 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
 import { ImagesComponent } from './pages/images/images.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
-
+import { DisplayAdminCaptainComponent } from './components/captains/display-admin-captain/display-admin-captain.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ArticlesComponent } from './pages/articles/articles.component';
     ActivitiesComponent,
     ImagesComponent,
     EventsComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    DisplayAdminCaptainComponent
   ],
   imports: [
     CommonModule,

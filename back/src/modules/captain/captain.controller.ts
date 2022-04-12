@@ -15,10 +15,10 @@ export class CaptainController {
      * Retourne tous les capitaines en base
      * @returns 
      */
-    // @Get()
-    // async findAll() {
-    //     return this.captainService.findAll();
-    // }
+    @Get()
+    async findAll() {
+        return this.captainService.findAll();
+    }
 
     /**
      * retourne un capitaine à partir de son id
