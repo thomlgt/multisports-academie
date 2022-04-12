@@ -10,11 +10,21 @@
 }
 
 .menu {
-    width           : 15%;
+    width: 15%;
     background-color: $light-blue;
+    text-align: center;
 }
 
 .content {
-    width           : 85%;
+    width: 85%;
     background-color: $grey;
+}
+
+img {
+    width: 80%;
+    margin: 2% 0 2% 0;
+}
+
+.admintext {
+    color: $orange;
 }

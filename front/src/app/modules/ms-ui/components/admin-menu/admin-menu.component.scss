@@ -1,0 +1,18 @@
+@import 'colors';
+
+ul {
+    margin: 20% 0 20% 0;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+    padding: 5% 0 5% 0;
+    color: $text-light
+}
+
+li:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.1s;
+}
