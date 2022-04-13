@@ -3,20 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
 import { WinstonLogger, WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
+import { extname } from 'path';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
 import { Picture, PictureDocument } from './entities/picture.entity';
 
 @Injectable()
 export class PictureService {
-  
-  uploadImage(image: any) {
-    const response = {
-      originalname: image.originalname,
-      filename: image.filename,
-    };
-    return response;
-  }
 
   constructor(
     @InjectModel(Picture.name) private pictureModel: Model<PictureDocument>,
@@ -24,6 +17,19 @@ export class PictureService {
   ) {
     (logger as WinstonLogger).setContext(this.constructor.name);
  }
+
+  uploadImages(images: any[]) {
+    const response = [];
+    images.forEach(file => {
+      console.log(file);
+      const fileReponse = {
+        originalname: file.originalname,
+        filename: file.filename,
+      };
+      response.push(fileReponse);
+    });
+    return response;
+  }
 
   async create(@Body() createPictureDto: CreatePictureDto): Promise<Picture> {
     //Transformation du DTO createPictureDto en Picture
@@ -85,6 +91,18 @@ export class PictureService {
         return deletedPicture;
       })
       .clone();
-  }
-  
+  } 
 }
+
+export const imageFileFilter = (req, file, callback) => {
+  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+    return callback(new Error('Seules les images de type JPG, PNG et GIF sont acceptées'), false);
+  }
+  callback(null, true);
+};
+
+export const editFileName = (req, file, callback) => {
+  const name = file.originalname.split('.')[0].replace(/\ /g, "_");
+  const fileExtName = extname(file.originalname);
+  callback(null, `${name}-${Date.now()}${fileExtName}`);
+};

@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
-import { PictureService } from './picture.service';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
+import { editFileName, imageFileFilter, PictureService } from './picture.service';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 
 @ApiTags('pictures')
 @Controller('pictures')
@@ -25,15 +26,31 @@ export class PictureController {
   }
 
 
-  @Post('/add')
+  /**
+   * upload une série d'images (max. 20) sur le disque
+   * et insère les entrées correspondantes en base
+   * @param images 
+   * @returns les objets pictures ainsi créés
+   */
+  @Post('/upload')
   @UseInterceptors(
-    FileInterceptor('image'),
+    FilesInterceptor(
+      'images',
+      20,
+      {
+        //TODO: envoyer vers un serveur distant type CDN
+        storage: diskStorage({
+          destination: '../front/src/assets/images/uploaded',
+          filename: editFileName,
+        }),
+        fileFilter: imageFileFilter,
+        preservePath: true
+      }
+    )
   )
-  async uploadImage(@UploadedFile() image) {
-    return this.pictureService.uploadImage(image);
-  }
-
-
+  async uploadImages(@UploadedFiles() images) {
+    return this.pictureService.uploadImages(images);
+  } 
 
   /**
    * retourne toutes les images en base
