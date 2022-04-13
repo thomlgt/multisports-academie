@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Activity } from 'src/app/models/activity/activity.model';
 import { ActivityService } from 'src/app/modules/ms-api/activity/activity.service';
+import { DeleteModalComponent } from 'src/app/modules/ms-ui/components/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-activity',
@@ -12,13 +14,15 @@ import { ActivityService } from 'src/app/modules/ms-api/activity/activity.servic
 export class ActivityComponent implements OnInit {
 
   id: string|null;
+  activity: Activity|null;
   editActivityForm : FormGroup;
 
   constructor(
     private fb : FormBuilder,
     private activityService : ActivityService,
     private route : ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService : NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +34,7 @@ export class ActivityComponent implements OnInit {
   buildEditForm() {
     if (this.id) {
       this.activityService.findById(this.id).subscribe(data => {
+        this.activity = data;
         this.editActivityForm = this.fb.group({
           name: [data.name, Validators.required],
           description: [data.description],
@@ -58,6 +63,12 @@ export class ActivityComponent implements OnInit {
   updateActivity() {
     this.activityService.updateActivity(this.id, this.editActivityForm.value).subscribe((res: Activity) => {
     })
+  }
+
+  openDelationModal() {
+    const modalRef = this.modalService.open(DeleteModalComponent, {centered : true});
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.title = 'Activité - ' + this.activity.name;
   }
 
 }

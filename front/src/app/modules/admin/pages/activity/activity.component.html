@@ -1,6 +1,6 @@
 <h2 class="admin-title">Nouvelle activité</h2>
 
-<div class="container">
+<div class="container" *ngIf="editActivityForm">
 
     <form [formGroup]="editActivityForm">
 
@@ -24,17 +24,23 @@
             <label for="points" class="offset-2 col-2">Points</label>
             <input type="number" name="points" formControlName="points" class="col-6">
         </div>
-    
-        <div class="form-content row" *ngIf="!id">
-            <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid" class="offset-2 col-2"></ms-button>
-            <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid" class="offset-2 col-2"></ms-button>
-        </div>
 
-        <div class="form-content row" *ngIf="id">
-            <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid" class="offset-2 col-2"></ms-button>
-            <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid" class="offset-2 col-2"></ms-button>
-        </div>
-        
+        <div class="row">
+
+            <div class="form-button offset-2 col-2" *ngIf="!id">
+                <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+                <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid"></ms-button>
+            </div>
+
+            <div class="form-button offset-2 col-2" *ngIf="id">
+                <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+                <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid"></ms-button>
+            </div>
+    
+            <div class="form-button col-2" *ngIf="id">
+                <ms-button color="orange" value="Suprimer" (click)="openDelationModal()"></ms-button>
+            </div>
+        </div> 
     
     </form>
 

@@ -110,7 +110,7 @@
                 <td>{{activity.points}}</td>
                 <td>2</td>
                 <td>
-                    <p class="actions"><span (click)="goToEditActivity(activity._id)" class="link-text">Éditer</span> - <span>Supprimer</span></p>
+                    <p class="actions"><span (click)="goToEditActivity(activity._id)" class="link-text">Éditer</span> - <span (click)="openDelationModal(activity._id, activity.name)" class="link-text">Supprimer</span></p>
                 </td>
             </tr>
         </tbody>

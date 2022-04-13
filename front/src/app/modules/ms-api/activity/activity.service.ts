@@ -30,4 +30,8 @@ export class ActivityService {
     return this.http.patch<Activity>(`${environment.apiUrl}/activities/${id}`, activity);
   }
 
+  deleteActivity(id : string) {
+    return this.http.delete<Activity>(`${environment.apiUrl}/activities/${id}`);
+  }
+
 }

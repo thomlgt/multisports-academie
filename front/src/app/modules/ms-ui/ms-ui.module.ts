@@ -26,6 +26,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
     ContactFormComponent,
     GalleryComponent,
     PictureModale,
-    AdminMenuComponent
+    AdminMenuComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,
