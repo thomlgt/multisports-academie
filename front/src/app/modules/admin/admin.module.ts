@@ -13,6 +13,12 @@ import { EventsComponent } from './pages/events/events.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 
+import { DisplayAdminCaptainComponent } from './components/captains/display-admin-captain/display-admin-captain.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,13 +29,21 @@ import { ActivityComponent } from './pages/activity/activity.component';
     ImagesComponent,
     EventsComponent,
     ArticlesComponent,
-    ActivityComponent
+    ActivityComponent,
+    DisplayAdminCaptainComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MsUiModule,
-    MsApiModule
+    MsApiModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
+  ],
+  providers : [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ]
 })
 export class AdminModule { }

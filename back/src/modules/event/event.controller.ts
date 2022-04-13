@@ -1,9 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
 import { Event } from './entities/event.entity';
 import { Registration } from './entities/registration';
+import { JwtAdminAuthGuard } from '../admin/jwt-admin-auth.guard';
 
 @ApiTags('events')
 @Controller('events')
@@ -21,6 +22,7 @@ export class EventController {
         description: "l'objet Event à creer",
     })
     @Post()
+    @UseGuards(JwtAdminAuthGuard)
     async create(@Body() event: CreateEventDto) {
         return this.eventService.create(event);
     }
@@ -60,6 +62,7 @@ export class EventController {
      * @returns 
      */
     @Delete(':id')
+    @UseGuards(JwtAdminAuthGuard)
     async delete(@Param('id') id : string) {
         return this.eventService.delete(id);
     }
@@ -71,6 +74,7 @@ export class EventController {
      * @returns 
      */
     @Patch(':id')
+    @UseGuards(JwtAdminAuthGuard)
     async update(@Param('id') id : string, @Body() event : Event) {
         return this.eventService.update(id, event);
     }

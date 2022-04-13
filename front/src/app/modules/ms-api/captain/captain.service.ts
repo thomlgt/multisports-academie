@@ -14,7 +14,7 @@ export class CaptainService {
   constructor(private http: HttpClient) { }
 
   findAll() {
-    return this.http.get<SafeCaptain[]>(`${environment.apiUrl}/captains`);
+    return this.http.get<Captain[]>(`${environment.apiUrl}/captains`);
   }
 
   findById(id : string) {

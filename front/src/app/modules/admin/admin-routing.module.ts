@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAuthGuardService } from 'src/app/admin/admin-auth-guard.service';
 import { AdminComponent } from './admin.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
 import { ActivityComponent } from './pages/activity/activity.component';
@@ -8,18 +9,20 @@ import { BoardComponent } from './pages/board/board.component';
 import { CaptainsComponent } from './pages/captains/captains.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ImagesComponent } from './pages/images/images.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { 
     path: '', component: AdminComponent,
     children: [
-      { path: 'board', component: BoardComponent },
-      { path: 'captains', component: CaptainsComponent },
-      { path: 'images', component: ImagesComponent },
-      { path: 'activities', component: ActivitiesComponent },
-      { path: 'activity', component: ActivityComponent },
-      { path: 'events', component: EventsComponent },
-      { path: 'articles', component: ArticlesComponent },
+      { path: 'board', component: BoardComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'captains', component: CaptainsComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'images', component: ImagesComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'activities', component: ActivitiesComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'activity', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'events', component: EventsComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'articles', component: ArticlesComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'login', component: LoginComponent },
       { path: '**', redirectTo: 'board' }
     ]
   }

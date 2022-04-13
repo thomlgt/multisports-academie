@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Captain } from 'src/app/models/captain/captain';
+import { CaptainService } from 'src/app/modules/ms-api/captain/captain.service';
 
 @Component({
   selector: 'app-captains',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaptainsComponent implements OnInit {
 
-  constructor() { }
+  captains : Captain[];
+
+  constructor(private captainService: CaptainService) { }
 
   ngOnInit(): void {
+    this.initCaptains();
+  }
+
+  initCaptains() {
+    this.captainService.findAll().subscribe(data => {
+      this.captains = data;
+    })
   }
 
 }
