@@ -11,6 +11,7 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
 import { ImagesComponent } from './pages/images/images.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ArticlesComponent } from './pages/articles/articles.component';
     ActivitiesComponent,
     ImagesComponent,
     EventsComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,

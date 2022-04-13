@@ -21,4 +21,8 @@ export class ActivityService {
   findAllActivitiesByEventId() {
     // TODO: implémenter cette méthode et la route correspondante dans le back
   }
+
+  addActivity(activity: Activity) {
+    return this.http.post<Activity>(`${environment.apiUrl}/activitys`, activity);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Activity } from 'src/app/models/activity/activity.model';
 import { ActivityService } from 'src/app/modules/ms-api/activity/activity.service';
 
@@ -11,7 +12,10 @@ export class ActivitiesComponent implements OnInit {
 
   activities: Activity[];
 
-  constructor(private activityService: ActivityService) { }
+  constructor(
+    private activityService: ActivityService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.initActivities();
@@ -22,6 +26,12 @@ export class ActivitiesComponent implements OnInit {
       this.activities = data;
       console.log(data);
     })
+  }
+
+  /** Add activity redirection */
+
+  goToAddActivity() {
+    this.router.navigateByUrl(`/admin/activity`);
   }
 
 }

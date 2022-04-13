@@ -1,0 +1,28 @@
+<h2 class="admin-title">Nouvelle activité</h2>
+
+<form [formGroup]="editActivityForm">
+    <section class="form-content">
+        <label for="name">nom:</label>
+        <input type="text" name="name" formControlName="name">
+    </section>
+    <section class="form-content">
+        <label for="description">description:</label>
+        <input type="text" name="description" formControlName="description">
+    </section>
+    <section class="form-content">
+        <label for="rules">règles:</label>
+        <input type="text" name="rules" formControlName="rules">
+    </section>
+    <section class="form-content">
+        <label for="duration">durée:</label>
+        <input type="number" name="duration" formControlName="duration">
+    </section>
+    <section class="form-content">
+        <label for="points">points:</label>
+        <input type="number" name="points" formControlName="points">
+    </section>
+
+    <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+    <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid"></ms-button>
+
+</form>
