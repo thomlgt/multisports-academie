@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
+import { AdminAuthenticationService } from 'src/app/admin/admin-authentication.service';
 
 @Component({
   selector: 'ms-admin-menu',
@@ -19,7 +20,8 @@ export class AdminMenuComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private adminAuthService: AdminAuthenticationService
     ) { 
 
   }
@@ -46,6 +48,11 @@ export class AdminMenuComponent implements OnInit {
     this.elements.forEach(element => {
       element.isActive = false;
     })
+  }
+
+  logout() {
+    this.adminAuthService.logout();
+    this.router.navigateByUrl("/admin/login");
   }
 
 }

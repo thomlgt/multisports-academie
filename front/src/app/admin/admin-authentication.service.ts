@@ -36,4 +36,12 @@ export class AdminAuthenticationService {
       return admin;
     }));
   }
+
+  /**
+   * Déconnexion administrateur
+   */
+   logout() {
+    localStorage.removeItem('currentAdmin');
+    this.currentAdminSubject.next(null);
+  }
 }
