@@ -23,6 +23,6 @@ export class ActivityService {
   }
 
   addActivity(activity: Activity) {
-    return this.http.post<Activity>(`${environment.apiUrl}/activitys`, activity);
+    return this.http.post<Activity>(`${environment.apiUrl}/activities`, activity);
   }
 }
