@@ -11,8 +11,8 @@ export class ActivityComponent implements OnInit {
 
   editActivityForm = this.fb.group({
     name: ["", Validators.required],
-    description: ["", Validators.required],
-    rules: ["", Validators.required],
+    description: [""],
+    rules: [""],
     duration: [0, Validators.required],
     points: [0, Validators.required]
   })

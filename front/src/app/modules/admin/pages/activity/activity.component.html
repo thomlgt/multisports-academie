@@ -1,28 +1,36 @@
 <h2 class="admin-title">Nouvelle activité</h2>
 
-<form [formGroup]="editActivityForm">
-    <section class="form-content">
-        <label for="name">nom:</label>
-        <input type="text" name="name" formControlName="name">
-    </section>
-    <section class="form-content">
-        <label for="description">description:</label>
-        <textarea name="description" formControlName="description"></textarea>
-    </section>
-    <section class="form-content">
-        <label for="rules">règles:</label>
-        <textarea name="rules" formControlName="rules"></textarea>
-    </section>
-    <section class="form-content">
-        <label for="duration">durée:</label>
-        <input type="number" name="duration" formControlName="duration">
-    </section>
-    <section class="form-content">
-        <label for="points">points:</label>
-        <input type="number" name="points" formControlName="points">
-    </section>
+<div class="container">
 
-    <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
-    <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid"></ms-button>
+    <form [formGroup]="editActivityForm">
 
-</form>
+        <div class="form-content row">
+            <label for="name" class="offset-2 col-2">Nom</label>
+            <input type="text" name="name" formControlName="name" class="col-6">
+        </div>
+        <div class="form-content row">
+            <label for="description" class="offset-2 col-2">Description</label>
+            <textarea name="description" formControlName="description" class="col-6"></textarea>
+        </div>
+        <div class="form-content row">
+            <label for="rules" class="offset-2 col-2">Règles</label>
+            <textarea name="rules" formControlName="rules" class="col-6"></textarea>
+        </div>
+        <div class="form-content row">
+            <label for="duration" class="offset-2 col-2">Durée</label>
+            <input type="number" name="duration" formControlName="duration" class="col-6">
+        </div>
+        <div class="form-content row">
+            <label for="points" class="offset-2 col-2">Points</label>
+            <input type="number" name="points" formControlName="points" class="col-6">
+        </div>
+    
+        <div class="form-content row">
+            <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid" class="offset-2 col-2"></ms-button>
+            <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid" class="offset-2 col-2"></ms-button>
+        </div>
+        
+    
+    </form>
+
+</div>
