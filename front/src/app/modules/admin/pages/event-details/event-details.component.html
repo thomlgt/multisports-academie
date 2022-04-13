@@ -3,17 +3,58 @@
     <section class="container">
         <button class="return" routerLink="/admin/events">Retour</button>
         <section class="infos">
-            <h5>Nom</h5>
-            <h5>Description</h5>
-            <h5>Déroulé des épreuves</h5>
-            <h5>Dates de l'événement</h5>
-            <h5>Dates d'inscription</h5>
-            <h5>Dates d'inscription</h5>
-            <h5>Conditions d'inscription</h5>
-            <h5>Images</h5>
-            <h5>Activités</h5>
-            <h5>Equipes inscrites</h5>
-            <ms-teams-details [registrations]="event.registrations"></ms-teams-details>
+            <form [formGroup]="updateEventForm">
+                <h5>Nom</h5>
+                <input type="text" formControlName="name">
+                <h5>Description</h5>
+                <textarea type="text" formControlName="description" rows="5"></textarea>
+                <h5>Déroulé des épreuves</h5>
+                <textarea type="text" formControlName="activitiesDetails" rows="5"></textarea>
+                <h5>Dates de l'événement</h5>
+                <label>Début :</label>
+                <input type="text" formControlName="startEvent">
+                <label>Fin :</label>
+                <input type="text" formControlName="endEvent">
+                <h5>Dates d'inscription</h5>
+                <label>Début :</label>
+                <input type="text" formControlName="startRegistration">
+                <label>Fin :</label>
+                <input type="text" formControlName="endRegistration">
+                <h5>Conditions d'inscription</h5>
+                <section class="conditions">
+                    <label>Nombre minimum de membre :
+                        <input type="number" formControlName="minMembers">
+                    </label>
+                    <label>Nombre maximum de membre :
+                        <input type="number" formControlName="maxMembers">
+                    </label>
+                    <label>Âge minimum requis :
+                        <input type="number" formControlName="minAge">
+                    </label>
+                    <label>Nombre minimum de membres féminin :
+                        <input type="number" formControlName="minFemale">
+                    </label>
+                    <label>Prix par équipe :
+                        <input type="number" formControlName="price">
+                    </label>
+                    <label>Nombre maximum d'équipes :
+                        <input type="number" formControlName="maxTeams">
+                    </label>
+                </section>
+                <h5>Images</h5>
+                <section formGroupName="mainPicture">
+                    <p>Image principale :</p>
+                    <img [src]="event.mainPicture.url" [alt]="event.mainPicture.altText">
+                </section>
+                <h5>Activités</h5>
+                <section class="activities">
+                    <ng-container *ngFor="let activity of event.activities">
+                        <app-activity-thumbnail [event]="event" [activity]="activity"></app-activity-thumbnail>
+                    </ng-container>
+                </section>
+                <h5>Equipes inscrites</h5>
+                <ms-teams-details [registrations]="event.registrations"></ms-teams-details>
+            </form>
         </section>
     </section>
 </ng-container>

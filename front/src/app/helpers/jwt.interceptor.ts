@@ -27,7 +27,6 @@ export class JwtInterceptor implements HttpInterceptor {
         }
         const currentAdmin = this.adminAuthenticationService.currentAdminValue;
         if (currentAdmin && currentAdmin.access_token) {
-            console.log("ok")
             request = request.clone({
                 setHeaders: 
                 {
