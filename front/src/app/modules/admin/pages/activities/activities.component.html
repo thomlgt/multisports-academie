@@ -26,21 +26,21 @@
                     </div>                    
                 </div>
                 <div class="form-content row">
-                    <label for="members" class="filter-label col-4">particiants</label>
+                    <label for="duration" class="filter-label col-4">durée</label>
                     <div class="filter-field col-4">
-                        <select name="members_min" formControlName="members_min">
+                        <select name="duration_min" formControlName="duration_min">
                             <option value="null">-</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <option value="1">10</option>
+                            <option value="2">20</option>
+                            <option value="3">30</option>
                         </select>
                     </div>                    
                     <div class="filter-field col-4">
-                        <select name="members_max" formControlName="members_max">
+                        <select name="duration_max" formControlName="duration_max">
                             <option value="null">-</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <option value="1">10</option>
+                            <option value="2">20</option>
+                            <option value="3">30</option>
                         </select>
                     </div>
                     
@@ -55,7 +55,7 @@
     </div>
 </section>
 
-<section id="block-table" class="container block-section">
+<section id="block-table" class="container block-section" *ngIf="activities">
 
     <table>
         <thead>
@@ -64,28 +64,41 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Règles</th>
-                <th>Participants</th>
+                <th>Durée (min)</th>
+                <th>Points</th>
                 <th>Occurence</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Football</td>
+            <tr *ngFor="let activity of activities">
+                <td>{{activity._id}}</td>
+                <td>{{activity.name}}</td>
                 <td>
                     <div class="block-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633" *ngIf="activity.description">
                             <g id="Ok" transform="translate(1.385 1.442)">
                                 <path id="Tracé_226" data-name="Tracé 226" d="M9.5,9" transform="translate(7.385 9.192)" fill="none" stroke="#576471" stroke-width="4"/>
                                 <path id="Tracé_225" data-name="Tracé 225" d="M905.5,305.525l7.562,7.26,1.5-1.443L928.4,298.059" transform="translate(-905.5 -298.059)" fill="none" stroke="#576471" stroke-width="4"/>
                             </g>
                         </svg> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20.826" height="20.827" viewBox="0 0 20.826 20.827" *ngIf="! activity.description">
+                            <g id="Nope" transform="translate(1.414 1.414)">
+                                <line id="Ligne_30" data-name="Ligne 30" y2="25.452" transform="translate(0 0.001) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
+                                <line id="Ligne_31" data-name="Ligne 31" x2="25.452" transform="translate(0 17.997) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
+                            </g>
+                        </svg>
                     </div>                   
                 </td>
                 <td>
                     <div class="block-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20.826" height="20.827" viewBox="0 0 20.826 20.827">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633" *ngIf="activity.rules">
+                            <g id="Ok" transform="translate(1.385 1.442)">
+                                <path id="Tracé_226" data-name="Tracé 226" d="M9.5,9" transform="translate(7.385 9.192)" fill="none" stroke="#576471" stroke-width="4"/>
+                                <path id="Tracé_225" data-name="Tracé 225" d="M905.5,305.525l7.562,7.26,1.5-1.443L928.4,298.059" transform="translate(-905.5 -298.059)" fill="none" stroke="#576471" stroke-width="4"/>
+                            </g>
+                        </svg> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20.826" height="20.827" viewBox="0 0 20.826 20.827" *ngIf="! activity.rules">
                             <g id="Nope" transform="translate(1.414 1.414)">
                                 <line id="Ligne_30" data-name="Ligne 30" y2="25.452" transform="translate(0 0.001) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
                                 <line id="Ligne_31" data-name="Ligne 31" x2="25.452" transform="translate(0 17.997) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
@@ -93,36 +106,8 @@
                         </svg>
                     </div>                      
                 </td>
-                <td>5-11</td>
-                <td>2</td>
-                <td>
-                    <a>Éditer</a> - <a>Supprimer</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Football</td>
-                <td>
-                    <div class="block-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633">
-                            <g id="Ok" transform="translate(1.385 1.442)">
-                                <path id="Tracé_226" data-name="Tracé 226" d="M9.5,9" transform="translate(7.385 9.192)" fill="none" stroke="#576471" stroke-width="4"/>
-                                <path id="Tracé_225" data-name="Tracé 225" d="M905.5,305.525l7.562,7.26,1.5-1.443L928.4,298.059" transform="translate(-905.5 -298.059)" fill="none" stroke="#576471" stroke-width="4"/>
-                            </g>
-                        </svg> 
-                    </div>                   
-                </td>
-                <td>
-                    <div class="block-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20.826" height="20.827" viewBox="0 0 20.826 20.827">
-                            <g id="Nope" transform="translate(1.414 1.414)">
-                                <line id="Ligne_30" data-name="Ligne 30" y2="25.452" transform="translate(0 0.001) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
-                                <line id="Ligne_31" data-name="Ligne 31" x2="25.452" transform="translate(0 17.997) rotate(-45)" fill="none" stroke="#576471" stroke-width="4"/>
-                            </g>
-                        </svg>
-                    </div>                      
-                </td>
-                <td>5-11</td>
+                <td>{{activity.duration}}</td>
+                <td>{{activity.points}}</td>
                 <td>2</td>
                 <td>
                     <a>Éditer</a> - <a>Supprimer</a>

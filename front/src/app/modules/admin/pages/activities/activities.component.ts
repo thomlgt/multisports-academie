@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity } from 'src/app/models/activity/activity.model';
+import { ActivityService } from 'src/app/modules/ms-api/activity/activity.service';
 
 @Component({
   selector: 'app-activities',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivitiesComponent implements OnInit {
 
-  constructor() { }
+  activities: Activity[];
+
+  constructor(private activityService: ActivityService) { }
 
   ngOnInit(): void {
+    this.initActivities();
+  }
+
+  initActivities() {
+    this.activityService.findAll().subscribe(data => {
+      this.activities = data;
+      console.log(data);
+    })
   }
 
 }
