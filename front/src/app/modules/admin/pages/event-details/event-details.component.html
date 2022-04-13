@@ -1,0 +1,31 @@
+<ng-container *ngIf="event">
+    <h2 class="admin-title">{{event.name}}</h2>
+    <section class="container">
+        <button class="return" routerLink="/admin/events">Retour</button>
+        <section class="infos">
+            <h5>Nom</h5>
+            <h5>Description</h5>
+            <h5>Déroulé des épreuves</h5>
+            <h5>Dates de l'événement</h5>
+            <h5>Dates d'inscription</h5>
+            <h5>Dates d'inscription</h5>
+            <h5>Conditions d'inscription</h5>
+            <h5>Images</h5>
+            <h5>Activités</h5>
+            <h5>Equipes inscrites</h5>
+            <ngb-accordion #acc="ngbAccordion">
+                <ng-container *ngFor="let registration of event.registrations; let index = index">
+                    <ngb-panel title="#{{index + 1}} - {{registration.team.name}}">
+                        <ng-template ngbPanelContent>
+                            <ms-display-captain [captain]="registration.team.captain"></ms-display-captain>
+                            <ng-container *ngFor="let member of registration.team.members">
+                                <ms-display-member [member]="member"></ms-display-member>
+                            </ng-container>
+                        </ng-template>
+                    </ngb-panel>
+                </ng-container>
+
+            </ngb-accordion>
+        </section>
+    </section>
+</ng-container>
