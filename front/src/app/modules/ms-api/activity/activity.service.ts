@@ -25,4 +25,9 @@ export class ActivityService {
   addActivity(activity: Activity) {
     return this.http.post<Activity>(`${environment.apiUrl}/activities`, activity);
   }
+
+  updateActivity(id: string, activity: Activity) {
+    return this.http.patch<Activity>(`${environment.apiUrl}/activities/${id}`, activity);
+  }
+
 }

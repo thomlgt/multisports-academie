@@ -34,4 +34,8 @@ export class ActivitiesComponent implements OnInit {
     this.router.navigateByUrl(`/admin/activity`);
   }
 
+  goToEditActivity(id: string) {
+    this.router.navigateByUrl(`/admin/activity/${id}`);
+  }
+
 }

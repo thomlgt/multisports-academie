@@ -25,9 +25,14 @@
             <input type="number" name="points" formControlName="points" class="col-6">
         </div>
     
-        <div class="form-content row">
+        <div class="form-content row" *ngIf="!id">
             <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid" class="offset-2 col-2"></ms-button>
             <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid" class="offset-2 col-2"></ms-button>
+        </div>
+
+        <div class="form-content row" *ngIf="id">
+            <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid" class="offset-2 col-2"></ms-button>
+            <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid" class="offset-2 col-2"></ms-button>
         </div>
         
     

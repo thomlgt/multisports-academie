@@ -56,6 +56,22 @@
                     margin-top: -15px;
                 }
             } 
+
+            .actions {
+
+                margin: 0;
+
+                .link-text {
+                    cursor: pointer;
+                    
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+
+            }
+
+            
         }
     
     }

@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'images', component: ImagesComponent, canActivate: [AdminAuthGuardService] },
       { path: 'activities', component: ActivitiesComponent, canActivate: [AdminAuthGuardService] },
       { path: 'activity', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'activity/:id', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
       { path: 'events', component: EventsComponent, canActivate: [AdminAuthGuardService] },
       { path: 'articles', component: ArticlesComponent, canActivate: [AdminAuthGuardService] },
       { path: 'login', component: LoginComponent },
