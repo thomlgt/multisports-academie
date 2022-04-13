@@ -38,7 +38,7 @@ export class CaptainService {
      * @returns 
      */
     async findAll() {
-        return await this.captainModel.find();
+        return await this.captainModel.find().sort({createdDate : -1});
     }
 
     /**
