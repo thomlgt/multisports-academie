@@ -53,6 +53,7 @@
                     </ng-container>
                 </section>
                 <h5>Equipes inscrites</h5>
+                <p *ngIf="event.registrations.length === 0">Pas encore d'équipe inscrite</p>
                 <ms-teams-details [registrations]="event.registrations"></ms-teams-details>
             </form>
         </section>
