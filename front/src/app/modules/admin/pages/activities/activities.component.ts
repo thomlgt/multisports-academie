@@ -45,6 +45,12 @@ export class ActivitiesComponent implements OnInit {
     const modalRef = this.modalService.open(DeleteModalComponent, {centered : true});
     modalRef.componentInstance.id = id;
     modalRef.componentInstance.title = 'Activité - ' + name;
+    modalRef.componentInstance.content = 'Êtes-vous sûr de vouloir supprimer cette activité ?';
+    modalRef.componentInstance.deleteItem.subscribe(() => {
+      this.activityService.deleteActivity(id).subscribe(() => {
+        window.location.reload();
+      })      
+    });
   }
 
 }

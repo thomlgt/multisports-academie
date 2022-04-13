@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivityService } from 'src/app/modules/ms-api/activity/activity.service';
 
 @Component({
   selector: 'app-delete-modal',
@@ -12,21 +11,19 @@ export class DeleteModalComponent implements OnInit {
 
   @Input() id : string;
   @Input() title : string;
+  @Input() content : string;
+  @Output() deleteItem = new EventEmitter<void>();
 
   constructor(
     public activeModal: NgbActiveModal,
-    private router: Router,
-    public activityService: ActivityService
   ) { }
 
   ngOnInit(): void {
   }
 
-  delete(): void {
-    this.activityService.deleteActivity(this.id).subscribe(() => {
-      this.router.navigateByUrl(`/admin/activities`);
-      this.activeModal.close();
-    })
+  deleteConfirm(): void {
+    this.deleteItem.emit();
+    this.activeModal.close();
   }
 
 }

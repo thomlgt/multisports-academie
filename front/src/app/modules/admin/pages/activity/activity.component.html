@@ -32,13 +32,14 @@
                 <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid"></ms-button>
             </div>
 
-            <div class="form-button offset-2 col-2" *ngIf="id">
-                <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
-                <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid"></ms-button>
-            </div>
-    
-            <div class="form-button col-2" *ngIf="id">
-                <ms-button color="orange" value="Suprimer" (click)="openDelationModal()"></ms-button>
+            <div class="form-button offset-2 col-2 d-flex" *ngIf="id">
+                <div class="block-button">
+                    <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+                    <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid"></ms-button>
+                </div>
+                <div class="block-button">
+                    <ms-button color="orange" value="Supprimer" (click)="openDelationModal()"></ms-button>
+                </div>                
             </div>
         </div> 
     
