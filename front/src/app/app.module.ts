@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -23,7 +25,10 @@ registerLocaleData(localeFr, 'fr');
     MsApiModule,
     NgbModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
+  providers: [
+    { provide: LOCALE_ID, useValue: "fr-FR" },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

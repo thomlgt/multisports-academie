@@ -1,0 +1,30 @@
+@import 'colors';
+
+.login-form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-text {
+    color: $mid-blue;
+    text-align: center;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 10px;
+    background-color: $mid-blue;
+    color: $text-light;
+}
