@@ -9,6 +9,12 @@ export class Picture {
   _id: string;
   @Prop()
   @IsNotEmpty()
+  baseName: string;
+  @Prop()
+  @IsNotEmpty()
+  stockageName: string;
+  @Prop()
+  @IsNotEmpty()
   url: string;
   @Prop()
   @IsNotEmpty()
