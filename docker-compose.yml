@@ -11,8 +11,8 @@ services:
     volumes: 
       - ms-db:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
       - MONGO_INITDB_DATABASE=ms-db
   # mongo-express:
   #   image: mongo-express
@@ -46,9 +46,13 @@ services:
       - MONGO_PORT=${MONGO_PORT}
       - MONGO_USERNAME=${MONGO_USERNAME}
       - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - NEST_ADMIN_USERNAME=${NEST_ADMIN_USERNAME}
+      - NEST_ADMIN_PASSWORD=${NEST_ADMIN_PASSWORD}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - JWT_SECRET_ADMIN_KEY=${JWT_SECRET_ADMIN_KEY}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
       - MAIL_HOST=${MAIL_HOST}
+      - NODE_ENV=${NODE_ENV}
     ports:
       - 3000:3000
 
