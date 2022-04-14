@@ -74,7 +74,8 @@ import { UploadPictureComponent } from './components/picture/upload-picture/uplo
     ContactFormComponent,
     GalleryComponent,
     PictureModale,
-    AdminMenuComponent
+    AdminMenuComponent,
+    UploadPictureComponent
   ]
 })
 export class MsUiModule {
