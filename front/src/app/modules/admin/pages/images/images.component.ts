@@ -15,16 +15,7 @@ export class ImagesComponent implements OnInit {
   constructor(private pictureService: PictureService) { }
 
   ngOnInit(): void {
-    this.pictureService.findAll().subscribe(
-      res => {
-        this.pictures = res;
-        this.loading = false;
-      },
-      err => {
-        console.warn(err);
-        this.loading = false;
-      }
-    )
+    this.reloadGallery()
   }
 
   loadFiles(e) {
@@ -46,11 +37,23 @@ export class ImagesComponent implements OnInit {
    
     this.pictureService.upload(formData).subscribe(res => {
       console.log(res);
-      this.ngOnInit();
+      this.reloadGallery()
     },
     err => {
       console.warn(err);
     });
+  }
 
+  reloadGallery() {
+    this.pictureService.findAll().subscribe(
+      res => {
+        this.pictures = res;
+        this.loading = false;
+      },
+      err => {
+        console.warn(err);
+        this.loading = false;
+      }
+    )
   }
 }

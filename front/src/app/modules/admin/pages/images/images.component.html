@@ -9,6 +9,6 @@
   <button (click)="sendFiles()">envoyer</button>
   <hr>
 
-  <app-gallery [pictures]="pictures" [loading]="loading"></app-gallery>
+  <app-gallery [pictures]="pictures" [loading]="loading" (pictureListModified)="reloadGallery()"></app-gallery>
 
 
