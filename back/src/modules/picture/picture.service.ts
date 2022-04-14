@@ -22,7 +22,7 @@ export class PictureService {
 
   //* POST
   uploadImages(images: any[]) {
-    console.log(images);
+    //TODO: ajouter les logs
     const folderPath = "assets/images/uploaded/";
     const dateFR = new Date(Date.now()).toLocaleDateString("fr");
     const DTOs = [];
@@ -106,30 +106,40 @@ export class PictureService {
 
 
   //* DELETE
-  async remove(id: string) {/*: Promise<Picture> {*/
+  async remove(id: string) : Promise<void> {
     const img = await this.pictureModel.findById(id);
-    const path = __dirname+"../../../../front/src/" + img.url;
-    console.log()
+   
+    if (!img) {
+      this.logger.error(`remove: l'image ${id} n'a pas été trouvée en base`);
+      throw new BadRequestException(`erreur lors de la suppression de la photo ${id}`);
+    }
 
-    console.log(fs.existsSync(path));
-    // return this.pictureModel
-    //   .findByIdAndRemove(id, {}, (err, deletedPicture) => {
-    //     if (err) {
-    //       this.logger.error(`remove: erreur lors de la suppression de l'element ${id}`, err);
-    //       throw new BadRequestException(`erreur lors de la suppression de la photo ${id}`);
-    //     }
-    //     this.logger.debug(`remove: l'element ${id} a été supprimé de la BDD avec succès`);
-    //     const path = ""
-        
-    //     fs.unlink(path, (err) => {
-    //       if (err) {
-    //         console.error(err)
-    //         return
-    //       }
-        
-    //     return deletedPicture;
-    //   })
-    //   .clone();
+    // 1. on retire l'entrée correspondante en base 
+    this.logger.debug(`remove: suppression de l'image ${img}`);
+    this.pictureModel.deleteOne({_id: img._id}, (err, res) => {
+      if (err) {
+        this.logger.error(`remove: erreur lors de la suppression de l'element ${id}`, err);
+        throw new BadRequestException(`erreur lors de la suppression de la photo ${id}`);
+      }
+      this.logger.debug(`remove: l'element ${img} a été supprimé de la BDD avec succès`);
+    });
+
+    // 2. Si l'image existe sur le disque, on la supprime
+    const path = `${__dirname}/../../../../front/src/assets/images/uploaded/${img.stockageName}`;
+    const exists = fs.existsSync(path);
+    if (exists) {
+      fs.unlink(path, (err) => {
+        if (err) {
+          this.logger.error(`remove: erreur lors de la suppression de l'image ${id} sur le disque`, { "erreur": err });
+        } else {
+          this.logger.debug(`remove: l'image ${img.stockageName} a été supprimée du disque avec succès`);
+        }
+      })
+    } else {
+      this.logger.debug(`remove: l'image ${id} - ${img.stockageName} n'a pas été trouvée sur le disque`);
+    }
+
+    return;
   }
 }
 
@@ -138,7 +148,7 @@ export class PictureService {
 //* UTILS
 export const checkFileMime = (req, file, callback) => {
 
-  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
     return callback(
       new Error(`Seules les images de type JPG, PNG et GIF sont acceptées, uploadé : ${extname(file.originalname)}`),
       false);
