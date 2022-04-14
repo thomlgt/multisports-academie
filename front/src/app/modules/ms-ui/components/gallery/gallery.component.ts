@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Picture } from 'src/app/models/picture/picture.model';
@@ -69,6 +69,8 @@ export class GalleryComponent implements OnInit {
   @Input() pictures: Picture[];
   @Input() loading: boolean;
 
+  @Output() pictureListModified: EventEmitter<any> = new EventEmitter();
+
   isAdmin = false;
 
   constructor(
@@ -94,10 +96,8 @@ export class GalleryComponent implements OnInit {
       return;
     }
 
-    //console.log("delete ", id);
-
-    this.pictureService.delete(id).subscribe(res => {
-      console.log(res);
+    this.pictureService.delete(id).subscribe(_ => {
+      this.pictureListModified.emit();
     },
     err => {
       console.warn(err);
