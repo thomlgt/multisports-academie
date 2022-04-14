@@ -10,7 +10,7 @@ export class PictureService {
 
   constructor(private http : HttpClient) { }
 
-    findAll() {
+  findAll() {
     return this.http.get<Picture[]>(`${environment.apiUrl}/pictures`);
   }
 
@@ -19,7 +19,6 @@ export class PictureService {
   }
 
   delete(id: string) {
-    console.log("front service ok")
     return this.http.delete<Picture>(`${environment.apiUrl}/pictures/${id}`);
   }
   
