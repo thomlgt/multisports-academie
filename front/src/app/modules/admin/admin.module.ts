@@ -19,6 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
+import { DisplayAdminEventComponent } from './components/events/display-admin-event/display-admin-event.component';
+import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { TeamsDetailsComponent } from './components/event-details/teams-details/teams-details.component';
+import { ClientModule } from '../client/client.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,10 @@ import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
     ArticlesComponent,
     ActivityComponent,
     DisplayAdminCaptainComponent,
-    LoginComponent
+    LoginComponent,
+    DisplayAdminEventComponent,
+    EventDetailsComponent,
+    TeamsDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +47,8 @@ import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
     MsApiModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ClientModule
   ],
   providers : [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

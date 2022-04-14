@@ -2,5 +2,5 @@
     <li *ngFor="let element of elements"
         (click)="goTo(element)" [ngClass]="element.isActive?'active':'not-active'">{{element.name}}
     </li>
-    <button class="btn btn-danger" (click)="logout()">Se déconnecter</button>
 </ul>
+<button class="disconnect" (click)="logout()">Se déconnecter</button>

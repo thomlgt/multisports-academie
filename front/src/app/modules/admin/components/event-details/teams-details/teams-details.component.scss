@@ -1,0 +1,20 @@
+@import 'colors';
+
+hr {
+    margin: 10px auto;
+}
+
+.registration-status {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.validate {
+    background-color: $teal;
+}
+
+.cancel {
+    background-color: $orange;
+}

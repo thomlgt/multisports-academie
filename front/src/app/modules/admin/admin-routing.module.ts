@@ -7,6 +7,7 @@ import { ActivityComponent } from './pages/activity/activity.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { BoardComponent } from './pages/board/board.component';
 import { CaptainsComponent } from './pages/captains/captains.component';
+import { EventDetailsComponent } from './pages/event-details/event-details.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ImagesComponent } from './pages/images/images.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'activity', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
       { path: 'activity/:id', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
       { path: 'events', component: EventsComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'events/:id', component: EventDetailsComponent, canActivate: [AdminAuthGuardService] },
       { path: 'articles', component: ArticlesComponent, canActivate: [AdminAuthGuardService] },
       { path: 'login', component: LoginComponent },
       { path: '**', redirectTo: 'board' }

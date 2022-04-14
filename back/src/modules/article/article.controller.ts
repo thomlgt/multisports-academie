@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAdminAuthGuard } from '../admin/jwt-admin-auth.guard';
 import { ArticleService } from './article.service';
@@ -16,7 +17,7 @@ export class ArticleController {
    * @param createArticleDto 
    */
   @Post()
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   create(@Body() createArticleDto: CreateArticleDto) {
     return this.articleService.create(createArticleDto);
   }
@@ -58,7 +59,7 @@ export class ArticleController {
    * @param updateArticleDto 
    */
   @Patch(':id')
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
     return this.articleService.update(id, updateArticleDto);
   }
@@ -70,7 +71,7 @@ export class ArticleController {
    * @param id 
    */
   @Delete(':id')
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   remove(@Param('id') id: string) {
     return this.articleService.remove(id);
   }

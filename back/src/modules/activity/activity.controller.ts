@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { JwtAdminAuthGuard } from '../admin/jwt-admin-auth.guard';
 import { ActivityService } from './activity.service';
@@ -20,7 +21,7 @@ export class ActivityController {
       description: "l'objet activité à creer",
   })
   @Post()
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   create(@Body() createActivityDto: CreateActivityDto) {
     return this.activityService.create(createActivityDto);
   }
@@ -49,7 +50,7 @@ export class ActivityController {
    * @param updateActivityDto 
    */
   @Patch(':id')
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   update(@Param('id') id: string, @Body() updateActivityDto: UpdateActivityDto) {
     return this.activityService.update(id, updateActivityDto);
   }
@@ -59,7 +60,7 @@ export class ActivityController {
    * @param id 
    */
   @Delete(':id')
-  @UseGuards(JwtAdminAuthGuard)
+  @UseGuards(AuthGuard("admin"))
   remove(@Param('id') id: string) {
     return this.activityService.remove(id);
   }

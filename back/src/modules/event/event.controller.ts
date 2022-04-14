@@ -5,6 +5,7 @@ import { EventService } from './event.service';
 import { Event } from './entities/event.entity';
 import { Registration } from './entities/registration';
 import { JwtAdminAuthGuard } from '../admin/jwt-admin-auth.guard';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('events')
 @Controller('events')
@@ -22,7 +23,7 @@ export class EventController {
         description: "l'objet Event à creer",
     })
     @Post()
-    @UseGuards(JwtAdminAuthGuard)
+    @UseGuards(AuthGuard("admin"))
     async create(@Body() event: CreateEventDto) {
         return this.eventService.create(event);
     }
@@ -62,7 +63,7 @@ export class EventController {
      * @returns 
      */
     @Delete(':id')
-    @UseGuards(JwtAdminAuthGuard)
+    @UseGuards(AuthGuard("admin"))
     async delete(@Param('id') id : string) {
         return this.eventService.delete(id);
     }
@@ -74,7 +75,7 @@ export class EventController {
      * @returns 
      */
     @Patch(':id')
-    @UseGuards(JwtAdminAuthGuard)
+    @UseGuards(AuthGuard("admin"))
     async update(@Param('id') id : string, @Body() event : Event) {
         return this.eventService.update(id, event);
     }
@@ -90,6 +91,7 @@ export class EventController {
         description: "l'objet membre à ajouter",
     })
     @Post(':id/registrations')
+    @UseGuards(AuthGuard(["admin", "captain"]))
     async addRegistration(@Body() registration: Registration, @Param('id') id: string) {
     return this.eventService.addRegistration(id, registration);
     
@@ -102,6 +104,7 @@ export class EventController {
      * @returns 
      */
     @Delete(':id/registrations')
+    @UseGuards(AuthGuard(["admin", "captain"]))
     async deleteRegistration(@Body() registration: Registration, @Param('id') id: string) {
         return this.eventService.deleteRegistration(id, registration);
     }
