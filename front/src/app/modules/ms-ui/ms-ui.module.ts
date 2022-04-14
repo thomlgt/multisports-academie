@@ -26,7 +26,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
-import { UploadPictureComponent } from './components/picture/upload-picture/upload-picture.component';
+import { UploadPictureComponent, UploadPictureModale } from './components/picture/upload-picture/upload-picture.component';
 
 
 @NgModule({
@@ -51,7 +51,8 @@ import { UploadPictureComponent } from './components/picture/upload-picture/uplo
     GalleryComponent,
     PictureModale,
     AdminMenuComponent,
-    UploadPictureComponent
+    UploadPictureComponent,
+    UploadPictureModale
   ],
   imports: [
     CommonModule,

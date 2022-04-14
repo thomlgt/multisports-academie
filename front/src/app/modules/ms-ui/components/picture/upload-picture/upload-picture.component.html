@@ -1,8 +1,1 @@
-<p>upload-picture works!</p>
-
-<input #uploadFile
-       (change)="loadFiles($event)"
-       multiple="true"
-       type='file' />
-
-<button (click)="sendFiles()">envoyer</button>
+<ms-button (click)="openModale()" [value]="'ajouter une image'"></ms-button>
