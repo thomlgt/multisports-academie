@@ -3,7 +3,7 @@
 <section class="container block-section">
     
     <div class="d-flex justify-content-between flex-wrap flex-sm-nowrap">
-        <div id="filters">
+        <div id="filters" class="custom-hidden-md">
             <div id="block-filters">
                 <h3 id="filters-title">Filtres</h3>
                 <div class="form-content row">
@@ -60,21 +60,21 @@
     <table>
         <thead>
             <tr> 
-                <th>#</th>               
+                <th class="custom-hidden-lg">#</th>               
                 <th>Nom</th>
-                <th>Description</th>
-                <th>Règles</th>
-                <th>Durée (min)</th>
-                <th>Points</th>
-                <th>Occurence</th>
+                <th class="custom-hidden-md">Description</th>
+                <th class="custom-hidden-md">Règles</th>
+                <th class="custom-hidden-xs">Durée (min)</th>
+                <th class="custom-hidden-xs">Points</th>
+                <th class="custom-hidden-lg">Occurence</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let activity of activities">
-                <td>{{activity._id}}</td>
+                <td class="custom-hidden-lg">{{activity._id}}</td>
                 <td>{{activity.name}}</td>
-                <td>
+                <td class="custom-hidden-md">
                     <div class="block-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633" *ngIf="activity.description">
                             <g id="Ok" transform="translate(1.385 1.442)">
@@ -90,7 +90,7 @@
                         </svg>
                     </div>                   
                 </td>
-                <td>
+                <td class="custom-hidden-md">
                     <div class="block-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25.67" height="19.633" viewBox="0 0 25.67 19.633" *ngIf="activity.rules">
                             <g id="Ok" transform="translate(1.385 1.442)">
@@ -106,9 +106,9 @@
                         </svg>
                     </div>                      
                 </td>
-                <td>{{activity.duration}}</td>
-                <td>{{activity.points}}</td>
-                <td>2</td>
+                <td class="custom-hidden-xs">{{activity.duration}}</td>
+                <td class="custom-hidden-xs">{{activity.points}}</td>
+                <td class="custom-hidden-lg">2</td>
                 <td>
                     <p class="actions"><span (click)="goToEditActivity(activity._id)" class="link-text">Éditer</span> - <span (click)="openDelationModal(activity._id, activity.name)" class="link-text">Supprimer</span></p>
                 </td>

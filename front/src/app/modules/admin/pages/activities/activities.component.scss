@@ -77,3 +77,27 @@
     }
 
 }
+
+.custom-hidden-xs {
+    @media (max-width: 575px) {
+        display: none;
+    }
+}
+
+.custom-hidden-sm {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+.custom-hidden-md {
+    @media (max-width: 991px) {
+        display: none;
+    }
+}
+
+.custom-hidden-lg {
+    @media (max-width: 1999px) {
+        display: none;
+    }
+}
