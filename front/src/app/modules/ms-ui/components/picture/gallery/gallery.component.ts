@@ -85,7 +85,7 @@ export class GalleryComponent implements OnInit {
   }
 
   openModal(index: number) {
-    const modalRef = this.modalService.open(PictureModale, { centered: true, size: 'xl' });
+    const modalRef = this.modalService.open(PictureModale, { centered: true });
     modalRef.componentInstance.index = index;
     modalRef.componentInstance.pictures = this.pictures;
   }
