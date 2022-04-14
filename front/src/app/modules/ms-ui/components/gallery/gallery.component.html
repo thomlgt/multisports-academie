@@ -1,10 +1,15 @@
 <section>
-  <div class="gallery" *ngIf="pictures && pictures.length > 0; else noPictures">
-    <img *ngFor="let img of pictures; let index = index"
-         [src]="img.url"
-         [alt]="img.altText"
-         class="rounded thumbnail"
-         (click)="openModal(index)">
+  <div class="gallery"
+       *ngIf="pictures && pictures.length > 0; else noPictures">
+    <div *ngFor="let img of pictures; let index = index" class="img-container">
+      <img [src]="img.url"
+           [alt]="img.altText"
+           class="rounded thumbnail"
+           (click)="openModal(index)">
+      <div class="delete-icon" (click)="deletePicture(img._id)">
+        SUPPRIMER
+      </div>
+    </div>
   </div>
 </section>
 

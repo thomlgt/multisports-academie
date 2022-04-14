@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Picture } from 'src/app/models/picture/picture.model';
+import { PictureService } from 'src/app/modules/ms-api/picture/picture.service';
 
 @Component({
   selector: 'picture-modale',
@@ -67,14 +69,39 @@ export class GalleryComponent implements OnInit {
   @Input() pictures: Picture[];
   @Input() loading: boolean;
 
-  constructor(private modalService: NgbModal) { }
+  isAdmin = false;
+
+  constructor(
+    private modalService: NgbModal,
+    private router: Router,
+    private pictureService : PictureService) { }
 
   ngOnInit(): void {
+    if (this.router.url.split("/")[1] === "admin") {
+      this.isAdmin = true;
+    }
   }
 
   openModal(index: number) {
     const modalRef = this.modalService.open(PictureModale, { centered: true, size: 'xl' });
     modalRef.componentInstance.index = index;
     modalRef.componentInstance.pictures = this.pictures;
+  }
+
+  deletePicture(id: string) {
+    if (!this.isAdmin) {
+      //TODO: logger la tentative de suppression illégale
+      return;
+    }
+
+    //console.log("delete ", id);
+
+    this.pictureService.delete(id).subscribe(res => {
+      console.log(res);
+    },
+    err => {
+      console.warn(err);
+    });
+
   }
 }

@@ -6,22 +6,46 @@ section {
 
 .title {
   margin-bottom: 40px;
-  color: $text-light;
+  color        : $text-light;
 }
 
 .gallery {
   display  : flex;
   flex-wrap: wrap;
 
-  .thumbnail {
-    width : 200px;
-    height: 200px;
-    margin: 5px;
-    cursor: pointer;
+  .img-container {
+    position: relative;
+    margin  : 5px;
+    .thumbnail {
+      width : 200px;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    img {
+      height    : 100%;
+      object-fit: cover;
+    }
+
+    .delete-icon {
+      display: none;
+    }
+
+    &:hover .delete-icon {
+      display: block;
+      position        : absolute;
+      width           : 100%;
+      bottom          : 0;
+      height          : 25%;
+      background-color: rgba($mid-blue, 0.7);
+      border-radius   : 0 0 5px 5px;
+      display         : flex;
+      justify-content : center;
+      align-items     : center;
+    }
   }
 
-  img {
-    height    : 100%;
-    object-fit: cover;
-  }
+
+
+
 }
