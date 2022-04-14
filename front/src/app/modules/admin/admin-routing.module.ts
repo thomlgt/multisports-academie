@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminAuthGuardService } from 'src/app/admin/admin-auth-guard.service';
 import { AdminComponent } from './admin.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { BoardComponent } from './pages/board/board.component';
 import { CaptainsComponent } from './pages/captains/captains.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
       { path: 'captains', component: CaptainsComponent, canActivate: [AdminAuthGuardService] },
       { path: 'images', component: ImagesComponent, canActivate: [AdminAuthGuardService] },
       { path: 'activities', component: ActivitiesComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'activity', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'activity/:id', component: ActivityComponent, canActivate: [AdminAuthGuardService] },
       { path: 'events', component: EventsComponent, canActivate: [AdminAuthGuardService] },
       { path: 'events/:id', component: EventDetailsComponent, canActivate: [AdminAuthGuardService] },
       { path: 'articles', component: ArticlesComponent, canActivate: [AdminAuthGuardService] },

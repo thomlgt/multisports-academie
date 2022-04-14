@@ -11,6 +11,8 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
 import { ImagesComponent } from './pages/images/images.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { ActivityComponent } from './pages/activity/activity.component';
+
 import { DisplayAdminCaptainComponent } from './components/captains/display-admin-captain/display-admin-captain.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +33,7 @@ import { ClientModule } from '../client/client.module';
     ImagesComponent,
     EventsComponent,
     ArticlesComponent,
+    ActivityComponent,
     DisplayAdminCaptainComponent,
     LoginComponent,
     DisplayAdminEventComponent,
