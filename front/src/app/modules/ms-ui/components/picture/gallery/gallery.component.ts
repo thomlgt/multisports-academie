@@ -69,7 +69,7 @@ export class GalleryComponent implements OnInit {
   @Input() pictures: Picture[];
   @Input() loading: boolean;
 
-  @Output() pictureListModified: EventEmitter<any> = new EventEmitter();
+  @Output() pictureDeletedEvent: EventEmitter<any> = new EventEmitter();
 
   isAdmin = false;
 
@@ -97,7 +97,7 @@ export class GalleryComponent implements OnInit {
     }
 
     this.pictureService.delete(id).subscribe(_ => {
-      this.pictureListModified.emit();
+      this.pictureDeletedEvent.emit();
     },
     err => {
       console.warn(err);

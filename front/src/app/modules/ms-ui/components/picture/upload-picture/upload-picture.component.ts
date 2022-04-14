@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { PictureService } from 'src/app/modules/ms-api/picture/picture.service';
 
 @Component({
   selector: 'app-upload-picture',
@@ -7,17 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadPictureComponent implements OnInit {
 
-  files: any[];
-  pictureService: any;
+  @Output() pictureUploadedEvent : EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  files: any[];
+
+  constructor(private pictureService: PictureService ) { }
 
   ngOnInit(): void {
   }
 
   loadFiles(e) {
     this.files = e.target.files;
-    console.log(this.files);
   }
 
   sendFiles() {
@@ -34,8 +35,7 @@ export class UploadPictureComponent implements OnInit {
 
     this.pictureService.upload(formData).subscribe(res => {
       console.log(res);
-      // this.reloadGallery()
-      // TODO : emit event for page to reload gallery
+      this.pictureUploadedEvent.emit();
     },
       err => {
         console.warn(err);
