@@ -13,5 +13,14 @@ export class PictureService {
     findAll() {
     return this.http.get<Picture[]>(`${environment.apiUrl}/pictures`);
   }
+
+  upload(files: FormData) {
+    return this.http.post<any>(`${environment.apiUrl}/pictures/upload`, files);
+  }
+
+  delete(id: string) {
+    console.log("front service ok")
+    return this.http.delete<Picture>(`${environment.apiUrl}/pictures/${id}`);
+  }
   
 }

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
-import { editFileName, imageFileFilter, PictureService } from './picture.service';
+import { checkFileMime, editFileName, PictureService } from './picture.service';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
@@ -43,7 +43,7 @@ export class PictureController {
           destination: '../front/src/assets/images/uploaded',
           filename: editFileName,
         }),
-        fileFilter: imageFileFilter,
+        fileFilter: checkFileMime,
         preservePath: true
       }
     )
