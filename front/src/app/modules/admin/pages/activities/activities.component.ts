@@ -31,7 +31,7 @@ export class ActivitiesComponent implements OnInit {
     })
   }
 
-  /** Add activity redirection */
+  /** CRUD */
 
   goToAddActivity() {
     this.router.navigateByUrl(`/admin/activity`);

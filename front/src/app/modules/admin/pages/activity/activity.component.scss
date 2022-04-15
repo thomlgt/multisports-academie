@@ -6,8 +6,19 @@ form {
         margin: 20px;
     }
 
-    .block-button {
-        margin: 20px;
+    .block-buttons {
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+
+        ms-button {
+            margin: 20px; 
+            button {
+                width: 200px;
+            }                       
+        }
     }
     
 }
