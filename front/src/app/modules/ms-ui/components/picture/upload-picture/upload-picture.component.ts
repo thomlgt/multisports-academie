@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PictureService } from 'src/app/modules/ms-api/picture/picture.service';
 
@@ -11,6 +11,8 @@ import { PictureService } from 'src/app/modules/ms-api/picture/picture.service';
 })
 export class UploadPictureModale {
 
+  @ViewChild('uploadFile', { static: false }) inputFile: ElementRef;
+  
   files: any[];
 
   constructor(public activeModal: NgbActiveModal) { }
@@ -21,7 +23,15 @@ export class UploadPictureModale {
   }
 
   removeFile(index: number) {
+    // supprimer l'image de la variable locale
     this.files.splice(index, 1);
+
+    // reconstituer une fileList à partir du tableau
+    const dt = new DataTransfer();
+    this.files.forEach(file => dt.items.add(file));
+
+    // et la réintégrer dans l'input File
+    this.inputFile.nativeElement.files = dt.files;
   }
 
   sendFiles() {
