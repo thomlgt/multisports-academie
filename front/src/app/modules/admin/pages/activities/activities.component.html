@@ -55,7 +55,7 @@
     </div>
 </section>
 
-<section id="block-table" class="container block-section" *ngIf="activities">
+<section id="block-table" class="container block-section" *ngIf="activitiesEventsNb">
 
     <table>
         <thead>
@@ -66,7 +66,7 @@
                 <th class="custom-hidden-md">Règles</th>
                 <th class="custom-hidden-xs">Durée (min)</th>
                 <th class="custom-hidden-xs">Points</th>
-                <th class="custom-hidden-lg">Occurence</th>
+                <th class="custom-hidden-md">Événements</th>
                 <th></th>
             </tr>
         </thead>
@@ -108,7 +108,7 @@
                 </td>
                 <td class="custom-hidden-xs">{{activity.duration}}</td>
                 <td class="custom-hidden-xs">{{activity.points}}</td>
-                <td class="custom-hidden-lg">2</td>
+                <td class="custom-hidden-md">{{activitiesEventsNb[activity._id]}}</td>
                 <td>
                     <p class="actions"><span (click)="goToEditActivity(activity._id)" class="link-text">Éditer</span> - <span (click)="openDelationModal(activity._id, activity.name)" class="link-text">Supprimer</span></p>
                 </td>
