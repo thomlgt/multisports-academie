@@ -1,0 +1,21 @@
+<section>
+  <div class="gallery"
+       *ngIf="pictures && pictures.length > 0; else noPictures">
+    <div *ngFor="let img of pictures; let index = index" class="img-container">
+      <img [src]="img.url"
+           [alt]="img.altText"
+           [title]="img.altText"
+           class="rounded thumbnail"
+           (click)="openModal(index)">
+      <div *ngIf="isAdmin" class="delete-icon" (click)="deletePicture(img._id)">
+        SUPPRIMER
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #noPictures>
+  <p *ngIf="!loading" [ngClass]="{'dark': isAdmin}">
+    Hum...Il semblerait qu'il n'y ait pas encore de photos ! restez à l'affut, ça ne saurait tarder ! 📸
+  </p>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PictureService } from 'src/app/modules/ms-api/picture/picture.service';
 
 @Component({
   selector: 'app-images',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImagesComponent implements OnInit {
 
-  constructor() { }
+  pictures : any[];
+  loading = true;
+
+  constructor(private pictureService: PictureService) { }
 
   ngOnInit(): void {
+    this.reloadGallery()
   }
 
+  reloadGallery() {
+    this.pictureService.findAll().subscribe(
+      res => {
+        this.pictures = res;
+        this.loading = false;
+      },
+      err => {
+        console.warn(err);
+        this.loading = false;
+      }
+    )
+  }
 }

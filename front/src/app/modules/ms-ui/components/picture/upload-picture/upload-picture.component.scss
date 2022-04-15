@@ -1,0 +1,74 @@
+@import 'colors';
+
+.modal-body {
+  .close {
+    position: absolute;
+    top     : 0;
+    right   : 0;
+  }
+
+  .file-upload {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    min-width     : 650px;
+    min-height    : 150px;
+
+    ms-button {
+      margin: 20px auto;
+    }
+
+    .files-array {
+      margin-bottom: 50px;
+      min-width    : 550px;
+
+      th {
+        padding-bottom: 5px;
+        border-bottom : 2px solid $teal;
+
+        &:not(:first-child) {
+          text-align: center;
+        }
+      }
+
+      tr {
+        padding: 5px;
+
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
+
+      td {
+        max-width: 350px;
+        padding  : 5px;
+
+        .size {
+          text-align: right;
+        }
+      }
+
+
+      .suppr-img {
+        margin          : auto;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        background-color: #7a0e0e;
+        width           : 20px;
+        height          : 20px;
+        border-radius   : 2px;
+      }
+    }
+  }
+
+  .buttons {
+    display        : flex;
+    justify-content: space-around;
+
+    ms-button {
+      width: 120px;
+    }
+  }
+
+}
