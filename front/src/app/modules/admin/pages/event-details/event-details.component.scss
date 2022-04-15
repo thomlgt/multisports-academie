@@ -1,0 +1,42 @@
+@import 'colors';
+
+.return {
+    background-color: $orange;
+    color: $mid-blue;
+    margin-bottom: 10px;
+}
+
+.conditions {
+    display: flex;
+    flex-direction: column;
+}
+
+.activities {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h5 {
+    background-color: $mid-blue;
+    color: $text-light;
+    margin: 0;
+}
+
+input {
+    margin: 10px;
+    width: 40%;
+}
+
+textarea {
+    margin: 10px;
+    width: 80%;
+    resize: none;
+}
+
+img {
+    width: 200px;
+}
+
+form {
+    margin-bottom: 600px;
+}

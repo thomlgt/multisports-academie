@@ -21,4 +21,17 @@ export class ActivityService {
   findAllActivitiesByEventId() {
     // TODO: implémenter cette méthode et la route correspondante dans le back
   }
+
+  addActivity(activity: Activity) {
+    return this.http.post<Activity>(`${environment.apiUrl}/activities`, activity);
+  }
+
+  updateActivity(id: string, activity: Activity) {
+    return this.http.patch<Activity>(`${environment.apiUrl}/activities/${id}`, activity);
+  }
+
+  deleteActivity(id : string) {
+    return this.http.delete<Activity>(`${environment.apiUrl}/activities/${id}`);
+  }
+
 }

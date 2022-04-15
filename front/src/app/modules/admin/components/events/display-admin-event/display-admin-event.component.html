@@ -1,0 +1,10 @@
+<ul>
+    <li>{{event._id}}</li>
+    <li>{{event.name}}</li>
+    <li>{{event.registrations.length}} / {{event.maxTeams}}</li>
+    <li>{{registrationStatus}}</li>
+    <li class="buttons">
+        <button class="update" routerLink="{{event._id}}">Consulter</button>
+        <button class="delete">Supprimer</button>
+    </li>
+</ul>

@@ -1,0 +1,16 @@
+<button class="return" (click)="goToSite()">Retourner sur le site</button>
+
+<section class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p class="admin-text">Administration</p>
+        <img src="assets/images/logos/logo-sans-fond-bords-bleu.svg" alt="">
+        <label for="username">Username :</label>
+        <input type="text" name="username" formControlName="username">
+        <label for="password">Password :</label>
+        <input type="password" name="password" formControlName="password">
+        <ngb-alert type="danger" [dismissible]="false" *ngIf="displayErrorMessage">
+            Nous n'avons pas pu vous connecter.
+        </ngb-alert>
+        <button>Valider</button>
+    </form>
+</section>

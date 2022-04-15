@@ -59,6 +59,9 @@ import { GalleryPageComponent } from './pages/gallery/gallery.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    ActivityThumbnailComponent
   ]
 })
 export class ClientModule { }

@@ -1,0 +1,21 @@
+<ngb-accordion #acc="ngbAccordion">
+    <ng-container *ngFor="let registration of registrations; let index = index">
+        <ngb-panel title="#{{index + 1}} - {{registration.team.name}} ({{registration.validationStatus==='pending'?'❌':'✅'}})">
+            <ng-template ngbPanelContent>
+                <section class="registration-status">
+                    <h6>
+                        Inscription {{registration.validationStatus==="pending"?"en attente de validation...":"validée"}}
+                    </h6>
+                    <button class="validate">Valider l'inscription</button>
+                    <button class="cancel">Annuler l'inscription</button>
+                </section>
+                <hr>
+                <ms-display-captain [captain]="registration.team.captain"></ms-display-captain>
+                <ng-container *ngFor="let member of registration.team.members">
+                    <ms-display-member [member]="member"></ms-display-member>
+                </ng-container>
+            </ng-template>
+        </ngb-panel>
+    </ng-container>
+
+</ngb-accordion>

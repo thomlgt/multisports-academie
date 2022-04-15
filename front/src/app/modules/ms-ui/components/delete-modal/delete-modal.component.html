@@ -1,0 +1,5 @@
+<div id="delation_modal" *ngIf="id" class="d-flex flex-column align-items-center">
+    <h3 *ngIf="title">{{ title }}</h3>
+    <p *ngIf="content">{{ content }}</p>     
+    <ms-button color="orange" value="Supprimer" (click)="deleteConfirm()"></ms-button>
+</div>

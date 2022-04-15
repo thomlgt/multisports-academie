@@ -1,0 +1,103 @@
+@import 'colors';
+
+.block-section {
+    
+    padding: 20px;
+
+}
+
+#block-filters {
+
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+
+    #filters-title {
+        color: $teal;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .form-content {
+
+        color: $dark-blue;
+        margin-bottom: 10px;
+
+        .filter-field  {
+            padding: 0 10px;
+
+            select {
+                width: 100%;
+                color: $dark-blue;
+            }
+        }
+
+    }
+
+}
+
+#block-table {    
+
+    table {
+
+        width: 100%;
+        text-align: center;
+    
+        th, td {
+            border: 2px solid $grey;
+            background-color: #fff;
+
+            .block-svg {                
+                width: 100%;
+                height: 15px;
+    
+                svg {
+                    height: 100%;
+                    margin-top: -15px;
+                }
+            } 
+
+            .actions {
+
+                margin: 0;
+
+                .link-text {
+                    cursor: pointer;
+                    
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+
+            }
+
+            
+        }
+    
+    }
+
+}
+
+.custom-hidden-xs {
+    @media (max-width: 575px) {
+        display: none;
+    }
+}
+
+.custom-hidden-sm {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+.custom-hidden-md {
+    @media (max-width: 991px) {
+        display: none;
+    }
+}
+
+.custom-hidden-lg {
+    @media (max-width: 1999px) {
+        display: none;
+    }
+}
