@@ -55,4 +55,8 @@ export class AdminMenuComponent implements OnInit {
     this.router.navigateByUrl("/admin/login");
   }
 
+  viewSite() {
+    window.open('/home', '_blank');
+  }
+
 }
