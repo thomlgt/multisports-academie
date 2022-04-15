@@ -15,7 +15,7 @@
 </section>
 
 <ng-template #noPictures>
-  <p *ngIf="!loading">
+  <p *ngIf="!loading" [ngClass]="{'dark': isAdmin}">
     Hum...Il semblerait qu'il n'y ait pas encore de photos ! restez à l'affut, ça ne saurait tarder ! 📸
   </p>
 </ng-template>
