@@ -47,6 +47,7 @@ export class RegisterModalComponent implements OnInit {
   }
 
   register() {
+    this.registerForm.value.gender = parseInt(this.registerForm.value.gender);
     if (this.registerForm.valid) {
       if (this.registerForm.value.password === this.registerForm.value.passwordValidation) {
         this.authService.register(this.registerForm.value).subscribe(
