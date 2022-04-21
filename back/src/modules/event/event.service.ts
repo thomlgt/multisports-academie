@@ -160,10 +160,14 @@ export class EventService {
      */
      async validateRegistration(id: string, registration : Registration) : Promise<Event> {
         let teamId = registration.team._id;
-        
+        let captain = registration.team.captain;
         return this.eventModel.findOneAndUpdate({_id : id, "registrations.team._id" : teamId},
             {$set: { "registrations.$.validationStatus" : "validated" }, updatedDate: new Date()},
-            {new: true});
+            {new: true},
+            (error, event) => {
+                SafeEvent.transformEventToSafe(event);
+                this.mailService.sendValidatedRegistration(captain, event, registration);
+            }).clone();
     }
 
 }

@@ -106,4 +106,27 @@ export class MailService {
       }]
     });
   }
+
+  async sendValidatedRegistration(captain: Captain, event : SafeEvent, registration : Registration) {
+    let address = `${event.place.address}, ${event.place.zipcode}, ${event.place.city.toUpperCase()}`;
+    await this.mailerService.sendMail({
+      to: `${captain.email}`,
+      from: '"Multisports Académie" <ne-pas-repondre@multisports-academie.fr>', // override default from
+      subject: `Validation de votre inscription`,
+      template: '../templates/registration-validated', // `.hbs` extension is appended automatically
+      context: { // ✏️ filling curly brackets with content
+        firstname: captain.firstname,
+        teamName: registration.team.name,
+        date: event.startEvent.toLocaleDateString('fr'),
+        address: address,
+        hour: event.startEvent.getHours(),
+        minutes: event.startEvent.getMinutes()
+      },
+      attachments: [{
+        filename: 'logo-sans-fond-bords-bleu.png',
+        path: __dirname +'/images/logo-sans-fond-bords-bleu.png',
+        cid: 'logo'
+      }]
+    });
+  }
 }
