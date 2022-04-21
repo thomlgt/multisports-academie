@@ -4,10 +4,10 @@
             <ng-template ngbPanelContent>
                 <section class="registration-status">
                     <h6>
-                        Inscription {{registration.validationStatus==="pending"?"en attente de validation...":"validée"}}
+                        Inscription {{registration.validationStatus==="pending"?"en attente de validation...":"validée et payée"}}
                     </h6>
-                    <button class="validate">Valider l'inscription</button>
-                    <button class="cancel" (click)="deleteRegistration(registration)">Annuler l'inscription</button>
+                    <button class="validate" (click)="validateRegistration(registration)" *ngIf="registration.validationStatus==='pending'">Valider l'inscription</button>
+                    <button class="cancel" (click)="deleteRegistration(registration)" *ngIf="registration.validationStatus==='pending'">Annuler l'inscription</button>
                 </section>
                 <hr>
                 <ms-display-captain [captain]="registration.team.captain"></ms-display-captain>

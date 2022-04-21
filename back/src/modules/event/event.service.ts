@@ -137,4 +137,19 @@ export class EventService {
             {new: true});
     }
 
+    /**
+     * Cette méthode permet de modifier un événement enregistré pour valider une inscription
+     * dans la base de données et le retourne
+     * @param id 
+     * @param newEvent 
+     * @returns 
+     */
+     async validateRegistration(id: string, registration : Registration) : Promise<Event> {
+        let teamId = registration.team._id;
+        
+        return this.eventModel.findOneAndUpdate({_id : id, "registrations.team._id" : teamId},
+            {$set: { "registrations.$.validationStatus" : "validated" }, updatedDate: new Date()},
+            {new: true});
+    }
+
 }

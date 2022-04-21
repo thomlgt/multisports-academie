@@ -109,4 +109,16 @@ export class EventController {
         return this.eventService.deleteRegistration(id, registration);
     }
 
+    /**
+     * valide une inscription d'un événement
+     * @param registration 
+     * @param id 
+     * @returns 
+     */
+     @Patch(':id/registrations')
+     @UseGuards(AuthGuard("admin"))
+     async validateRegistration(@Body() registration: Registration, @Param('id') id: string) {
+         return this.eventService.validateRegistration(id, registration);
+     }
+
 }

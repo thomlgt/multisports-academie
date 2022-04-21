@@ -10,8 +10,9 @@ import { EventService } from 'src/app/modules/ms-api/event/event.service';
 })
 export class TeamsDetailsComponent implements OnInit {
 
+  idEvent: any;
   @Input() registrations: Registration[];
-  @Output() deleteRegistrationEvent = new EventEmitter<any>();
+  @Output() changeRegistrationEvent = new EventEmitter<any>();
 
   constructor(
     private eventService: EventService,
@@ -19,12 +20,21 @@ export class TeamsDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.idEvent = this.route.snapshot.params['id']
   }
 
   deleteRegistration(registration: Registration) {
-    this.eventService.cancelRegistration(this.route.snapshot.params['id'], registration).subscribe({
+    this.eventService.cancelRegistration(this.idEvent, registration).subscribe({
       next: () => {
-        this.deleteRegistrationEvent.emit();
+        this.changeRegistrationEvent.emit();
+      }
+    })
+  }
+
+  validateRegistration(registration: Registration) {
+    this.eventService.validateRegistration(this.idEvent, registration).subscribe({
+      next: () => {
+        this.changeRegistrationEvent.emit();
       }
     })
   }

@@ -54,7 +54,7 @@
                 </section>
                 <h5>Equipes inscrites</h5>
                 <p *ngIf="event.registrations.length === 0">Pas encore d'équipe inscrite</p>
-                <ms-teams-details [registrations]="event.registrations" (deleteRegistrationEvent)="initEvent()"></ms-teams-details>
+                <ms-teams-details [registrations]="event.registrations" (changeRegistrationEvent)="initEvent()"></ms-teams-details>
             </form>
         </section>
     </section>

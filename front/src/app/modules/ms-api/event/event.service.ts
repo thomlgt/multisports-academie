@@ -37,4 +37,8 @@ export class EventService {
     return this.http.delete<Registration>(`${environment.apiUrl}/events/${id}/registrations`, {body: registration});
   }
 
+  validateRegistration(id: string, registration: Registration) {
+    return this.http.patch<Registration>(`${environment.apiUrl}/events/${id}/registrations`, registration);
+  }
+
 }
