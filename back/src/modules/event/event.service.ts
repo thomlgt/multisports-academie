@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
 import { Activity } from '../activity/entities/activity.entity';
+import { MailService } from '../mail/mail.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { SafeEvent } from './dto/safe-event.dto';
 import { Event, EventDocument } from './entities/event.entity';
@@ -11,7 +12,10 @@ import { Registration } from './entities/registration';
 @Injectable()
 export class EventService {
 
-    constructor(@InjectModel(Event.name) private eventModel: Model<EventDocument>){}
+    constructor(
+        @InjectModel(Event.name) private eventModel: Model<EventDocument>,
+        private mailService : MailService
+        ){}
 
     /**
      * Cette méthode permet de créer un événement
@@ -131,10 +135,15 @@ export class EventService {
      * @returns 
      */
      async deleteRegistration(id: string, registration: Registration) {
+        let captain = registration.team.captain;
         return this.eventModel.findByIdAndUpdate(
             id, 
             {$pull: {registrations: registration}, updatedDate: new Date()},
-            {new: true});
+            {new: true},
+            (error, event) => {
+                SafeEvent.transformEventToSafe(event);
+                this.mailService.sendDeleteRegistration(captain, event, registration);
+            }).clone();   
     }
 
     /**
