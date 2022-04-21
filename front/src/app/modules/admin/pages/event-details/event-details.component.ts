@@ -54,7 +54,6 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.findById(this.route.snapshot.params['id']).subscribe(data => {
       this.event = data;
       this.updateEventForm.patchValue(this.event);
-      console.log(this.updateEventForm.value)
     })
   }
 

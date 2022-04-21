@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Registration } from 'src/app/models/event/registration';
+import { EventService } from 'src/app/modules/ms-api/event/event.service';
 
 @Component({
   selector: 'ms-teams-details',
@@ -9,10 +11,22 @@ import { Registration } from 'src/app/models/event/registration';
 export class TeamsDetailsComponent implements OnInit {
 
   @Input() registrations: Registration[];
+  @Output() deleteRegistrationEvent = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  deleteRegistration(registration: Registration) {
+    this.eventService.cancelRegistration(this.route.snapshot.params['id'], registration).subscribe({
+      next: () => {
+        this.deleteRegistrationEvent.emit();
+      }
+    })
   }
 
 }
