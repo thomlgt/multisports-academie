@@ -86,4 +86,24 @@ export class MailService {
       }]
     });
   }
+
+  async sendAddRegistration(captain: Captain, event : SafeEvent, registration : Registration) {
+    await this.mailerService.sendMail({
+      to: `${captain.email}`,
+      from: '"Multisports Académie" <ne-pas-repondre@multisports-academie.fr>', // override default from
+      subject: `Confirmation de votre demande d'inscription`,
+      template: '../templates/registration-confirmation', // `.hbs` extension is appended automatically
+      context: { // ✏️ filling curly brackets with content
+        firstname: captain.firstname,
+        teamName: registration.team.name,
+        eventName: event.name,
+        price: event.price
+      },
+      attachments: [{
+        filename: 'logo-sans-fond-bords-bleu.png',
+        path: __dirname +'/images/logo-sans-fond-bords-bleu.png',
+        cid: 'logo'
+      }]
+    });
+  }
 }

@@ -121,10 +121,15 @@ export class EventService {
      * @returns 
      */
      async addRegistration(id: string, registration: Registration) {
-        return this.eventModel.findByIdAndUpdate(
+        let captain = registration.team.captain;
+        return await this.eventModel.findByIdAndUpdate(
             id, 
             {$push : {registrations: registration}, updatedDate: new Date()},
-            {new: true});
+            {new: true},
+            (error, event) => {
+                SafeEvent.transformEventToSafe(event);
+                this.mailService.sendAddRegistration(captain, event, registration);
+            });
     }
 
     /**
