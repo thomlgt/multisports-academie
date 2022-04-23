@@ -9,7 +9,7 @@
             <p class="color-lightblue paragraph-title">Ouverture des inscriptions :</p>
             <p>du <span class="color-orange">{{ event.startRegistration | date:'dd/MM/y' }}</span> au <span class="color-orange">{{ event.endRegistration | date:'dd/MM/y' }}</span></p>
         </div>
-        <div class="block-text-description" [innerHTML]="event.description"></div>
+        <div class="description" [innerHTML]="event.description"></div>
         <div class="block-buttons row">
             <div class="block-button col-6">
                 <ms-button class="btn-custom" value="En savoir plus" width="100%" (click)="goToEvent()"></ms-button>
