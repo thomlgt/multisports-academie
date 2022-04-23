@@ -38,11 +38,9 @@ export class EnrolTeamComponent implements OnInit {
     newRegistration.validationStatus = "pending";
     this.eventService.addRegistration(this.id, newRegistration).subscribe(
       next => {
-        console.log('registration OK !');
         this.closeModal();
       },
       error => {
-        console.log('registration has failed !');
         this.closeModal();
       }
     );
