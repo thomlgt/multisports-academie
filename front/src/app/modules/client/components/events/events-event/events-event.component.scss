@@ -79,6 +79,10 @@
     color: $light;
 }
 
-a {
-    color: $orange;
+.h2:hover {
+    cursor: pointer;
+}
+
+.block-image:hover {
+    cursor: pointer;
 }

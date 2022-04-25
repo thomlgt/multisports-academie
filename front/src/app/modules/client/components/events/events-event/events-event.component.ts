@@ -39,6 +39,7 @@ export class EventsEventComponent implements OnInit {
     this.hasRecordedTeam = false;
     this.defineEventRegistrationStatus();
     this.initEventTeams();
+    this.initCaptain();
   }
 
   /** Event redirection */

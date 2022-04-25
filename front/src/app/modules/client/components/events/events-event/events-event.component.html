@@ -1,8 +1,8 @@
 <div class="row block-event" *ngIf="eventRegistrationStatus">
-    <div class="block-image col-12 col-md-4" style="background-image: url('{{ event.mainPicture.url }}')">
+    <div class="block-image col-12 col-md-4" style="background-image: url('{{ event.mainPicture.url }}')" (click)="goToEvent()">
     </div>
     <div class="block-infos col-12 col-md-8">
-        <h2>{{ event.name }}</h2>
+        <h2 (click)="goToEvent()">{{ event.name }}</h2>
         <div class="block-text-dates">
             <p class="color-lightblue paragraph-title">Dates de l'événement :</p>
             <p>du <span class="color-orange">{{ event.startEvent | date:'dd/MM/y' }}</span> au <span class="color-orange">{{ event.endEvent | date:'dd/MM/y' }}</span></p>
