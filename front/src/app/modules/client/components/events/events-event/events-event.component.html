@@ -17,7 +17,7 @@
             <div class="block-button col-6">
                 <ms-button class="btn-custom" value="Inscrire une équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam && event.registrations.length < event.maxTeams" (click)="openRegistrationModal()"width="100%"></ms-button>
                 <ms-button class="btn-custom" value="Changer d'équipe !" color="orange" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"width="100%"></ms-button>
-                <ms-button class="btn-custom" value="S'inscrire" color="orange" *ngIf="!currentCaptain"width="100%"></ms-button>  
+                <ms-button class="btn-custom" value="Créer un compte pour m'inscrire" color="orange" *ngIf="!currentCaptain"width="100%" (click)="openLoginModal()"></ms-button>  
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ import { SafeEvent } from 'src/app/models/event/safeEvent';
 import { Team } from 'src/app/models/teams/team';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
+import { LoginModalComponent } from 'src/app/modules/ms-ui/components/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-events-event',
@@ -77,6 +78,10 @@ export class EventsEventComponent implements OnInit {
     modalRef.componentInstance.enrolTeamEvent.subscribe(() => {
       window.location.reload();
     })
+  }
+
+  openLoginModal() {
+    const modalRef = this.modalService.open(LoginModalComponent, { centered: true, size: 'xl'});
   }
   
   initEventTeams() {
