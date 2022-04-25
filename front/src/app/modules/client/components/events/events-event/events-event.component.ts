@@ -101,7 +101,7 @@ export class EventsEventComponent implements OnInit {
     this.authenticationService.currentCaptain.subscribe((data) => {
       if(data.captain) {
         this.currentCaptain = data.captain;
-      this.initCaptainTeams();
+        this.initCaptainTeams();
       }     
     });
   }
