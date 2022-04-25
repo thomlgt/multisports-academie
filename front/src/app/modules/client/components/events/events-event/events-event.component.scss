@@ -13,6 +13,10 @@
         color: $orange;
     }
 
+    .h2:hover {
+        cursor: pointer;
+    }
+
     p {
         color: $light;        
     }
@@ -23,6 +27,10 @@
         background-size: cover;
     }
 
+    .block-image:hover {
+        cursor: pointer;
+    }
+
     /** Infos */
 
     .block-infos {
@@ -31,6 +39,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: start;
 
         @media (min-width: 768px) {
             display: block;
@@ -77,12 +86,4 @@
 
 .description {
     color: $light;
-}
-
-.h2:hover {
-    cursor: pointer;
-}
-
-.block-image:hover {
-    cursor: pointer;
 }

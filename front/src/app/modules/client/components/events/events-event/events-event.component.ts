@@ -18,7 +18,7 @@ export class EventsEventComponent implements OnInit {
   @Input() event : SafeEvent;
   eventRegistrationStatus: number;
 
-  currentCaptain: Captain|null;
+  currentCaptain: Captain|null = null;
   
   eventTeams: Team[];
   captainTeams: Team[];  
@@ -98,11 +98,10 @@ export class EventsEventComponent implements OnInit {
 
   initCaptain() {
     // check if authenticated
-    let authenticatedCaptain = this.authenticationService.currentCaptainValue;
-    if (authenticatedCaptain) {
-      this.currentCaptain = authenticatedCaptain.captain;
+    this.authenticationService.currentCaptain.subscribe((data) => {
+      this.currentCaptain = data.captain;
       this.initCaptainTeams();
-    }
+    });
   }
 
   initCaptainTeams() {
