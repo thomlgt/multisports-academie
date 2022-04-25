@@ -92,20 +92,17 @@ export class EventsEventComponent implements OnInit {
       for (let registration of registrations) { 
         this.eventTeams.push(registration.team);
         i++;
-        if (i === nbTeams) {        
-          this.initCaptain();
-        }
       }
-    } else {
-      this.initCaptain();
     }
   }
 
   initCaptain() {
     // check if authenticated
     this.authenticationService.currentCaptain.subscribe((data) => {
-      this.currentCaptain = data.captain;
+      if(data.captain) {
+        this.currentCaptain = data.captain;
       this.initCaptainTeams();
+      }     
     });
   }
 
@@ -169,6 +166,7 @@ export class EventsEventComponent implements OnInit {
             nbFemales++;
           }
         }
+        if(this.currentCaptain.gender === 2) nbFemales += 1;
         if (nbFemales >= this.event.minFemale) {
           suitable = true;
         } else {
