@@ -1,4 +1,4 @@
-<h2>Gestion des équipes</h2>
+<h1 class="section-title">Gestion des équipes</h1>
 
 <div class="content">
     <section class="side">
@@ -11,6 +11,9 @@
                 <ms-button value="Éditer" width="47.5%" [routerLink]="team._id" (click)="openEditor()"></ms-button>
                 <ms-button value="Supprimer" color="orange" width="47.5%" (click)="deleteTeam(team._id)"></ms-button>
             </section>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="displayDeletionTeamError">
+                Cette équipe est inscrite à un ou plusieurs événements. Vous ne pouvez pas la supprimer.
+            </ngb-alert>
         </ng-container>
 
         <section class="add-team">

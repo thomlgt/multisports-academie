@@ -2,8 +2,7 @@ import { BadRequestException, Body, Inject, Injectable, LoggerService, NotFoundE
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToInstance } from 'class-transformer';
 import { Model } from 'mongoose';
-import { WinstonLogger } from 'nest-winston/dist/winston.classes';
-import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston/dist/winston.constants';
+import { WinstonLogger, WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 import { Article, ArticleDocument } from './entities/article.entity';
@@ -15,7 +14,7 @@ export class ArticleService {
     @InjectModel(Article.name) private articleModel: Model<ArticleDocument>,
     @Inject(WINSTON_MODULE_NEST_PROVIDER) private readonly logger: LoggerService
   ) {
-    (logger as WinstonLogger).setContext(ArticleService.name);
+    (logger as WinstonLogger).setContext(this.constructor.name);
   }
 
   async create(@Body() createArticleDto: CreateArticleDto): Promise<Article> {
@@ -28,13 +27,16 @@ export class ArticleService {
   }
 
   async findAll(): Promise<Article[]> {
-    return this.articleModel
-      .find()
-      .populate('mainPicture');
+    const articles = await this.articleModel
+    .find()
+    .populate('mainPicture')
+    .sort({ "updatedDate": -1 })
+    this.logger.debug(`findAll : ${articles.length} elements trouvées`);
+    return articles;
   }
 
   async findOne(id: string): Promise<Article> {
-    const article = this.articleModel
+    const article =  await this.articleModel
       .findById(id)
       .populate(['mainPicture', 'gallery']);
 
@@ -42,7 +44,7 @@ export class ArticleService {
       this.logger.warn(`findOne: l'id ${id} n'a renvoyé aucun résultat`);
       throw new NotFoundException(`Aucun article avec l'id ${id} trouvée`);
     }
-
+    this.logger.debug(`findOne: l'id ${id} a retourné 1 element`);
     return article;
   }
 
@@ -81,7 +83,7 @@ export class ArticleService {
     const articles = await this.articleModel
       .find({})
       .limit(params.take)
-      .sort({ "updatedDate": params.sort = 'asc' ? 1 : -1 })
+      .sort({ "updatedDate": params.sort = 'asc' ? -1 : 1 })
       .populate('mainPicture', {_id: 0, url: 1,  altText: 1});
     this.logger.debug({ "message": `findLastArticlesByDate: ${articles.length} article(s) trouvé(s)`, "params": params, "articles": articles });
     return articles;

@@ -11,7 +11,10 @@
         }
       }
     ],
-    "assets": ["modules/mail/templates/**/*"],
+    "assets": [
+      "modules/mail/templates/**/*",
+      "modules/mail/images/*"
+    ],
     "watchAssets": true
   }
 }

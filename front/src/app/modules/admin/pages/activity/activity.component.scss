@@ -1,0 +1,24 @@
+form {
+    background-color: #fff;
+    padding: 20px;
+
+    .form-content {
+        margin: 20px;
+    }
+
+    .block-buttons {
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+
+        ms-button {
+            margin: 20px; 
+            button {
+                width: 200px;
+            }                       
+        }
+    }
+    
+}

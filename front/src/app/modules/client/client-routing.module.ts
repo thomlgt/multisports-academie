@@ -15,6 +15,7 @@ import { TeamsComponent } from './pages/teams/teams.component';
 import { GalleryPageComponent } from './pages/gallery/gallery.component';
 
 const routes: Routes = [
+  { path: 'admin', loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule) },
   {
     path: '', component: ClientComponent,
     children: [

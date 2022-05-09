@@ -1,0 +1,55 @@
+@import 'colors';
+
+.menu {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    justify-content: space-between;
+
+}
+
+ul {
+    margin : 20% 0 20% 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding   : 15px 0;
+    color     : $text-light
+}
+
+li:hover {
+    cursor     : pointer;
+    font-weight: bold;
+    transition : 0.1s;
+}
+
+.active {
+    font-weight: bold;
+    color      : $orange;
+}
+
+
+.bottom-buttons {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    width: 100%;;
+
+    button {
+        width: 70%;
+        margin: 10px auto;
+        color: $text-dark;
+    }
+     .disconnect {
+     background-color: $orange;
+ }
+
+ .show-client {
+     background-color: $teal;
+ }
+}

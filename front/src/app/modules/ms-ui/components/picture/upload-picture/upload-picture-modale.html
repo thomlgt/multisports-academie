@@ -1,0 +1,50 @@
+<div class="modal-body">
+
+  <div class="control close"
+       aria-label="Close"
+       (click)="activeModal.dismiss('Cross click')">X</div>
+
+
+  <div class="file-upload">
+    <input #uploadFile
+           multiple="true"
+           type="file"
+           (change)="loadFiles($event)"
+           style="display: none" />
+
+    <ms-button (click)="uploadFile.click()"
+               value="Charger"></ms-button>
+
+    <div *ngIf="files && files.length > 0; else noFiles">
+      <table class="files-array">
+        <tr>
+          <th>Nom de l'image</th>
+          <th>Taille</th>
+          <th>retirer</th>
+        </tr>
+        <tr *ngFor="let file of files; let index = index">
+          <td>{{file.name}}</td>
+          <td class="size">{{convertOtoMo(file.size)}}</td>
+          <td>
+            <span (click)="removeFile(index)" class="suppr-img">X</span>
+          </td>
+        </tr>
+
+
+      </table>
+    </div>
+
+    <ng-template #noFiles>Charger une ou des images (max. 20)</ng-template>
+  </div>
+
+  <div class="buttons">
+    <ms-button value="Annuler"
+               color="orange"
+               width="120px"
+               (click)="activeModal.dismiss('Cancel')"></ms-button>
+    <ms-button value="Uploader"
+               width="120px"
+               (click)="sendFiles()"></ms-button>
+  </div>
+
+</div>

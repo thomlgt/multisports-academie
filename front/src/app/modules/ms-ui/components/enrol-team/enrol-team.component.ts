@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Captain } from 'src/app/models/captain/captain';
 import { Registration } from 'src/app/models/event/registration';
@@ -26,6 +26,7 @@ export class EnrolTeamComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private eventService: EventService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -37,12 +38,10 @@ export class EnrolTeamComponent implements OnInit {
     newRegistration.validationStatus = "pending";
     this.eventService.addRegistration(this.id, newRegistration).subscribe(
       next => {
-        console.log('registration OK !');
-        this.clorseModal();
+        this.closeModal();
       },
       error => {
-        console.log('registration has failed !');
-        this.clorseModal();
+        this.closeModal();
       }
     );
   }
@@ -54,17 +53,22 @@ export class EnrolTeamComponent implements OnInit {
     this.eventService.cancelRegistration(this.id, newRegistration).subscribe(
       next => {
         console.log('Deletion OK !');
-        this.clorseModal();
+        this.closeModal();
       },
       error => {
         console.log('Deletion has failed !');
-        this.clorseModal();
+        this.closeModal();
       }
     );
   }
 
-  clorseModal() {
+  closeModal() {
     this.enrolTeamEvent.emit();    
+    this.activeModal.close();
+  }
+
+  goToTeamEdit() {
+    this.router.navigateByUrl(`captain/${this.id}/teams`);
     this.activeModal.close();
   }
 

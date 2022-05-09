@@ -38,8 +38,7 @@ export class CaptainService {
      * @returns 
      */
     async findAll() {
-        let captains = await this.captainModel.find();
-        return captains.map(SafeCaptain.transformCaptainToSafe)
+        return await this.captainModel.find().sort({createdDate : -1});
     }
 
     /**

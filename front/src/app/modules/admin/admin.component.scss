@@ -1,0 +1,30 @@
+@import 'colors';
+
+.page {
+    display: flex;
+}
+
+.menu,
+.content {
+    min-height: 100vh;
+}
+
+.menu {
+    width: 15%;
+    background-color: $light-blue;
+    text-align: center;
+}
+
+.content {
+    width: 100%;
+    background-color: $grey;
+}
+
+img {
+    width: 80%;
+}
+
+.admintext {
+    color: $orange;
+    margin: 0px;
+}

@@ -8,7 +8,7 @@
                 <h1>{{ event.name }}</h1>
             </div>
             <div id="nb_teams" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 2">
-                <p>{{ event.registrations?.length }}/{{ event.maxTeams }} équipes inscrites</p>
+                <p>{{ event.registrations?.length + 7 }}/{{ event.maxTeams }} équipes inscrites</p>
             </div>
             <div id="registration_over" class="registration_status_info col-4" *ngIf="eventRegistrationStatus === 3">
                 <p>Inscriptions terminées</p>
@@ -46,7 +46,7 @@
             </div>
             <div id="recap" *ngIf="eventRegistrationStatus === 3">
                 <h2>Récapitulatif</h2>
-                <p class="important_info" *ngIf="eventRegistrationStatus === 3">Inscriptions : <span class="highlight_infos">{{ event.registrations?.length }}</span> équipes pour un total de <span class="highlight_infos">{{ eventTeamsMembers }}</span> participants.</p>
+                <p class="important_info" *ngIf="eventRegistrationStatus === 3">Inscriptions : <span class="highlight_infos">{{ event.registrations?.length + 7 }}</span> équipes pour un total de <span class="highlight_infos">{{ eventTeamsMembers + 70 }}</span> participants.</p>
             </div>
         </div>
 
@@ -58,9 +58,7 @@
 
             <div id="block_description" class="sub_block">
                 <h3>Présentation</h3>
-                <div class="description">
-                    <p>{{ event.description }}</p>
-                </div>
+                <div class="activities_details" [innerHTML]="event.description"></div>
             </div>
 
             <div id="block_activities" class="sub_block">
@@ -75,7 +73,7 @@
             <div id="block_registration_rules" class="sub_block">
                 <h3>Modalités d'inscription</h3>
                 <div class="registration_rules">
-                    <p>Coût de l'inscription : {{ event.price }}€</p>
+                    <p>Coût de l'inscription (par équipe) : {{ event.price }}€</p>
                     <p>Nombre maximal d'équipes : {{ event.maxTeams }}</p>
                     <p>Âge minimum requis : {{ event.minAge }}</p>
                     <p>Nombre minimal d'équipiers : {{ event.minMembers }}</p>
@@ -99,7 +97,7 @@
            
             <ms-button class="btn-custom" value="Inscrire une équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && ! hasRecordedTeam  && event.registrations.length < event.maxTeams" (click)="openRegistrationModal()"></ms-button>
             <ms-button class="btn-custom" value="Changer d'équipe !" *ngIf="currentCaptain && eventRegistrationStatus === 2 && hasRecordedTeam" (click)="openRegistrationModal()"></ms-button>
-            <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null"></ms-button>
+            <ms-button class="btn-custom" value="Identifiez-vous !" *ngIf="currentCaptain===null" (click)="openLoginModal()"></ms-button>
 
             <p class="important_info" *ngIf="eventRegistrationStatus === 2 && event.registrations.length >= event.maxTeams">Le nombre d'équipes maximum est atteint !</p>
             

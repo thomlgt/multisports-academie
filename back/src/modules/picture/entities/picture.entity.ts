@@ -8,6 +8,15 @@ export type PictureDocument = Picture & Document;
 export class Picture {
   _id: string;
   @Prop()
+  // @IsNotEmpty()
+  baseName: string;
+  @Prop()
+  // @IsNotEmpty()
+  stockageName: string;
+  @Prop()
+  // @IsNotEmpty()
+  size: number;
+  @Prop()
   @IsNotEmpty()
   url: string;
   @Prop()

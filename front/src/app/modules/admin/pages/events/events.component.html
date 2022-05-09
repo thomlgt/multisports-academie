@@ -1,0 +1,18 @@
+<h2 class="admin-title">Évènements</h2>
+
+<section class="container">
+    <header class="events-header">
+        <ul>
+            <li>Identifiant</li>
+            <li>Nom</li>
+            <li>Nombre d'inscrits</li>
+            <li>Statut inscriptions</li>
+            <li>
+                
+            </li>
+        </ul>
+    </header>
+    <ng-container *ngFor="let event of events">
+        <ms-display-admin-event [event]="event"></ms-display-admin-event>
+    </ng-container>
+</section>

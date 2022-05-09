@@ -9,6 +9,7 @@
       <!-- <small><i class="far fa-clock"></i> 15 mai 2022</small> -->
     </div>
     <ms-button value="En savoir plus"
-               (click)="goToActivityDetailsPage()"></ms-button>
+               (click)="goToActivityDetailsPage()"
+               *ngIf="displayInfoButton"></ms-button>
   </div>
 </div>

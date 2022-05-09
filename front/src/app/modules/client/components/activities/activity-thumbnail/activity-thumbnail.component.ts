@@ -13,11 +13,16 @@ export class ActivityThumbnailComponent implements OnInit {
   @Input() activity: Activity;
   @Input() event: Event;
 
+  displayInfoButton = true;
+
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    if(this.router.url.split('/')[1] === "admin") {
+      this.displayInfoButton = false;
+    }
   }
 
   goToActivityDetailsPage() {

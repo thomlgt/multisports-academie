@@ -19,12 +19,15 @@ import { EnrolTeamComponent } from './components/enrol-team/enrol-team.component
 import { ValuesComponent } from './components/values/values.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GalleryComponent, PictureModale } from './components/gallery/gallery.component';
+import { GalleryComponent, PictureModale } from './components/picture/gallery/gallery.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { UploadPictureComponent, UploadPictureModale } from './components/picture/upload-picture/upload-picture.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 
 @NgModule({
@@ -47,7 +50,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     ValuesComponent,
     ContactFormComponent,
     GalleryComponent,
-    PictureModale
+    PictureModale,
+    AdminMenuComponent,
+    UploadPictureComponent,
+    UploadPictureModale,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +76,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     ValuesComponent,
     ContactFormComponent,
     GalleryComponent,
-    PictureModale
+    PictureModale,
+    AdminMenuComponent,
+    UploadPictureComponent
   ]
 })
 export class MsUiModule {

@@ -1,0 +1,44 @@
+<h2 class="admin-title">Nouvelle activité</h2>
+
+<div class="container" *ngIf="editActivityForm">
+
+    <form [formGroup]="editActivityForm">
+
+        <div class="form-content row">
+            <label for="name" class="col-12 offset-md-2 col-md-2">Nom</label>
+            <input type="text" name="name" formControlName="name" class="col-12 col-md-6">
+        </div>
+        <div class="form-content row">
+            <label for="description" class="col-12 offset-md-2 col-md-2">Description</label>
+            <textarea name="description" formControlName="description" class="col-12 col-md-6"></textarea>
+        </div>
+        <div class="form-content row">
+            <label for="rules" class="col-12 offset-md-2 col-md-2">Règles</label>
+            <textarea name="rules" formControlName="rules" class="col-12 col-md-6"></textarea>
+        </div>
+        <div class="form-content row">
+            <label for="duration" class="col-12 offset-md-2 col-md-2">Durée</label>
+            <input type="number" name="duration" formControlName="duration" class="col-12 col-md-6">
+        </div>
+        <div class="form-content row">
+            <label for="points" class="col-12 offset-md-2 col-md-2">Points</label>
+            <input type="number" name="points" formControlName="points" class="col-12 col-md-6">
+        </div>
+
+        <div class="row">
+
+            <div class="block-buttons col-12 offset-md-2 col-md-10" *ngIf="!id">
+                <ms-button value="Ajouter" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+                <ms-button value="Ajouter" (click)="addActivity()" *ngIf="editActivityForm.valid"></ms-button>
+            </div>
+
+            <div class="block-buttons col-12 offset-md-2 col-md-10 d-flex" *ngIf="id">
+                <ms-button value="Modifier" color="orange" *ngIf="!editActivityForm.valid"></ms-button>
+                <ms-button value="Modifier" (click)="updateActivity()" *ngIf="editActivityForm.valid"></ms-button>
+                <ms-button color="orange" value="Supprimer" (click)="openDelationModal()"></ms-button>
+            </div>
+        </div> 
+    
+    </form>
+
+</div>

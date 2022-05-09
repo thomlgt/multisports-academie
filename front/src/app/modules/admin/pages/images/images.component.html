@@ -1,0 +1,11 @@
+<h2 class="admin-title">Gestion de la galerie :</h2>
+
+<section class="upload">
+  <app-upload-picture (pictureUploadedEvent)="reloadGallery()"></app-upload-picture>
+</section>
+
+<section class="gallery">
+  <app-gallery [pictures]="pictures"
+               [loading]="loading"
+               (pictureDeletedEvent)="reloadGallery()"></app-gallery>
+</section>

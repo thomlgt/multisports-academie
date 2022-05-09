@@ -1,0 +1,16 @@
+<div class="menu">
+    <ul>
+        <li *ngFor="let element of elements"
+            (click)="goTo(element)"
+            [ngClass]="element.isActive?'active':'not-active'">{{element.name}}
+        </li>
+    </ul>
+
+    <section class="bottom-buttons">
+        <button class="show-client"
+                (click)="viewSite()"
+                title="Ouvre Multisport académie dans un nouvel onglet">Voir le site</button>
+        <button class="disconnect"
+                (click)="logout()">Se déconnecter</button>
+    </section>
+</div>

@@ -1,0 +1,29 @@
+@import 'colors';
+
+ul {
+    display: flex;
+    margin: 3px 0px 3px 0px;
+    padding: 10px;
+    justify-content: space-between;
+    border: 1px solid $light-blue;
+    background-color: white;
+}
+
+li {
+    list-style: none;
+    width: 20%;
+    
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.update {
+    background-color: $teal;
+}
+
+.delete {
+    background-color: $orange;
+}

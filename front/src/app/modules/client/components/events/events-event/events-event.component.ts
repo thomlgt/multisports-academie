@@ -7,6 +7,7 @@ import { SafeEvent } from 'src/app/models/event/safeEvent';
 import { Team } from 'src/app/models/teams/team';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
+import { LoginModalComponent } from 'src/app/modules/ms-ui/components/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-events-event',
@@ -18,7 +19,7 @@ export class EventsEventComponent implements OnInit {
   @Input() event : SafeEvent;
   eventRegistrationStatus: number;
 
-  currentCaptain: Captain|null;
+  currentCaptain: Captain|null = null;
   
   eventTeams: Team[];
   captainTeams: Team[];  
@@ -39,6 +40,7 @@ export class EventsEventComponent implements OnInit {
     this.hasRecordedTeam = false;
     this.defineEventRegistrationStatus();
     this.initEventTeams();
+    this.initCaptain();
   }
 
   /** Event redirection */
@@ -77,6 +79,10 @@ export class EventsEventComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  openLoginModal() {
+    const modalRef = this.modalService.open(LoginModalComponent, { centered: true, size: 'xl'});
+  }
   
   initEventTeams() {
     let registrations = this.event.registrations;
@@ -86,22 +92,18 @@ export class EventsEventComponent implements OnInit {
       for (let registration of registrations) { 
         this.eventTeams.push(registration.team);
         i++;
-        if (i === nbTeams) {        
-          this.initCaptain();
-        }
       }
-    } else {
-      this.initCaptain();
     }
   }
 
   initCaptain() {
     // check if authenticated
-    let authenticatedCaptain = this.authenticationService.currentCaptainValue;
-    if (authenticatedCaptain) {
-      this.currentCaptain = authenticatedCaptain.captain;
-      this.initCaptainTeams();
-    }
+    this.authenticationService.currentCaptain.subscribe((data) => {
+      if(data.captain) {
+        this.currentCaptain = data.captain;
+        this.initCaptainTeams();
+      }     
+    });
   }
 
   initCaptainTeams() {
@@ -142,7 +144,7 @@ export class EventsEventComponent implements OnInit {
             age--;
         }
         if (age < this.event.minAge) {
-          information = `Les participans doivent avoir au moins ${this.event.minAge} ans.`;
+          information = `Les participants doivent avoir au moins ${this.event.minAge} ans.`;
           suitable = false;
           acceptedMembers = [];
           break;
@@ -150,27 +152,26 @@ export class EventsEventComponent implements OnInit {
           acceptedMembers.push(member);
         }
       }
-      if (acceptedMembers.length > 0) {
-        if (acceptedMembers.length + 1 < this.event.minMembers) {
-          information = `Il doit y avoir au moins ${this.event.minMembers} membres dans une équipe.`;
-          suitable = false;
-        } else if (acceptedMembers.length + 1 > this.event.maxMembers){
-          information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membres dans une équipe.`;
-          suitable = false;
-        } else {
-          let nbFemales = 0;
-          for (let member of acceptedMembers) {
-            if (member.gender == 2) {
-              nbFemales++;
-            }
-          }
-          if (nbFemales >= this.event.minFemale) {
-            suitable = true;
-          } else {
-            information = `Il doit y avoir au moins ${this.event.minFemale} femmes dans une équipe.`;
-            suitable = false;
-          }
 
+      if (acceptedMembers.length + 1 < this.event.minMembers) {
+        information = `Il doit y avoir au moins ${this.event.minMembers} membre(s) dans une équipe.`;
+        suitable = false;
+      } else if (acceptedMembers.length + 1 > this.event.maxMembers){
+        information = `Il ne doit pas y avoir plus de ${this.event.maxMembers} membre(s) dans une équipe.`;
+        suitable = false;
+      } else {
+        let nbFemales = 0;
+        for (let member of acceptedMembers) {
+          if (member.gender == 2) {
+            nbFemales++;
+          }
+        }
+        if(this.currentCaptain.gender === 2) nbFemales += 1;
+        if (nbFemales >= this.event.minFemale) {
+          suitable = true;
+        } else {
+          information = `Il doit y avoir au moins ${this.event.minFemale} femmes dans une équipe.`;
+          suitable = false;
         }
       }
 

@@ -25,12 +25,20 @@ export class EventService {
     return this.http.get<Event[]>(`${environment.apiUrl}/events/team/${idTeam}`)
   }
 
+  findByActivity(idActivity : string) {
+    return this.http.get<Event[]>(`${environment.apiUrl}/events/activity/${idActivity}`);
+  }
+
   addRegistration(id : string, registration: Registration) {
     return this.http.post<Registration>(`${environment.apiUrl}/events/${id}/registrations`, registration);
   }
 
   cancelRegistration(id : string, registration: Registration) {
     return this.http.delete<Registration>(`${environment.apiUrl}/events/${id}/registrations`, {body: registration});
+  }
+
+  validateRegistration(id: string, registration: Registration) {
+    return this.http.patch<Registration>(`${environment.apiUrl}/events/${id}/registrations`, registration);
   }
 
 }
