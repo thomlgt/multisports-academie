@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Captain } from 'src/app/models/captain/captain';
-import { SafeEvent } from 'src/app/models/event/safeEvent';
 import { Team } from 'src/app/models/teams/team';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
 import { EnrolTeamComponent } from 'src/app/modules/ms-ui/components/enrol-team/enrol-team.component';
 import { LoginModalComponent } from 'src/app/modules/ms-ui/components/login-modal/login-modal.component';
+import { Event } from 'src/app/models/event/event';
 
 @Component({
   selector: 'app-events-event',
@@ -16,7 +16,7 @@ import { LoginModalComponent } from 'src/app/modules/ms-ui/components/login-moda
 })
 export class EventsEventComponent implements OnInit {
 
-  @Input() event : SafeEvent;
+  @Input() event :Event;
   eventRegistrationStatus: number;
 
   currentCaptain: Captain|null = null;
