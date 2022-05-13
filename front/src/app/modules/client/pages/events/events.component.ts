@@ -21,6 +21,10 @@ export class EventsComponent implements OnInit {
   initEvents() {
     this.eventService.findAll().subscribe(data => {
       this.events = data;
+      console.log(data[0]);
+      console.log(data[0] instanceof Event);
+      console.log(data[0].constructor.name);
+      console.log(Event.name);
     })
   }
 
