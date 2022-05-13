@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeEvent } from 'src/app/models/event/safeEvent';
 import { EventService } from 'src/app/modules/ms-api/event/event.service';
+import { Event } from 'src/app/models/event/event';
 
 @Component({
   selector: 'app-events',
@@ -9,7 +9,7 @@ import { EventService } from 'src/app/modules/ms-api/event/event.service';
 })
 export class EventsComponent implements OnInit {
 
-  events: SafeEvent[];
+  events: Event[];
 
   constructor(private eventService: EventService) { 
   }

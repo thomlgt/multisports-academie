@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from 'src/app/models/event/event';
 import { Registration } from 'src/app/models/event/registration';
-import { SafeEvent } from 'src/app/models/event/safeEvent';
+
 import { Team } from 'src/app/models/teams/team';
 import { environment } from 'src/environments/environment';
 
@@ -14,7 +14,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   findAll() {
-    return this.http.get<SafeEvent[]>(`${environment.apiUrl}/events`);
+    return this.http.get<Event[]>(`${environment.apiUrl}/events`);
   }
 
   findById(id : string) {

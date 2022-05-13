@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeEvent } from 'src/app/models/event/safeEvent';
 import { Event } from 'src/app/models/event/event';
 import { EventService } from 'src/app/modules/ms-api/event/event.service';
 import { TeamService } from 'src/app/modules/ms-api/team/team.service';
@@ -25,14 +24,14 @@ export class EventComponent implements OnInit {
   event: Event;
   eventRegistrationStatus: number;
 
-  currentCaptain: Captain|null;
+  currentCaptain: Captain|null = null;
   
-  eventTeams: Team[];
-  captainTeams: Team[];  
-  availableTeams: any[];
-  hasRecordedTeam: boolean;
+  eventTeams: Team[] = [];
+  captainTeams: Team[] = [];
+  availableTeams: any[] = [];
+  hasRecordedTeam: boolean = false;
 
-  eventTeamsMembers: number;
+  eventTeamsMembers: number = 0;
   remainingDays: number;
 
   constructor(
@@ -44,12 +43,6 @@ export class EventComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.eventTeams = [];
-    this.captainTeams = [];
-    this.availableTeams = [];
-    this.hasRecordedTeam = false;
-    this.currentCaptain = null;
-    this.eventTeamsMembers = 0;
     this.id = this.route.snapshot.params['id'];
     this.initEvent();
   }
