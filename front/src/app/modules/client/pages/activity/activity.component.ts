@@ -31,7 +31,6 @@ export class ActivityComponent implements OnInit {
   initActivity() {
     this.activityService.findById(this.id).subscribe(data => {
       this.activity = data;
-      console.log(data);
     })    
   }
 
