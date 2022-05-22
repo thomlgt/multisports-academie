@@ -8,6 +8,7 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { SafeEvent } from './dto/safe-event.dto';
 import { Event, EventDocument } from './entities/event.entity';
 import { Registration } from './entities/registration';
+import { Score } from './entities/score';
 
 @Injectable()
 export class EventService {
@@ -155,7 +156,7 @@ export class EventService {
      * Cette méthode permet de modifier un événement enregistré pour valider une inscription
      * dans la base de données et le retourne
      * @param id 
-     * @param newEvent 
+     * @param registration
      * @returns 
      */
      async validateRegistration(id: string, registration : Registration) : Promise<Event> {
@@ -167,6 +168,23 @@ export class EventService {
             (error, event) => {
                 SafeEvent.transformEventToSafe(event);
                 this.mailService.sendValidatedRegistration(captain, event, registration);
+            }).clone();
+    }
+
+    /**
+     * Cette méthode permet de modifier un événement enregistré pour modifier une inscription
+     * dans la base de données et le retourne
+     * @param id 
+     * @param registration
+     * @returns 
+     */
+        async updateRegistration(id: string, registration : Registration) : Promise<Event> {
+        let teamId = registration.team._id;
+        return this.eventModel.findOneAndUpdate({_id : id, "registrations.team._id" : teamId},
+            {$set: { "registrations.$" : registration }, updatedDate: new Date()},
+            {new: true},
+            (error, event) => {
+                SafeEvent.transformEventToSafe(event);
             }).clone();
     }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
@@ -38,7 +38,7 @@ export class EventController {
     }
 
     /**
-     * tourne un événement à partir de son id
+     * Tourne un événement à partir de son id
      * @param id 
      * @returns 
      */
@@ -58,7 +58,7 @@ export class EventController {
      }
 
     /**
-     * supprime un événement à partir de son id
+     * Supprime un événement à partir de son id
      * @param id 
      * @returns 
      */
@@ -98,7 +98,7 @@ export class EventController {
     }
 
     /**
-     * supprime une inscription d'un événement
+     * Supprime une inscription d'un événement
      * @param registration 
      * @param id 
      * @returns 
@@ -110,7 +110,7 @@ export class EventController {
     }
 
     /**
-     * valide une inscription d'un événement
+     * Valide une inscription d'un événement
      * @param registration 
      * @param id 
      * @returns 
@@ -120,5 +120,16 @@ export class EventController {
      async validateRegistration(@Body() registration: Registration, @Param('id') id: string) {
          return this.eventService.validateRegistration(id, registration);
      }
+
+    /**
+     * Met à jour une inscription d'un événement
+     * @param registration 
+     * @param id 
+     * @returns 
+     */
+    @Put(':id/registrations')
+    async updateRegistration(@Body() registration: Registration, @Param('id') id: string) {
+        return this.eventService.updateRegistration(id, registration);
+    }
 
 }
