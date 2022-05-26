@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
@@ -63,7 +63,7 @@ export class EventController {
      * @returns 
      */
     @Delete(':id')
-    @UseGuards(AuthGuard("admin"))
+    // @UseGuards(AuthGuard("admin"))
     async delete(@Param('id') id : string) {
         return this.eventService.delete(id);
     }
@@ -75,7 +75,7 @@ export class EventController {
      * @returns 
      */
     @Patch(':id')
-    @UseGuards(AuthGuard("admin"))
+    // @UseGuards(AuthGuard("admin"))
     async update(@Param('id') id : string, @Body() event : Event) {
         return this.eventService.update(id, event);
     }
@@ -86,12 +86,8 @@ export class EventController {
      * @param id 
      * @returns 
      */
-    @ApiBody({
-        type: Registration,
-        description: "l'objet membre à ajouter",
-    })
     @Post(':id/registrations')
-    @UseGuards(AuthGuard(["admin", "captain"]))
+    // @UseGuards(AuthGuard(["admin", "captain"]))
     async addRegistration(@Body() registration: Registration, @Param('id') id: string) {
     return this.eventService.addRegistration(id, registration);
     
@@ -104,7 +100,7 @@ export class EventController {
      * @returns 
      */
     @Delete(':id/registrations')
-    @UseGuards(AuthGuard(["admin", "captain"]))
+    // @UseGuards(AuthGuard(["admin", "captain"]))
     async deleteRegistration(@Body() registration: Registration, @Param('id') id: string) {
         return this.eventService.deleteRegistration(id, registration);
     }
@@ -116,9 +112,21 @@ export class EventController {
      * @returns 
      */
      @Patch(':id/registrations')
-     @UseGuards(AuthGuard("admin"))
+    //  @UseGuards(AuthGuard("admin"))
      async validateRegistration(@Body() registration: Registration, @Param('id') id: string) {
          return this.eventService.validateRegistration(id, registration);
      }
+
+    /**
+     * valide une inscription d'un événement
+     * @param registration 
+     * @param id 
+     * @returns 
+     */
+    @Put(':id/registrations')
+    // @UseGuards(AuthGuard("admin"))
+    async updateRegistration(@Body() registration: Registration, @Param('id') id: string) {
+        return this.eventService.updateRegistration(id, registration);
+    }
 
 }

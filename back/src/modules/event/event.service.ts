@@ -155,7 +155,7 @@ export class EventService {
      * Cette méthode permet de modifier un événement enregistré pour valider une inscription
      * dans la base de données et le retourne
      * @param id 
-     * @param newEvent 
+     * @param registration
      * @returns 
      */
      async validateRegistration(id: string, registration : Registration) : Promise<Event> {
@@ -163,6 +163,25 @@ export class EventService {
         let captain = registration.team.captain;
         return this.eventModel.findOneAndUpdate({_id : id, "registrations.team._id" : teamId},
             {$set: { "registrations.$.validationStatus" : "validated" }, updatedDate: new Date()},
+            {new: true},
+            (error, event) => {
+                SafeEvent.transformEventToSafe(event);
+                this.mailService.sendValidatedRegistration(captain, event, registration);
+            }).clone();
+    }
+
+    /**
+     * Cette méthode permet de modifier un événement enregistré dans la base de données 
+     * et le retourne
+     * @param id 
+     * @param registration
+     * @returns 
+     */
+        async updateRegistration(id: string, registration : Registration) : Promise<Event> {
+        let teamId = registration.team._id;
+        let captain = registration.team.captain;
+        return this.eventModel.findOneAndUpdate({_id : id, "registrations.team._id" : teamId},
+            {$set: { "registrations.$" : registration }, updatedDate: new Date()},
             {new: true},
             (error, event) => {
                 SafeEvent.transformEventToSafe(event);
