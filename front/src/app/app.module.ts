@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 
@@ -25,6 +25,7 @@ registerLocaleData(localeFr, 'fr');
     MsUiModule,
     MsApiModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "fr-FR" },
