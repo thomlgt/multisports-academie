@@ -1,27 +1,29 @@
 <header>
-    <div class="menu">
-        <div class="logo"
-        (click)="goTo('home', 'top')">
-            <img src="/assets/images/logos/logo-sans-fond-sans-bords-bleuciel.svg" alt="logo">
-        </div>
-        <ul class="menu-bar">
-            <li (click)="goTo('home', 'top')">Accueil</li>
-            <li (click)="goTo('articles')">Actualités</li>
-            <li (click)="goTo('events')">Événements</li>
-            <li (click)="goTo('gallery')">Galerie</li>
-            <li (click)="goTo('home', 'contact')">Contact</li>
-        </ul>
-        <div class="menu-connexion">
-            <ng-container>
-                <ms-captain-control></ms-captain-control>
-            </ng-container>
+    <div class="menu-top">
+        <div class="menu-content" (click)="goTo('home', 'top')">
+            <img src="/assets/images/logos/logo-sans-fond-sans-bords-blanc.svg" alt="logo">
+            <div class="menu-connexion">
+                <ng-container>
+                    <ms-captain-control></ms-captain-control>
+                </ng-container>
+            </div>
         </div>
     </div>
+    <div class="menu-bot">
+        <div class="menu-content">
+            <ul class="menu-bar">
+                <li (click)="goTo('home', 'top')">Accueil</li>
+                <li (click)="goTo('articles')">Actualités</li>
+                <li (click)="goTo('events')">Événements</li>
+                <li (click)="goTo('gallery')">Galerie</li>
+                <li (click)="goTo('home', 'contact')">Contact</li>
+            </ul>
+            <ms-social></ms-social>
+        </div>
+    </div>
+
     <section class="social">
-        <ms-social></ms-social>
+        
     </section>
-    
+
 </header>
-
-
-

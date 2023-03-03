@@ -1,14 +1,16 @@
-<ng-container *ngIf="!currentCaptain">
-    <ul class="menu">
-        <li (click)="open()">Connexion</li>
-    </ul>
-</ng-container>
-
-<ng-container *ngIf="currentCaptain">
-    <ul class="menu connected">
-        <li class="teams" (click)="goToTeamsEdit()">Mes équipes</li>
-        <li class="profile" (click)="goToProfile()">Mon Profil</li>
-    </ul>
-</ng-container>
+<div class="captain-menu">
+    <ng-container *ngIf="!currentCaptain">
+        <ul class="buttons">
+            <li (click)="open()">Connexion</li>
+        </ul>
+    </ng-container>
+    
+    <ng-container *ngIf="currentCaptain">
+        <ul class="buttons">
+            <li (click)="goToTeamsEdit()">Mes équipes</li>
+            <li (click)="goToProfile()">Mon Profil</li>
+        </ul>
+    </ng-container>
+</div>
 
 

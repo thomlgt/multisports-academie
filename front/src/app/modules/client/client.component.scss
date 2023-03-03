@@ -2,26 +2,13 @@
 @import 'colors';
 
 //* Global
-.side {
-    width: 20%;
+.site-view {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    min-height: calc(100vh - 40px - $footer-size - $navbar-size);
 }
 
 .content {
-    width: 60%;
-}
-
-//* Large screens
-@media only screen and (min-width: 992px) {
-    .site-view {
-        min-height: calc(100vh - 40px - $footer-size - $navbar-size);
-        margin-top: $navbar-size;
-        display   : flex;
-    }
-}
-
-//* small screens
-@media only screen and (max-width: 992px) {
-    .site-view {
-        display: flex;
-    }
+    width: 70%;
 }
