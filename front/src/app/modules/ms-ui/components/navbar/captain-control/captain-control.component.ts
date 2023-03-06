@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
@@ -35,11 +35,11 @@ export class CaptainControlComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}`)
+    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}`);
   }
 
   goToTeamsEdit() {
-    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}/teams`)
+    this.router.navigateByUrl(`/captain/${this.currentCaptain.captain._id}/teams`);
   }
 
 }
