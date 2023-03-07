@@ -2,7 +2,7 @@
 
 /* GLOBAL */
 footer {
-    background-color: $light-blue;
+    background-color: $mid-grey;
     width           : 100%;
     color           : $text-light;
     display         : flex;
@@ -19,6 +19,7 @@ footer {
 
     a:hover {
         text-decoration: underline;
+        color: $teal;
         cursor: pointer;
     }
 }

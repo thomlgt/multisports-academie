@@ -1,6 +1,8 @@
+@import 'colors';
+@import 'font';
+
 form {
-    max-width: 600px;
-    margin: auto;
+    width: 100%;
 }
 
 .form-content {
@@ -11,6 +13,12 @@ form {
 p {
     color: white;
     font-size: small;
+    font-family: $arial;
+}
+
+label {
+    font-family: $arial;
+    font-weight: 400;
 }
 
 .error {
@@ -33,6 +41,8 @@ input {
     background-color: #576471;
     border: 0px;
     border-bottom: 2px solid transparent;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 textarea {

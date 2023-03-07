@@ -2,18 +2,18 @@
 
 .value {
     display: flex;
-    color: $teal;
+    justify-content: space-around;
+    color: $text-light;
+    height: 100%;
 }
 
 .elem {
-    width: 50%;
+    width: 30%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
 img {
-    width: 90%;
-    color: $orange;
+    width: 100%;
 }

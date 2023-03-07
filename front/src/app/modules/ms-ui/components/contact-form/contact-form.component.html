@@ -1,6 +1,6 @@
 <form [formGroup]="contactForm">
     <section class="form-content">
-        <label for="lastname">nom:</label>
+        <label for="lastname">Nom :</label>
         <input type="text" name="lastname" formControlName="lastname" 
         [ngClass]="{ 'input-error': form.lastname.invalid && (form.lastname.dirty || form.lastname.touched) }">
         <p class="error" *ngIf="form.lastname.invalid && (form.lastname.dirty || form.lastname.touched)">
@@ -8,7 +8,7 @@
         </p>
     </section>
     <section class="form-content">
-        <label for="firstname">prénom:</label>
+        <label for="firstname">Prénom :</label>
         <input type="text" name="firstname" formControlName="firstname"
         [ngClass]="{ 'input-error': form.firstname.invalid && (form.firstname.dirty || form.firstname.touched) }">
         <p class="error" *ngIf="form.firstname.invalid && (form.firstname.dirty || form.firstname.touched)">
@@ -16,7 +16,7 @@
         </p>
     </section>   
     <section class="form-content">
-        <label for="email">email:</label>
+        <label for="email">Email :</label>
         <input type="email" name="email" formControlName="email"
         [ngClass]="{ 'input-error': form.email.invalid && (form.email.dirty || form.email.touched) }">
         <p class="error" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
@@ -25,7 +25,7 @@
     </section>
 
     <section class="form-content">
-        <label for="phone">téléphone:</label>
+        <label for="phone">Téléphone :</label>
         <input type="tel" name="phone" formControlName="phone"
         [ngClass]="{ 'input-error': form.phone.invalid && (form.phone.dirty || form.phone.touched) }">
         <p class="error" *ngIf="form.phone.invalid && (form.phone.dirty || form.phone.touched)">
@@ -34,7 +34,7 @@
     </section>
 
     <section class="form-content">
-        <label for="subject">sujet:</label>
+        <label for="subject">Sujet :</label>
         <input type="text" name="subject" formControlName="subject"
         [ngClass]="{ 'input-error': form.subject.invalid && (form.subject.dirty || form.subject.touched) }">
         <p class="error" *ngIf="form.subject.invalid && (form.subject.dirty || form.subject.touched)">
@@ -43,7 +43,7 @@
     </section>
 
     <section class="form-content end">
-        <label for="message">message:</label>
+        <label for="message">Message :</label>
         <textarea type="text" name="message" formControlName="message" rows="10"
         [ngClass]="{ 'input-error': form.subject.invalid && (form.message.dirty || form.message.touched) }">
         </textarea>

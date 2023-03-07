@@ -1,8 +1,12 @@
 @import 'colors';
+@import 'font';
 
 .content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-around;
     color: $text_light;
     margin-top: 30px;
 }
@@ -11,22 +15,59 @@
     background-color: $mid-grey;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px 0 15px 0;
+    margin-bottom: 20px;
 }
 
 .welcome {
-    width: 98%;
+    width: 75%;
     border-radius: 10px;
 }
 
-hr.solid {
-    border-top: 2px solid #ddd;
-    width: 60%;
-    margin: 8% 0 8% 20%;
+.who {
+    width: 24%;
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+    font-family: $arial;
 }
 
+.values {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    font-family: $arial;
+}
+
+.members {
+    width: 59%;
+    justify-content: space-between;
+    display: flex;
+    font-family: $arial;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-form {
+    width: 60%;
+    display: block;
+}
+
+
+.welcome-gif {
+    width: 98%;
+    border-radius: 10px;
+}
 
 //* news section
 .news {
@@ -35,18 +76,5 @@ hr.solid {
 
     ms-button {
         margin: 20px auto 0;
-    }
-
-
-    .elem {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .presentation {
-        width: 60%;
-        text-align: center;
     }
 }

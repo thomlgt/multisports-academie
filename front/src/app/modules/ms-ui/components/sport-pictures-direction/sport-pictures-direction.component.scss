@@ -6,6 +6,7 @@
 
 .elem {
     display: flex;
+    width: 21%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -13,8 +14,8 @@
 }
 
 img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 100%;
 }

@@ -1,78 +1,63 @@
-<section class="content"id="top">
+<section class="content" id="top">
 
-    <div class="box">
-        <img class="welcome" src="/assets/images/presentation-challenge.gif" alt="bergues">
+    <div class="box who">
+        <h2 class="section-title">Qui sommes nous ?</h2>
+        <p>
+            Multisports Académie est une association loi 1901 spécialisée dans l'organisation d'événements
+            sportifs.
+        </p>
+        <p>
+            Notre équipe multigénérationnelle est composée de bénévoles dynamiques pratiquant différentes
+            activités
+            sportives
+            qu’elles soient individuelles ou collectives en compétition ou en loisirs.
+        </p>
+        <p>
+            Si nous venons d’horizons sportifs distincts, un élément nous rassemble régulièrement :
+            la pratique des challenges multisports.
+        </p>
+        <p>
+            Notre volonté est de transmettre à un maximum de personnes notre passion pour le sport et les
+            valeurs
+            qu’il véhicule
+        </p>
     </div>
 
-    <hr>
+    <div class="box welcome">
+        <img class="welcome-gif" src="/assets/images/presentation-challenge.gif" alt="bergues">
+    </div>
 
-    <section class="elem">
-        <h2 class="section-title">Qui sommes nous ?</h2>
-        <span class="presentation">
-            <p>
-                Multisports Académie est une association loi 1901 spécialisée dans l'organisation d'événements sportifs.
-            </p>
-            <p>
-                Notre équipe multigénérationnelle est composée de bénévoles dynamiques pratiquant différentes activités
-                sportives
-                qu’elles soient individuelles ou collectives en compétition ou en loisirs.
-            </p>
-            <p>
-                Si nous venons d’horizons sportifs distincts, un élément nous rassemble régulièrement :
-                la pratique des challenges multisports.
-            </p>
-            <p>
-                Notre volonté est de transmettre à un maximum de personnes notre passion pour le sport et les valeurs
-                qu’il véhicule
-            </p>
-        </span>
-    </section>
-
-
-
-    <section class="elem">
-        <hr>
-        <h2 class="section-title">Nos valeurs</h2>
-        <ms-values></ms-values>
-    </section>
-
-
-
-    <section class="elem">
-        <hr>
+    <div class="box members">
         <h2 class="section-title">Les membres de l'association</h2>
         <ms-sport-pictures-direction></ms-sport-pictures-direction>
-    </section>
+    </div>
 
+    <div class="box values">
+        <h2 class="section-title">Nos valeurs</h2>
+        <ms-values></ms-values>
+        <h2 class="section-title"> </h2>
+    </div>
 
-
-    <section>
-        <hr>
+    <div class="box" *ngIf="articles && articles.length > 0">
         <h2 class="section-title">Les dernières actualités :</h2>
         <div class="news">
             <app-article-thumbnail-list [articles]="articles">
             </app-article-thumbnail-list>
-            <ms-button *ngIf="articles && articles.length > 0"
-                       value="Accéder aux actualités"
-                       (click)="goToArticles()">
+            <ms-button value="Accéder aux actualités" (click)="goToArticles()">
             </ms-button>
         </div>
-    </section>
+    </div>
 
-
-    <section class="gallery">
-        <hr>
+    <div class="box" *ngIf="pictures && pictures.length > 0">
         <h2 class="section-title">Les dernières photos :</h2>
         <app-gallery [pictures]="pictures"></app-gallery>
-    </section>
+    </div>
 
-
-
-    <section class="elem"
-             id="contact">
-        <hr>
+    <div class="box contact" id="contact">
         <h2 class="section-title">Nous contacter</h2>
-        <ms-contact-form></ms-contact-form>
-    </section>
+        <div class="contact-form">
+            <ms-contact-form></ms-contact-form>
+        </div>
+    </div>
 
 </section>

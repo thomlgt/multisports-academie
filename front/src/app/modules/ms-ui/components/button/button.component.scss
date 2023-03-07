@@ -1,12 +1,17 @@
 @import 'colors';
+@import 'font';
 
 button {
     padding: 6px 10px;
     color: $text-light;
     border: 1px solid transparent;
+    border-radius: 10px;
+    font-family: $arial;
+    font-weight: $button-weight;
+    font-size: $button-size;
 }
 
 button:hover {
     cursor: pointer;
-    transform: scale(1.03);
+    transform: scale(1.01);
 }
